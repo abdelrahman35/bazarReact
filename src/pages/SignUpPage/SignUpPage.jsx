@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import React, { useState, useEffect } from "react";
 import { register } from "../../store/actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
-
+// import "./SignUpPage.module.css";
 const initialValues = {
   firstName: "",
   lastName: "",
@@ -52,7 +52,7 @@ function SignUpPage() {
             Regestration form
           </h1>
 
-          <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Group className="mb-3" controlId="formBasicFirstName">
             <Form.Control
               className="input"
               type="text"
@@ -64,7 +64,7 @@ function SignUpPage() {
               <div style={{ color: "red" }}>{formik.errors.firstName}</div>
             ) : null}
           </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Group className="mb-3" controlId="formBasicLastName">
             <Form.Control
               className="input"
               type="text"
@@ -106,7 +106,7 @@ function SignUpPage() {
             ) : null}
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Group className="mb-3" controlId="formBasicConfirmPassword">
             <Form.Control
               className="input"
               type="password"
