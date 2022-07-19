@@ -63,7 +63,7 @@ function Navbar() {
               </div>
               <div className="col-2">
                 <button type="button" className="btn btn-warningg">
-                  Login/SignUp
+                  Login/SignUpppp
                 </button>
               </div>
             </div>
