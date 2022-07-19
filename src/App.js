@@ -7,7 +7,7 @@ import AboutUsPage from "./pages/aboutUs";
 import Home from "./pages/home";
 import LoginPage from "./pages/LoginPage";
 import ProudctPage from "./pages/productsPage";
-import SignUpPage from "./pages/signup";
+import SignUpPage from "./pages/SignUpPage/SignUpPage";
 
 function App() {
   return (
