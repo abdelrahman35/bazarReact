@@ -3,14 +3,12 @@ import Button from "react-bootstrap/Button";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
-
+import React from "react";
+import { useDispatch } from "react-redux";
+import { login } from "../../store/actions/userActions";
 const initialValues = {
   email: "",
   password: "",
-};
-
-const onSubmit = (values) => {
-  console.log("form data submition", values);
 };
 
 const validationSchema = Yup.object({
@@ -19,11 +17,17 @@ const validationSchema = Yup.object({
     .required("Please Enter your password")
     .matches(
       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-      "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character",
+      "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
     ),
 });
 
 function LoginPage() {
+  const dispatch = useDispatch();
+
+  const onSubmit = (values) => {
+    console.log("form data submition", values.email, values.password);
+    dispatch(login(values.email, values.password));
+  };
   const formik = useFormik({
     initialValues,
     onSubmit,
