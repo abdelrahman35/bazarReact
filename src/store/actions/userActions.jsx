@@ -1,17 +1,17 @@
 import axios from "axios";
 import axiosInstance from "./../../network/axiosInstance";
 
-// export const login = (email, password) => (dispatch) => {
-//   return axiosInstance
-//     .post("/login")
-//     .then((response) =>
-//       dispatch({
-//         type: "GET_MOVIES_ARRAY",
-//         payload: response.data,
-//       })
-//     )
-//     .catch((error) => console.log(error));
-// };
+export const login = (email, password) => (dispatch) => {
+  return axiosInstance
+    .post("/login")
+    .then((response) =>
+      dispatch({
+        type: "GET_MOVIES_ARRAY",
+        payload: response.data,
+      }),
+    )
+    .catch((error) => console.log(error));
+};
 
 export const register =
   (firstName, lastName, email, password) => async (dispatch) => {
@@ -33,7 +33,7 @@ export const register =
           email: email,
           password: password,
         },
-        headers
+        headers,
       );
 
       dispatch({

@@ -5,7 +5,7 @@ import "./App.css";
 import Navbar from "./components/navbar";
 import AboutUsPage from "./pages/aboutUs";
 import Home from "./pages/home";
-import LoginPage from "./pages/LoginPage";
+import LoginPage from "./pages/login/LoginPage.jsx";
 import ProudctPage from "./pages/productsPage";
 import SignUpPage from "./pages/SignUpPage/SignUpPage";
 
