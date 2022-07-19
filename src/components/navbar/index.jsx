@@ -1,5 +1,6 @@
 import React from "react";
 import "./navbar.css";
+import { Link } from "react-router-dom";
 import Brand from "../../assets/images/logo.png";
 
 function Navbar() {
@@ -9,7 +10,9 @@ function Navbar() {
         <div className="container-fluid">
           <div className="row w-100 justify-content-center m-auto align-items-center">
             <div className="col-2 text-end">
-              <img src={Brand} alt="" />
+              <Link to="/">
+                <img src={Brand} alt="" />
+              </Link>
             </div>
 
             <button
@@ -33,14 +36,14 @@ function Navbar() {
                 justify-content-evenly"
                 >
                   <li className="nav-item ">
-                    <a className="nav-link " href="#">
+                    <Link className="nav-link " to="/products">
                       PRODUCTS
-                    </a>
+                    </Link>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="#">
+                    <Link className="nav-link" to="aboutus">
                       ABOUT US
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -62,9 +65,11 @@ function Navbar() {
                 </a>
               </div>
               <div className="col-2">
-                <button type="button" className="btn btn-warningg">
-                  Login/SignUp
-                </button>
+                <Link to="/login">
+                  <button type="button" className="btn btn-warningg">
+                    Login
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
