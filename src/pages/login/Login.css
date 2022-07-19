@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap");
+
+form {
+  background-color: rgba(199, 199, 199, 0.342);
+  padding: 60px;
+  width: 40% !important;
+
+  font-family: "Cairo", sans-serif;
+}
+::placeholder {
+  color: rgb(255, 255, 255) !important;
+}
+
+.form-control {
+  background-size: cover;
+  background-clip: text;
+  -webkit-background-clip: text;
+  border: 1px solid #ffffff;
+  border-radius: 0px !important;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  color: white !important;
+  -webkit-border-radius: 0px !important;
+  -moz-border-radius: 0px !important;
+  -ms-border-radius: 0px !important;
+  -o-border-radius: 0px !important;
+}
+
+.label {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.section7 .btn {
+  transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  -ms-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  color: #0e69ee;
+  background-color: transparent;
+  border: 1px solid#0e69ee;
+}
+.section7 .btn:disabled {
+  transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  -ms-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  color: #0e69ee;
+  background-color: transparent;
+  border: 1px solid#0e69ee;
+}
+
+.section7 .btn:hover {
+  color: white;
+  border: 1px solid white;
+}
+
+.section7 .btn::after {
+  font-family: "Font Awesome 5 pro";
+  font-weight: 400;
+  content: "\f1d8";
+  padding-left: 8px;
+}
