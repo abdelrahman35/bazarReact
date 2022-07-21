@@ -2,8 +2,15 @@ import React from "react";
 import "./navbar.css";
 import { Link } from "react-router-dom";
 import Brand from "../../assets/images/logo.png";
-
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../store/actions/userActions";
 function Navbar() {
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+  const dispatch = useDispatch();
+  const handleLogout = () => {
+    dispatch(logout());
+  };
   return (
     <>
       <nav className="navbar navbar-expand-lg pt-3 pb-3">
@@ -57,20 +64,27 @@ function Navbar() {
                 </form>
               </div>
               <div className="col-1 d-flex justify-content-evenly fs-5 ">
-                <a className="nav-link" href="#">
+                <a className="nav-link" href="/">
                   <i className="fa-solid fa-heart"></i>
                 </a>
-                <a className="nav-link" href="#">
+                <a className="nav-link" href="/">
                   <i className="fa-solid fa-cart-shopping"></i>
                 </a>
               </div>
               <div className="col-2">
-                <Link to="/login">
-                  <button type="button" className="btn btn-warningg">
-                    Login
-                  </button>
-                </Link>
+                {userInfo ? (
+                  <p> {userInfo.firstName}</p>
+                ) : (
+                  <Link to="/login">
+                    <button type="button" className="btn btn-warningg">
+                      Login
+                    </button>
+                  </Link>
+                )}
               </div>
+              <button className="btn" onClick={handleLogout}>
+                <i className="fa-solid fa-arrow-right-from-bracket"></i>
+              </button>
             </div>
           </div>
         </div>

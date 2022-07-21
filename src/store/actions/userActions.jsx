@@ -1,4 +1,3 @@
-import axios from "axios";
 import axiosInstance from "./../../network/axiosInstance";
 
 export const login = (email, password) => async (dispatch) => {
@@ -21,7 +20,6 @@ export const login = (email, password) => async (dispatch) => {
       type: "USER_LOGIN_SUCCESS",
       payload: data,
     });
-    console.log(data);
 
     localStorage.setItem("userInfo", JSON.stringify(data));
   } catch (error) {
@@ -64,7 +62,6 @@ export const register =
         type: "USER_REGISTER_SUCCESS",
         payload: data,
       });
-      console.log(data);
       dispatch({
         type: "USER_LOGIN_SUCCESS",
         payload: data,
@@ -81,3 +78,7 @@ export const register =
       });
     }
   };
+export const logout = () => async (dispatch) => {
+  localStorage.removeItem("userInfo");
+  dispatch({ type: "USER_LOGOUT" });
+};

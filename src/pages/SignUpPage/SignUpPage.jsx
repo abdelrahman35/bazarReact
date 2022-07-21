@@ -2,10 +2,11 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { register } from "../../store/actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
-// import "./SignUpPage.module.css";
+import { useLocation, useNavigate } from "react-router-dom";
+
 const initialValues = {
   firstName: "",
   lastName: "",
@@ -32,12 +33,24 @@ const validationSchema = Yup.object({
 });
 
 function SignUpPage() {
+  // declarations
+  const navigate = useNavigate();
+  const location = useLocation();
   const dispatch = useDispatch();
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+  const redirect = location.search ? location.search.split("=")[1] : "/";
+  // functions
   const onSubmit = (values) => {
     dispatch(
       register(values.firstName, values.lastName, values.email, values.password)
     );
   };
+  useEffect(() => {
+    if (userInfo) {
+      navigate(redirect, { replace: true });
+    }
+  }, [redirect, navigate, userInfo]);
   const formik = useFormik({
     initialValues,
     onSubmit,

@@ -2,11 +2,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.js";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-import Navbar from "./components/navbar";
-import AboutUsPage from "./pages/aboutUs";
-import Home from "./pages/home";
-import LoginPage from "./pages/login/LoginPage.jsx";
-import ProudctPage from "./pages/productsPage";
+import Navbar from "./components/Navbar/index";
+import AboutUsPage from "./pages/AboutUsPage/AboutUsPage";
+import Home from "./pages/HomePage/HomePage";
+import LoginPage from "./pages/LoginPage/LoginPage.jsx";
+import ProudctPage from "./pages/ProductsPage/ProductsPage";
 import SignUpPage from "./pages/SignUpPage/SignUpPage";
 
 function App() {

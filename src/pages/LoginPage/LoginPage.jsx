@@ -3,9 +3,11 @@ import Button from "react-bootstrap/Button";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
-import React from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../store/actions/userActions";
+import { useNavigate } from "react-router-dom";
+
 const initialValues = {
   email: "",
   password: "",
@@ -22,12 +24,23 @@ const validationSchema = Yup.object({
 });
 
 function LoginPage() {
+  // declarations
+  const navigate = useNavigate();
+  // const location = useLocation();
   const dispatch = useDispatch();
-
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+  // functions
   const onSubmit = (values) => {
-    console.log("form data submition", values.email, values.password);
     dispatch(login(values.email, values.password));
   };
+  console.log(navigate);
+  useEffect(() => {
+    if (userInfo) {
+      navigate(-1, { replace: true });
+    }
+  }, [navigate, userInfo]);
+
   const formik = useFormik({
     initialValues,
     onSubmit,
