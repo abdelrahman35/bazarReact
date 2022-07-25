@@ -99,8 +99,11 @@ function Navbar() {
                   </div>
                 )}
               </div>
-              <button className="btn" onClick={handleLogout}></button>
-              <i className="fa-solid fa-arrow-right-from-bracket ms-2 fs-6"></i>
+              {userInfo ? (
+                <button className="btn" onClick={handleLogout}>
+                  <i className="fa-solid fa-arrow-right-from-bracket ms-2 fs-6"></i>
+                </button>
+              ) : null}
             </div>
           </div>
         </div>
