@@ -19,7 +19,7 @@ const validationSchema = Yup.object({
     .required("Please Enter your password")
     .matches(
       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-      "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character",
+      "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
     ),
 });
 
@@ -73,7 +73,7 @@ function LoginPage() {
               name="email"
               {...formik.getFieldProps("email")}
             />
-            <i class="fa-solid fa-envelope"></i>
+            <i className="fa-solid fa-envelope"></i>
             {formik.errors.email && formik.touched.email ? (
               <div style={{ color: "red" }}>{formik.errors.email}</div>
             ) : null}
@@ -90,7 +90,7 @@ function LoginPage() {
               name="password"
               {...formik.getFieldProps("password")}
             />
-            <i class="fa-solid fa-lock"></i>
+            <i className="fa-solid fa-lock"></i>
             {formik.errors.password && formik.touched.password ? (
               <div style={{ color: "red" }}>{formik.errors.password}</div>
             ) : null}
@@ -102,7 +102,7 @@ function LoginPage() {
             disabled={!(formik.isValid && formik.dirty)}
           >
             Submit
-            <i class="fa-solid fa-arrow-right ms-2"></i>
+            <i className="fa-solid fa-arrow-right ms-2"></i>
           </button>
         </Form>
 
