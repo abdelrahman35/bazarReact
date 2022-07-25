@@ -96,19 +96,19 @@ function LoginPage() {
             ) : null}
           </Form.Group>
 
-          <button
-            className="btn-warningg"
-            type="submit"
-            disabled={!(formik.isValid && formik.dirty)}
-          >
-            Submit
-            <i className="fa-solid fa-arrow-right ms-2"></i>
-          </button>
+          <div className="d-flex justify-content-between align-content-center">
+            <button
+              className={`${styles.btnWarningg}`}
+              type="submit"
+              disabled={!(formik.isValid && formik.dirty)}
+            >
+              Login
+            </button>
+            <Link to="/forgetPassword">
+              <small>Forgot password ?</small>
+            </Link>
+          </div>
         </Form>
-
-        <Link to="/signup">
-          <small>create account?</small>
-        </Link>
       </section>
     </>
   );
