@@ -8,7 +8,7 @@ export const ProductCard = () => {
         <img
           className={`card-img-top ${styles.imgs}`}
           src={ProductImage}
-          alt="Card image cap"
+          alt="Card img cap"
         />
         <div className="card-body">
           <div className="d-flex flex-row ">

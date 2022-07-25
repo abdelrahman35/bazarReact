@@ -1,5 +1,5 @@
 import Form from "react-bootstrap/Form";
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import styles from "./ResetPassword.module.css";
 import { resetPassword } from "../../store/actions/userActions";
@@ -10,6 +10,7 @@ import * as Yup from "yup";
 const initialValues = {
   email: "",
   password: "",
+  confirmPassword: "",
 };
 
 const validationSchema = Yup.object({
@@ -20,6 +21,9 @@ const validationSchema = Yup.object({
       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
       "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
     ),
+  confirm: Yup.string()
+    .oneOf([Yup.ref("password"), null], "Passwords must match")
+    .required("Please renter your password"),
 });
 
 const ResetPassword = () => {
@@ -80,6 +84,21 @@ const ResetPassword = () => {
             <i className="fa-solid fa-lock"></i>
             {formik.errors.password && formik.touched.password ? (
               <div className={styles.error}>{formik.errors.password}</div>
+            ) : null}
+          </Form.Group>
+          <Form.Group
+            className={`mb-3 position-relative ${styles.allInput}`}
+            controlId="formBasicPassword"
+          >
+            <Form.Control
+              className={`input ${styles.formControl}`}
+              type="password"
+              placeholder="Confirm Password"
+              name="confirm"
+              {...formik.getFieldProps("confirm")}
+            />
+            {formik.errors.confirm && formik.touched.confirm ? (
+              <div className={styles.error}>{formik.errors.confirm}</div>
             ) : null}
           </Form.Group>
 
