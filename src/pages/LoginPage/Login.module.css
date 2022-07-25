@@ -78,7 +78,7 @@
   color: var(--color4);
 }
 
-.btn-warningg {
+.btnWarningg {
   font-family: var(--myFont) !important;
   font-size: 18px !important;
   color: var(--color6) !important;
@@ -96,8 +96,8 @@
   -ms-transition: all 0.3s !important;
   -o-transition: all 0.3s !important;
 }
-.btn-warningg:hover,
-.btn-warningg:active {
+.btnWarningg:hover,
+.btnWarningg:active {
   color: var(--color4) !important;
   font-size: 18px !important;
   height: 50px !important;
