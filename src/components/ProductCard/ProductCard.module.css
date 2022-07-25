@@ -1,0 +1,52 @@
+.cards {
+  background-color: var(--color5) !important;
+  width: 32vw;
+  margin: 2vw;
+}
+.imgs {
+  width: 18vw !important;
+  margin-left: 7vw;
+}
+.d-flex {
+  row-gap: 10px;
+}
+.Product-Tit {
+  row-gap: 10px;
+}
+.Product-button {
+  background-color: var(--color1) !important;
+  height: 4vw;
+  width: 12vw;
+  border-radius: 10px;
+}
+.ProductPrice {
+  margin-left: 30vw !important;
+  font-size: 40px;
+}
+
+.btnWarningg {
+  background-color: var(--color1) !important;
+  font-size: 18px !important;
+  height: 4vw;
+  width: 12vw;
+  border-radius: 10px;
+  border: 2px solid var(--color1) !important;
+  margin-left: 1vw;
+  cursor: pointer;
+  color: var(--color6) !important;
+}
+.btnWarningg:hover,
+.btnWarningg:active {
+  color: var(--color6) !important;
+  font-size: 18px !important;
+  height: 4vw;
+  width: 12vw;
+  background-color: transparent !important;
+  border: 2px solid var(--color1) !important;
+  box-shadow: none !important;
+  border-radius: 12px !important;
+  -webkit-border-radius: 12px !important;
+  -moz-border-radius: 12px !important;
+  -ms-border-radius: 12px !important;
+  -o-border-radius: 12px !important;
+}

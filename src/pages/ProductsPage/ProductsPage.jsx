@@ -1,9 +1,11 @@
 import React from "react";
 
+import { ProductCard } from "../../components/ProductCard/ProductCard";
 function ProudctPage() {
   return (
     <>
-      <div>ProudctPage</div>
+      <br />
+      <ProductCard />
     </>
   );
 }
