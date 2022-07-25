@@ -17,22 +17,22 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
-          <Route path="/" index element={<Home />}></Route>
-          <Route path="/login" index element={<LoginPage />}></Route>
-          <Route path="/signup" index element={<SignUpPage />}></Route>
-          <Route path="/products" index element={<ProudctPage />}></Route>
-          <Route path="/aboutus" index element={<AboutUsPage />}></Route>
+          <Route path="/" index element={<Home />} />
+          <Route path="/login" index element={<LoginPage />}/>
+          <Route path="/signup" index element={<SignUpPage />}/>
+          <Route path="/products"  element={<ProudctPage />}/>
+          <Route path="/aboutus" index element={<AboutUsPage />}/>
           <Route
             path="/forgetPassword"
             index
             element={<ForgetPassword />}
-          ></Route>
+          />
           <Route
             path="/resetPassword/:token"
             index
             element={<ResetPassword />}
-          ></Route>
-          <Route path={"*"} element={<NotFoundPage />}></Route>
+          />
+          <Route path={"*"} element={<NotFoundPage />}/ >
         </Routes>
       </Router>
     </>
