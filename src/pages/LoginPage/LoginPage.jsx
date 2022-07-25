@@ -55,9 +55,7 @@ function LoginPage() {
             className={`d-flex flex-column justify-content-center align-items-center mb-5 ${styles.formHeading}`}
           >
             <i className="fa-solid fa-circle-right"></i>
-            <h2 className={`${styles.heading} text-capitalize text-center`}>
-              Welcome !
-            </h2>
+            <h2 className={` text-capitalize text-center`}>Welcome !</h2>
             <p className="text-capitalize text-center">
               Sign in to your account
             </p>

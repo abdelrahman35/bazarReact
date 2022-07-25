@@ -5,8 +5,7 @@ import thunk from "redux-thunk";
 
 const userFromLocalStorage = localStorage.getItem("userInfo")
   ? JSON.parse(localStorage.getItem("userInfo"))
-  : {};
-console.log(userFromLocalStorage);
+  : undefined;
 const stateFromLocalStorage = {
   userLogin: { userInfo: userFromLocalStorage },
 };

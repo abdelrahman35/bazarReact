@@ -7,6 +7,7 @@ import { logout } from "../../store/actions/userActions";
 function Navbar() {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
+  console.log(userInfo);
   const dispatch = useDispatch();
   const handleLogout = () => {
     dispatch(logout());
@@ -93,8 +94,11 @@ function Navbar() {
                   </Link>
                 )}
               </div>
-              <button className="btn" onClick={handleLogout}></button>
-              <i className="fa-solid fa-arrow-right-from-bracket ms-2 fs-6"></i>
+              {userInfo ? (
+                <button className="btn" onClick={handleLogout}>
+                  <i className="fa-solid fa-arrow-right-from-bracket ms-2 fs-6"></i>
+                </button>
+              ) : null}
             </div>
           </div>
         </div>
