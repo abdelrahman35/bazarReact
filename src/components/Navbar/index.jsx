@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Navbar.module.css";
 import { Link } from "react-router-dom";
 import Brand from "../../assets/images/logo.png";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../store/actions/userActions";
+import { Modal } from "bootstrap/dist/js/bootstrap.bundle";
+import LoginPage from "../../pages/LoginPage/LoginPage";
+import SignUpPage from "../../pages/SignUpPage/SignUpPage";
 function Navbar() {
+  const [modal, setModal] = useState("login");
+  const [genButton, setGenButtonStyle] = useState(styles.genButton);
+  const [revGenButton, setRevGenButton] = useState(styles.revGenButton);
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
   const dispatch = useDispatch();
@@ -81,7 +87,7 @@ function Navbar() {
                 {userInfo ? (
                   <p> {userInfo.firstName}</p>
                 ) : (
-                  <Link to="/login">
+                  <div>
                     <button
                       type="button"
                       data-bs-toggle="modal"
@@ -90,7 +96,7 @@ function Navbar() {
                     >
                       Login/Signup
                     </button>
-                  </Link>
+                  </div>
                 )}
               </div>
               <button className="btn" onClick={handleLogout}></button>
@@ -99,6 +105,57 @@ function Navbar() {
           </div>
         </div>
       </nav>
+      <div
+        className="modal fade "
+        id="exampleModal"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog">
+          <div className="modal-content rounded-0 ">
+            <div className="container modal-header border-0 position-relative p-0">
+              <div className="row w-100 m-0">
+                <button
+                  onClick={() => {
+                    setModal("login");
+
+                    setGenButtonStyle(styles.genButton);
+                    setRevGenButton(styles.revGenButton);
+                  }}
+                  className={`col-6 text-center p-3 ${styles.login}  ${genButton} `}
+                >
+                  Login
+                </button>
+                <button
+                  onClick={() => {
+                    setModal("signup");
+                    setGenButtonStyle(styles.revGenButton);
+                    setRevGenButton(styles.genButton);
+                  }}
+                  className={`col-6 text-center p-3 ${styles.signup} ${revGenButton}`}
+                >
+                  Create Account
+                </button>
+              </div>
+              <button
+                type="button"
+                className={`btn-close position-absolute  ${styles.btnClose}`}
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body">
+              {modal === "login" ? (
+                <LoginPage></LoginPage>
+              ) : modal === "signup" ? (
+                <SignUpPage></SignUpPage>
+              ) : (
+                <div>error</div>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 }

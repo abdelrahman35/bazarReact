@@ -56,3 +56,34 @@
 .w-95 {
   width: 95% !important;
 }
+
+.end-0 {
+  right: 0 !important;
+}
+.end-5 {
+  right: 5px !important;
+}
+.end-10 {
+  right: 10px !important;
+}
+.end-15 {
+  right: 15px !important;
+}
+.end-20 {
+  right: 20px !important;
+}
+.start-0 {
+  left: 0 !important;
+}
+.start-5 {
+  left: 5px !important;
+}
+.start-10 {
+  left: 10px !important;
+}
+.start-15 {
+  left: 15px !important;
+}
+.start-20 {
+  left: 20px !important;
+}

@@ -72,3 +72,40 @@
   font-size: 16px;
   font-weight: 300;
 }
+
+.login {
+  border: 0;
+  font-family: var(--myFont);
+  font-size: 24px;
+  font-weight: 400;
+  border-bottom-right-radius: 40px;
+  background-color: transparent;
+}
+.signup {
+  border: 0;
+  font-family: var(--myFont);
+  font-size: 24px;
+  font-weight: 400;
+  border-bottom-left-radius: 40px;
+  background-color: transparent;
+}
+
+.genButton {
+  background-color: var(--color1);
+  color: var(--color6);
+}
+.revGenButton {
+  background-color: var(--color6);
+  color: var(--color1);
+}
+.btnClose {
+  bottom: 76px;
+  right: 8px;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: url(../../assets/images/close.png) center/1em auto no-repeat !important;
+  background-color: var(--color1) !important;
+}
+.btnClose:focus {
+  box-shadow: none !important;
+}

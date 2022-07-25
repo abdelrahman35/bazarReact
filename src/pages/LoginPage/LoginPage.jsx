@@ -49,7 +49,7 @@ function LoginPage() {
 
   return (
     <>
-      <section className="container w-40 m-auto">
+      <section className="container w-100 m-auto">
         <Form className=" m-auto mt-5 mb-5" onSubmit={formik.handleSubmit}>
           <div
             className={`d-flex flex-column justify-content-center align-items-center mb-5 ${styles.formHeading}`}
@@ -105,7 +105,7 @@ function LoginPage() {
               Login
             </button>
             <Link to="/forgetPassword" className={`${styles.forgetPassword} `}>
-              <small>Forgot password ?</small>
+              <small data-bs-dismiss="modal">Forgot password ?</small>
             </Link>
           </div>
         </Form>
