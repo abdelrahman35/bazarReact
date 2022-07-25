@@ -100,7 +100,6 @@ function LoginPage() {
               type="submit"
               data-bs-dismiss="modal"
               disabled={!(formik.isValid && formik.dirty)}
-              data-bs-dismiss="modal"
             >
               Login
             </button>
