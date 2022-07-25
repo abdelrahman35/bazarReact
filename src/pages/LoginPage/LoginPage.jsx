@@ -73,7 +73,7 @@ function LoginPage() {
             />
             <i className="fa-solid fa-envelope"></i>
             {formik.errors.email && formik.touched.email ? (
-              <div style={{ color: "red" }}>{formik.errors.email}</div>
+              <div className={styles.error}>{formik.errors.email}</div>
             ) : null}
           </Form.Group>
 
@@ -90,11 +90,11 @@ function LoginPage() {
             />
             <i className="fa-solid fa-lock"></i>
             {formik.errors.password && formik.touched.password ? (
-              <div style={{ color: "red" }}>{formik.errors.password}</div>
+              <div className={styles.error}>{formik.errors.password}</div>
             ) : null}
           </Form.Group>
 
-          <div className="d-flex justify-content-between align-content-center">
+          <div className="d-flex justify-content-between align-content-center ">
             <button
               className={`${styles.btnWarningg}`}
               type="submit"
@@ -102,7 +102,7 @@ function LoginPage() {
             >
               Login
             </button>
-            <Link to="/forgetPassword">
+            <Link to="/forgetPassword" className={`${styles.forgetPassword} `}>
               <small>Forgot password ?</small>
             </Link>
           </div>

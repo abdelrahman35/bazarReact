@@ -1,64 +1,125 @@
-/* @import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap");
-
-form {
-  background-color: rgba(199, 199, 199, 0.342);
-  padding: 60px;
-  width: 40% !important;
-
-  font-family: "Cairo", sans-serif;
+.formHeading i {
+  background-color: var(--color1);
+  color: var(--color6);
+  padding: 15px;
+  width: 57px;
+  height: 57px;
+  border-radius: 53px;
+  -webkit-border-radius: 53px;
+  -moz-border-radius: 53px;
+  -ms-border-radius: 53px;
+  -o-border-radius: 53px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
 }
-::placeholder {
-  color: rgb(255, 255, 255) !important;
+.formHeading h2 {
+  font-family: var(--myFont) !important;
+  font-weight: 600;
+  font-size: 24px;
+  margin: 0;
+}
+.formHeading p {
+  font-family: var(--myFont) !important;
+  color: var(--color4);
+  font-weight: 600;
+  font-size: 20px;
+  margin: 0;
+}
+.formControl {
+  display: block !important;
+  width: 100% !important;
+  padding: 0 !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  line-height: 1.5 !important;
+  color: var(--color3) !important;
+  background-clip: padding-box !important;
+  border-bottom: 1px solid #ced4da !important;
+  border-top: transparent !important;
+  border-left: transparent !important;
+  border-right: transparent !important;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+  appearance: none !important;
+  border-radius: 0 !important;
+  transition: all 0.3s !important ;
+  -webkit-transition: all 0.3s !important ;
+  -moz-transition: all 0.3s !important ;
+  -ms-transition: all 0.3s !important ;
+  -o-transition: all 0.3s !important ;
+  -webkit-border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  -ms-border-radius: 0 !important;
+  -o-border-radius: 0 !important;
 }
 
-.form-control {
-  background-size: cover;
-  background-clip: text;
-  -webkit-background-clip: text;
-  border: 1px solid #ffffff;
-  border-radius: 0px !important;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  color: white !important;
-  -webkit-border-radius: 0px !important;
-  -moz-border-radius: 0px !important;
-  -ms-border-radius: 0px !important;
-  -o-border-radius: 0px !important;
+.formControl:focus {
+  box-shadow: none !important;
 }
 
-.label {
-  font-size: 12px;
-  opacity: 0.7;
+/* .formControl:focus {
+  padding-top: 0px !important;
+  padding-bottom: 13px !important;
+  box-shadow: none !important;
 }
-
-.section7 .btn {
-  transition: all 0.4s;
-  -webkit-transition: all 0.4s;
-  -moz-transition: all 0.4s;
-  -ms-transition: all 0.4s;
-  -o-transition: all 0.4s;
-  color: #0e69ee;
-  background-color: transparent;
-  border: 1px solid#0e69ee;
-}
-.section7 .btn:disabled {
-  transition: all 0.4s;
-  -webkit-transition: all 0.4s;
-  -moz-transition: all 0.4s;
-  -ms-transition: all 0.4s;
-  -o-transition: all 0.4s;
-  color: #0e69ee;
-  background-color: transparent;
-  border: 1px solid#0e69ee;
-}
-
-.section7 .btn:hover {
-  color: white;
-  border: 1px solid white;
-}
-
-.section7 .btn::after {
-  font-family: "Font Awesome 5 pro";
-  font-weight: 400;
-  content: "\f1d8";
-  padding-left: 8px;
+.formControl:focus-within {
+  padding-top: 0px !important;
+  padding-bottom: 13px !important;
+  box-shadow: none !important;
+  top: 40px;
 } */
+.formControl::placeholder {
+  color: var(--color4) !important;
+}
+
+.allInput i {
+  position: absolute;
+  top: 15px;
+  right: 5px;
+  font-size: 20px;
+  color: var(--color4);
+}
+
+.btnWarningg {
+  font-family: var(--myFont) !important;
+  font-size: 18px !important;
+  color: var(--color6) !important;
+  background-color: var(--color1) !important;
+  border: 2px solid var(--color1) !important;
+  height: 40px !important;
+  width: 35%;
+  border-radius: 5px !important;
+  -webkit-border-radius: 5px !important;
+  -moz-border-radius: 5px !important;
+  -ms-border-radius: 5px !important;
+  -o-border-radius: 5px !important;
+  transition: all 0.3s !important;
+  -webkit-transition: all 0.3s !important;
+  -moz-transition: all 0.3s !important;
+  -ms-transition: all 0.3s !important;
+  -o-transition: all 0.3s !important;
+}
+.btnWarningg:hover,
+.btnWarningg:active {
+  width: 38%;
+  padding-right: 25px;
+}
+.forgetPassword {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+.forgetPassword small {
+  font-weight: 700;
+  color: var(--color1);
+}
+
+.error {
+  color: var(--color1);
+  font-family: var(--myFont);
+  font-size: 15px;
+  font-weight: 600;
+}
