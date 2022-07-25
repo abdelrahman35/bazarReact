@@ -6,13 +6,13 @@ import React, { useEffect } from "react";
 import { register } from "../../store/actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
+import styles from "./SignUpPage.module.css";
 
 const initialValues = {
   firstName: "",
   lastName: "",
   email: "",
   password: "",
-  confirm: "",
 };
 
 const validationSchema = Yup.object({
@@ -25,11 +25,8 @@ const validationSchema = Yup.object({
     .required("Please Enter your password")
     .matches(
       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-      "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
+      "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character",
     ),
-  confirm: Yup.string()
-    .oneOf([Yup.ref("password"), null], "Passwords must match")
-    .required("Please renter your password"),
 });
 
 function SignUpPage() {
@@ -43,7 +40,12 @@ function SignUpPage() {
   // functions
   const onSubmit = (values) => {
     dispatch(
-      register(values.firstName, values.lastName, values.email, values.password)
+      register(
+        values.firstName,
+        values.lastName,
+        values.email,
+        values.password,
+      ),
     );
   };
   useEffect(() => {
@@ -59,87 +61,76 @@ function SignUpPage() {
 
   return (
     <>
-      <section className="section7">
+      <section className="container w-40 m-auto">
         <Form className=" m-auto mt-5" onSubmit={formik.handleSubmit}>
-          <h1 className="text-capitalize text-center mb-5">
-            Regestration form
-          </h1>
-
+          <div
+            className={`d-flex flex-column justify-content-center align-items-center mb-5 ${styles.formHeading}`}
+          >
+            <i className="fa-solid fa-user mb-3"></i>
+            <h2 className={`${styles.heading} text-capitalize text-center`}>
+              Create Account !
+            </h2>
+          </div>
           <Form.Group className="mb-3" controlId="formBasicFirstName">
             <Form.Control
-              className="input"
+              className={`input ${styles.formControl}`}
               type="text"
               placeholder="Enter Your first Name"
               name="firstName"
               {...formik.getFieldProps("firstName")}
             />
             {formik.errors.firstName && formik.touched.firstName ? (
-              <div style={{ color: "red" }}>{formik.errors.firstName}</div>
+              <div className={styles.error}>{formik.errors.firstName}</div>
             ) : null}
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicLastName">
             <Form.Control
-              className="input"
+              className={`input ${styles.formControl}`}
               type="text"
               placeholder="Enter last Name"
               name="lastName"
               {...formik.getFieldProps("lastName")}
             />
             {formik.errors.lastName && formik.touched.lastName ? (
-              <div style={{ color: "red" }}>{formik.errors.lastName}</div>
+              <div className={styles.error}>{formik.errors.lastName}</div>
             ) : null}
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Control
-              className="input"
+              className={`input ${styles.formControl}`}
               type="email"
               placeholder="Enter email"
               name="email"
               {...formik.getFieldProps("email")}
             />
             {formik.errors.email && formik.touched.email ? (
-              <div style={{ color: "red" }}>{formik.errors.email}</div>
+              <div className={styles.error}>{formik.errors.email}</div>
             ) : null}
-
-            <Form.Text className="text-muted">
-              We'll never share your email with anyone else.
-            </Form.Text>
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Control
-              className="input"
+              className={`input ${styles.formControl}`}
               type="password"
               placeholder="Password"
               name="password"
               {...formik.getFieldProps("password")}
             />
             {formik.errors.password && formik.touched.password ? (
-              <div style={{ color: "red" }}>{formik.errors.password}</div>
+              <div className={styles.error}>{formik.errors.password}</div>
             ) : null}
           </Form.Group>
-
-          <Form.Group className="mb-3" controlId="formBasicConfirmPassword">
-            <Form.Control
-              className="input"
-              type="password"
-              placeholder="Confirm Password"
-              name="confirm"
-              {...formik.getFieldProps("confirm")}
-            />
-            {formik.errors.confirm && formik.touched.confirm ? (
-              <div style={{ color: "red" }}>{formik.errors.confirm}</div>
-            ) : null}
-          </Form.Group>
-
-          <Button
-            className="btn"
-            variant="primary"
-            type="submit"
-            disabled={!(formik.isValid && formik.dirty)}
-          >
-            Submit
-          </Button>
+          <div className="w-100 d-flex justify-content-center">
+            <Button
+              className={`${styles.btnWarningg}`}
+              variant="primary"
+              type="submit"
+              disabled={!(formik.isValid && formik.dirty)}
+            >
+              Create
+              <i className="fa-regular fa-arrow-right ms-2 fs-6"></i>
+            </Button>
+          </div>
         </Form>
       </section>
     </>
