@@ -4,9 +4,10 @@ import { Link } from "react-router-dom";
 import Brand from "../../assets/images/logo.png";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../store/actions/userActions";
-import { Modal } from "bootstrap/dist/js/bootstrap.bundle";
 import LoginPage from "../../pages/LoginPage/LoginPage";
 import SignUpPage from "../../pages/SignUpPage/SignUpPage";
+
+
 function Navbar() {
   const [modal, setModal] = useState("login");
   const [genButton, setGenButtonStyle] = useState(styles.genButton);
@@ -108,7 +109,7 @@ function Navbar() {
           </div>
         </div>
       </nav>
-      <div
+     {!userInfo ?  <div
         className="modal fade "
         id="exampleModal"
         aria-labelledby="exampleModalLabel"
@@ -149,16 +150,16 @@ function Navbar() {
             </div>
             <div className="modal-body">
               {modal === "login" ? (
-                <LoginPage></LoginPage>
+                <LoginPage/>
               ) : modal === "signup" ? (
-                <SignUpPage></SignUpPage>
+                <SignUpPage/>
               ) : (
-                <div>error</div>
+                null
               )}
             </div>
           </div>
         </div>
-      </div>
+      </div> : null}
     </>
   );
 }

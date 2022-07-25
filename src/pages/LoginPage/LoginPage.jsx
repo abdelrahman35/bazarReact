@@ -99,6 +99,7 @@ function LoginPage() {
               className={`${styles.btnWarningg}`}
               type="submit"
               disabled={!(formik.isValid && formik.dirty)}
+              data-bs-dismiss="modal"
             >
               Login
             </button>
