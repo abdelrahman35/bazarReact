@@ -1,12 +1,9 @@
 import Form from "react-bootstrap/Form";
-import { useFormik } from "formik";
-import * as Yup from "yup";
-import { Link } from "react-router-dom";
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import styles from "./ForgetPassword.module.css";
 import { forgetPassword } from "../../store/actions/userActions";
-export const ForgetPassword = () => {
+const ForgetPassword = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState();
 
@@ -60,3 +57,5 @@ export const ForgetPassword = () => {
     </div>
   );
 };
+
+export default ForgetPassword;

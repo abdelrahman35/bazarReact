@@ -7,7 +7,6 @@ import { logout } from "../../store/actions/userActions";
 function Navbar() {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
-  console.log(userInfo);
   const dispatch = useDispatch();
   const handleLogout = () => {
     dispatch(logout());
