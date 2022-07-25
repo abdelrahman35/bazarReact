@@ -14,7 +14,7 @@ export const login = (email, password) => async (dispatch) => {
     const { data } = await axiosInstance.post(
       "login",
       { payload: { email: email, password: password } },
-      headers
+      headers,
     );
     dispatch({
       type: "USER_LOGIN_SUCCESS",
@@ -55,7 +55,7 @@ export const register =
             password: password,
           },
         },
-        headers
+        headers,
       );
 
       dispatch({

@@ -1,5 +1,4 @@
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
@@ -7,6 +6,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../store/actions/userActions";
 import { useNavigate } from "react-router-dom";
+import styles from "./Login.module.css";
 
 const initialValues = {
   email: "",
@@ -19,7 +19,7 @@ const validationSchema = Yup.object({
     .required("Please Enter your password")
     .matches(
       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-      "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
+      "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character",
     ),
 });
 
@@ -34,7 +34,7 @@ function LoginPage() {
   const onSubmit = (values) => {
     dispatch(login(values.email, values.password));
   };
-  console.log(navigate);
+
   useEffect(() => {
     if (userInfo) {
       navigate(-1, { replace: true });
@@ -49,48 +49,61 @@ function LoginPage() {
 
   return (
     <>
-      <section className="section7">
+      <section className="container w-40 m-auto">
         <Form className=" m-auto mt-5 mb-5" onSubmit={formik.handleSubmit}>
-          <h1 className="text-capitalize text-center mb-5">LoginPage form </h1>
-
-          <Form.Group className="mb-3" controlId="formBasicEmail">
+          <div
+            className={`d-flex flex-column justify-content-center align-items-center mb-5 ${styles.formHeading}`}
+          >
+            <i className="fa-solid fa-circle-right"></i>
+            <h2 className={`${styles.heading} text-capitalize text-center`}>
+              Welcome !
+            </h2>
+            <p className="text-capitalize text-center">
+              Sign in to your account
+            </p>
+          </div>
+          <Form.Group
+            className={`mb-3 position-relative ${styles.allInput}`}
+            controlId="formBasicEmail"
+          >
             <Form.Control
-              className="input"
+              className={`input ${styles.formControl}`}
               type="email"
-              placeholder="Enter email"
+              placeholder="E-mail :"
               name="email"
               {...formik.getFieldProps("email")}
             />
+            <i class="fa-solid fa-envelope"></i>
             {formik.errors.email && formik.touched.email ? (
               <div style={{ color: "red" }}>{formik.errors.email}</div>
             ) : null}
-
-            <Form.Text className="text-muted">
-              We'll never share your email with anyone else.
-            </Form.Text>
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Group
+            className={`mb-3 position-relative ${styles.allInput}`}
+            controlId="formBasicPassword"
+          >
             <Form.Control
-              className="input"
+              className={`input ${styles.formControl}`}
               type="password"
-              placeholder="Password"
+              placeholder="Password :"
               name="password"
               {...formik.getFieldProps("password")}
             />
+            <i class="fa-solid fa-lock"></i>
             {formik.errors.password && formik.touched.password ? (
               <div style={{ color: "red" }}>{formik.errors.password}</div>
             ) : null}
           </Form.Group>
 
-          <Button
-            className="btn"
-            variant="primary"
+          <button
+            className="btn-warningg"
             type="submit"
             disabled={!(formik.isValid && formik.dirty)}
           >
             Submit
-          </Button>
+            <i class="fa-solid fa-arrow-right ms-2"></i>
+          </button>
         </Form>
 
         <Link to="/signup">

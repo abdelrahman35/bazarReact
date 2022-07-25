@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar/index";
 import AboutUsPage from "./pages/AboutUsPage/AboutUsPage";
 import Home from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage.jsx";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import ProudctPage from "./pages/ProductsPage/ProductsPage";
 import SignUpPage from "./pages/SignUpPage/SignUpPage";
 
@@ -20,7 +21,7 @@ function App() {
           <Route path="/signup" index element={<SignUpPage />}></Route>
           <Route path="/products" index element={<ProudctPage />}></Route>
           <Route path="/aboutus" index element={<AboutUsPage />}></Route>
-          {/* <Route path={"*"} element={<NotFound />}></Route> */}
+          <Route path={"*"} element={<NotFoundPage />}></Route>
         </Routes>
       </Router>
     </>
