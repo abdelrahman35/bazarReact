@@ -14,7 +14,7 @@ export const login = (email, password) => async (dispatch) => {
     const { data } = await axiosInstance.post(
       "login",
       { payload: { email: email, password: password } },
-      {headers}
+      { headers }
     );
     dispatch({
       type: "USER_LOGIN_SUCCESS",
@@ -23,8 +23,6 @@ export const login = (email, password) => async (dispatch) => {
 
     localStorage.setItem("userInfo", JSON.stringify(data));
   } catch (error) {
-    console.log(error);
-
     dispatch({
       type: "USER_LOGIN_FAIL",
       payload:
@@ -57,8 +55,8 @@ export const register =
             password: password,
           },
         },
-        {headers}
-        );
+        { headers }
+      );
 
       dispatch({
         type: "USER_REGISTER_SUCCESS",
@@ -101,9 +99,8 @@ export const forgetPassword = (email) => async (dispatch) => {
       {
         email: email,
       },
-      {headers}
+      { headers }
     );
-    console.log(data);
     dispatch({
       type: "USER_FORGET_PASSWORD_SUCCESS",
       payload: data,
@@ -118,7 +115,6 @@ export const forgetPassword = (email) => async (dispatch) => {
 
 export const resetPassword = (email, password, token) => async (dispatch) => {
   try {
-    console.log(email, password, token)
     dispatch({
       type: "USER_RESET_PASSWORD_REQUEST",
     });
@@ -126,7 +122,7 @@ export const resetPassword = (email, password, token) => async (dispatch) => {
     const headers = {
       "Content-Type": "application/json",
       "Access-Control-Allow-Origin": "*",
-      "authorization": `Bearer ${token}`,
+      authorization: `Bearer ${token}`,
     };
     const { data } = await axiosInstance.post(
       "/resetPassword",
@@ -136,9 +132,8 @@ export const resetPassword = (email, password, token) => async (dispatch) => {
           password: password,
         },
       },
-      {headers}
+      { headers }
     );
-    console.log(data);
     dispatch({
       type: "USER_RESET_PASSWORD_SUCCESS",
       payload: data,
@@ -150,3 +145,32 @@ export const resetPassword = (email, password, token) => async (dispatch) => {
     });
   }
 };
+
+export const changePassword =
+  (userId, oldPassword, newPassword) => async (dispatch, getState) => {
+    try {
+      dispatch({ type: "USER_CHANGE_PASSWORD_REQUEST" });
+      const token = getState().userLogin.userInfo.token;
+      // const userId = getState().userLogin.userInfo.userId
+      const headers = {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        authorization: `Bearer ${token}`,
+      };
+
+      const { data } = await axiosInstance.post(
+        "/chancePassword",
+        {
+          userId,
+          payload: { oldPassword: oldPassword, newPassword: newPassword },
+        },
+        { headers }
+      );
+      dispatch({
+        type: "USER_CHANGE_PASSWORD_SUCCESS",
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({ type: "USER_CHANGE_PASSWORD_FAIL", payload: error });
+    }
+  };

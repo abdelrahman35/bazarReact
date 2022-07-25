@@ -11,6 +11,7 @@ import ProudctPage from "./pages/ProductsPage/ProductsPage";
 import SignUpPage from "./pages/SignUpPage/SignUpPage";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
 import LoginPage from "./pages/LoginPage/LoginPage";
+import ChangePassword from "./pages/ChangePassword/ChangePassword";
 function App() {
   return (
     <>
@@ -18,21 +19,18 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" index element={<Home />} />
-          <Route path="/login" index element={<LoginPage />}/>
-          <Route path="/signup" index element={<SignUpPage />}/>
-          <Route path="/products"  element={<ProudctPage />}/>
-          <Route path="/aboutus" index element={<AboutUsPage />}/>
-          <Route
-            path="/forgetPassword"
-            index
-            element={<ForgetPassword />}
-          />
+          <Route path="/login" index element={<LoginPage />} />
+          <Route path="/signup" index element={<SignUpPage />} />
+          <Route path="/products" element={<ProudctPage />} />
+          <Route path="/aboutus" index element={<AboutUsPage />} />
+          <Route path="/forgetPassword" index element={<ForgetPassword />} />
+          <Route path="/changePassword" index element={<ChangePassword />} />
           <Route
             path="/resetPassword/:token"
             index
             element={<ResetPassword />}
           />
-          <Route path={"*"} element={<NotFoundPage />}/ >
+          <Route path={"*"} element={<NotFoundPage />} />
         </Routes>
       </Router>
     </>
