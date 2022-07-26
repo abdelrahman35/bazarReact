@@ -7,7 +7,6 @@ import { logout } from "../../store/actions/userActions";
 import LoginPage from "../../pages/LoginPage/LoginPage";
 import SignUpPage from "../../pages/SignUpPage/SignUpPage";
 
-
 function Navbar() {
   const [modal, setModal] = useState("login");
   const [genButton, setGenButtonStyle] = useState(styles.genButton);
@@ -20,12 +19,12 @@ function Navbar() {
   };
   return (
     <>
-      <nav className={`navbar navbar-expand-lg pt-3 pb-3 ${styles.nav}`}>
+      <nav className={`navbar navbar-expand-lg pt-2 pb-2 ${styles.nav}`}>
         <div className="container-fluid">
           <div className="row w-100 justify-content-center m-auto align-items-center">
             <div className="col-2 text-end">
-              <Link to="/">
-                <img src={Brand} alt="" />
+              <Link to="/" className={styles.brand}>
+                Bazaar{" "}
               </Link>
             </div>
 
@@ -109,57 +108,57 @@ function Navbar() {
           </div>
         </div>
       </nav>
-     {!userInfo ?  <div
-        className="modal fade "
-        id="exampleModal"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div className="modal-dialog">
-          <div className="modal-content rounded-0 ">
-            <div className="container modal-header border-0 position-relative p-0">
-              <div className="row w-100 m-0">
-                <button
-                  onClick={() => {
-                    setModal("login");
+      {!userInfo ? (
+        <div
+          className="modal fade "
+          id="exampleModal"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div className={`modal-dialog ${styles.modalDialog}`}>
+            <div className="modal-content rounded-0 ">
+              <div className="container modal-header border-0 position-relative p-0">
+                <div className="row w-100 m-0">
+                  <button
+                    onClick={() => {
+                      setModal("login");
 
-                    setGenButtonStyle(styles.genButton);
-                    setRevGenButton(styles.revGenButton);
-                  }}
-                  className={`col-6 text-center p-3 ${styles.login}  ${genButton} `}
-                >
-                  Login
-                </button>
+                      setGenButtonStyle(styles.genButton);
+                      setRevGenButton(styles.revGenButton);
+                    }}
+                    className={`col-6 text-center p-3 ${styles.login}  ${genButton} `}
+                  >
+                    Login
+                  </button>
+                  <button
+                    onClick={() => {
+                      setModal("signup");
+                      setGenButtonStyle(styles.revGenButton);
+                      setRevGenButton(styles.genButton);
+                    }}
+                    className={`col-6 text-center p-3 ${styles.signup} ${revGenButton}`}
+                  >
+                    Create Account
+                  </button>
+                </div>
                 <button
-                  onClick={() => {
-                    setModal("signup");
-                    setGenButtonStyle(styles.revGenButton);
-                    setRevGenButton(styles.genButton);
-                  }}
-                  className={`col-6 text-center p-3 ${styles.signup} ${revGenButton}`}
-                >
-                  Create Account
-                </button>
+                  type="button"
+                  className={`btn-close position-absolute  ${styles.btnClose}`}
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
               </div>
-              <button
-                type="button"
-                className={`btn-close position-absolute  ${styles.btnClose}`}
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div className="modal-body">
-              {modal === "login" ? (
-                <LoginPage/>
-              ) : modal === "signup" ? (
-                <SignUpPage/>
-              ) : (
-                null
-              )}
+              <div className="modal-body">
+                {modal === "login" ? (
+                  <LoginPage />
+                ) : modal === "signup" ? (
+                  <SignUpPage />
+                ) : null}
+              </div>
             </div>
           </div>
         </div>
-      </div> : null}
+      ) : null}
     </>
   );
 }
