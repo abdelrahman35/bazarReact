@@ -66,7 +66,6 @@ export const register =
         type: "USER_LOGIN_SUCCESS",
         payload: data,
       });
-
       localStorage.setItem("userInfo", JSON.stringify(data));
     } catch (error) {
       dispatch({
@@ -97,7 +96,9 @@ export const forgetPassword = (email) => async (dispatch) => {
     const { data } = await axiosInstance.post(
       "/forgetPassword",
       {
-        email: email,
+        payload: {
+          email: email,
+        },
       },
       { headers }
     );
@@ -151,7 +152,7 @@ export const changePassword =
     try {
       dispatch({ type: "USER_CHANGE_PASSWORD_REQUEST" });
       const token = getState().userLogin.userInfo.token;
-      // const userId = getState().userLogin.userInfo.userId
+      const userId = getState().userLogin.userInfo.userId;
       const headers = {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
