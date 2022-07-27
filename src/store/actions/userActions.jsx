@@ -148,30 +148,32 @@ export const resetPassword = (email, password, token) => async (dispatch) => {
 };
 
 export const changePassword =
-  (userId, oldPassword, newPassword) => async (dispatch, getState) => {
+  (oldPassword, newPassword) => async (dispatch, getState) => {
     try {
       dispatch({ type: "USER_CHANGE_PASSWORD_REQUEST" });
       const token = getState().userLogin.userInfo.token;
-      const userId = getState().userLogin.userInfo.userId;
       const headers = {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
         authorization: `Bearer ${token}`,
       };
 
-      const { data } = await axiosInstance.post(
-        "/chancePassword",
+      const { data } = await axiosInstance.patch(
+        "/changePassword",
         {
-          userId,
-          payload: { oldPassword: oldPassword, newPassword: newPassword },
+          payload: { oldPassword, newPassword },
         },
         { headers }
       );
+
       dispatch({
         type: "USER_CHANGE_PASSWORD_SUCCESS",
         payload: data,
       });
     } catch (error) {
-      dispatch({ type: "USER_CHANGE_PASSWORD_FAIL", payload: error });
+      dispatch({
+        type: "USER_CHANGE_PASSWORD_FAIL",
+        payload: error.response ? error.response.status : error,
+      });
     }
   };

@@ -12,6 +12,7 @@ import SignUpPage from "./pages/SignUpPage/SignUpPage";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import ChangePassword from "./pages/ChangePassword/ChangePassword";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
 function App() {
   return (
     <>
@@ -25,6 +26,7 @@ function App() {
           <Route path="/aboutus" index element={<AboutUsPage />} />
           <Route path="/forgetPassword" index element={<ForgetPassword />} />
           <Route path="/changePassword" index element={<ChangePassword />} />
+          <Route path="/profile" index element={<ProfilePage />} />
           <Route
             path="/resetPassword/:token"
             index

@@ -1,6 +1,6 @@
 import Form from "react-bootstrap/Form";
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "./ChangePassword.module.css";
 import { changePassword } from "../../store/actions/userActions";
 import { useFormik } from "formik";
@@ -31,6 +31,13 @@ const validationSchema = Yup.object({
 });
 
 const ResetPassword = () => {
+  const changePasswordState = useSelector((state) => state.changePassword);
+  const {
+    loading: loadingChangePassword,
+    error: errorChangePassword,
+    changePasswordPayload,
+  } = changePasswordState;
+
   const dispatch = useDispatch();
   const onSubmit = (values) => {
     changePassword();
@@ -114,7 +121,7 @@ const ResetPassword = () => {
               type="submit"
               disabled={!(formik.isValid && formik.dirty)}
             >
-              Reset Password
+              Change Password
             </button>
           </div>
         </Form>
