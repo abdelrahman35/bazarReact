@@ -13,11 +13,8 @@ import SignUpPage from "./pages/SignUpPage/SignUpPage";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import ChangePassword from "./pages/ChangePassword/ChangePassword";
-<<<<<<< HEAD
 import Thanks from "./pages/ThanksForm/Thanks";
-=======
 import ProductDetails from "./pages/ProductDetails/ProductDetails";
->>>>>>> lamees
 function App() {
   return (
     <>

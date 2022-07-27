@@ -70,19 +70,19 @@ const Footer = () => {
               <ul className="list-unstyled mb-0">
                 <li>
                   <Link to="#!" className={styles.listunstyled}>
-                    <i class="fa-solid fa-envelopes-bulk me-1"></i>
+                    <i className="fa-solid fa-envelopes-bulk me-1"></i>
                     info@Bazaar.com
                   </Link>
                 </li>
                 <li>
                   <Link to="#!" className={styles.listunstyled}>
-                    <i class="fa-solid fa-square-phone me-1"></i> +20
+                    <i className="fa-solid fa-square-phone me-1"></i> +20
                     01155616679
                   </Link>
                 </li>
                 <li>
                   <Link to="#!" className={styles.listunstyled}>
-                    <i class="fa-solid fa-location-dot me-1"></i>
+                    <i className="fa-solid fa-location-dot me-1"></i>
                     772 Giza , Egypt
                   </Link>
                 </li>

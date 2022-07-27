@@ -50,3 +50,9 @@
   -o-border-radius: 15px;
   margin-bottom: 20px;
 }
+.cardHome {
+  background: url(../../assets/images/cardHomeImg.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100% 100%;
+}
