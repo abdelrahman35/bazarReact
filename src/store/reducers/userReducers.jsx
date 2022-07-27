@@ -64,7 +64,7 @@ export const userChangePasswordReducer = (state = {}, action) => {
     case "USER_CHANGE_PASSWORD_REQUEST":
       return { loading: true };
     case "USER_CHANGE_PASSWORD_SUCCESS":
-      return { loading: false, changePassword: action.payload };
+      return { loading: false, changePasswordPayload: action.payload };
     case "USER_CHANGE_PASSWORD_FAIL":
       return { loading: false, error: action.payload };
     default:

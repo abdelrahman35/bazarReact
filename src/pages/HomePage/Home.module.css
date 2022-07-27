@@ -22,3 +22,31 @@
   font-family: var(--myFont);
   font-weight: 300;
 }
+
+.deals {
+  margin-top: 70px;
+}
+
+.deals h3 {
+  font-family: var(--myFont);
+  font-weight: 600;
+  font-size: 35px;
+}
+.deals .HR {
+  border-radius: 15px;
+  content: "";
+  background-image: linear-gradient(
+    to right,
+    var(--color3) 49%,
+    var(--color1) 56%
+  );
+  width: 247px;
+  height: 5px;
+  margin: auto;
+  z-index: -1;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  margin-bottom: 20px;
+}

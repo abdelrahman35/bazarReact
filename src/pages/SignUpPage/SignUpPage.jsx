@@ -2,7 +2,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { register } from "../../store/actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -25,11 +25,12 @@ const validationSchema = Yup.object({
     .required("Please Enter your password")
     .matches(
       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-      "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character",
+      "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
     ),
 });
 
 function SignUpPage() {
+  const [signedIn, setSignedIn] = useState("");
   // declarations
   const navigate = useNavigate();
   const location = useLocation();
@@ -40,12 +41,7 @@ function SignUpPage() {
   // functions
   const onSubmit = (values) => {
     dispatch(
-      register(
-        values.firstName,
-        values.lastName,
-        values.email,
-        values.password,
-      ),
+      register(values.firstName, values.lastName, values.email, values.password)
     );
   };
   useEffect(() => {
@@ -125,6 +121,7 @@ function SignUpPage() {
               className={`${styles.btnWarningg}`}
               variant="primary"
               type="submit"
+              data-bs-dismiss="modal"
               disabled={!(formik.isValid && formik.dirty)}
             >
               Create

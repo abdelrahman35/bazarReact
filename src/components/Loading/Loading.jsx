@@ -4,7 +4,7 @@ var Spinner = require("react-spinkit");
 const Loading = () => {
   return (
     <>
-      <Spinner name="three-bounce" />
+      <Spinner name="three-bounce" color="#c6c4c3" />
     </>
   );
 };
