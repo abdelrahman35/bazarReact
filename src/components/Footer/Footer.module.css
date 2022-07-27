@@ -1,0 +1,34 @@
+.Footerstyle {
+  background-color: var(--color3) !important;
+  color: var(--color6);
+  margin-left: 5vw;
+  padding-left: 5vw;
+  font-weight: lighter;
+}
+.listunstyled {
+  color: var(--color6) !important;
+  list-style-type: none;
+  padding-left: 0vw; /* Remove padding */
+  margin: 0vw;
+  padding-bottom: 2vw;
+  padding-top: 0vw;
+  text-decoration: none;
+  font-size: x-small;
+  font-family: var(--myFont);
+  font-weight: lighter;
+  margin-bottom: 2vw;
+}
+.TextColor {
+  color: var(--color6) !important;
+  font-size: x-small;
+  font-family: var(--myFont);
+  padding-top: 1vw;
+}
+.CenterContainer {
+  padding-left: 5vw;
+}
+.titles {
+  font-size: small;
+  font-family: var(--myFont);
+  margin-top: 1vw;
+}

@@ -3,6 +3,7 @@ import "bootstrap/dist/js/bootstrap.bundle.js";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar/index";
+import Footer from "./components/Footer/Footer";
 import AboutUsPage from "./pages/AboutUsPage/AboutUsPage";
 import { ForgetPassword } from "./pages/ForgetPassword/ForgetPassword";
 import Home from "./pages/HomePage/HomePage";
@@ -30,6 +31,7 @@ function App() {
           ></Route>
           <Route path={"*"} element={<NotFoundPage />}></Route>
         </Routes>
+        <Footer />
       </Router>
     </>
   );
