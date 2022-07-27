@@ -61,7 +61,7 @@ function SignUpPage() {
 
   return (
     <>
-      <section className="container w-40 m-auto">
+      <section className="container w-100 m-auto">
         <Form className=" m-auto mt-5" onSubmit={formik.handleSubmit}>
           <div
             className={`d-flex flex-column justify-content-center align-items-center mb-5 ${styles.formHeading}`}

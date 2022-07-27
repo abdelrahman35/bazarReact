@@ -5,31 +5,33 @@ import "./App.css";
 import Navbar from "./components/Navbar/index";
 import Footer from "./components/Footer/Footer";
 import AboutUsPage from "./pages/AboutUsPage/AboutUsPage";
-import { ForgetPassword } from "./pages/ForgetPassword/ForgetPassword";
+import ForgetPassword from "./pages/ForgetPassword/ForgetPassword";
 import Home from "./pages/HomePage/HomePage";
-import LoginPage from "./pages/LoginPage/LoginPage.jsx";
-import ModalForms from "./pages/ModalForms/ModalForms";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import ProudctPage from "./pages/ProductsPage/ProductsPage";
 import SignUpPage from "./pages/SignUpPage/SignUpPage";
-
+import ResetPassword from "./pages/ResetPassword/ResetPassword";
+import LoginPage from "./pages/LoginPage/LoginPage";
+import ChangePassword from "./pages/ChangePassword/ChangePassword";
 function App() {
   return (
     <>
       <Router>
         <Navbar />
         <Routes>
-          <Route path="/" index element={<Home />}></Route>
-          <Route path="/login" index element={<ModalForms />}></Route>
-          <Route path="/signup" index element={<SignUpPage />}></Route>
-          <Route path="/products" index element={<ProudctPage />}></Route>
-          <Route path="/aboutus" index element={<AboutUsPage />}></Route>
+          <Route path="/" index element={<Home />} />
+          <Route path="/login" index element={<LoginPage />} />
+          <Route path="/signup" index element={<SignUpPage />} />
+          <Route path="/products" element={<ProudctPage />} />
+          <Route path="/aboutus" index element={<AboutUsPage />} />
+          <Route path="/forgetPassword" index element={<ForgetPassword />} />
+          <Route path="/changePassword" index element={<ChangePassword />} />
           <Route
-            path="/forgetPassword"
+            path="/resetPassword/:token"
             index
-            element={<ForgetPassword />}
-          ></Route>
-          <Route path={"*"} element={<NotFoundPage />}></Route>
+            element={<ResetPassword />}
+          />
+          <Route path={"*"} element={<NotFoundPage />} />
         </Routes>
         <Footer />
       </Router>

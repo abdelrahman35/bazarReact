@@ -1,23 +1,14 @@
 import React from "react";
 import styles from "./ProductCard.module.css";
 import ProductImage from "../../assets/images/ProductImage.svg";
-// import styled from "styled-components";
 export const ProductCard = () => {
-  //   const Button = styled.button`
-  //     background-color: var(--color1) !important;
-  //     height: 4vw;
-  //     width: 12vw;
-  //     border-radius: 10px;
-  //     margin-left: 1vw;
-  //     cursor: pointer;
-  //   `;
   return (
     <>
       <div className={`card ${styles.cards}`}>
         <img
           className={`card-img-top ${styles.imgs}`}
           src={ProductImage}
-          alt="Card image cap"
+          alt="Card img cap"
         />
         <div className="card-body">
           <div className="d-flex flex-row ">

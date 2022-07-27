@@ -14,7 +14,7 @@ export const login = (email, password) => async (dispatch) => {
     const { data } = await axiosInstance.post(
       "login",
       { payload: { email: email, password: password } },
-      headers,
+      { headers }
     );
     dispatch({
       type: "USER_LOGIN_SUCCESS",
@@ -41,7 +41,7 @@ export const register =
       });
 
       const headers = {
-        "Content-Type": "text/plain",
+        "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
       };
 
@@ -55,7 +55,7 @@ export const register =
             password: password,
           },
         },
-        headers,
+        { headers }
       );
 
       dispatch({
@@ -66,7 +66,6 @@ export const register =
         type: "USER_LOGIN_SUCCESS",
         payload: data,
       });
-
       localStorage.setItem("userInfo", JSON.stringify(data));
     } catch (error) {
       dispatch({
@@ -82,3 +81,97 @@ export const logout = () => async (dispatch) => {
   localStorage.removeItem("userInfo");
   dispatch({ type: "USER_LOGOUT" });
 };
+
+export const forgetPassword = (email) => async (dispatch) => {
+  try {
+    dispatch({
+      type: "USER_FORGET_PASSWORD_REQUEST",
+    });
+
+    const headers = {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+    };
+
+    const { data } = await axiosInstance.post(
+      "/forgetPassword",
+      {
+        payload: {
+          email: email,
+        },
+      },
+      { headers }
+    );
+    dispatch({
+      type: "USER_FORGET_PASSWORD_SUCCESS",
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: "USER_FORGET_PASSWORD_FAIL",
+      payload: error,
+    });
+  }
+};
+
+export const resetPassword = (email, password, token) => async (dispatch) => {
+  try {
+    dispatch({
+      type: "USER_RESET_PASSWORD_REQUEST",
+    });
+
+    const headers = {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      authorization: `Bearer ${token}`,
+    };
+    const { data } = await axiosInstance.post(
+      "/resetPassword",
+      {
+        payload: {
+          email: email,
+          password: password,
+        },
+      },
+      { headers }
+    );
+    dispatch({
+      type: "USER_RESET_PASSWORD_SUCCESS",
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: "USER_RESET_PASSWORD_FAIL",
+      payload: error,
+    });
+  }
+};
+
+export const changePassword =
+  (userId, oldPassword, newPassword) => async (dispatch, getState) => {
+    try {
+      dispatch({ type: "USER_CHANGE_PASSWORD_REQUEST" });
+      const token = getState().userLogin.userInfo.token;
+      const userId = getState().userLogin.userInfo.userId;
+      const headers = {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        authorization: `Bearer ${token}`,
+      };
+
+      const { data } = await axiosInstance.post(
+        "/chancePassword",
+        {
+          userId,
+          payload: { oldPassword: oldPassword, newPassword: newPassword },
+        },
+        { headers }
+      );
+      dispatch({
+        type: "USER_CHANGE_PASSWORD_SUCCESS",
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({ type: "USER_CHANGE_PASSWORD_FAIL", payload: error });
+    }
+  };

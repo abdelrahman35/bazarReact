@@ -1,16 +1,16 @@
 import Form from "react-bootstrap/Form";
+import React from "react";
+import { useDispatch } from "react-redux";
+import styles from "./ResetPassword.module.css";
+import { resetPassword } from "../../store/actions/userActions";
+import { useParams } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { Link } from "react-router-dom";
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { login } from "../../store/actions/userActions";
-import { useNavigate } from "react-router-dom";
-import styles from "./Login.module.css";
 
 const initialValues = {
   email: "",
   password: "",
+  confirmPassword: "",
 };
 
 const validationSchema = Yup.object({
@@ -21,43 +21,36 @@ const validationSchema = Yup.object({
       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
       "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
     ),
+  confirm: Yup.string()
+    .oneOf([Yup.ref("password"), null], "Passwords must match")
+    .required("Please renter your password"),
 });
 
-function LoginPage() {
-  // declarations
-  const navigate = useNavigate();
-  // const location = useLocation();
+const ResetPassword = () => {
   const dispatch = useDispatch();
-  const userLogin = useSelector((state) => state.userLogin);
-  const { userInfo } = userLogin;
-  // functions
-  const onSubmit = (values) => {
-    dispatch(login(values.email, values.password));
-  };
+  const { token } = useParams();
 
-  useEffect(() => {
-    if (userInfo) {
-      navigate(-1, { replace: true });
-    }
-  }, [navigate, userInfo]);
+  const onSubmit = (values) => {
+    console.log(values.password);
+    dispatch(resetPassword(values.email, values.password, token));
+  };
 
   const formik = useFormik({
     initialValues,
     onSubmit,
     validationSchema,
   });
-
   return (
-    <>
-      <section className="container w-100 m-auto">
+    <div className={`container mt-3`}>
+      <section className="container w-40 m-auto">
         <Form className=" m-auto mt-5 mb-5" onSubmit={formik.handleSubmit}>
           <div
             className={`d-flex flex-column justify-content-center align-items-center mb-5 ${styles.formHeading}`}
           >
             <i className="fa-solid fa-circle-right"></i>
-            <h2 className={` text-capitalize text-center`}>Welcome !</h2>
+            <h2 className={` text-capitalize text-center`}>Reset Password</h2>
             <p className="text-capitalize text-center">
-              Sign in to your account
+              enter your email and new password
             </p>
           </div>
           <Form.Group
@@ -93,24 +86,35 @@ function LoginPage() {
               <div className={styles.error}>{formik.errors.password}</div>
             ) : null}
           </Form.Group>
+          <Form.Group
+            className={`mb-3 position-relative ${styles.allInput}`}
+            controlId="formBasicPassword"
+          >
+            <Form.Control
+              className={`input ${styles.formControl}`}
+              type="password"
+              placeholder="Confirm Password"
+              name="confirm"
+              {...formik.getFieldProps("confirm")}
+            />
+            {formik.errors.confirm && formik.touched.confirm ? (
+              <div className={styles.error}>{formik.errors.confirm}</div>
+            ) : null}
+          </Form.Group>
 
-          <div className="d-flex justify-content-between align-content-center ">
+          <div className="d-flex justify-content-center align-content-center">
             <button
               className={`${styles.btnWarningg}`}
               type="submit"
-              data-bs-dismiss="modal"
               disabled={!(formik.isValid && formik.dirty)}
             >
-              Login
+              Reset Password
             </button>
-            <Link to="/forgetPassword" className={`${styles.forgetPassword} `}>
-              <small data-bs-dismiss="modal">Forgot password ?</small>
-            </Link>
           </div>
         </Form>
-      </section>
-    </>
+      </section>{" "}
+    </div>
   );
-}
+};
 
-export default LoginPage;
+export default ResetPassword;
