@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import styles from "./Navbar.module.css";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../../store/actions/userActions";
 import LoginPage from "../../pages/LoginPage/LoginPage";
 import SignUpPage from "../../pages/SignUpPage/SignUpPage";
 import Loading from "../Loading/Loading";
+import Thanks from "../../pages/ThanksForm/Thanks";
 function Navbar() {
   const [modal, setModal] = useState("login");
   const [genButton, setGenButtonStyle] = useState(styles.genButton);
@@ -13,9 +13,7 @@ function Navbar() {
   const userLogin = useSelector((state) => state.userLogin);
   const { loading, userInfo } = userLogin;
   const dispatch = useDispatch();
-  const handleLogout = () => {
-    dispatch(logout());
-  };
+
   return (
     <>
       <nav className={`navbar navbar-expand-lg pt-2 pb-2 ${styles.nav}`}>
@@ -88,7 +86,13 @@ function Navbar() {
                 ) : (
                   <>
                     {userInfo ? (
-                      <div> {userInfo.firstName}</div>
+                      <Link
+                        className={`text-decoration-none ${styles.profileLink}`}
+                        to="/profile"
+                      >
+                        {" "}
+                        <div>Hi {userInfo.firstName}!</div>
+                      </Link>
                     ) : (
                       <div>
                         <button
@@ -104,11 +108,6 @@ function Navbar() {
                   </>
                 )}
               </div>
-              {userInfo ? (
-                <button className="btn" onClick={handleLogout}>
-                  <i className="fa-solid fa-arrow-right-from-bracket ms-2 fs-6"></i>
-                </button>
-              ) : null}
             </div>
           </div>
         </div>
@@ -163,7 +162,20 @@ function Navbar() {
             </div>
           </div>
         </div>
-      ) : null}
+      ) : (
+        <div
+          className="modal fade "
+          id="exampleModal"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div className={`modal-dialog ${styles.modalDialog}`}>
+            <div className="modal-content rounded-0 ">
+              <Thanks></Thanks>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }

@@ -133,3 +133,10 @@
 .brand:hover {
   color: var(--color7);
 }
+.profileLink {
+  color: var(--color6);
+  transition: all 0.3s;
+}
+.profileLink:hover {
+  color: var(--color7);
+}

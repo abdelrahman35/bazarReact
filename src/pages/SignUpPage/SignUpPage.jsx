@@ -121,7 +121,6 @@ function SignUpPage() {
               className={`${styles.btnWarningg}`}
               variant="primary"
               type="submit"
-              data-bs-dismiss="modal"
               disabled={!(formik.isValid && formik.dirty)}
             >
               Create

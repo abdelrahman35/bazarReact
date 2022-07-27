@@ -1,8 +1,25 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./ProfilePage.module.css";
+import { logout } from "../../store/actions/userActions";
+import { useDispatch, useSelector } from "react-redux";
+import Loading from "../../components/Loading/Loading";
+import { useNavigate } from "react-router-dom";
+
 function ProfilePage() {
-  return (
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const userLogin = useSelector((state) => state.userLogin);
+  const { loading: userLoading, error: userError, userInfo } = userLogin;
+  const handleLogout = () => {
+    dispatch(logout());
+  };
+  const test = () => {
+    console.log("error");
+  };
+  return userLoading ? (
+    <Loading></Loading>
+  ) : userInfo ? (
     <div className={`${styles.page} `}>
       <div className="container">
         <div className="row ">
@@ -14,15 +31,15 @@ function ProfilePage() {
                   <p className="d-inline ms-2">My Bazar Account</p>
                 </div>
                 <div className="card-title m-lg-3 fs-5">
-                  <i class="fa-regular fa-clipboard-list"></i>{" "}
+                  <i className="fa-regular fa-clipboard-list"></i>{" "}
                   <p className="d-inline ms-2">Orders</p>
                 </div>
                 <div className="card-title m-lg-3 fs-5">
-                  <i class="fa-regular fa-heart"></i>{" "}
+                  <i className="fa-regular fa-heart"></i>{" "}
                   <p className="d-inline ms-1">Saved Items</p>
                 </div>
                 <div className="card-title m-lg-3 fs-5">
-                  <i class="fa-regular fa-clock-rotate-left"></i>{" "}
+                  <i className="fa-regular fa-clock-rotate-left"></i>{" "}
                   <p className="d-inline ms-1">Recently Added</p>
                 </div>
 
@@ -31,7 +48,7 @@ function ProfilePage() {
                   to="#"
                   className="card-link link-dark text-decoration-none m-lg-3"
                 >
-                  Another link
+                  <button onClick={handleLogout}> Logout</button>
                 </Link>
               </div>
             </div>
@@ -57,6 +74,8 @@ function ProfilePage() {
         </div>
       </div>
     </div>
+  ) : (
+    navigate("**", { replace: true })
   );
 }
 
