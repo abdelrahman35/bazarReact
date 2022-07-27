@@ -1,0 +1,59 @@
+.Banner {
+  background: linear-gradient(#0008, #0008),
+    url(../../assets/images/image4.jpg) no-repeat center;
+  background-size: cover;
+  height: 92vh;
+  overflow: hidden;
+}
+.Banner h1 {
+  margin-top: 20vw;
+  margin-left: 12vw;
+  text-align: left;
+  font-size: 150px;
+  text-transform: uppercase;
+  color: transparent;
+  font-family: var(--myFont);
+  font-weight: bold;
+  -webkit-text-stroke: 3px white;
+}
+.Middle {
+  margin: auto;
+  margin-top: 10vw;
+  width: 75vw;
+
+  text-align: center;
+  font-family: var(--myFont);
+  line-height: 2;
+}
+.LastTitle {
+  margin-top: 70px;
+}
+
+.LastTitle h3 {
+  font-family: var(--myFont);
+  font-weight: 300;
+  font-size: 50px;
+}
+.LastTitle .HR {
+  border-radius: 15px;
+  content: "";
+  background-image: linear-gradient(
+    to right,
+    var(--color3) 49%,
+    var(--color1) 56%
+  );
+
+  width: 180px;
+  height: 5px;
+  margin: auto;
+  z-index: -1;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  margin-bottom: 20px;
+}
+.Last {
+  font-family: var(--myFont);
+  text-align: center;
+}
