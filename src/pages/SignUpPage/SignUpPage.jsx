@@ -2,7 +2,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { register } from "../../store/actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -30,6 +30,7 @@ const validationSchema = Yup.object({
 });
 
 function SignUpPage() {
+  const [signedIn, setSignedIn] = useState("");
   // declarations
   const navigate = useNavigate();
   const location = useLocation();

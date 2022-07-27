@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Navbar.module.css";
 import { Link } from "react-router-dom";
-import Brand from "../../assets/images/logo.png";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../store/actions/userActions";
 import LoginPage from "../../pages/LoginPage/LoginPage";
