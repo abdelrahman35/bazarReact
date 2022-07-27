@@ -25,7 +25,7 @@ const validationSchema = Yup.object({
     .required("Please Enter your password")
     .matches(
       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-      "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character",
+      "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
     ),
 });
 
@@ -40,12 +40,7 @@ function SignUpPage() {
   // functions
   const onSubmit = (values) => {
     dispatch(
-      register(
-        values.firstName,
-        values.lastName,
-        values.email,
-        values.password,
-      ),
+      register(values.firstName, values.lastName, values.email, values.password)
     );
   };
   useEffect(() => {
@@ -125,6 +120,7 @@ function SignUpPage() {
               className={`${styles.btnWarningg}`}
               variant="primary"
               type="submit"
+              data-bs-dismiss="modal"
               disabled={!(formik.isValid && formik.dirty)}
             >
               Create

@@ -1,18 +1,17 @@
 import React, { useState } from "react";
 import styles from "./Navbar.module.css";
 import { Link } from "react-router-dom";
-import Brand from "../../assets/images/logo.png";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../store/actions/userActions";
 import LoginPage from "../../pages/LoginPage/LoginPage";
 import SignUpPage from "../../pages/SignUpPage/SignUpPage";
-
+import Loading from "../Loading/Loading";
 function Navbar() {
   const [modal, setModal] = useState("login");
   const [genButton, setGenButtonStyle] = useState(styles.genButton);
   const [revGenButton, setRevGenButton] = useState(styles.revGenButton);
   const userLogin = useSelector((state) => state.userLogin);
-  const { userInfo } = userLogin;
+  const { loading, userInfo } = userLogin;
   const dispatch = useDispatch();
   const handleLogout = () => {
     dispatch(logout());
@@ -84,19 +83,25 @@ function Navbar() {
                 </a>
               </div>
               <div className="col-2">
-                {userInfo ? (
-                  <p> {userInfo.firstName}</p>
+                {loading ? (
+                  <Loading />
                 ) : (
-                  <div>
-                    <button
-                      type="button"
-                      data-bs-toggle="modal"
-                      data-bs-target="#exampleModal"
-                      className={styles.btnWarningg}
-                    >
-                      Login/Signup
-                    </button>
-                  </div>
+                  <>
+                    {userInfo ? (
+                      <div> {userInfo.firstName}</div>
+                    ) : (
+                      <div>
+                        <button
+                          type="button"
+                          data-bs-toggle="modal"
+                          data-bs-target="#exampleModal"
+                          className={styles.btnWarningg}
+                        >
+                          Login/Signup
+                        </button>
+                      </div>
+                    )}
+                  </>
                 )}
               </div>
               {userInfo ? (
