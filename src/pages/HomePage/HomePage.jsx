@@ -38,55 +38,54 @@ function Home() {
           </div>
 
           <div className="container">
-            <div className="row">
+            <div className="row mb-5">
               <div className="col-6">
-                <div className={`w-100 h-100`}></div>
+                <div className={`row ${styles.cardHome} w-100 h-100 p-5`}>
+                  <div className="col-6">
+                    <h3>
+                      SPICIAL OFFER ON FIRST ORDER <br />
+                      UP To 30% OFF
+                    </h3>
+                  </div>
+                  <div className="col-6"></div>
+                </div>
               </div>
               <div className="col-6">
-                <div className="card">
-                  <img src="..." className="card-img-top flex" alt="..." />
-                  <div className="card-body">
-                    <h5 className="card-title">Card title</h5>
-                    <p className="card-text">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
-                    </p>
-                    <a href="#" className="btn btn-primary">
-                      Go somewhere
-                    </a>
+                <div className={`row ${styles.cardHome} w-100 h-100 p-5`}>
+                  <div className="col-6">
+                    {" "}
+                    <h3>
+                      SPICIAL OFFER ON FIRST ORDER <br />
+                      UP To 30% OFF
+                    </h3>
                   </div>
+                  <div className="col-6"></div>
                 </div>
               </div>
             </div>
             <div className="row">
               <div className="col-6">
-                <div className="card justify-content-">
-                  <img src="..." className="card-img-top" alt="..." />
-                  <div className="card-body">
-                    <h5 className="card-title">Card title</h5>
-                    <p className="card-text">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
-                    </p>
-                    <a href="#" className="btn btn-primary">
-                      Go somewhere
-                    </a>
+                <div className={`row ${styles.cardHome} w-100 h-100 p-5`}>
+                  <div className="col-6">
+                    {" "}
+                    <h3>
+                      SPICIAL OFFER ON FIRST ORDER <br />
+                      UP To 30% OFF
+                    </h3>
                   </div>
+                  <div className="col-6"></div>
                 </div>
               </div>
               <div className="col-6">
-                <div className="card">
-                  <img src="..." className="card-img-top" alt="..." />
-                  <div className="card-body">
-                    <h5 className="card-title">Card title</h5>
-                    <p className="card-text">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
-                    </p>
-                    <a href="#" className="btn btn-primary">
-                      Go somewhere
-                    </a>
+                <div className={`row ${styles.cardHome} w-100 h-100 p-5`}>
+                  <div className="col-6">
+                    {" "}
+                    <h3 className="text-start">
+                      SPICIAL OFFER ON FIRST ORDER <br />
+                      UP To 30% OFF
+                    </h3>
                   </div>
+                  <div className="col-6"></div>
                 </div>
               </div>
             </div>
