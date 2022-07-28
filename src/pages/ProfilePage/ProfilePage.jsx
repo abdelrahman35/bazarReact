@@ -5,7 +5,7 @@ import { logout } from "../../store/actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "../../components/Loading/Loading";
 import { useNavigate } from "react-router-dom";
-
+import NotFoundPage from "../NotFoundPage/NotFoundPage";
 function ProfilePage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -75,7 +75,7 @@ function ProfilePage() {
       </div>
     </div>
   ) : (
-    navigate("**", { replace: true })
+    <NotFoundPage></NotFoundPage>
   );
 }
 
