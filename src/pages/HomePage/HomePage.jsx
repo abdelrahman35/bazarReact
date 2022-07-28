@@ -91,6 +91,14 @@ function Home() {
             </div>
           </div>
         </div>
+        <div className={` text-center  ${styles.Recently} mt-5 mb-5`}>
+          <div
+            className={`  d-flex flex-column justify-content-center align-items-center   ${styles.title}`}
+          >
+            <h3>Recently Added Products</h3>
+            <div className={styles.HR}></div>
+          </div>
+        </div>
       </section>
     </>
   );
