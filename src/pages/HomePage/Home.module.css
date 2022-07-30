@@ -13,7 +13,7 @@
   margin-bottom: 180px;
 }
 .content h1 {
-  font-size: 90px;
+  font-size: 80px;
   font-family: var(--myFont);
   font-weight: 600;
 }
@@ -195,4 +195,31 @@
   -moz-transform: rotateY(180deg);
   -ms-transform: rotateY(180deg);
   -o-transform: rotateY(180deg);
+}
+
+@media (min-width: 200px) and (max-width: 1251px) {
+  .banner img {
+    width: 108%;
+  }
+  .content {
+    color: var(--color6);
+    margin-bottom: 0px;
+  }
+  .content h1 {
+    font-size: 40px;
+    font-family: var(--myFont);
+    font-weight: 600;
+  }
+  .content p {
+    font-size: 15px;
+    font-family: var(--myFont);
+    font-weight: 300;
+  }
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .rsw {
+    height: 80vh;
+    display: flex;
+    text-align: center;
+  }
 }

@@ -19,7 +19,7 @@ const validationSchema = Yup.object({
     .required("Please Enter your password")
     .matches(
       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-      "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
+      "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character",
     ),
   confirm: Yup.string()
     .oneOf([Yup.ref("password"), null], "Passwords must match")
@@ -41,16 +41,21 @@ const ResetPassword = () => {
     validationSchema,
   });
   return (
-    <div className={`container mt-3`}>
-      <section className="container w-40 m-auto">
-        <Form className=" m-auto mt-5 mb-5" onSubmit={formik.handleSubmit}>
+    <div
+      className={`container d-flex justify-content-center align-items-center ${styles.conten}`}
+    >
+      <section className="container w-100 m-auto">
+        <Form
+          className=" m-auto mt-5 mb-5 d-flex flex-column gap-4"
+          onSubmit={formik.handleSubmit}
+        >
           <div
-            className={`d-flex flex-column justify-content-center align-items-center mb-5 ${styles.formHeading}`}
+            className={`d-flex flex-column justify-content-center align-items-center gap-2 mb-5 ${styles.formHeading}`}
           >
             <i className="fa-solid fa-circle-right"></i>
-            <h2 className={` text-capitalize text-center`}>Reset Password</h2>
+            <h2 className={` text-capitalize text-center`}>Reset Password !</h2>
             <p className="text-capitalize text-center">
-              enter your email and new password
+              enter your email to reset it
             </p>
           </div>
           <Form.Group

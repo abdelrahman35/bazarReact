@@ -36,14 +36,9 @@ function ProfilePage() {
           <div className="col-lg-4 mt-5">
             <div className={`card shadow w-100 ${styles.leftCard}`}>
               <div className="card-body">
-                <div
-                  onClick={() => {
-                    setRenderedData("accountDetails");
-                  }}
-                  className={`card-title m-lg-3 fs-5 ${styles.title}`}
-                >
+                <div className="card-title m-lg-3 fs-5">
                   <i className="fa-regular fa-user"></i>{" "}
-                  <p className={`d-inline ms-2`}>My Bazar Account</p>
+                  <p className="d-inline ms-2">My Bazar Account</p>
                 </div>
                 <div
                   onClick={() => {
@@ -74,7 +69,7 @@ function ProfilePage() {
                 </Link>
                 <hr className={`${styles.hr}`} />
                 <Link
-                  to="#"
+                  to="/"
                   className="card-link link-dark text-decoration-none m-lg-3"
                 >
                   <button

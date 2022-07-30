@@ -5,6 +5,7 @@ import itemCard from "../../assets/images/Productimage1.png";
 import itemCard2 from "../../assets/images/productimage2.png";
 import itemCard3 from "../../assets/images/productimage3.png";
 import itemCard4 from "../../assets/images/productimage4.png";
+import itemCard5 from "../../assets/images/try.png";
 
 function Home() {
   return (
@@ -12,10 +13,10 @@ function Home() {
       <section>
         <div className="container-fluid p-0 m-0 mb-5">
           <header className={styles.banner}>
-            <div className="container">
-              <div className="row justify-content-between align-items-center">
-                <div className="col-7">
-                  <div className={styles.content}>
+            <div className={`container ${styles.rsw}`}>
+              <div className="row justify-content-center justify-content-lg-between  align-items-end  align-items-lg-center ">
+                <div className="col-12 col-md-6 col-lg-7">
+                  <div className={`${styles.content}`}>
                     <h1>Create a beautiful user experience in no time</h1>
                     <p>
                       There are many variations of passages of Lorem Ipsum
@@ -25,8 +26,11 @@ function Home() {
                     </p>
                   </div>
                 </div>
-                <div className="col-5">
+                <div className="col-12 col-md-6 col-lg-5 d-none d-md-block">
                   <img src={headerImg} alt="Logo" />
+                </div>
+                <div className="col-12 col-md-6 col-lg-5 d-block d-md-none w-50">
+                  <img src={itemCard5} alt="Logo" />
                 </div>
               </div>
             </div>
@@ -42,7 +46,7 @@ function Home() {
 
           <div className="container">
             <div className="row mb-4 mb-lg-3">
-              <div className="col-12 col-lg-6 mb-4 mb-lg-0">
+              <div className="col-12 col-lg-6 mb-4 mb-lg-0 d-flex justify-content-center align-items-center">
                 <div
                   className={`row ${styles.cardHome} w-100 h-100 p-5 align-items-end`}
                 >
@@ -57,7 +61,7 @@ function Home() {
                   </div>
                 </div>
               </div>
-              <div className="col-12 col-lg-6">
+              <div className="col-12 col-lg-6 d-flex justify-content-center align-items-center">
                 <div
                   className={`row ${styles.cardHome} w-100 h-100 p-5 align-items-end`}
                 >
@@ -74,7 +78,7 @@ function Home() {
               </div>
             </div>
             <div className="row">
-              <div className="col-12 col-lg-6 mb-4 mb-lg-0">
+              <div className="col-12 col-lg-6 mb-4 mb-lg-0 d-flex justify-content-center align-items-center">
                 <div
                   className={`row ${styles.cardHome} w-100 h-100 p-5 align-items-end`}
                 >
@@ -89,7 +93,7 @@ function Home() {
                   </div>
                 </div>
               </div>
-              <div className="col-12 col-lg-6">
+              <div className="col-12 col-lg-6 d-flex justify-content-center align-items-center">
                 <div
                   className={`row ${styles.cardHome} w-100 h-100 p-5 align-items-end`}
                 >
@@ -118,13 +122,13 @@ function Home() {
           <div className="container">
             <div className="row justify-content-center align-items-center mb-3">
               <div
-                className={`col-12 col-md-6 col-lg-4 p-0 d-flex justify-content-center ${styles.coco}`}
+                className={`col-12  mb-3 mb-lg-0 col-lg-4 p-0 d-flex justify-content-center ${styles.coco}`}
               >
                 <div className={` ${styles.thecard}`}>
                   <div
                     className={`d-flex flex-column justify-content-center align-items-center ${styles.front}`}
                   >
-                    <div className="text-center">
+                    <div className="text-center ">
                       <img src={itemCard2} alt="" className="w-90 m-3  " />
                     </div>
                     <div className={styles.cardInfo}>
@@ -158,7 +162,7 @@ function Home() {
                 </div>
               </div>
               <div
-                className={`col-12 col-md-6 col-lg-4 p-0 d-flex justify-content-center ${styles.coco}`}
+                className={`col-12 mb-3 mb-lg-0  col-lg-4 p-0 d-flex justify-content-center ${styles.coco}`}
               >
                 {" "}
                 <div className={` ${styles.thecard}`}>
@@ -199,7 +203,7 @@ function Home() {
                 </div>
               </div>
               <div
-                className={`col-12 col-md-6 col-lg-4 p-0 d-flex justify-content-center ${styles.coco}`}
+                className={`col-12  col-lg-4 p-0 d-flex justify-content-center ${styles.coco}`}
               >
                 {" "}
                 <div className={` ${styles.thecard}`}>
@@ -242,7 +246,7 @@ function Home() {
             </div>
             <div className="row justify-content-center align-items-center">
               <div
-                className={`col-12 col-md-6 col-lg-4 p-0 d-flex justify-content-center ${styles.coco}`}
+                className={`col-12 mb-3 mb-lg-0 col-lg-4 p-0 d-flex justify-content-center ${styles.coco}`}
               >
                 <div className={` ${styles.thecard}`}>
                   <div
@@ -282,7 +286,7 @@ function Home() {
                 </div>
               </div>
               <div
-                className={`col-12 col-md-6 col-lg-4 p-0 d-flex justify-content-center ${styles.coco}`}
+                className={`col-12 mb-3 mb-lg-0 col-lg-4 p-0 d-flex justify-content-center ${styles.coco}`}
               >
                 {" "}
                 <div className={` ${styles.thecard}`}>
@@ -323,7 +327,7 @@ function Home() {
                 </div>
               </div>
               <div
-                className={`col-12 col-md-6 col-lg-4 p-0 d-flex justify-content-center ${styles.coco}`}
+                className={`col-12  col-lg-4 p-0 d-flex justify-content-center ${styles.coco}`}
               >
                 {" "}
                 <div className={` ${styles.thecard}`}>
