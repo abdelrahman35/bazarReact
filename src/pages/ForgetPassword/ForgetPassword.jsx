@@ -13,11 +13,16 @@ const ForgetPassword = () => {
     dispatch(forgetPassword(email));
   };
   return (
-    <div className={`container mt-3`}>
-      <section className="container w-40 m-auto">
-        <Form className=" m-auto mt-5 mb-5" onSubmit={submitHandler}>
+    <div
+      className={`container d-flex justify-content-center align-items-center ${styles.conten}`}
+    >
+      <section className="container w-100 m-auto">
+        <Form
+          className=" m-auto mt-5 mb-5 d-flex flex-column gap-4"
+          onSubmit={submitHandler}
+        >
           <div
-            className={`d-flex flex-column justify-content-center align-items-center mb-5 ${styles.formHeading}`}
+            className={`d-flex flex-column justify-content-center align-items-center gap-2 mb-5 ${styles.formHeading}`}
           >
             <i className="fa-solid fa-circle-right"></i>
             <h2 className={` text-capitalize text-center`}>
@@ -28,11 +33,11 @@ const ForgetPassword = () => {
             </p>
           </div>
           <Form.Group
-            className={`mb-3 position-relative ${styles.allInput}`}
+            className={`mb-3 position-relative ${styles.allInput} w-60 m-auto`}
             controlId="formBasicEmail"
           >
             <Form.Control
-              className={`input ${styles.formControl}`}
+              className={`input ${styles.formControl} `}
               type="email"
               placeholder="E-mail :"
               name="email"
@@ -44,11 +49,7 @@ const ForgetPassword = () => {
           </Form.Group>
 
           <div className="d-flex justify-content-center align-content-center">
-            <button
-              className={`${styles.btnWarningg}`}
-              type="submit"
-              // disabled={!(formik.isValid && formik.dirty)}
-            >
+            <button className={`${styles.btnWarningg}`} type="submit">
               Submit
             </button>
           </div>

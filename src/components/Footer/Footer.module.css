@@ -1,8 +1,6 @@
 .Footerstyle {
   background-color: var(--color3) !important;
   color: var(--color6);
-  margin-left: 5vw;
-  padding-left: 15vw;
   font-weight: lighter;
   position: relative;
   bottom: 0;
@@ -10,7 +8,7 @@
 .listunstyled {
   color: var(--color6) !important;
   list-style-type: none;
-  padding-left: 0vw; /* Remove padding */
+  padding-left: 0vw;
   margin: 0vw;
   padding-bottom: 2vw;
   padding-top: 0vw;
@@ -19,12 +17,11 @@
   font-family: var(--myFont);
   font-weight: 300;
   margin-bottom: 2vw;
-  margin-left: 10vw;
 }
 .listunstyled1 {
   color: var(--color6) !important;
   list-style-type: none;
-  padding-left: 0vw; /* Remove padding */
+  padding-left: 0vw;
   margin: 0vw;
 
   text-decoration: none;
@@ -39,14 +36,10 @@
   font-family: var(--myFont);
   padding-top: 1vw;
 }
-.CenterContainer {
-  padding-left: 5vw;
-}
+
 .titles {
   font-size: small;
   font-family: var(--myFont);
-  margin-top: 1vw;
-  margin-left: 10vw;
 }
 .textsize {
   width: 10vw;

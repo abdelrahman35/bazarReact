@@ -27,7 +27,7 @@ function ProfilePage() {
             <div className={`card w-100 ${styles.leftCard}`}>
               <div className="card-body">
                 <div className="card-title m-lg-3 fs-5">
-                  <i class="fa-regular fa-user"></i>{" "}
+                  <i className="fa-regular fa-user"></i>{" "}
                   <p className="d-inline ms-2">My Bazar Account</p>
                 </div>
                 <div className="card-title m-lg-3 fs-5">
@@ -45,7 +45,7 @@ function ProfilePage() {
 
                 <hr />
                 <Link
-                  to="#"
+                  to="/"
                   className="card-link link-dark text-decoration-none m-lg-3"
                 >
                   <button onClick={handleLogout}> Logout</button>
