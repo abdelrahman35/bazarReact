@@ -6,7 +6,6 @@ import { useLocation } from "react-router-dom";
 
 const NotFound = ({ state }) => {
   const location = useLocation();
-  console.log(location.state);
   return (
     <>
       <section className={`${styles.errorSection} d-flex`}>

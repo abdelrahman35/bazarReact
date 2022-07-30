@@ -1,6 +1,6 @@
 .cards {
   background-color: var(--color5) !important;
-  width: 32vw;
+  width: 28vw;
   margin: 2vw;
 }
 .imgs {
@@ -19,16 +19,16 @@
   width: 12vw;
   border-radius: 10px;
 }
-.ProductPrice {
+/* .ProductPrice {
   margin-left: 30vw !important;
   font-size: 40px;
-}
+} */
 
 .btnWarningg {
   background-color: var(--color1) !important;
   font-size: 18px !important;
   height: 4vw;
-  width: 12vw;
+  width: 10vw;
   border-radius: 10px;
   border: 2px solid var(--color1) !important;
   margin-left: 1vw;

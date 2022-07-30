@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./ProductCard.module.css";
 import ProductImage from "../../assets/images/productimage2.png";
-export const ProductCard = () => {
+export const ProductCard = ({ product }) => {
   return (
     <>
       <div className={`card ${styles.cards}`}>
@@ -13,15 +13,15 @@ export const ProductCard = () => {
         <div className="card-body">
           <div className="d-flex flex-row ">
             <div className="Product-Tit1">Product Name : </div>
-            <div className="Product-Tit ms-3">Camera 1920 </div>
+            <div className="Product-Tit ms-3">{product.name} </div>
           </div>
 
           <div className="d-flex">
             <p className="Product-description">Model Year : </p>
-            <p className="Product-description ms-3">1920</p>
+            <p className="Product-description ms-3">{product.modelYear}</p>
           </div>
           <h4 className={`${styles.ProductPrice} ms-3 `}>
-            200
+            {product.price}
             <sup>EGP</sup>
           </h4>
           <div className="d-flex ">
