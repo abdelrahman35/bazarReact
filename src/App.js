@@ -37,7 +37,7 @@ function App() {
             index
             element={<ResetPassword />}
           />
-          <Route path={"**"} element={<NotFoundPage />} />
+          <Route path={"*"} element={<NotFoundPage />} />
         </Routes>
         <Footer />
       </Router>

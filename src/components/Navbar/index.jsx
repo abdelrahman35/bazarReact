@@ -18,29 +18,35 @@ function Navbar() {
     <>
       <nav className={`navbar navbar-expand-lg pt-2 pb-2 ${styles.nav}`}>
         <div className="container-fluid">
-          <div className="row w-100 justify-content-center m-auto align-items-center">
-            <div className="col-2 text-end">
-              <Link to="/" className={styles.brand}>
-                Bazaar{" "}
-              </Link>
+          <div className="row w-100 justify-content-start m-auto align-items-center">
+            <div className={`col-12 col-md-2 text-end ${styles.aa} p-0`}>
+              <div className="row justify-content-center align-items-center">
+                <div className="col-6 d-flex">
+                  <Link to="/" className={styles.brand}>
+                    Bazaar{" "}
+                  </Link>
+                </div>
+                <div className="col-6">
+                  <button
+                    className="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                  >
+                    <span className="navbar-toggler-icon"></span>
+                  </button>
+                </div>
+              </div>
             </div>
 
-            <button
-              className="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span className="navbar-toggler-icon"></span>
-            </button>
             <div
-              className="col-10 collapse navbar-collapse justify-content-evenly"
+              className="col-10 collapse navbar-collapse justify-content-evenly p-0"
               id="navbarSupportedContent"
             >
-              <div className="col-3">
+              <div className="col-12 col-md-3 mb-3 mb-md-0">
                 <ul
                   className="navbar-nav me-auto mb-2 mb-lg-0
                 justify-content-evenly"
@@ -63,7 +69,7 @@ function Navbar() {
                   </li>
                 </ul>
               </div>
-              <div className="col-4">
+              <div className="col-12 col-md-4 mb-3 mb-md-0">
                 <form className="d-flex">
                   <input
                     className={`form-control ${styles.search} me-2 `}
@@ -72,15 +78,15 @@ function Navbar() {
                   />
                 </form>
               </div>
-              <div className="col-1 d-flex justify-content-evenly fs-5 ">
-                <a className={`  nav-link ${styles.navLink}`} href="/">
+              <div className="col-1 d-flex justify-content-evenly fs-5 mb-3 mb-md-0 ps-4">
+                <a className={`  nav-link ${styles.navLink} me-2`} href="/">
                   <i className="fa-solid fa-heart"></i>
                 </a>
                 <a className={`  nav-link ${styles.navLink}`} href="/">
                   <i className="fa-solid fa-cart-shopping"></i>
                 </a>
               </div>
-              <div className="col-2">
+              <div className="col-12 col-md-2 mb-3 mb-md-0">
                 {loading ? (
                   <Loading />
                 ) : (

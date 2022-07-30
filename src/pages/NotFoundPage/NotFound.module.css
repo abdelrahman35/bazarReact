@@ -1,0 +1,59 @@
+.errorSection {
+  height: 70vh;
+  justify-content: center;
+  font-family: var(--myFont);
+  align-items: center;
+}
+.title {
+  font-size: 32px;
+  font-family: var(--myFont);
+  font-weight: 700;
+  color: var(--color1);
+  font-weight: 600;
+}
+
+.info {
+  font-size: 14px;
+  color: var(--color1);
+  font-family: var(--myFont);
+  font-weight: 600;
+}
+
+.homeBtn {
+  text-decoration: none;
+  font-size: 14px;
+  background-color: var(--color1);
+  color: var(--color6) !important;
+  padding: 12px;
+  border: 1px solid var(--color1);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  outline: 0;
+  text-transform: capitalize;
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  font-family: var(--myFont);
+  font-size: 15px;
+  height: 50px;
+}
+
+.homeBtn:focus,
+.homeBtn:hover {
+  background-color: transparent;
+  color: var(--color7) !important;
+  padding: 12px;
+  font-family: var(--myFont);
+  border: 1px solid var(--color7);
+}
+
+.manIcon {
+  background: url("../../assets/images/error.svg") center center no-repeat;
+  display: inline-block;
+  height: 290px;
+  margin-bottom: 16px;
+}

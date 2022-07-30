@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./ProductCard.module.css";
-import ProductImage from "../../assets/images/ProductImage.svg";
+import ProductImage from "../../assets/images/productimage2.png";
 export const ProductCard = () => {
   return (
     <>

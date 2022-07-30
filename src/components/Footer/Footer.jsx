@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <>
       <footer
-        className={`container-fluid m-0 p-0  text-center text-lg-start  ${styles.Footerstyle}`}
+        className={`container-fluid m-0 p-0  text-center text-lg-start  ${styles.Footerstyle} `}
       >
         <div className="container p-3">
           <div className={`row d-flex  ${styles.CenterContainer}`}>

@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./ProductDetails.module.css";
-import image1 from "../../assets/images/Productimage.png";
+import image1 from "../../assets/images/Productimage1.png";
 
 const ProductDetails = () => {
   return (
