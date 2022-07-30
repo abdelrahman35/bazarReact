@@ -11,7 +11,6 @@ function CategoryNavbar() {
   const categoriesArray = allCategories?.categories;
   useEffect(() => {
     dispatch(getAllCategories());
-    // console.log(AllCat);
   }, [dispatch]);
 
   return (

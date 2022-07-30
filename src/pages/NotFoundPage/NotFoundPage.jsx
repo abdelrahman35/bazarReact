@@ -1,11 +1,16 @@
-import React, { Fragment } from "react";
+import React from "react";
 import styles from "./NotFound.module.css";
 import { Link } from "react-router-dom";
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import { useLocation } from "react-router-dom";
 
-const NotFound = () => {
+const NotFound = ({ state }) => {
+  const location = useLocation();
+  console.log(location.state);
   return (
     <>
       <section className={`${styles.errorSection} d-flex`}>
+        {location.state ? <ErrorMessage statusCode={location.state} /> : null}
         <div className="container">
           <div className="row justify-content-center align-items-center m-auto text-center">
             <div className={styles.manIcon}></div>
