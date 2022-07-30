@@ -3,6 +3,7 @@ import "bootstrap/dist/js/bootstrap.bundle.js";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar/index";
+import CategoryNavbar from "./components/CategoryNavbar/CategoryNavbar";
 import Footer from "./components/Footer/Footer";
 import AboutUsPage from "./pages/AboutUsPage/AboutUsPage";
 import ForgetPassword from "./pages/ForgetPassword/ForgetPassword";
@@ -21,6 +22,7 @@ function App() {
     <>
       <Router>
         <Navbar />
+        <CategoryNavbar />
         <Routes>
           <Route path="/" index element={<Home />} />
           <Route path="/login" index element={<LoginPage />} />

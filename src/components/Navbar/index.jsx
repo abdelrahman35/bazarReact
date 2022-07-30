@@ -11,8 +11,7 @@ function Navbar() {
   const [genButton, setGenButtonStyle] = useState(styles.genButton);
   const [revGenButton, setRevGenButton] = useState(styles.revGenButton);
   const userLogin = useSelector((state) => state.userLogin);
-  const { loading, userInfo } = userLogin;
-  const dispatch = useDispatch();
+  const { loading: userLoading, userInfo } = userLogin;
 
   return (
     <>
@@ -87,7 +86,7 @@ function Navbar() {
                 </a>
               </div>
               <div className="col-12 col-md-2 mb-3 mb-md-0">
-                {loading ? (
+                {userLoading ? (
                   <Loading />
                 ) : (
                   <>

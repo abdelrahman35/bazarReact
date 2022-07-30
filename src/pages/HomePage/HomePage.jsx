@@ -120,9 +120,9 @@ function Home() {
               <div
                 className={`col-12 col-md-6 col-lg-4 p-0 d-flex justify-content-center ${styles.coco}`}
               >
-                <div class={` ${styles.thecard}`}>
+                <div className={` ${styles.thecard}`}>
                   <div
-                    class={`d-flex flex-column justify-content-center align-items-center ${styles.front}`}
+                    className={`d-flex flex-column justify-content-center align-items-center ${styles.front}`}
                   >
                     <div className="text-center">
                       <img src={itemCard2} alt="" className="w-90 m-3  " />
@@ -133,7 +133,7 @@ function Home() {
                       </ul>
                     </div>
                   </div>
-                  <div class={styles.back}>
+                  <div className={styles.back}>
                     <div className={`d-flex flex-column p-3  `}>
                       <div className="text-end">
                         <img src={itemCard2} alt="" className="w-55" />
@@ -161,9 +161,9 @@ function Home() {
                 className={`col-12 col-md-6 col-lg-4 p-0 d-flex justify-content-center ${styles.coco}`}
               >
                 {" "}
-                <div class={` ${styles.thecard}`}>
+                <div className={` ${styles.thecard}`}>
                   <div
-                    class={`d-flex flex-column justify-content-center align-items-center ${styles.front}`}
+                    className={`d-flex flex-column justify-content-center align-items-center ${styles.front}`}
                   >
                     <div className="text-center">
                       <img src={itemCard2} alt="" className="w-90 m-3  " />
@@ -174,7 +174,7 @@ function Home() {
                       </ul>
                     </div>
                   </div>
-                  <div class={styles.back}>
+                  <div className={styles.back}>
                     <div className={`d-flex flex-column p-3 `}>
                       <div className="text-end">
                         <img src={itemCard2} alt="" className="w-55" />
@@ -202,9 +202,9 @@ function Home() {
                 className={`col-12 col-md-6 col-lg-4 p-0 d-flex justify-content-center ${styles.coco}`}
               >
                 {" "}
-                <div class={` ${styles.thecard}`}>
+                <div className={` ${styles.thecard}`}>
                   <div
-                    class={`d-flex flex-column justify-content-center align-items-center ${styles.front}`}
+                    className={`d-flex flex-column justify-content-center align-items-center ${styles.front}`}
                   >
                     <div className="text-center">
                       <img src={itemCard2} alt="" className="w-90 m-3  " />
@@ -215,7 +215,7 @@ function Home() {
                       </ul>
                     </div>
                   </div>
-                  <div class={styles.back}>
+                  <div className={styles.back}>
                     <div className={`d-flex flex-column p-3 `}>
                       <div className="text-end">
                         <img src={itemCard2} alt="" className="w-55" />
@@ -244,9 +244,9 @@ function Home() {
               <div
                 className={`col-12 col-md-6 col-lg-4 p-0 d-flex justify-content-center ${styles.coco}`}
               >
-                <div class={` ${styles.thecard}`}>
+                <div className={` ${styles.thecard}`}>
                   <div
-                    class={`d-flex flex-column justify-content-center align-items-center ${styles.front}`}
+                    className={`d-flex flex-column justify-content-center align-items-center ${styles.front}`}
                   >
                     <div className="text-center">
                       <img src={itemCard2} alt="" className="w-90 m-3  " />
@@ -257,7 +257,7 @@ function Home() {
                       </ul>
                     </div>
                   </div>
-                  <div class={styles.back}>
+                  <div className={styles.back}>
                     <div className={`d-flex flex-column p-3  `}>
                       <div className="text-end">
                         <img src={itemCard2} alt="" className="w-55" />
@@ -285,9 +285,9 @@ function Home() {
                 className={`col-12 col-md-6 col-lg-4 p-0 d-flex justify-content-center ${styles.coco}`}
               >
                 {" "}
-                <div class={` ${styles.thecard}`}>
+                <div className={` ${styles.thecard}`}>
                   <div
-                    class={`d-flex flex-column justify-content-center align-items-center ${styles.front}`}
+                    className={`d-flex flex-column justify-content-center align-items-center ${styles.front}`}
                   >
                     <div className="text-center">
                       <img src={itemCard2} alt="" className="w-90 m-3  " />
@@ -298,7 +298,7 @@ function Home() {
                       </ul>
                     </div>
                   </div>
-                  <div class={styles.back}>
+                  <div className={styles.back}>
                     <div className={`d-flex flex-column p-3 `}>
                       <div className="text-end">
                         <img src={itemCard2} alt="" className="w-55" />
@@ -326,9 +326,9 @@ function Home() {
                 className={`col-12 col-md-6 col-lg-4 p-0 d-flex justify-content-center ${styles.coco}`}
               >
                 {" "}
-                <div class={` ${styles.thecard}`}>
+                <div className={` ${styles.thecard}`}>
                   <div
-                    class={`d-flex flex-column justify-content-center align-items-center ${styles.front}`}
+                    className={`d-flex flex-column justify-content-center align-items-center ${styles.front}`}
                   >
                     <div className="text-center">
                       <img src={itemCard2} alt="" className="w-90 m-3  " />
@@ -339,7 +339,7 @@ function Home() {
                       </ul>
                     </div>
                   </div>
-                  <div class={styles.back}>
+                  <div className={styles.back}>
                     <div className={`d-flex flex-column p-3 `}>
                       <div className="text-end">
                         <img src={itemCard2} alt="" className="w-55" />

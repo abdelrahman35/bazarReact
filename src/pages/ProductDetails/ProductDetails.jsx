@@ -43,9 +43,9 @@ const ProductDetails = () => {
                 <p>Quantity:</p>
 
                 <div className="d-flex">
-                  <div class={`dropdown ${styles.drop}`}>
+                  <div className={`dropdown ${styles.drop}`}>
                     <button
-                      class={`btn dropdown-toggle`}
+                      className={`btn dropdown-toggle`}
                       type="button"
                       id="dropdownMenu2"
                       data-mdb-toggle="dropdown"
@@ -53,26 +53,29 @@ const ProductDetails = () => {
                     >
                       1
                     </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <ul
+                      className="dropdown-menu"
+                      aria-labelledby="dropdownMenu2"
+                    >
                       <li>
-                        <button class="dropdown-item" type="button">
+                        <button className="dropdown-item" type="button">
                           2
                         </button>
                       </li>
                       <li>
-                        <button class="dropdown-item" type="button">
+                        <button className="dropdown-item" type="button">
                           3
                         </button>
                       </li>
                       <li>
-                        <button class="dropdown-item" type="button">
+                        <button className="dropdown-item" type="button">
                           4
                         </button>
                       </li>
                     </ul>
                   </div>
                   <button className={styles.btnWarningg}>Add To Cart</button>{" "}
-                  <i class={`fa-solid fa-square-heart ${styles.icon}`}></i>
+                  <i className={`fa-solid fa-square-heart ${styles.icon}`}></i>
                 </div>
               </div>
             </div>

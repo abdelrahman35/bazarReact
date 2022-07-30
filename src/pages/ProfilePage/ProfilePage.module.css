@@ -36,3 +36,7 @@
 .hr {
   width: 100%;
 }
+
+.title {
+  cursor: pointer;
+}

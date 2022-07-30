@@ -8,18 +8,22 @@ import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Loading from "../../components/Loading/Loading";
 function ProfilePage() {
   const [renderedData, setRenderedData] = useState("accountDetails");
+  const [logedOut, setLogedOut] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userLogin = useSelector((state) => state.userLogin);
   const { loading: userLoading, error: userError, userInfo } = userLogin;
   const handleLogout = () => {
     dispatch(logout());
+    navigate(-2, { replace: true });
   };
   useEffect(() => {
-    if (!userInfo) {
+    if (logedOut) {
+      navigate("/", { replace: true });
+    } else if (!userInfo) {
       navigate("*", { replace: true });
     }
-  }, [userInfo, navigate]);
+  }, [userInfo, navigate, logedOut]);
 
   return userLoading ? (
     <Loading />
@@ -36,18 +40,16 @@ function ProfilePage() {
                   onClick={() => {
                     setRenderedData("accountDetails");
                   }}
-                  className="card-title m-lg-3 fs-5"
+                  className={`card-title m-lg-3 fs-5 ${styles.title}`}
                 >
                   <i className="fa-regular fa-user"></i>{" "}
-                  <p className={`d-inline ms-2 ${styles.title} `}>
-                    My Bazar Account
-                  </p>
+                  <p className={`d-inline ms-2`}>My Bazar Account</p>
                 </div>
                 <div
                   onClick={() => {
                     setRenderedData("orders");
                   }}
-                  className="card-title m-lg-3 fs-5"
+                  className={`card-title m-lg-3 fs-5 ${styles.title}`}
                 >
                   <i className="fa-regular fa-clipboard-list"></i>{" "}
                   <p className="d-inline ms-2">Orders</p>
@@ -56,7 +58,7 @@ function ProfilePage() {
                   onClick={() => {
                     setRenderedData("savedItems");
                   }}
-                  className="card-title m-lg-3 fs-5"
+                  className={`card-title m-lg-3 fs-5 ${styles.title}`}
                 >
                   <i className="fa-regular fa-heart"></i>{" "}
                   <p className="d-inline ms-1">Saved Items</p>
