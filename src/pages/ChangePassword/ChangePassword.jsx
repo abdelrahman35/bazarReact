@@ -17,13 +17,13 @@ const validationSchema = Yup.object({
     .required("Please Enter your password")
     .matches(
       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-      "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
+      "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character",
     ),
   newPassword: Yup.string()
     .required("Please Enter your password")
     .matches(
       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-      "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
+      "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character",
     ),
   confirmPassword: Yup.string()
     .oneOf([Yup.ref("newPassword"), null], "Passwords must match")
@@ -50,7 +50,9 @@ const ResetPassword = () => {
     validationSchema,
   });
   return (
-    <div className={`container mt-3`}>
+    <div
+      className={`container d-flex justify-content-center align-items-center ${styles.conten}`}
+    >
       <section className="container w-40 m-auto">
         <Form className=" m-auto mt-5 mb-5" onSubmit={formik.handleSubmit}>
           <div
