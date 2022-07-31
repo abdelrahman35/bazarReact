@@ -18,21 +18,20 @@ const initialValues = {
 const validationSchema = Yup.object({
   firstName: Yup.string()
     .required("Required")
-    .matches(/^w{3,}$/g, "Name must not contain spaces"),
+    .matches(/^\S*$/, "Name must not contain spaces"),
   email: Yup.string().required("Required").email("invalid email format"),
   lastName: Yup.string()
     .required("Required")
-    .matches(/^w{3,}$/g, "Name must not contain spaces"),
+    .matches(/^\S*$/, "Name must not contain spaces"),
   password: Yup.string()
     .required("Please Enter your password")
     .matches(
-      /^(?=.([A-Z]){1,})(?=.[!@#$&]{1,})(?=.[0-9]{1,})(?=.*[a-z]{1,}).{8,}$/,
+      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
       "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
     ),
 });
 
 function SignUpPage() {
-  const [signedIn, setSignedIn] = useState("");
   // declarations
   const navigate = useNavigate();
   const location = useLocation();

@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./ProductCard.module.css";
 import { Link } from "react-router-dom";
-import ProductImage from "../../assets/images/productimage2.png";
 export const ProductCard = ({ product }) => {
   return (
     <>
@@ -10,8 +9,13 @@ export const ProductCard = ({ product }) => {
                         align-items-center`}
       >
         <div className="text-center ">
-          <img className="w-90 m-3" src={ProductImage} alt="" />
+          <img
+            className="w-90 m-3"
+            src={`https://bazaarshop.s3.eu-west-3.amazonaws.com${product.image}`}
+            alt={product.name}
+          />
         </div>
+        {console.log(product.image)}
         <h1 className={`${styles.cardInfo}`}>Products Name : {product.name}</h1>
         <div className={`${styles.icon} ${styles.icon1}`}>
           <h3 className={styles.title}>Products Name : {product.name}</h3>

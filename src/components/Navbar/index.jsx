@@ -89,7 +89,7 @@ function Navbar() {
                 {userLoading ? (
                   <Loading />
                 ) : (
-                  <>
+                  <div className="d-flex justify-content-evenly align-items-center">
                     {userInfo ? (
                       <Link
                         className={`text-decoration-none ${styles.profileLink}`}
@@ -108,9 +108,24 @@ function Navbar() {
                         >
                           Login/Signup
                         </button>
+                        {userInfo && userInfo?.isAdmin ? (
+                          <div> admin</div>
+                        ) : null}
                       </div>
                     )}
-                  </>
+                    <div>
+                      {" "}
+                      {userInfo && userInfo?.isAdmin ? (
+                        <Link
+                          to="/adminPanel"
+                          className={`d-flex  nav-link ${styles.navLink}`}
+                        >
+                          {" "}
+                          <i className="fa-solid fa-user-shield"></i>
+                        </Link>
+                      ) : null}
+                    </div>
+                  </div>
                 )}
               </div>
             </div>

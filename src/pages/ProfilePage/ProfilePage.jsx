@@ -33,7 +33,12 @@ function ProfilePage() {
           <div className="col-lg-4 mt-5">
             <div className={`card shadow w-100 ${styles.leftCard}`}>
               <div className="card-body">
-                <div className="card-title m-lg-3 fs-5">
+                <div
+                  className={`card-title m-lg-3 fs-5 ${styles.title}`}
+                  onClick={() => {
+                    setRenderedData("accountDetails");
+                  }}
+                >
                   <i className="fa-regular fa-user"></i>{" "}
                   <p className="d-inline ms-2">My Bazar Account</p>
                 </div>
