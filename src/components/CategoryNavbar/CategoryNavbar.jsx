@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 function CategoryNavbar() {
   const dispatch = useDispatch();
   const { categories: allCategories } = useSelector(
-    (state) => state.allCategories
+    (state) => state.allCategories,
   );
   const categoriesArray = allCategories?.categories;
   useEffect(() => {
@@ -32,8 +32,8 @@ function CategoryNavbar() {
                     className="navbar-toggler"
                     type="button"
                     data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent"
+                    data-bs-target="#navbarSupportedContent1"
+                    aria-controls="navbarSupportedContent1"
                     aria-expanded="false"
                     aria-label="Toggle navigation"
                   >
@@ -45,7 +45,7 @@ function CategoryNavbar() {
 
             <div
               className="col-10 collapse navbar-collapse justify-content-start p-0"
-              id="navbarSupportedContent"
+              id="navbarSupportedContent1"
             >
               <div className="col-12 col-md-3 mb-3 mb-md-0">
                 <ul

@@ -8,7 +8,6 @@ import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Loading from "../../components/Loading/Loading";
 function ProfilePage() {
   const [renderedData, setRenderedData] = useState("accountDetails");
-  const [logedOut, setLogedOut] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userLogin = useSelector((state) => state.userLogin);
@@ -18,12 +17,10 @@ function ProfilePage() {
     navigate(-2, { replace: true });
   };
   useEffect(() => {
-    if (logedOut) {
-      navigate("/", { replace: true });
-    } else if (!userInfo) {
+    if (!userInfo) {
       navigate("*", { replace: true });
     }
-  }, [userInfo, navigate, logedOut]);
+  }, [userInfo, navigate]);
 
   return userLoading ? (
     <Loading />

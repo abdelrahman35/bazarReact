@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Home.module.css";
 import headerImg from "../../assets/images/headerImg.png";
 import itemCard from "../../assets/images/Productimage1.png";
@@ -6,8 +6,26 @@ import itemCard2 from "../../assets/images/productimage2.png";
 import itemCard3 from "../../assets/images/productimage3.png";
 import itemCard4 from "../../assets/images/productimage4.png";
 import itemCard5 from "../../assets/images/try.png";
+import { ProductCard } from "../../components/ProductCard/ProductCard";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllProducts } from "../../store/actions/productActions";
 
 function Home() {
+  const dispatch = useDispatch();
+
+  const {
+    loading: productsLoading,
+    error: productsError,
+    products,
+  } = useSelector((state) => state.allProducts);
+  const prodcutsArray = products?.products;
+  const [pageNum, setPageNum] = useState(1);
+  useEffect(() => {
+    dispatch(getAllProducts(pageNum));
+  }, [dispatch, pageNum]);
+
+  console.log(products);
+
   return (
     <>
       <section>
@@ -119,254 +137,16 @@ function Home() {
             <h3>Recently Added Products</h3>
             <div className={styles.HR}></div>
           </div>
-          <div className="container">
-            <div className="row justify-content-center align-items-center mb-3">
-              <div
-                className={`col-12  mb-3 mb-lg-0 col-lg-4 p-0 d-flex justify-content-center ${styles.coco}`}
-              >
-                <div className={` ${styles.thecard}`}>
-                  <div
-                    className={`d-flex flex-column justify-content-center align-items-center ${styles.front}`}
-                  >
-                    <div className="text-center ">
-                      <img src={itemCard2} alt="" className="w-90 m-3  " />
-                    </div>
-                    <div className={styles.cardInfo}>
-                      <ul className="list-unstyled d-flex flex-column align-items-center">
-                        <li>Products Name : camera 1920</li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div className={styles.back}>
-                    <div className={`d-flex flex-column p-3  `}>
-                      <div className="text-end">
-                        <img src={itemCard2} alt="" className="w-55" />
-                      </div>
-                      <div className={styles.cardInfo}>
-                        <ul className="list-unstyled d-flex flex-column align-items-start">
-                          <li>Products Name : camera 1920</li>
-                          <li>Model Year : 1920</li>
-                          <li> 200 EGP</li>
-                        </ul>
-                      </div>
-                      <div className="d-flex justify-content-evenly w-100">
-                        <button className={`${styles.btnWarningg} `}>
-                          View Item
-                        </button>
-                        <button className={styles.btnWarningg}>
-                          Add To Cart
-                        </button>
-                      </div>
-                    </div>
-                  </div>
+          <div className={`container`}>
+            <div className="row mb-0 mb-lg-3  g-4 mt-5 ">
+              {prodcutsArray?.slice(0, 6).map((product, index) => (
+                <div
+                  className={`col-lg-4 d-flex justify-content-center mb-3 mb-lg-0`}
+                  key={index}
+                >
+                  <ProductCard product={product} />
                 </div>
-              </div>
-              <div
-                className={`col-12 mb-3 mb-lg-0  col-lg-4 p-0 d-flex justify-content-center ${styles.coco}`}
-              >
-                {" "}
-                <div className={` ${styles.thecard}`}>
-                  <div
-                    className={`d-flex flex-column justify-content-center align-items-center ${styles.front}`}
-                  >
-                    <div className="text-center">
-                      <img src={itemCard2} alt="" className="w-90 m-3  " />
-                    </div>
-                    <div className={styles.cardInfo}>
-                      <ul className="list-unstyled d-flex flex-column align-items-center">
-                        <li>Products Name : camera 1920</li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div className={styles.back}>
-                    <div className={`d-flex flex-column p-3 `}>
-                      <div className="text-end">
-                        <img src={itemCard2} alt="" className="w-55" />
-                      </div>
-                      <div className={styles.cardInfo}>
-                        <ul className="list-unstyled d-flex flex-column align-items-start">
-                          <li>Products Name : camera 1920</li>
-                          <li>Model Year : 1920</li>
-                          <li> 200 EGP</li>
-                        </ul>
-                      </div>
-                      <div className="d-flex justify-content-evenly w-100">
-                        <button className={`${styles.btnWarningg} `}>
-                          View Item
-                        </button>
-                        <button className={styles.btnWarningg}>
-                          Add To Cart
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                className={`col-12  col-lg-4 p-0 d-flex justify-content-center ${styles.coco}`}
-              >
-                {" "}
-                <div className={` ${styles.thecard}`}>
-                  <div
-                    className={`d-flex flex-column justify-content-center align-items-center ${styles.front}`}
-                  >
-                    <div className="text-center">
-                      <img src={itemCard2} alt="" className="w-90 m-3  " />
-                    </div>
-                    <div className={styles.cardInfo}>
-                      <ul className="list-unstyled d-flex flex-column align-items-center">
-                        <li>Products Name : camera 1920</li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div className={styles.back}>
-                    <div className={`d-flex flex-column p-3 `}>
-                      <div className="text-end">
-                        <img src={itemCard2} alt="" className="w-55" />
-                      </div>
-                      <div className={styles.cardInfo}>
-                        <ul className="list-unstyled d-flex flex-column align-items-start">
-                          <li>Products Name : camera 1920</li>
-                          <li>Model Year : 1920</li>
-                          <li> 200 EGP</li>
-                        </ul>
-                      </div>
-                      <div className="d-flex justify-content-evenly w-100">
-                        <button className={`${styles.btnWarningg} `}>
-                          View Item
-                        </button>
-                        <button className={styles.btnWarningg}>
-                          Add To Cart
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="row justify-content-center align-items-center">
-              <div
-                className={`col-12 mb-3 mb-lg-0 col-lg-4 p-0 d-flex justify-content-center ${styles.coco}`}
-              >
-                <div className={` ${styles.thecard}`}>
-                  <div
-                    className={`d-flex flex-column justify-content-center align-items-center ${styles.front}`}
-                  >
-                    <div className="text-center">
-                      <img src={itemCard2} alt="" className="w-90 m-3  " />
-                    </div>
-                    <div className={styles.cardInfo}>
-                      <ul className="list-unstyled d-flex flex-column align-items-center">
-                        <li>Products Name : camera 1920</li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div className={styles.back}>
-                    <div className={`d-flex flex-column p-3  `}>
-                      <div className="text-end">
-                        <img src={itemCard2} alt="" className="w-55" />
-                      </div>
-                      <div className={styles.cardInfo}>
-                        <ul className="list-unstyled d-flex flex-column align-items-start">
-                          <li>Products Name : camera 1920</li>
-                          <li>Model Year : 1920</li>
-                          <li> 200 EGP</li>
-                        </ul>
-                      </div>
-                      <div className="d-flex justify-content-evenly w-100">
-                        <button className={`${styles.btnWarningg} `}>
-                          View Item
-                        </button>
-                        <button className={styles.btnWarningg}>
-                          Add To Cart
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                className={`col-12 mb-3 mb-lg-0 col-lg-4 p-0 d-flex justify-content-center ${styles.coco}`}
-              >
-                {" "}
-                <div className={` ${styles.thecard}`}>
-                  <div
-                    className={`d-flex flex-column justify-content-center align-items-center ${styles.front}`}
-                  >
-                    <div className="text-center">
-                      <img src={itemCard2} alt="" className="w-90 m-3  " />
-                    </div>
-                    <div className={styles.cardInfo}>
-                      <ul className="list-unstyled d-flex flex-column align-items-center">
-                        <li>Products Name : camera 1920</li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div className={styles.back}>
-                    <div className={`d-flex flex-column p-3 `}>
-                      <div className="text-end">
-                        <img src={itemCard2} alt="" className="w-55" />
-                      </div>
-                      <div className={styles.cardInfo}>
-                        <ul className="list-unstyled d-flex flex-column align-items-start">
-                          <li>Products Name : camera 1920</li>
-                          <li>Model Year : 1920</li>
-                          <li> 200 EGP</li>
-                        </ul>
-                      </div>
-                      <div className="d-flex justify-content-evenly w-100">
-                        <button className={`${styles.btnWarningg} `}>
-                          View Item
-                        </button>
-                        <button className={styles.btnWarningg}>
-                          Add To Cart
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div
-                className={`col-12  col-lg-4 p-0 d-flex justify-content-center ${styles.coco}`}
-              >
-                {" "}
-                <div className={` ${styles.thecard}`}>
-                  <div
-                    className={`d-flex flex-column justify-content-center align-items-center ${styles.front}`}
-                  >
-                    <div className="text-center">
-                      <img src={itemCard2} alt="" className="w-90 m-3  " />
-                    </div>
-                    <div className={styles.cardInfo}>
-                      <ul className="list-unstyled d-flex flex-column align-items-center">
-                        <li>Products Name : camera 1920</li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div className={styles.back}>
-                    <div className={`d-flex flex-column p-3 `}>
-                      <div className="text-end">
-                        <img src={itemCard2} alt="" className="w-55" />
-                      </div>
-                      <div className={styles.cardInfo}>
-                        <ul className="list-unstyled d-flex flex-column align-items-start">
-                          <li>Products Name : camera 1920</li>
-                          <li>Model Year : 1920</li>
-                          <li> 200 EGP</li>
-                        </ul>
-                      </div>
-                      <div className="d-flex justify-content-evenly w-100">
-                        <button className={`${styles.btnWarningg} `}>
-                          View Item
-                        </button>
-                        <button className={styles.btnWarningg}>
-                          Add To Cart
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>

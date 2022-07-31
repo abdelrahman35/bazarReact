@@ -37,22 +37,25 @@ function ProudctPage() {
   return (
     <>
       {productsLoading ? (
-        <div className="d-flex justify-content-center align-self-center mt-5 mb-5">
+        <div
+          className={`container d-flex justify-content-center align-items-center ${styles.conten}`}
+        >
           <Loading />
         </div>
       ) : products ? (
-        <div className={`${styles.page}`}>
-          {" "}
-          <div className="row">
+        <div className={`container`}>
+          <div className="row mb-0 mb-lg-3  g-4 mt-5 ">
             {prodcutsArray?.map((product, index) => (
-              <div className="col-lg-4" key={index}>
-                {" "}
+              <div
+                className={`col-lg-4 d-flex justify-content-center mb-3 mb-lg-0`}
+                key={index}
+              >
                 <ProductCard product={product} />
               </div>
             ))}
           </div>
-          <nav aria-label="Page navigation example">
-            <ul className="pagination ">
+          <div aria-label="Page navigation example d-flex justify-centent-center m-auto">
+            <ul className="pagination justify-content-center">
               <li className="page-item  ">
                 <Link
                   to="#"
@@ -88,7 +91,7 @@ function ProudctPage() {
                 </Link>
               </li>
             </ul>
-          </nav>
+          </div>
         </div>
       ) : null}
     </>
