@@ -17,6 +17,9 @@ import ChangePassword from "./pages/ChangePassword/ChangePassword";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import Thanks from "./pages/ThanksForm/Thanks";
 import ProductDetails from "./pages/ProductDetails/ProductDetails";
+import AdminPanel from "./pages/AdminPages/AdminPanel/AdminPanel";
+import AdminProducts from "./pages/AdminPages/AdminProducts/AdminProducts";
+import CreateProduct from "./pages/AdminPages/CreateProduct/CreateProduct";
 function App() {
   return (
     <>
@@ -38,6 +41,13 @@ function App() {
             path="/resetPassword/:token"
             index
             element={<ResetPassword />}
+          />
+          <Route path="/adminpanel" index element={<AdminPanel />} />
+          <Route path="/admin/products" index element={<AdminProducts />} />
+          <Route
+            path="/admin/products/create"
+            index
+            element={<CreateProduct />}
           />
           <Route path={"*"} element={<NotFoundPage />} />
         </Routes>

@@ -8,22 +8,19 @@ import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Loading from "../../components/Loading/Loading";
 function ProfilePage() {
   const [renderedData, setRenderedData] = useState("accountDetails");
-  const [logedOut, setLogedOut] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userLogin = useSelector((state) => state.userLogin);
   const { loading: userLoading, error: userError, userInfo } = userLogin;
   const handleLogout = () => {
     dispatch(logout());
-    navigate(-2, { replace: true });
+    navigate("/", { replace: true });
   };
   useEffect(() => {
-    if (logedOut) {
-      navigate("/", { replace: true });
-    } else if (!userInfo) {
+    if (!userInfo) {
       navigate("*", { replace: true });
     }
-  }, [userInfo, navigate, logedOut]);
+  }, [userInfo, navigate]);
 
   return userLoading ? (
     <Loading />
@@ -68,18 +65,14 @@ function ProfilePage() {
                   </p>
                 </Link>
                 <hr className={`${styles.hr}`} />
-                <Link
-                  to="/"
-                  className="card-link link-dark text-decoration-none m-lg-3"
+
+                <button
+                  className={`${styles.btnWarningg}`}
+                  onClick={handleLogout}
                 >
-                  <button
-                    className={`${styles.btnWarningg}`}
-                    onClick={handleLogout}
-                  >
-                    {" "}
-                    Logout
-                  </button>
-                </Link>
+                  {" "}
+                  Logout
+                </button>
               </div>
             </div>
           </div>

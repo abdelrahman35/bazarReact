@@ -16,15 +16,17 @@ const initialValues = {
 };
 
 const validationSchema = Yup.object({
-  firstName: Yup.string().required("Required"),
+  firstName: Yup.string()
+    .required("Required")
+    .matches(/^w{3,}$/g, "Name must not contain spaces"),
   email: Yup.string().required("Required").email("invalid email format"),
   lastName: Yup.string()
     .required("Required")
-    .matches(/^\S*$/, "* This field cannot contain only blankspaces"),
+    .matches(/^w{3,}$/g, "Name must not contain spaces"),
   password: Yup.string()
     .required("Please Enter your password")
     .matches(
-      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+      /^(?=.([A-Z]){1,})(?=.[!@#$&]{1,})(?=.[0-9]{1,})(?=.*[a-z]{1,}).{8,}$/,
       "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
     ),
 });
