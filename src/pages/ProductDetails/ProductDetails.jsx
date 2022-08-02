@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import styles from "./ProductDetails.module.css";
-import image1 from "../../assets/images/Productimage1.png";
 import { getProductById } from "../../store/actions/productActions";
 import Loading from "../../components/Loading/Loading";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
@@ -17,7 +16,7 @@ const ProductDetails = () => {
   useEffect(() => {
     dispatch(getProductById(id));
   }, [id, dispatch]);
-  console.log(product?.product?._id);
+
   return (
     <>
       {productLoading ? (

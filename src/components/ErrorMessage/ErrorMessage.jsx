@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 
 function ErrorMessage({ statusCode }) {
-  console.log(statusCode);
   const [message, setMessage] = useState("");
   useEffect(() => {
     switch (statusCode) {
@@ -18,7 +17,6 @@ function ErrorMessage({ statusCode }) {
         setMessage("");
     }
   }, [statusCode]);
-  console.log(message);
   return (
     <div className="alert alert-danger" role="alert">
       {message}

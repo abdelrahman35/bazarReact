@@ -9,7 +9,6 @@ const ForgetPassword = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(email);
     dispatch(forgetPassword(email));
   };
   return (

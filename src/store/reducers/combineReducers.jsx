@@ -8,6 +8,7 @@ import { getAllCategoriesReducer } from "./categoriesReducers";
 import {
   getAllProductsReducer,
   getProductByIdReducer,
+  createProductReducer,
 } from "./productReducers";
 export default combineReducers({
   userRegister: userRegisterReducer,
@@ -15,5 +16,6 @@ export default combineReducers({
   changePassword: userChangePasswordReducer,
   allCategories: getAllCategoriesReducer,
   allProducts: getAllProductsReducer,
+  createdProduct: createProductReducer,
   oneProduct: getProductByIdReducer,
 });
