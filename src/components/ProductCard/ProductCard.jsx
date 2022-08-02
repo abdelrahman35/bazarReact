@@ -10,7 +10,7 @@ export const ProductCard = ({ product }) => {
       >
         <div className="text-center ">
           <img
-            className="w-90 m-3"
+            className="m-3 w-50"
             src={`https://bazaarshop.s3.eu-west-3.amazonaws.com${product.image}`}
             alt={product.name}
           />
