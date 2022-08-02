@@ -29,7 +29,11 @@ function App() {
         <Routes>
           <Route path="/" index element={<Home />} />
           <Route path="/login" index element={<LoginPage />} />
-          <Route path="/product-details" iNdex element={<ProductDetails />} />
+          <Route
+            path="/product-details/:id"
+            iNdex
+            element={<ProductDetails />}
+          />
           <Route path="/signup" index element={<SignUpPage />} />
           <Route path="/thanks" index element={<Thanks />} />
           <Route path="/products" element={<ProudctPage />} />

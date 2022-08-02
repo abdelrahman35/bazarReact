@@ -15,7 +15,6 @@ export const ProductCard = ({ product }) => {
             alt={product.name}
           />
         </div>
-        {console.log(product.image)}
         <h1 className={`${styles.cardInfo}`}>Products Name : {product.name}</h1>
         <div className={`${styles.icon} ${styles.icon1}`}>
           <h3 className={styles.title}>Products Name : {product.name}</h3>
@@ -28,7 +27,7 @@ export const ProductCard = ({ product }) => {
                                 align-items-center list-unstyled`}
           >
             <li>
-              <Link to="/product-details">
+              <Link to={`/product-details/${product._id}`}>
                 <button className={styles.btnWarningg}>View Item</button>
               </Link>
             </li>

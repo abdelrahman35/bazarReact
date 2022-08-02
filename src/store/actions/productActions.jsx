@@ -4,7 +4,7 @@ export const getAllProducts = (page) => async (dispatch) => {
   try {
     dispatch({ type: "GET_ALL_PRODUCTS_REQUEST" });
 
-    const { data } = await axiosInstance.get(`/product?page=${[page]}`);
+    const { data } = await axiosInstance.get(`/product?page=${page}`);
 
     dispatch({
       type: "GET_ALL_PRODUCTS_SUCCESS",
@@ -41,7 +41,6 @@ export const createProduct =
       const data = await axiosInstance.post("/product", productFormData, {
         headers,
       });
-      console.log(data);
       dispatch({
         type: "CREATE_PRODUCT_SUCCESS",
         payload: data,
@@ -54,3 +53,24 @@ export const createProduct =
       });
     }
   };
+
+export const getProductById = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: "GET_PRODUCT_REQUEST" });
+    const headers = {
+      "Content-Type": "multipart/form-data",
+      "Access-Control-Allow-Origin": "*",
+    };
+    const { data } = await axiosInstance.get(`/product/${id}`, { headers });
+    console.log(data);
+    dispatch({
+      type: "GET_PRODUCT_SUCCESS",
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: "GET_PRODUCT_FAIL",
+      payload: error.response ? error.response.status : error,
+    });
+  }
+};
