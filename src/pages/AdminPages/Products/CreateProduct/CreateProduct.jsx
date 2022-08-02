@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { getAllCategories } from "../../../store/actions/categoriesActions";
+import { getAllCategories } from "../../../../store/actions/categoriesActions";
 import { useSelector, useDispatch } from "react-redux";
-import { createProduct } from "../../../store/actions/productActions";
-import Loading from "../../../components/Loading/Loading";
-import ErrorMessage from "../../../components/ErrorMessage/ErrorMessage";
+import { createProduct } from "../../../../store/actions/productActions";
+import Loading from "../../../../components/Loading/Loading";
+import ErrorMessage from "../../../../components/ErrorMessage/ErrorMessage";
 import styles from "./CreateProudct.module.css";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { ProductCard } from "../../../components/ProductCard/ProductCard";
+import { ProductCard } from "../../../../components/ProductCard/ProductCard";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllProducts } from "../../../store/actions/productActions";
+import { getAllProducts } from "../../../../store/actions/productActions";
 import { Link } from "react-router-dom";
-import Loading from "../../../components/Loading/Loading";
+import Loading from "../../../../components/Loading/Loading";
 import styles from "./AdminProducts.module.css";
 
 function AdminProducts() {

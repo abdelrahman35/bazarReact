@@ -19,8 +19,10 @@ import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import Thanks from "./pages/ThanksForm/Thanks";
 import ProductDetails from "./pages/ProductDetails/ProductDetails";
 import AdminPanel from "./pages/AdminPages/AdminPanel/AdminPanel";
-import AdminProducts from "./pages/AdminPages/AdminProducts/AdminProducts";
-import CreateProduct from "./pages/AdminPages/CreateProduct/CreateProduct";
+import AdminProducts from "./pages/AdminPages/Products/AdminProducts/AdminProducts";
+import CreateProduct from "./pages/AdminPages/Products/CreateProduct/CreateProduct";
+import ListCateogries from "./pages/AdminPages/Categories/ListCategories/ListCateogries";
+import CreateCategory from "./pages/AdminPages/Categories/CreateCategory/CreateCategory";
 function App() {
   return (
     <>
@@ -53,6 +55,14 @@ function App() {
             path="/admin/products/create"
             index
             element={<CreateProduct />}
+          />
+
+          {/* categories routes */}
+          <Route path="/admin/categories" index element={<ListCateogries />} />
+          <Route
+            path="/admin/categories/create"
+            index
+            element={<CreateCategory />}
           />
           <Route path={"*"} element={<NotFoundPage />} />
         </Routes>
