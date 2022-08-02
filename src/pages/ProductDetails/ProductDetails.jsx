@@ -95,7 +95,7 @@ const ProductDetails = () => {
             </div>
             <div className="row">
               <h2>Customer Reviews</h2>
-              <div className="ms-4">
+              <div className="ms-4 d-flex fle">
                 <div className="row">
                   <h3>Reviewer Name is here</h3>
                   <h3>Reviewer rate is here</h3>
