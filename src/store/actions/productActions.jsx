@@ -74,3 +74,25 @@ export const getProductById = (id) => async (dispatch) => {
     });
   }
 };
+
+export const filterProducts = (maxPrice, minPrice) => async (dispatch) => {
+  try {
+    dispatch({ type: "FILTER_PRODUCTS_REQUEST" });
+    console.log(minPrice, typeof minPrice);
+    console.log(maxPrice, typeof maxPrice);
+    const { data } = await axiosInstance.get(
+      `/product/filter?priceMax=${null}&priceMin=${minPrice}`
+    );
+    console.log(data);
+    dispatch({
+      type: "FILTER_PRODUCTS_SUCCESS",
+      payload: data,
+    });
+  } catch (error) {
+    console.log(error);
+    dispatch({
+      type: "FILTER_PRODUCTS_FAIL",
+      payload: error.response ? error.response.status : error,
+    });
+  }
+};

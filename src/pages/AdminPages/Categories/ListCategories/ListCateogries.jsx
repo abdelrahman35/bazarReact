@@ -9,6 +9,8 @@ import {
   getAllCategories,
   deleteCategory,
 } from "../../../../store/actions/categoriesActions";
+import axiosInstance from "../../../../network/axiosInstance";
+import axios from "axios";
 function ListCateogries() {
   const dispatch = useDispatch();
   const {
@@ -16,21 +18,20 @@ function ListCateogries() {
     error: categoriesError,
     categories,
   } = useSelector((state) => state.allCategories);
-
   const categoriesArray = categories?.categories;
   const { deletedCategory } = useSelector((state) => state.deleteCategoryState);
   useEffect(() => {
     dispatch(getAllCategories());
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [deletedCategory]);
 
-  const handleDeleteCategory = (categoryId, categoryName) => {
+  const handleDeleteCategory = async (categoryId, categoryName) => {
     const respond = window.confirm(`Do you want to delete ${categoryName}`);
     if (respond) {
       dispatch(deleteCategory(categoryId));
     }
-    console.log(deletedCategory);
   };
+
   return (
     <div className="container mt-5">
       {categoriesLoading ? (

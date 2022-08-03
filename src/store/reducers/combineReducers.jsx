@@ -13,6 +13,7 @@ import {
   getAllProductsReducer,
   getProductByIdReducer,
   createProductReducer,
+  filterProductsReducer,
 } from "./productReducers";
 export default combineReducers({
   // userReducers
@@ -27,4 +28,5 @@ export default combineReducers({
   allProducts: getAllProductsReducer,
   createdProduct: createProductReducer,
   oneProduct: getProductByIdReducer,
+  filteredProducts: filterProductsReducer,
 });

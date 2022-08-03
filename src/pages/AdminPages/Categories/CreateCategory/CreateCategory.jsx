@@ -46,8 +46,8 @@ function CreateCategory() {
                 Create New Category
               </h2>
             </div>
-            <Form.Group className="mb-3" controlId="formBasicNewCategory">
-              <Form.Label>Enter Category Name</Form.Label>
+            <Form.Group className="mb-3">
+              <Form.Label htmlFor="category">Enter Category Name</Form.Label>
 
               <Form.Control
                 id="category"

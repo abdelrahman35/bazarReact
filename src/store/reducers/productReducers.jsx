@@ -38,3 +38,17 @@ export const getProductByIdReducer = (state = { product: {} }, action) => {
       return state;
   }
 };
+
+export const filterProductsReducer = (state = { product: [] }, action) => {
+  switch (action.type) {
+    case "FILTER_PRODUCTS_REQUEST":
+      return { loading: true };
+    case "FILTER_PRODUCTS_SUCCESS":
+      return { loading: false, product: action.payload };
+    case "FILTER_PRODUCTS_FAIL":
+      return { loading: false, error: action.payload };
+
+    default:
+      return state;
+  }
+};

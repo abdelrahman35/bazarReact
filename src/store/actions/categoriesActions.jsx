@@ -46,6 +46,8 @@ export const createCategory = (categoryName) => async (dispatch, getState) => {
     });
   }
 };
+
+/*
 export const deleteCategory = (categoryId) => async(dispatch , getState)=>{
   try {
     dispatch({ type: "DELETE_CATEGORY_REQUEST" });
@@ -72,3 +74,31 @@ export const deleteCategory = (categoryId) => async(dispatch , getState)=>{
     });
   }
 }
+*/
+
+export const deleteCategory = (categoryId) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: "DELETE_CATEGORY_REQUEST" });
+    const token = getState().userLogin.userInfo.token;
+
+    let { data } = await axiosInstance({
+      url: `/category`,
+      method: "delete",
+      data: { categoryId },
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        authorization: `Bearer ${token}`,
+      },
+    });
+    dispatch({
+      type: "DELETE_CATEGORY_SUCCESS",
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: "DELETE_CATEGORY_FAIL",
+      payload: error.response ? error.response.status : error,
+    });
+  }
+};
