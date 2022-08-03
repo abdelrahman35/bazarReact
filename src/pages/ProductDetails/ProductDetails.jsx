@@ -1,84 +1,167 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import styles from "./ProductDetails.module.css";
-import image1 from "../../assets/images/Productimage.png";
+import { getProductById } from "../../store/actions/productActions";
+import Loading from "../../components/Loading/Loading";
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import ReviewCard from "../../components/ReviewCard/ReviewCard";
+import Rateing from "../../components/Rateing/Rateing";
 
 const ProductDetails = () => {
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const {
+    loading: productLoading,
+    error: productError,
+    product,
+  } = useSelector((state) => state.oneProduct);
+  useEffect(() => {
+    dispatch(getProductById(id));
+  }, [id, dispatch]);
+
+  const prodcutReviewsArray = product?.product?.reviews;
+
   return (
     <>
-      <section>
-        <div className={`container d-flex `}>
-          <div
-            className={`row justify-content-center justify-content-lg-between ${styles.Content}`}
-          >
-            <div className="col-6 col-md-4">
-              <div className={styles.imgcontent}>
-                <img src={image1} />
+      {productLoading ? (
+        <div
+          className={`container d-flex justify-content-center align-items-center ${styles.conten}`}
+        >
+          <Loading />
+        </div>
+      ) : product ? (
+        <section>
+          <div className="container p-5">
+            <div className="row mt-5 justify-content-center align-items-center">
+              <div className="col-12 col-md-6">
+                <div className="d-flex justify-content-center align-content-center">
+                  <img
+                    className="w-75"
+                    src={`https://bazaarshop.s3.eu-west-3.amazonaws.com${product?.product?.image}`}
+                    alt={product?.product?.name}
+                  />
+                </div>
+              </div>
+              <div className="col-12 col-md-6">
+                <h1 className={styles.title}>{product?.product?.name}</h1>
+                <h3 className={styles.price}> EGP {product?.product?.price}</h3>
+                <h3 className={styles.review}>
+                  <Rateing rate={product?.product?.rating} />
+                  {product?.product?.rating} review
+                </h3>
+                <hr></hr>
+                <h3 className={styles.model}>
+                  model year : {product?.product?.modelYear}{" "}
+                </h3>
+                <h3 className={`${styles.descTitle}`}>
+                  About this item :
+                  <p className={styles.descBody}>
+                    {product?.product?.description}
+                  </p>
+                </h3>
+                <label
+                  htmlFor="quantity"
+                  className={`text-capitalize  ${styles.descTitle} mb-2`}
+                >
+                  quantity:
+                </label>
+                <div className="d-flex justify-content-start gap-3 align-items-center">
+                  <select
+                    id="quantity"
+                    className={`form-select ${styles["form-select"]}`}
+                    aria-label="Default select example"
+                  >
+                    <option defaultValue> {product?.product?.quantity}</option>
+
+                    {product?.product?.quantity === 1 ? (
+                      <option value="1" className="d-none">
+                        0
+                      </option>
+                    ) : (
+                      //map on quantity here
+                      <option value="" className="">
+                        {product?.product?.quantity - 1}
+                      </option>
+                    )}
+                  </select>
+
+                  <button className={`${styles.btnWarningg}`}>
+                    <i className="fa-solid fa-cart-plus me-2"></i>
+                    Add to cart
+                  </button>
+                  <div>
+                    <i
+                      className={`fa-solid fa-square-heart ${styles.favIcon}`}
+                    ></i>
+                  </div>
+                </div>
               </div>
             </div>
-            <div className="col-6 col-md-4">
-              <div className={styles.rightcont}>
-                <h1 className={styles.title}>High Quailty Vase Antique</h1>
-                <div className={styles.price}> EGP 599.99</div>
-                <div className={`d-flex ${styles.review} justify-content`}>
-                  <i className="fa-regular fa-star ms-3 mt-1"></i>
-                  <i className="fa-regular fa-star  mt-1"></i>
-                  <i className="fa-regular fa-star  mt-1"></i>
-                  <i className="fa-regular fa-star  mt-1"></i>
-                  <i className="fa-regular fa-star  mt-1"></i>
-                </div>
-                <hr />
-                <div className={styles.Pdate}>Product Date :24-2010</div>
-                <h4>About this item</h4>
-                <div>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                  risus dui, mollis eget sodales et, ultrices ac magna. Vivamus
-                  vel dapibus dui. Donec tempus, nulla quis pulvinar aliquet,
-                  dolor leo auctor quam, et ornare neque sem quis mi. In
-                  elementum bibendum quam id pharetra. Quisque quis lacus
-                  lectus. Aenean imperdiet quis elit ac commodo. Phasellus quis
-                  molestie tellus. In aliquam tellus lacus, vel ullamcorper mi
-                  mattis eu. Duis elementum sagittis sapien ac pretium.
-                </div>
-                <br />
-                <p>Quantity:</p>
-
-                <div className="d-flex">
-                  <div class={`dropdown ${styles.drop}`}>
-                    <button
-                      class={`btn dropdown-toggle`}
-                      type="button"
-                      id="dropdownMenu2"
-                      data-mdb-toggle="dropdown"
-                      aria-expanded="false"
-                    >
-                      1
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                      <li>
-                        <button class="dropdown-item" type="button">
-                          2
-                        </button>
-                      </li>
-                      <li>
-                        <button class="dropdown-item" type="button">
-                          3
-                        </button>
-                      </li>
-                      <li>
-                        <button class="dropdown-item" type="button">
-                          4
-                        </button>
-                      </li>
-                    </ul>
+            <div className="row justify-content-center">
+              <h2 className={styles.reviewTitle}>Reviews</h2>
+              <hr className={styles.reviewHr}></hr>
+              <div className="row mb-5">
+                <div className="col-12 col-md-4">
+                  <div
+                    className={`${styles.overallRating} d-flex justify-content-center align-items-center flex-column mt-3 pe-4`}
+                  >
+                    <h3 className={styles.overAll}>Overall Rating</h3>
+                    <h3 className={`${styles.overAllNum} mt-0 mb-2`}>
+                      {product?.product?.rating}
+                    </h3>
+                    <div className="mb-5">
+                      <Rateing rate={product?.product?.rating} size={"sm"} />
+                    </div>
                   </div>
-                  <button className={styles.btnWarningg}>Add To Cart</button>{" "}
-                  <i class={`fa-solid fa-square-heart ${styles.icon}`}></i>
+                </div>
+                <div className="col-12 col-md-4">
+                  <div className="mt-3">
+                    <div className="d-flex justify-content-start gap-2 align-items-center">
+                      <span className={styles.spanQuistionMark}>?</span>
+                      <h2 className={`${styles.reveiwParTitle} mt-2 `}>
+                        How do I review this product
+                      </h2>
+                    </div>
+
+                    <p>
+                      If you recently purchased this product from noon, you can
+                      go to your Orders page and click on the Submit Review
+                      button
+                    </p>
+                  </div>
+                </div>
+                <div className="col-12 col-md-4">
+                  <div className="mt-3">
+                    <div className="d-flex justify-content-start gap-2 align-items-center">
+                      <span className={styles.spanQuistionMark}>?</span>
+                      <h2 className={`${styles.reveiwParTitle} mt-2 `}>
+                        Where do the reviews come from
+                      </h2>
+                    </div>
+
+                    <p>
+                      Our reviews are from Bazaar customers who purchased the
+                      product and submitted a review
+                    </p>
+                  </div>
                 </div>
               </div>
+            </div>
+
+            <div className="row w-95 m-auto">
+              <h2 className={styles.customerReviewTitle}>Customer Reviews</h2>
+              {prodcutReviewsArray?.map((review, index) => (
+                <div className="d-flex " key={index}>
+                  <ReviewCard review={review} />
+                </div>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ) : productError ? (
+        <ErrorMessage />
+      ) : null}
     </>
   );
 };

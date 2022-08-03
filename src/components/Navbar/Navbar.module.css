@@ -115,7 +115,7 @@
 }
 
 .modalDialog {
-  margin-top: 200px !important;
+  margin-top: 130px !important;
 }
 .brand {
   color: var(--color6);
@@ -131,6 +131,7 @@
   text-transform: uppercase;
 }
 .brand:hover {
+  text-decoration: none;
   color: var(--color7);
 }
 .profileLink {
@@ -139,4 +140,9 @@
 }
 .profileLink:hover {
   color: var(--color7);
+}
+@media (min-width: 768px) and (max-width: 992px) {
+  .aa {
+    width: 100% !important;
+  }
 }

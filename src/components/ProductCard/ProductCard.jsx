@@ -1,42 +1,42 @@
 import React from "react";
 import styles from "./ProductCard.module.css";
-import ProductImage from "../../assets/images/ProductImage.svg";
-export const ProductCard = () => {
+import { Link } from "react-router-dom";
+export const ProductCard = ({ product }) => {
   return (
     <>
-      <div className={`card ${styles.cards}`}>
-        <img
-          className={`card-img-top ${styles.imgs}`}
-          src={ProductImage}
-          alt="Card img cap"
-        />
-        <div className="card-body">
-          <div className="d-flex flex-row ">
-            <div className="Product-Tit1">Product Name : </div>
-            <div className="Product-Tit ms-3">Camera 1920 </div>
-          </div>
-
-          <div className="d-flex">
-            <p className="Product-description">Model Year : </p>
-            <p className="Product-description ms-3">1920</p>
-          </div>
-          <h4 className={`${styles.ProductPrice} ms-3 `}>
-            200
-            <sup>EGP</sup>
-          </h4>
-          <div className="d-flex ">
-            <i className="fa-regular fa-star ms-3 mt-1"></i>
-            <i className="fa-regular fa-star  mt-1"></i>
-            <i className="fa-regular fa-star  mt-1"></i>
-            <i className="fa-regular fa-star  mt-1"></i>
-            <i className="fa-regular fa-star  mt-1"></i>
-            <i className="fa-regular fa-star  mt-1"></i>
-          </div>
-
-          <br />
-
-          <button className={styles.btnWarningg}>View Item</button>
-          <button className={styles.btnWarningg}>Add To Cart</button>
+      <div
+        className={`${styles.box17} d-flex flex-column justify-content-center
+                        align-items-center`}
+      >
+        <div className="text-center ">
+          <img
+            className="m-3 w-50"
+            src={`https://bazaarshop.s3.eu-west-3.amazonaws.com${product.image}`}
+            alt={product.name}
+          />
+        </div>
+        <h1 className={`${styles.cardInfo}`}>{product.name}</h1>
+        <div className={`${styles.icon} ${styles.icon1}`}>
+          <h3 className={styles.title}> {product.name}</h3>
+          <h3 className={styles.title}> {product.modelYear} yr</h3>
+          <h3 className={styles.title}> {product.price}EGP</h3>
+        </div>
+        <div className={`${styles.boxContent}`}>
+          <ul
+            className={`${styles.icon} d-flex justify-content-evenly
+                                align-items-center list-unstyled`}
+          >
+            <li>
+              <Link to={`/product-details/${product._id}`}>
+                <button className={styles.btnWarningg}>View Item</button>
+              </Link>
+            </li>
+            <li>
+              <Link to="/">
+                <button className={styles.btnWarningg}>Add To Cart</button>
+              </Link>
+            </li>
+          </ul>
         </div>
       </div>
     </>

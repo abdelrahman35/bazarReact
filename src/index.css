@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 body {
-  /* position: relative; */
   margin: 0;
 }
 :root {
@@ -13,6 +12,7 @@ body {
   --color6: #fff;
   --color7: #e74518;
   --color8: rgba(231, 98, 9, 0.25);
+  --color9: #7a726aa1;
 }
 .w-10 {
   width: 10% !important;
@@ -89,4 +89,9 @@ body {
 }
 .start-20 {
   left: 20px !important;
+}
+
+@import "rsuite/dist/rsuite.css";
+.rs-rate {
+  color: var(--color1);
 }

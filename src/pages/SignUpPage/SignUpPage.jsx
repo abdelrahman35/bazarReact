@@ -2,7 +2,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { register } from "../../store/actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -16,11 +16,13 @@ const initialValues = {
 };
 
 const validationSchema = Yup.object({
-  firstName: Yup.string().required("Required"),
+  firstName: Yup.string()
+    .required("Required")
+    .matches(/^\S*$/, "Name must not contain spaces"),
   email: Yup.string().required("Required").email("invalid email format"),
   lastName: Yup.string()
     .required("Required")
-    .matches(/^\S*$/, "* This field cannot contain only blankspaces"),
+    .matches(/^\S*$/, "Name must not contain spaces"),
   password: Yup.string()
     .required("Please Enter your password")
     .matches(
@@ -30,7 +32,6 @@ const validationSchema = Yup.object({
 });
 
 function SignUpPage() {
-  const [signedIn, setSignedIn] = useState("");
   // declarations
   const navigate = useNavigate();
   const location = useLocation();

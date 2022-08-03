@@ -1,82 +1,187 @@
-.Content {
-  margin-top: 10vw !important;
-  margin-left: 1vw;
+.conten {
+  height: 65vh;
 }
-.rightcont {
-  margin-left: -8vw;
+.form-select {
+  width: 20% !important;
+  height: 45px !important;
+  border: none !important;
+  background-color: var(--color5) !important;
+  color: var(--color3) !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  font-size: 22px !important;
 }
-.title {
-  font-family: var(--myFont);
-  margin-top: 1vw;
-  font-weight: bolder;
-  font-size: 4rem;
-  width: 40vw;
-}
-.imgcontent {
-  margin-top: 10vw;
-  margin-left: 5vw;
-  width: 100%;
-}
-.price {
-  font-family: var(--myFont);
-
-  font-size: 2em;
-}
-.review {
-  margin-left: -1vw;
-}
-.review i {
-  color: var(--color1);
-  padding-right: 1vw;
-}
-hr {
-  width: 30vw;
-  color: black;
-}
-.Pdate {
-  font-weight: lighter;
-  margin-bottom: 1vw;
-}
-
 .btnWarningg {
-  background-color: var(--color1) !important;
+  font-family: var(--myFont) !important;
   font-size: 18px !important;
-  height: 2vw;
-  width: 12vw;
-  border-radius: 10px;
-  border: 2px solid var(--color1) !important;
-  margin-left: 1vw;
-  cursor: pointer;
   color: var(--color6) !important;
+  background-color: var(--color1) !important;
+  border: 2px solid var(--color1) !important;
+  height: 45px !important;
+  border-radius: 5px !important;
+  width: 200px;
+  -webkit-border-radius: 5px !important;
+  -moz-border-radius: 5px !important;
+  -ms-border-radius: 5px !important;
+  -o-border-radius: 5px !important;
+  transition: all 0.3s !important;
+  -webkit-transition: all 0.3s !important;
+  -moz-transition: all 0.3s !important;
+  -ms-transition: all 0.3s !important;
+  -o-transition: all 0.3s !important;
+  cursor: pointer;
 }
 .btnWarningg:hover,
 .btnWarningg:active {
-  color: var(--color1) !important;
-  font-size: 18px !important;
-  height: 2vw;
-  width: 12vw;
-  background-color: transparent !important;
-  border: 2px solid var(--color1) !important;
-  box-shadow: none !important;
-  border-radius: 12px !important;
-  -webkit-border-radius: 12px !important;
-  -moz-border-radius: 12px !important;
-  -ms-border-radius: 12px !important;
-  -o-border-radius: 12px !important;
-}
-.icon {
-  background-color: var(--color3);
-  color: var(--color5);
   cursor: pointer;
-  transition: all 0.3s;
-  width: 20px;
-  height: 20px;
+  color: var(--color7) !important;
+  font-size: 19px !important;
+  background-color: transparent !important;
+  border: 2px solid var(--color7) !important;
+  box-shadow: none !important;
+  height: 45px !important;
+  border-radius: 5px !important;
+  -webkit-border-radius: 5px !important;
+  -moz-border-radius: 5px !important;
+  -ms-border-radius: 5px !important;
+  -o-border-radius: 5px !important;
 }
-.icon:hover {
-  color: var(--color6);
+.rotateHr {
+  transform: rotate(90deg);
 }
-.drop {
+.overallRating {
+  border-right: 1px solid;
+  height: 185px;
+}
+.title {
+  font-family: var(--myFont);
+  font-weight: 800;
+  font-size: 45px;
+  color: var(--color3);
+}
+.price {
+  font-family: var(--myFont);
+  font-size: 38px;
+  margin-top: 20px;
+  color: var(--color3);
+  font-weight: 400;
+}
+.review {
+  font-family: var(--myFont);
+  font-size: 20px;
+  margin-top: 20px;
+  font-weight: 300;
+  color: var(--color3);
+}
+.model {
+  font-family: var(--myFont);
+  font-size: 20px;
+  margin-top: 20px;
+  font-weight: 300;
+  color: var(--color3);
+  text-transform: capitalize;
+}
+.descTitle {
+  font-family: var(--myFont);
+  font-weight: 800;
+  font-size: 20px;
+  color: var(--color3);
+  text-transform: capitalize;
+}
+.descBody {
+  margin-top: 8px;
+  font-family: var(--myFont);
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--color3);
+  text-transform: capitalize;
+}
+
+.favIcon {
+  font-size: 40px;
+  color: var(--color5);
+  background-color: var(--color3);
+  height: 25px;
+  width: 28px;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  -o-transition: all 0.5s;
+}
+.favIcon:hover {
+  color: var(--color3);
   background-color: var(--color5);
-  border-radius: 0.5vw;
-  height: 2vw;
+}
+
+.reviewTitle {
+  font-family: var(--myFont);
+  font-size: 35px;
+  margin-top: 20px;
+  font-weight: 500;
+  color: var(--color3);
+}
+.reviewHr {
+  width: 95%;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.overAll {
+  font-family: var(--myFont);
+  font-size: 25px;
+  margin-top: 20px;
+  font-weight: 300;
+  color: var(--color3);
+}
+.overAllNum {
+  font-family: var(--myFont);
+  font-size: 25px;
+  margin-top: 20px;
+  font-weight: 600;
+  color: var(--color1);
+}
+
+.reveiwParTitle {
+  font-family: var(--myFont);
+  font-weight: 800;
+  font-size: 20px;
+  color: var(--color3);
+  text-transform: capitalize;
+}
+.spanQuistionMark {
+  font-family: var(--myFont);
+  width: 10px;
+  height: 10px;
+  text-align: center;
+  background-color: black;
+  color: var(--color6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  border-radius: 45px;
+  font-size: 15px;
+  font-weight: 600;
+}
+.customerReviewTitle {
+  font-family: var(--myFont);
+  font-size: 30px;
+  margin-top: 20px;
+  font-weight: 500;
+  color: var(--color3);
+}
+@media (max-width: 767px) {
+  .overallRating {
+    border-right: 0px solid;
+    border-bottom: 1px solid;
+    height: 120px;
+    margin-bottom: 20px;
+  }
 }

@@ -1,82 +1,126 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./ProfilePage.module.css";
 import { logout } from "../../store/actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
-import Loading from "../../components/Loading/Loading";
 import { useNavigate } from "react-router-dom";
-
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import Loading from "../../components/Loading/Loading";
 function ProfilePage() {
+  const [renderedData, setRenderedData] = useState("accountDetails");
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userLogin = useSelector((state) => state.userLogin);
   const { loading: userLoading, error: userError, userInfo } = userLogin;
   const handleLogout = () => {
     dispatch(logout());
+    navigate("/", { replace: true });
   };
-  const test = () => {
-    console.log("error");
-  };
+  useEffect(() => {
+    if (!userInfo) {
+      navigate("*", { replace: true });
+    }
+  }, [userInfo, navigate]);
+
   return userLoading ? (
-    <Loading></Loading>
+    <Loading />
+  ) : userError ? (
+    <ErrorMessage />
   ) : userInfo ? (
-    <div className={`${styles.page} `}>
-      <div className="container">
-        <div className="row ">
+    <div className={`${styles.page}`}>
+      <div className={`container `}>
+        <div className={`row `}>
           <div className="col-lg-4 mt-5">
-            <div className={`card w-100 ${styles.leftCard}`}>
+            <div className={`card shadow w-100 ${styles.leftCard}`}>
               <div className="card-body">
-                <div className="card-title m-lg-3 fs-5">
-                  <i class="fa-regular fa-user"></i>{" "}
+                <div
+                  className={`card-title m-lg-3 fs-5 ${styles.title}`}
+                  onClick={() => {
+                    setRenderedData("accountDetails");
+                  }}
+                >
+                  <i className="fa-regular fa-user"></i>{" "}
                   <p className="d-inline ms-2">My Bazar Account</p>
                 </div>
-                <div className="card-title m-lg-3 fs-5">
+                <div
+                  onClick={() => {
+                    setRenderedData("orders");
+                  }}
+                  className={`card-title m-lg-3 fs-5 ${styles.title}`}
+                >
                   <i className="fa-regular fa-clipboard-list"></i>{" "}
                   <p className="d-inline ms-2">Orders</p>
                 </div>
-                <div className="card-title m-lg-3 fs-5">
+                <div
+                  onClick={() => {
+                    setRenderedData("savedItems");
+                  }}
+                  className={`card-title m-lg-3 fs-5 ${styles.title}`}
+                >
                   <i className="fa-regular fa-heart"></i>{" "}
                   <p className="d-inline ms-1">Saved Items</p>
                 </div>
-                <div className="card-title m-lg-3 fs-5">
-                  <i className="fa-regular fa-clock-rotate-left"></i>{" "}
-                  <p className="d-inline ms-1">Recently Added</p>
-                </div>
-
-                <hr />
-                <Link
-                  to="#"
-                  className="card-link link-dark text-decoration-none m-lg-3"
-                >
-                  <button onClick={handleLogout}> Logout</button>
+                <hr className={`${styles.hr}`} />
+                <Link to="/" className="text-decoration-none">
+                  <p className="link-dark ms-1  m-lg-3 fs-6 ">Address Book</p>
                 </Link>
+                <Link to="/changePassword" className="text-decoration-none">
+                  <p className="link-dark ms-1  m-lg-3 fs-6 ">
+                    Change Password
+                  </p>
+                </Link>
+                <hr className={`${styles.hr}`} />
+
+                <button
+                  className={`${styles.btnWarningg}`}
+                  onClick={handleLogout}
+                >
+                  {" "}
+                  Logout
+                </button>
               </div>
             </div>
           </div>
           <div className="col-lg-8 mt-5">
-            <div className="card w-100">
-              <div className="card-body">
-                <h5 className="card-title">Card title</h5>
-                <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                <p className="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </p>
-                <Link to="#" className="card-link">
-                  Card link
-                </Link>
-                <Link to="#" className="card-link ">
-                  Another link
-                </Link>
+            {renderedData === "accountDetails" ? (
+              <div className={`card shadow w-100 ${styles.rightCard}`}>
+                <div className="card-body">
+                  <h5 className="card-title">Account Overview</h5>
+                  <hr className={`${styles.hr}`} />{" "}
+                  <h6 className="card-subtitle mb-3 text-muted">
+                    Hello {userInfo.firstName + " " + userInfo.lastName}
+                  </h6>
+                  <h6 className="card-subtitle mb-3 text-muted">
+                    email : {userInfo.email}{" "}
+                  </h6>
+                  <h6 className="card-subtitle mb-3 text-muted">
+                    Number of Saved Addresses : {userInfo.address.length}{" "}
+                  </h6>
+                  <h6 className="card-subtitle mb-3 text-muted">
+                    Number of Orders : {userInfo.address.length}{" "}
+                  </h6>
+                </div>
               </div>
-            </div>
+            ) : renderedData === "orders" ? (
+              <div className={`card shadow w-100 ${styles.rightCard}`}>
+                <div className="card-body">
+                  <h5 className="card-title">Orders</h5>
+                  <hr className={`${styles.hr}`} />{" "}
+                </div>
+              </div>
+            ) : renderedData === "savedItems" ? (
+              <div className={`card shadow w-100 ${styles.rightCard}`}>
+                <div className="card-body">
+                  <h5 className="card-title">Saved Items</h5>
+                  <hr className={`${styles.hr}`} />{" "}
+                </div>
+              </div>
+            ) : null}
           </div>
         </div>
       </div>
     </div>
-  ) : (
-    navigate("**", { replace: true })
-  );
+  ) : null;
 }
 
 export default ProfilePage;

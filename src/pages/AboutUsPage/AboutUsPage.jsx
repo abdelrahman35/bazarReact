@@ -37,7 +37,7 @@ function AboutUsPage() {
             <h3>Our Team</h3>
             <div className={styles.HR}></div>
           </div>
-          <div className=" container d-flex">
+          <div className=" container d-flex mb-5">
             <div className="row justify-content-center justify-content-lg-between text-center text-md-start align-items-center">
               <div className="col-12 col-md-7">
                 <div className={styles.Last}>
@@ -57,7 +57,7 @@ function AboutUsPage() {
               </div>
               <div className="col-12 col-md-4">
                 <div>
-                  <img src={image1} />
+                  <img src={image1} alt="" />
                 </div>
               </div>
             </div>

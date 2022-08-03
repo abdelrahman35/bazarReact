@@ -6,11 +6,14 @@
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
     "@mui/material": "^5.9.1",
+    "@rsuite/icons": "^1.0.2",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
     "bootstrap": "^5.2.0-beta1",
+    "font-awesome": "^4.7.0",
+    "form-data": "^4.0.0",
     "formik": "^2.2.9",
     "rc-rate": "^2.9.2",
     "react": "^18.2.0",
@@ -24,7 +27,7 @@
     "redux": "^4.2.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.1",
-    "rsuite": "^5.16.1",
+    "rsuite": "^5.16.3",
     "spinkit": "^2.0.1",
     "styled-components": "^5.3.5",
     "web-vitals": "^2.1.4",
@@ -53,5 +56,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@fortawesome/fontawesome-free": "^6.1.2"
   }
 }
