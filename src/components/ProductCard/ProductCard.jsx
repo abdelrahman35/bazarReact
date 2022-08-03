@@ -15,11 +15,11 @@ export const ProductCard = ({ product }) => {
             alt={product.name}
           />
         </div>
-        <h1 className={`${styles.cardInfo}`}>Products Name : {product.name}</h1>
+        <h1 className={`${styles.cardInfo}`}>{product.name}</h1>
         <div className={`${styles.icon} ${styles.icon1}`}>
-          <h3 className={styles.title}>Products Name : {product.name}</h3>
-          <h3 className={styles.title}>Model Year : {product.modelYear}</h3>
-          <h3 className={styles.title}>Model Year : {product.modelYear}</h3>
+          <h3 className={styles.title}> {product.name}</h3>
+          <h3 className={styles.title}> {product.modelYear} yr</h3>
+          <h3 className={styles.title}> {product.price}EGP</h3>
         </div>
         <div className={`${styles.boxContent}`}>
           <ul
