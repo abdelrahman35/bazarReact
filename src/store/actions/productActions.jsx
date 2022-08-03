@@ -45,7 +45,6 @@ export const createProduct =
         type: "CREATE_PRODUCT_SUCCESS",
         payload: data,
       });
-      console.log(data);
     } catch (error) {
       dispatch({
         type: "CREATE_PRODUCT_FAIL",
@@ -62,7 +61,6 @@ export const getProductById = (id) => async (dispatch) => {
       "Access-Control-Allow-Origin": "*",
     };
     const { data } = await axiosInstance.get(`/product/${id}`, { headers });
-    console.log(data);
     dispatch({
       type: "GET_PRODUCT_SUCCESS",
       payload: data,
@@ -75,15 +73,14 @@ export const getProductById = (id) => async (dispatch) => {
   }
 };
 
-export const filterProducts = (maxPrice, minPrice) => async (dispatch) => {
+export const filterProducts = (filterQuery) => async (dispatch) => {
   try {
+    console.log(filterQuery);
     dispatch({ type: "FILTER_PRODUCTS_REQUEST" });
-    console.log(minPrice, typeof minPrice);
-    console.log(maxPrice, typeof maxPrice);
-    const { data } = await axiosInstance.get(
-      `/product/filter?priceMax=${null}&priceMin=${minPrice}`
-    );
+
+    const { data } = await axiosInstance.get(`/product/filter?${filterQuery}`);
     console.log(data);
+
     dispatch({
       type: "FILTER_PRODUCTS_SUCCESS",
       payload: data,

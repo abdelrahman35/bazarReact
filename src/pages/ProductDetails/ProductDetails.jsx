@@ -21,7 +21,11 @@ const ProductDetails = () => {
   }, [id, dispatch]);
 
   const prodcutReviewsArray = product?.product?.reviews;
-
+  const productQuantity = product?.product?.quantity;
+  const quantityArray = Array.from(
+    { length: productQuantity },
+    (_, index) => index + 1
+  );
   return (
     <>
       {productLoading ? (
@@ -60,6 +64,10 @@ const ProductDetails = () => {
                     {product?.product?.description}
                   </p>
                 </h3>
+                <p>
+                  Stock:{" "}
+                  {product?.product?.quantity > 0 ? "in stock" : "out of stock"}
+                </p>
                 <label
                   htmlFor="quantity"
                   className={`text-capitalize  ${styles.descTitle} mb-2`}
@@ -72,18 +80,11 @@ const ProductDetails = () => {
                     className={`form-select ${styles["form-select"]}`}
                     aria-label="Default select example"
                   >
-                    <option defaultValue> {product?.product?.quantity}</option>
-
-                    {product?.product?.quantity === 1 ? (
-                      <option value="1" className="d-none">
-                        0
+                    {quantityArray.map((x, index) => (
+                      <option key={index} value={x}>
+                        {x}
                       </option>
-                    ) : (
-                      //map on quantity here
-                      <option value="" className="">
-                        {product?.product?.quantity - 1}
-                      </option>
-                    )}
+                    ))}
                   </select>
 
                   <button className={`${styles.btnWarningg}`}>

@@ -44,7 +44,7 @@ export const filterProductsReducer = (state = { product: [] }, action) => {
     case "FILTER_PRODUCTS_REQUEST":
       return { loading: true };
     case "FILTER_PRODUCTS_SUCCESS":
-      return { loading: false, product: action.payload };
+      return { loading: false, filteredProducts: action.payload };
     case "FILTER_PRODUCTS_FAIL":
       return { loading: false, error: action.payload };
 

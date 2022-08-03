@@ -1,14 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { filterProducts } from "../../store/actions/productActions";
 function Filter() {
   const dispatch = useDispatch();
-  const [minPrice, setMinPrice] = useState(0);
-  const [maxPrice, setMaxPrice] = useState(0);
+  const { categories } = useSelector((state) => state.allCategories);
+  const categoriesArray = categories?.categories;
+  const [filterObject, setFilterObject] = useState({});
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(filterProducts(maxPrice, minPrice));
+    const filterArray = Object.entries(filterObject);
+    console.log(filterArray);
+    const filtered = filterArray.filter(([key, value]) => !isNaN(value));
+    console.log(filtered);
+    const keyValueArray = [];
+    for (let i = 0; i < filtered.length; i++) {
+      keyValueArray.push(`${filtered[i][0]}=${filtered[i][1]}&`);
+    }
+    const apiArray = keyValueArray.join("").slice(0, -1);
+    dispatch(filterProducts(apiArray));
   };
+
   return (
     <div>
       <form
@@ -26,10 +37,13 @@ function Filter() {
             id="priceMinFilter"
             type="number"
             onChange={(e) => {
-              setMinPrice(parseInt(e.target.value));
-              console.log(typeof minPrice);
+              setFilterObject({
+                ...filterObject,
+                priceMin: parseInt(e.target.value),
+              });
             }}
           />
+          <hr />
           <label className="col-6" htmlFor="priceMaxFilter">
             Max Price
           </label>
@@ -40,10 +54,47 @@ function Filter() {
             id="priceMaxFilter"
             type="number"
             onChange={(e) => {
-              setMaxPrice(parseInt(e.target.value));
-              //   console.log(typeof maxPrice);
+              setFilterObject({
+                ...filterObject,
+                priceMax: parseInt(e.target.value),
+              });
             }}
           />
+          <hr />
+          <label className="col-6" htmlFor="modelYearMin">
+            Max Model Year
+          </label>
+          <input
+            min={0}
+            className="col-5 m-1"
+            name="modelYearMin"
+            id="modelYearMin"
+            type="number"
+            onChange={(e) => {
+              setFilterObject({
+                ...filterObject,
+                modelYearMin: parseInt(e.target.value),
+              });
+            }}
+          />
+          <hr />
+          <label className="col-6" htmlFor="modelYearMax">
+            Min Model Year
+          </label>
+          <input
+            min={0}
+            className="col-5 m-1"
+            name="modelYearMax"
+            id="modelYearMax"
+            type="number"
+            onChange={(e) => {
+              setFilterObject({
+                ...filterObject,
+                modelYearMax: parseInt(e.target.value),
+              });
+            }}
+          />
+          <hr />
         </div>
         <input
           type={"submit"}

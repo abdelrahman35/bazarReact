@@ -171,14 +171,13 @@ function CreateProduct() {
                 }}
               >
                 {categoriesArray?.map((category, index) => (
-                  <optgroup
-                    className={`input ${styles.formControl}`}
+                  <option
+                    value={category._id}
                     key={index}
+                    className={`input ${styles.formControl}`}
                   >
-                    <option value={category._id}>
-                      {category.categoryName}
-                    </option>
-                  </optgroup>
+                    {category.categoryName}
+                  </option>
                 ))}
               </Form.Select>
             </Form.Group>
