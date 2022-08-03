@@ -170,7 +170,13 @@
   font-size: 15px;
   font-weight: 600;
 }
-
+.customerReviewTitle {
+  font-family: var(--myFont);
+  font-size: 30px;
+  margin-top: 20px;
+  font-weight: 500;
+  color: var(--color3);
+}
 @media (max-width: 767px) {
   .overallRating {
     border-right: 0px solid;

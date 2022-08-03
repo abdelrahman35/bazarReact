@@ -131,6 +131,7 @@
   text-transform: uppercase;
 }
 .brand:hover {
+  text-decoration: none;
   color: var(--color7);
 }
 .profileLink {

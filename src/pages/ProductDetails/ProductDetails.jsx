@@ -5,6 +5,8 @@ import styles from "./ProductDetails.module.css";
 import { getProductById } from "../../store/actions/productActions";
 import Loading from "../../components/Loading/Loading";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import ReviewCard from "../../components/ReviewCard/ReviewCard";
+import Rateing from "../../components/Rateing/Rateing";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -17,6 +19,8 @@ const ProductDetails = () => {
   useEffect(() => {
     dispatch(getProductById(id));
   }, [id, dispatch]);
+
+  const prodcutReviewsArray = product?.product?.reviews;
 
   return (
     <>
@@ -43,6 +47,7 @@ const ProductDetails = () => {
                 <h1 className={styles.title}>{product?.product?.name}</h1>
                 <h3 className={styles.price}> EGP {product?.product?.price}</h3>
                 <h3 className={styles.review}>
+                  <Rateing rate={product?.product?.rating} />
                   {product?.product?.rating} review
                 </h3>
                 <hr></hr>
@@ -102,9 +107,12 @@ const ProductDetails = () => {
                     className={`${styles.overallRating} d-flex justify-content-center align-items-center flex-column mt-3 pe-4`}
                   >
                     <h3 className={styles.overAll}>Overall Rating</h3>
-                    <h3 className={`${styles.overAllNum} mt-0 mb-0`}>
+                    <h3 className={`${styles.overAllNum} mt-0 mb-2`}>
                       {product?.product?.rating}
                     </h3>
+                    <div className="mb-5">
+                      <Rateing rate={product?.product?.rating} size={"sm"} />
+                    </div>
                   </div>
                 </div>
                 <div className="col-12 col-md-4">
@@ -140,21 +148,14 @@ const ProductDetails = () => {
                 </div>
               </div>
             </div>
-            <div className="row">
-              <h2>Customer Reviews</h2>
-              <div className="ms-4 d-flex fle">
-                <div className="row">
-                  <h3>Reviewer Name is here</h3>
-                  <h3>Reviewer rate is here</h3>
-                  <h3>date of reviewer</h3>
-                  <p>
-                    The battery is not as indicated it does not stay till 14
-                    days as specified but rather 2 days max but the band overall
-                    is great
-                  </p>
-                  <hr></hr>
+
+            <div className="row w-95 m-auto">
+              <h2 className={styles.customerReviewTitle}>Customer Reviews</h2>
+              {prodcutReviewsArray?.map((review, index) => (
+                <div className="d-flex " key={index}>
+                  <ReviewCard review={review} />
                 </div>
-              </div>
+              ))}
             </div>
           </div>
         </section>

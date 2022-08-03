@@ -90,3 +90,8 @@ body {
 .start-20 {
   left: 20px !important;
 }
+
+@import "rsuite/dist/rsuite.css";
+.rs-rate {
+  color: var(--color1);
+}
