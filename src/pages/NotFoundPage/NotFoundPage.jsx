@@ -9,11 +9,14 @@ const NotFound = ({ state }) => {
   return (
     <>
       <section className={`${styles.errorSection} d-flex`}>
-        {location.state ? <ErrorMessage statusCode={location.state} /> : null}
         <div className="container">
           <div className="row justify-content-center align-items-center m-auto text-center">
             <div className={styles.manIcon}></div>
-            <h3 className={styles.title}>404</h3>
+            <h3 className={styles.title}>
+              {location.state ? (
+                <ErrorMessage statusCode={location.state} />
+              ) : null}
+            </h3>
             <p className={styles.info}>Oh! you insert wrong data</p>
             <Link type="button" className={`w-55 ${styles.homeBtn}`} to="/">
               Back to Home again

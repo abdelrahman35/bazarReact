@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import styles from "./AdminPanel.module.css";
 function AdminPanel() {
   return (
     <>
-      <div className="container mt-5 mb-5">
+      <div className={`container mt-5 mb-5  ${styles.cont} `}>
         <div className="row">
           <div className="col-lg-6">
             <div className="card">
