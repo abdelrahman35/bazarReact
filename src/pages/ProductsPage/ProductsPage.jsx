@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import Loading from "../../components/Loading/Loading";
 import styles from "./Products.module.css";
 import Filter from "../../components/FilterComponent/Filter";
+import SortComponent from "../../components/SortComponent/SortComponent";
 function ProudctPage() {
   const dispatch = useDispatch();
 
@@ -50,6 +51,11 @@ function ProudctPage() {
               <div className="card">
                 <div className="card-body">
                   <Filter />
+                </div>
+              </div>
+              <div className="card">
+                <div className="card-body">
+                  <SortComponent />
                 </div>
               </div>
             </div>

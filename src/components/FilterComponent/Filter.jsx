@@ -3,15 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { filterProducts } from "../../store/actions/productActions";
 function Filter() {
   const dispatch = useDispatch();
-  const { categories } = useSelector((state) => state.allCategories);
-  const categoriesArray = categories?.categories;
   const [filterObject, setFilterObject] = useState({});
   const handleSubmit = (e) => {
     e.preventDefault();
     const filterArray = Object.entries(filterObject);
-    console.log(filterArray);
     const filtered = filterArray.filter(([key, value]) => !isNaN(value));
-    console.log(filtered);
     const keyValueArray = [];
     for (let i = 0; i < filtered.length; i++) {
       keyValueArray.push(`${filtered[i][0]}=${filtered[i][1]}&`);
@@ -19,7 +15,6 @@ function Filter() {
     const apiArray = keyValueArray.join("").slice(0, -1);
     dispatch(filterProducts(apiArray));
   };
-
   return (
     <div>
       <form
@@ -91,6 +86,26 @@ function Filter() {
               setFilterObject({
                 ...filterObject,
                 modelYearMax: parseInt(e.target.value),
+              });
+            }}
+          />
+          <hr />
+          <label className="col-6" htmlFor="modelYearMax">
+            rating
+          </label>
+          {filterObject?.rating}
+          <input
+            min={0}
+            className="col-5 m-1"
+            name="modelYearMax"
+            id="modelYearMax"
+            type="range"
+            step={1}
+            max={5}
+            onChange={(e) => {
+              setFilterObject({
+                ...filterObject,
+                rating: parseInt(e.target.value),
               });
             }}
           />
