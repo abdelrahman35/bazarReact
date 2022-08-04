@@ -38,7 +38,9 @@ function AdminProducts() {
   return (
     <div className="container mt-5">
       {productsLoading ? (
-        <div className="d-flex justify-content-center align-self-center mt-5 mb-5">
+        <div
+          className={`container d-flex justify-content-center align-items-center ${styles.conten}`}
+        >
           <Loading />
         </div>
       ) : products ? (
@@ -55,7 +57,7 @@ function AdminProducts() {
             <table className="table table-hover">
               <thead>
                 <tr>
-                  <th scope="col">#</th>
+                  <th scope="col">Number</th>
                   <th scope="col">Name</th>
                   <th scope="col">Price</th>
                   <th scope="col">Edit</th>

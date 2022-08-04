@@ -7,23 +7,16 @@ function AdminPanel() {
       <div className={`container mt-5 mb-5  ${styles.cont} `}>
         <div className="row">
           <div className="col-lg-6">
-            <div className="card">
-              <div className="card-title">
-                <Link to="/admin/products">Products</Link>
-              </div>
-            </div>
+            <Link to="/admin/products" className={`card ${styles.cardio}`}>
+              Products
+              <div className="card-title"></div>
+            </Link>
           </div>
           <div className="col-lg-6">
-            <div className="card">
-              <div className="card-title">
-                <Link to="/admin/categories">Categories</Link>
-              </div>
-            </div>
+            <Link to="/admin/categories" className={`card ${styles.cardio}`}>
+              <div className="card-title">Categories</div>
+            </Link>
           </div>
-        </div>
-        <div className="row">
-          <div className="col-lg-6"></div>
-          <div className="col-lg-6"></div>
         </div>
       </div>
     </>
