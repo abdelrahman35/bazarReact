@@ -18,7 +18,7 @@ function ErrorMessage({ statusCode }) {
     }
   }, [statusCode]);
   return (
-    <div className="alert alert-danger" role="alert">
+    <div className="alert " role="alert">
       {message}
     </div>
   );

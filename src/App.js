@@ -1,8 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.js";
-// import "@fortawesome/fontawesome-free/css/all.css";
-// import "@fortawesome/fontawesome-free/js/font-pro";
-
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar/index";
@@ -25,6 +22,7 @@ import AdminProducts from "./pages/AdminPages/Products/AdminProducts/AdminProduc
 import CreateProduct from "./pages/AdminPages/Products/CreateProduct/CreateProduct";
 import ListCateogries from "./pages/AdminPages/Categories/ListCategories/ListCateogries";
 import CreateCategory from "./pages/AdminPages/Categories/CreateCategory/CreateCategory";
+import CategoryDetails from "./pages/CategoryDetails/CategoryDetails";
 function App() {
   return (
     <>
@@ -60,6 +58,11 @@ function App() {
           />
 
           {/* categories routes */}
+          <Route
+            path="/category/:categoryId"
+            index
+            element={<CategoryDetails />}
+          />
           <Route path="/admin/categories" index element={<ListCateogries />} />
           <Route
             path="/admin/categories/create"

@@ -2,17 +2,20 @@ import React, { useEffect } from "react";
 import styles from "./CategoryNavbar.module.css";
 import { Link } from "react-router-dom";
 import { getAllCategories } from "../../store/actions/categoriesActions";
+import { filterProducts } from "../../store/actions/productActions";
 import { useSelector, useDispatch } from "react-redux";
 function CategoryNavbar() {
   const dispatch = useDispatch();
   const { categories: allCategories } = useSelector(
-    (state) => state.allCategories,
+    (state) => state.allCategories
   );
   const categoriesArray = allCategories?.categories;
   useEffect(() => {
     dispatch(getAllCategories());
   }, [dispatch]);
-
+  // const handleProductOFCategory = (categoryId) => {
+  //   dispatch(filterProducts(categoryId));
+  // };
   return (
     <>
       <nav
@@ -54,7 +57,10 @@ function CategoryNavbar() {
                 >
                   {categoriesArray?.map((category, index) => (
                     <li key={index} className="nav-item ">
-                      <Link className={`  nav-link ${styles.navLink}`} to="/">
+                      <Link
+                        className={`  nav-link ${styles.navLink}`}
+                        to={`/category/${category._id}`}
+                      >
                         {category.categoryName}
                       </Link>
                     </li>
