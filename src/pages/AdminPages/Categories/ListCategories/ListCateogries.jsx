@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import Loading from "../../../../components/Loading/Loading";
 import ErrorMessage from "../../../../components/ErrorMessage/ErrorMessage";
 import styles from "./ListCategories.module.css";
+
 import {
   getAllCategories,
   deleteCategory,
@@ -35,7 +36,9 @@ function ListCateogries() {
   return (
     <div className="container mt-5">
       {categoriesLoading ? (
-        <div className="d-flex justify-content-center align-self-center mt-5 mb-5">
+        <div
+          className={`container d-flex justify-content-center align-items-center ${styles.conten}`}
+        >
           <Loading />
         </div>
       ) : categories ? (
@@ -52,7 +55,7 @@ function ListCateogries() {
             <table className="table table-striped ">
               <thead>
                 <tr>
-                  <th scope="col">#</th>
+                  <th scope="col">Number</th>
                   <th scope="col">Name</th>
                   <th scope="col">Delete</th>
                 </tr>
@@ -68,7 +71,7 @@ function ListCateogries() {
                         onClick={() => {
                           handleDeleteCategory(
                             category._id,
-                            category.categoryName
+                            category.categoryName,
                           );
                         }}
                       >
