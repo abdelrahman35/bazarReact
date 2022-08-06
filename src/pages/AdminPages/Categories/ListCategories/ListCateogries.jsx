@@ -5,15 +5,18 @@ import Button from "react-bootstrap/Button";
 import Loading from "../../../../components/Loading/Loading";
 import ErrorMessage from "../../../../components/ErrorMessage/ErrorMessage";
 import styles from "./ListCategories.module.css";
-
+import { useNavigate } from "react-router-dom";
 import {
   getAllCategories,
   deleteCategory,
 } from "../../../../store/actions/categoriesActions";
-import axiosInstance from "../../../../network/axiosInstance";
-import axios from "axios";
 function ListCateogries() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { error: userError, userInfo } = useSelector(
+    (state) => state.userLogin
+  );
+
   const {
     loading: categoriesLoading,
     error: categoriesError,
@@ -22,7 +25,15 @@ function ListCateogries() {
   const categoriesArray = categories?.categories;
   const { deletedCategory } = useSelector((state) => state.deleteCategoryState);
   useEffect(() => {
-    dispatch(getAllCategories());
+    if (userInfo?.isAdmin) {
+      dispatch(getAllCategories());
+    } else {
+      navigate("*", { replace: true, state: userError });
+    }
+    if (categoriesError) {
+      navigate("*", { replace: true, state: categoriesError });
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [deletedCategory]);
 
@@ -41,7 +52,7 @@ function ListCateogries() {
         >
           <Loading />
         </div>
-      ) : categories ? (
+      ) : categories && userInfo?.isAdmin ? (
         <div className={`${styles.page}`}>
           {" "}
           <div className="row">
@@ -71,7 +82,7 @@ function ListCateogries() {
                         onClick={() => {
                           handleDeleteCategory(
                             category._id,
-                            category.categoryName,
+                            category.categoryName
                           );
                         }}
                       >

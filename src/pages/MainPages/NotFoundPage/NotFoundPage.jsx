@@ -5,7 +5,7 @@ import ErrorMessage from "../../../components/ErrorMessage/ErrorMessage";
 import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-const NotFound = ({ state }) => {
+const NotFound = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
