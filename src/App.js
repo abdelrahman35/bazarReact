@@ -37,6 +37,7 @@ import CategoryDetails from "./pages/CategoryPages/CategoryDetails/CategoryDetai
 // order pages
 import Order from "./pages/OrderPages/Order/Order";
 import Payment from "./pages/OrderPages/Payment/Payment";
+import ListOrders from "./pages/AdminPages/Orders/ListOrders/ListOrders";
 function App() {
   return (
     <>
@@ -85,6 +86,8 @@ function App() {
             index
             element={<CreateCategory />}
           />
+          {/* orders Routes */}
+          <Route path="/admin/order" index element={<ListOrders />} />
           <Route path={"*"} element={<NotFoundPage />} />
         </Routes>
         <Footer />

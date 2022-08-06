@@ -75,18 +75,15 @@ export const getProductById = (id) => async (dispatch) => {
 
 export const filterProducts = (filterQuery) => async (dispatch) => {
   try {
-    console.log(filterQuery);
     dispatch({ type: "FILTER_PRODUCTS_REQUEST" });
 
     const { data } = await axiosInstance.get(`/product/filter?${filterQuery}`);
-    console.log(data);
 
     dispatch({
       type: "FILTER_PRODUCTS_SUCCESS",
       payload: data,
     });
   } catch (error) {
-    console.log(error);
     dispatch({
       type: "FILTER_PRODUCTS_FAIL",
       payload: error.response ? error.response.status : error,
