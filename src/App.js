@@ -23,6 +23,8 @@ import CreateProduct from "./pages/AdminPages/Products/CreateProduct/CreateProdu
 import ListCateogries from "./pages/AdminPages/Categories/ListCategories/ListCateogries";
 import CreateCategory from "./pages/AdminPages/Categories/CreateCategory/CreateCategory";
 import CategoryDetails from "./pages/CategoryDetails/CategoryDetails";
+import Order from "./pages/Order/Order";
+import Payment from "./pages/Payment/Payment";
 function App() {
   return (
     <>
@@ -43,6 +45,8 @@ function App() {
           <Route path="/aboutus" index element={<AboutUsPage />} />
           <Route path="/forgetPassword" index element={<ForgetPassword />} />
           <Route path="/changePassword" index element={<ChangePassword />} />
+          <Route path="/order" index element={<Order />} />
+          <Route path="/payment" index element={<Payment />} />
           <Route path="/profile" index element={<ProfilePage />} />
           <Route
             path="/resetPassword/:token"

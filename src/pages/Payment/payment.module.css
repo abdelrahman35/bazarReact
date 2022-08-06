@@ -1,0 +1,61 @@
+.App {
+  height: 75vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .binding {
+  border: 2px solid black;
+  border-radius: 20px;
+  width: 20%;
+  margin: 40px auto;
+  text-align: center;
+  padding: 20px 0;
+  background-color: lightslategrey;
+}
+
+input {
+  width: 70%;
+  height: 25px;
+  font-size: 12pt;
+}
+
+.reset {
+  border: none;
+  background-color: blueviolet;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+  width: 30%;
+  padding: 6px;
+  border-radius: 10px;
+  font-size: 12pt;
+  margin: 0;
+}
+
+hr {
+  width: 80%;
+}
+
+img {
+  width: 40%;
+}
+
+button {
+  width: 130px;
+  height: 45px;
+  border-radius: 26px;
+  background-color: #1877f2;
+  color: white;
+  cursor: pointer;
+  border: none;
+  font-size: 12pt;
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+div {
+  text-align: center;
+  margin-top: 40px;
+} */

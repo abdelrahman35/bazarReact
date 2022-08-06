@@ -33,7 +33,7 @@ export const createCategory = (categoryName) => async (dispatch, getState) => {
     const { data } = await axiosInstance.post(
       "/category",
       { payload: { categoryName } },
-      { headers }
+      { headers },
     );
     dispatch({
       type: "CREATE_NEW_CATEGORY_SUCCESS",
@@ -46,6 +46,29 @@ export const createCategory = (categoryName) => async (dispatch, getState) => {
     });
   }
 };
+
+// export const createOrder = () => async (dispatch, getState) => {
+//   try {
+//     dispatch({ type: "CREATE_NEW_CATEGORY_REQUEST" });
+//     const token = getState().userLogin.userInfo.token;
+//     const headers = {
+//       "Content-Type": "application/json",
+//       "Access-Control-Allow-Origin": "*",
+//       authorization: `Bearer ${token}`,
+//     };
+
+//     console.log(data);
+//     dispatch({
+//       type: "CREATE_NEW_CATEGORY_SUCCESS",
+//       payload: data,
+//     });
+//   } catch (error) {
+//     dispatch({
+//       type: "CREATE_NEW_CATEGORY_FAIL",
+//       payload: error.response ? error.response.status : error,
+//     });
+//   }
+// };
 
 /*
 export const deleteCategory = (categoryId) => async(dispatch , getState)=>{
