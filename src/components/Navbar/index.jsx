@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import styles from "./Navbar.module.css";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import LoginPage from "../../pages/LoginPage/LoginPage";
-import SignUpPage from "../../pages/SignUpPage/SignUpPage";
+import LoginPage from "../../pages/UserPages/LoginPage/LoginPage";
+import SignUpPage from "../../pages/UserPages/SignUpPage/SignUpPage";
 import Loading from "../Loading/Loading";
-import Thanks from "../../pages/ThanksForm/Thanks";
+import Thanks from "../../pages/MainPages/ThanksForm/Thanks";
 function Navbar() {
   const [modal, setModal] = useState("login");
   const [genButton, setGenButtonStyle] = useState(styles.genButton);

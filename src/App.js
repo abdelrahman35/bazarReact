@@ -2,29 +2,41 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.js";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
+
+// components
 import Navbar from "./components/Navbar/index";
 import CategoryNavbar from "./components/CategoryNavbar/CategoryNavbar";
 import Footer from "./components/Footer/Footer";
-import AboutUsPage from "./pages/AboutUsPage/AboutUsPage";
-import ForgetPassword from "./pages/ForgetPassword/ForgetPassword";
-import Home from "./pages/HomePage/HomePage";
-import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
-import ProudctPage from "./pages/ProductsPage/ProductsPage";
-import SignUpPage from "./pages/SignUpPage/SignUpPage";
-import ResetPassword from "./pages/ResetPassword/ResetPassword";
-import LoginPage from "./pages/LoginPage/LoginPage";
-import ChangePassword from "./pages/ChangePassword/ChangePassword";
-import ProfilePage from "./pages/ProfilePage/ProfilePage";
-import Thanks from "./pages/ThanksForm/Thanks";
-import ProductDetails from "./pages/ProductDetails/ProductDetails";
+
+// admin pages
 import AdminPanel from "./pages/AdminPages/AdminPanel/AdminPanel";
 import AdminProducts from "./pages/AdminPages/Products/AdminProducts/AdminProducts";
 import CreateProduct from "./pages/AdminPages/Products/CreateProduct/CreateProduct";
-import ListCateogries from "./pages/AdminPages/Categories/ListCategories/ListCateogries";
 import CreateCategory from "./pages/AdminPages/Categories/CreateCategory/CreateCategory";
-import CategoryDetails from "./pages/CategoryDetails/CategoryDetails";
-import Order from "./pages/Order/Order";
-import Payment from "./pages/Payment/Payment";
+import ListCateogries from "./pages/AdminPages/Categories/ListCategories/ListCateogries";
+// main pages
+import AboutUsPage from "./pages/MainPages/AboutUsPage/AboutUsPage";
+import Home from "./pages/MainPages/HomePage/HomePage";
+import NotFoundPage from "./pages/MainPages/NotFoundPage/NotFoundPage";
+import Thanks from "./pages/MainPages/ThanksForm/Thanks";
+
+// user pages
+import SignUpPage from "./pages/UserPages/SignUpPage/SignUpPage";
+import ResetPassword from "./pages/UserPages/ResetPassword/ResetPassword";
+import LoginPage from "./pages/UserPages/LoginPage/LoginPage";
+import ChangePassword from "./pages/UserPages/ChangePassword/ChangePassword";
+import ProfilePage from "./pages/UserPages/ProfilePage/ProfilePage";
+import ForgetPassword from "./pages/UserPages/ForgetPassword/ForgetPassword";
+
+// product pages
+import ProductDetails from "./pages/ProductPages/ProductDetails/ProductDetails";
+import ProudctPage from "./pages/ProductPages/ProductsPage/ProductsPage";
+
+// category pages
+import CategoryDetails from "./pages/CategoryPages/CategoryDetails/CategoryDetails";
+// order pages
+import Order from "./pages/OrderPages/Order/Order";
+import Payment from "./pages/OrderPages/Payment/Payment";
 function App() {
   return (
     <>
