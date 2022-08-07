@@ -15,7 +15,10 @@ import {
   createProductReducer,
   filterProductsReducer,
 } from "./productReducers";
-import { listAllOrdersReducer } from "./ordersReducers";
+import {
+  listAllOrdersReducer,
+  orderDetailsForAdminReducer,
+} from "./ordersReducers";
 export default combineReducers({
   // userReducers
   userRegister: userRegisterReducer,
@@ -32,4 +35,5 @@ export default combineReducers({
   filteredProducts: filterProductsReducer,
   // orderReducers
   allOrders: listAllOrdersReducer,
+  orderDetailsForAdmin: orderDetailsForAdminReducer,
 });

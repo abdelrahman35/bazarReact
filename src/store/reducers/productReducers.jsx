@@ -39,7 +39,10 @@ export const getProductByIdReducer = (state = { product: {} }, action) => {
   }
 };
 
-export const filterProductsReducer = (state = { product: [] }, action) => {
+export const filterProductsReducer = (
+  state = { filteredProducts: [] },
+  action
+) => {
   switch (action.type) {
     case "FILTER_PRODUCTS_REQUEST":
       return { loading: true };

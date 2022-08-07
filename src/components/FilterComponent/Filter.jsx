@@ -116,6 +116,14 @@ function Filter() {
           value="Apply Filters"
           className="btn btn-outline-primary"
         />
+        <button
+          className="btn btn-outline-success"
+          onClick={() => {
+            setFilterObject({});
+          }}
+        >
+          reset
+        </button>
       </form>
     </div>
   );

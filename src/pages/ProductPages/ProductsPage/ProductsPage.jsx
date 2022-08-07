@@ -15,11 +15,17 @@ function ProudctPage() {
     error: productsError,
     products,
   } = useSelector((state) => state.allProducts);
+  const {
+    loading: filteredProductsLoading,
+    error: filteredProductsError,
+    filteredProducts,
+  } = useSelector((state) => state.filteredProducts);
+  const filteredProductsArray = filteredProducts?.products;
   const prodcutsArray = products?.products;
   const [pageNum, setPageNum] = useState(1);
   useEffect(() => {
     dispatch(getAllProducts(pageNum));
-  }, [dispatch, pageNum]);
+  }, [dispatch, pageNum, filteredProducts]);
   const nextPage = () => {
     let pageNumber;
     pageNumber = pageNum;
@@ -36,9 +42,80 @@ function ProudctPage() {
     }
     setPageNum(pageNumber);
   };
+  console.log(filteredProducts?.products);
   return (
     <>
-      {productsLoading ? (
+      {filteredProductsLoading ? (
+        <Loading />
+      ) : filteredProducts ? (
+        <div className={`container`}>
+          <div className="row">
+            <div className="col-3 mt-5">
+              <div className="card">
+                <div className="card-body">
+                  <Filter />
+                </div>
+              </div>
+              <div className="card">
+                <div className="card-body">
+                  <SortComponent />
+                </div>
+              </div>
+            </div>
+            <div className="col-9">
+              <div className="row mb-0 mb-lg-3  g-4 mt-5 ">
+                {filteredProductsArray?.map((product, index) => (
+                  <div
+                    className={`col-lg-4 d-flex justify-content-center mb-3 mb-lg-0`}
+                    key={index}
+                  >
+                    <ProductCard product={product} />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div aria-label="Page navigation example d-flex justify-centent-center m-auto">
+            <ul className="pagination justify-content-center">
+              <li className="page-item  ">
+                <Link
+                  to="#"
+                  className="page-link text-dark bg-outline-dark"
+                  onClick={() => {
+                    prevPage();
+                  }}
+                >
+                  Previous
+                </Link>
+              </li>
+              <li className="page-item">
+                <Link
+                  to="#"
+                  className="page-link text-dark bg-outline-dark"
+                  onClick={() => {
+                    prevPage();
+                  }}
+                >
+                  {pageNum}
+                </Link>
+              </li>
+
+              <li className="page-item">
+                <Link
+                  className="page-link text-dark bg-outline-dark"
+                  to="#"
+                  onClick={() => {
+                    nextPage();
+                  }}
+                >
+                  Next
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      ) : productsLoading ? (
         <div
           className={`container d-flex justify-content-center align-items-center ${styles.conten}`}
         >

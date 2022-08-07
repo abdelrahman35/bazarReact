@@ -10,3 +10,15 @@ export const listAllOrdersReducer = (state = { orders: [] }, action) => {
       return state;
   }
 };
+export const orderDetailsForAdminReducer = (state = { order: {} }, action) => {
+  switch (action.type) {
+    case "ADMIN_ORDER_DETAILS_REQUEST":
+      return { loading: true, order: {} };
+    case "ADMIN_ORDER_DETAILS_SUCCESS":
+      return { loading: false, order: action.payload };
+    case "ADMIN_ORDER_DETAILS_FAIL":
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};

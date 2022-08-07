@@ -43,7 +43,7 @@ function ListOrders() {
                 </tr>
               </thead>
               <tbody>
-                {ordersArray.map((order, index) => (
+                {ordersArray?.map((order, index) => (
                   <tr key={index}>
                     <th scope="row">{index}</th>
                     <td>{order.user.firstName + " " + order.user.lastName}</td>
