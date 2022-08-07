@@ -27,7 +27,7 @@ function ProudctPage() {
   const [pageNum, setPageNum] = useState(1);
   useEffect(() => {
     dispatch(getAllProducts(pageNum));
-  }, [dispatch, pageNum, filteredProducts]);
+  }, [pageNum, filteredProducts]);
   const nextPage = () => {
     let pageNumber;
     pageNumber = pageNum;
@@ -44,31 +44,67 @@ function ProudctPage() {
     }
     setPageNum(pageNumber);
   };
-  console.log(filteredProducts?.products);
   return (
     <>
       {filteredProductsLoading ? (
         <Loading />
-      ) : filteredProducts ? (
-        <div className={`container`}>
-          <div className="row">
-            <div className="col-3 mt-5">
-              <div className="card">
-                <div className="card-body">
-                  <Filter />
-                </div>
-              </div>
-              <div className="card">
-                <div className="card-body">
-                  <SortComponent />
-                </div>
-              </div>
+      ) : filteredProductsArray?.length > 0 ? (
+        <div className={`container-fluid`}>
+          <div className="row justify-content-center align-items-start">
+            <div className={`col-3 d-none d-lg-block ${styles.marg}`}>
+              <aside>
+                <Category />
+                <Filter />
+              </aside>
             </div>
-            <div className="col-9">
-              <div className="row mb-0 mb-lg-3  g-4 mt-5 ">
+
+            <div className="col-12  d-block d-lg-none">
+              <aside>
+                <button
+                  className={`btn ${styles.btnWarningg} w-100 mt-4 text-capitalize`}
+                  type="button"
+                  data-bs-toggle="offcanvas"
+                  data-bs-target="#offcanvasExample"
+                  aria-controls="offcanvasExample"
+                >
+                  for more categories and filter
+                </button>
+                <div
+                  className="offcanvas offcanvas-start"
+                  id="offcanvasExample"
+                  aria-labelledby="offcanvasExampleLabel"
+                >
+                  <div className="offcanvas-header">
+                    <h5 className="offcanvas-title" id="offcanvasExampleLabel">
+                      Filter
+                    </h5>
+                    <button
+                      type="button"
+                      className="btn-close"
+                      data-bs-dismiss="offcanvas"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div className="offcanvas-body">
+                    <Category />
+                    <Filter />
+                  </div>
+                </div>
+              </aside>
+            </div>
+
+            <div className="col-12 col-lg-9">
+              <div
+                className="row d-flex justify-content-center
+            align-items-center"
+              >
+                <SortComponent />
+              </div>
+
+              <div className="row mb-0 mb-lg-3  g-4  ">
                 {filteredProductsArray?.map((product, index) => (
                   <div
-                    className={`col-lg-4 d-flex justify-content-center mb-3 mb-lg-0`}
+                    className={`col-12 col-md-6 col-lg-4 d-flex justify-content-center mb-3 mb-lg-0`}
                     key={index}
                   >
                     <ProductCard product={product} />
