@@ -1,26 +1,22 @@
 .reviewerName {
-  font-family: var(--myFont);
   font-size: 20px;
   margin-top: 5px;
   font-weight: 500;
   color: var(--color3);
 }
 .reviewerRate {
-  font-family: var(--myFont);
   font-size: 20px;
   margin-top: 5px;
   font-weight: 600;
   color: var(--color1);
 }
 .reviewerDate {
-  font-family: var(--myFont);
   font-size: 20px;
   margin-top: 5px;
   font-weight: 300;
   color: var(--color3);
 }
 .reviewerComment {
-  font-family: var(--myFont);
   font-size: 17px;
   margin-top: 5px;
   font-weight: 300;

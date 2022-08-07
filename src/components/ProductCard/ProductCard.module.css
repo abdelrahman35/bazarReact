@@ -1,7 +1,7 @@
 .cardInfo {
   color: var(--color6);
   font-size: 24px;
-  font-family: var(--myFont);
+
   line-height: 2;
   margin-top: 15px;
 }
@@ -19,6 +19,7 @@
   -moz-border-radius: 20px;
   -ms-border-radius: 20px;
   -o-border-radius: 20px;
+  padding: 28px;
 }
 
 .box17 {
@@ -39,8 +40,8 @@
   opacity: 1;
 }
 .box17 img {
-  width: 100%;
-  height: auto;
+  width: 200px !important;
+  height: auto !important;
   transition: all 0.5s ease 0s;
   -webkit-transition: all 0.5s ease 0s;
   -moz-transition: all 0.5s ease 0s;
@@ -129,7 +130,7 @@
 .btnWarningg {
   background-color: var(--color1) !important;
   font-size: 18px !important;
-  font-family: var(--myFont);
+
   font-weight: 400;
   height: 50px;
   width: 130px;

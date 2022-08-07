@@ -12,7 +12,7 @@
   font-size: 150px;
   text-transform: uppercase;
   color: transparent;
-  font-family: var(--myFont);
+
   font-weight: bold;
   -webkit-text-stroke: 3px white;
 }
@@ -22,7 +22,7 @@
   width: 75vw;
 
   text-align: center;
-  font-family: var(--myFont);
+
   line-height: 2;
 }
 .LastTitle {
@@ -30,7 +30,6 @@
 }
 
 .LastTitle h3 {
-  font-family: var(--myFont);
   font-weight: 300;
   font-size: 50px;
 }
@@ -54,6 +53,5 @@
   margin-bottom: 20px;
 }
 .Last {
-  font-family: var(--myFont);
   text-align: center;
 }

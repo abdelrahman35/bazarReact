@@ -7,6 +7,8 @@ import Loading from "../../../components/Loading/Loading";
 import styles from "./Products.module.css";
 import Filter from "../../../components/FilterComponent/Filter";
 import SortComponent from "../../../components/SortComponent/SortComponent";
+import Category from "../../../components/Category/Category";
+
 function ProudctPage() {
   const dispatch = useDispatch();
 
@@ -122,73 +124,117 @@ function ProudctPage() {
           <Loading />
         </div>
       ) : products ? (
-        <div className={`container`}>
-          <div className="row">
-            <div className="col-3 mt-5">
-              <div className="card">
-                <div className="card-body">
+        <>
+          {/* <CategoryNavbar /> */}
+
+          <div className={`container-fluid`}>
+            <div className="row justify-content-center align-items-start">
+              <div className={`col-3 d-none d-lg-block ${styles.marg}`}>
+                <aside>
+                  <Category />
                   <Filter />
-                </div>
+                </aside>
               </div>
-              <div className="card">
-                <div className="card-body">
+
+              <div className="col-12  d-block d-lg-none">
+                <aside>
+                  <button
+                    className={`btn ${styles.btnWarningg} w-100 mt-4 text-capitalize`}
+                    type="button"
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasExample"
+                    aria-controls="offcanvasExample"
+                  >
+                    for more categories and filter
+                  </button>
+                  <div
+                    className="offcanvas offcanvas-start"
+                    id="offcanvasExample"
+                    aria-labelledby="offcanvasExampleLabel"
+                  >
+                    <div className="offcanvas-header">
+                      <h5
+                        className="offcanvas-title"
+                        id="offcanvasExampleLabel"
+                      >
+                        Filter
+                      </h5>
+                      <button
+                        type="button"
+                        className="btn-close"
+                        data-bs-dismiss="offcanvas"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <div className="offcanvas-body">
+                      <Category />
+                      <Filter />
+                    </div>
+                  </div>
+                </aside>
+              </div>
+
+              <div className="col-12 col-lg-9">
+                <div
+                  className="row d-flex justify-content-center
+                align-items-center"
+                >
                   <SortComponent />
                 </div>
+
+                <div className="row mb-0 mb-lg-3  g-4  ">
+                  {prodcutsArray?.map((product, index) => (
+                    <div
+                      className={`col-12 col-md-6 col-lg-4 d-flex justify-content-center mb-3 mb-lg-0`}
+                      key={index}
+                    >
+                      <ProductCard product={product} />
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
-            <div className="col-9">
-              <div className="row mb-0 mb-lg-3  g-4 mt-5 ">
-                {prodcutsArray?.map((product, index) => (
-                  <div
-                    className={`col-lg-4 d-flex justify-content-center mb-3 mb-lg-0`}
-                    key={index}
+
+            <div aria-label="Page navigation example d-flex justify-centent-center m-auto">
+              <ul className="pagination justify-content-center">
+                <li className="page-item  ">
+                  <Link
+                    to="#"
+                    className="page-link text-dark bg-outline-dark"
+                    onClick={() => {
+                      prevPage();
+                    }}
                   >
-                    <ProductCard product={product} />
-                  </div>
-                ))}
-              </div>
+                    Previous
+                  </Link>
+                </li>
+                <li className="page-item">
+                  <Link
+                    to="#"
+                    className="page-link text-dark bg-outline-dark"
+                    onClick={() => {
+                      prevPage();
+                    }}
+                  >
+                    {pageNum}
+                  </Link>
+                </li>
+
+                <li className="page-item">
+                  <Link
+                    className="page-link text-dark bg-outline-dark"
+                    to="#"
+                    onClick={() => {
+                      nextPage();
+                    }}
+                  >
+                    Next
+                  </Link>
+                </li>
+              </ul>
             </div>
           </div>
-
-          <div aria-label="Page navigation example d-flex justify-centent-center m-auto">
-            <ul className="pagination justify-content-center">
-              <li className="page-item  ">
-                <Link
-                  to="#"
-                  className="page-link text-dark bg-outline-dark"
-                  onClick={() => {
-                    prevPage();
-                  }}
-                >
-                  Previous
-                </Link>
-              </li>
-              <li className="page-item">
-                <Link
-                  to="#"
-                  className="page-link text-dark bg-outline-dark"
-                  onClick={() => {
-                    prevPage();
-                  }}
-                >
-                  {pageNum}
-                </Link>
-              </li>
-
-              <li className="page-item">
-                <Link
-                  className="page-link text-dark bg-outline-dark"
-                  to="#"
-                  onClick={() => {
-                    nextPage();
-                  }}
-                >
-                  Next
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </div>
+        </>
       ) : null}
     </>
   );
