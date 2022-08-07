@@ -56,27 +56,23 @@
   height: 185px;
 }
 .title {
-  font-family: var(--myFont);
   font-weight: 800;
   font-size: 45px;
   color: var(--color3);
 }
 .price {
-  font-family: var(--myFont);
   font-size: 38px;
   margin-top: 20px;
   color: var(--color3);
   font-weight: 400;
 }
 .review {
-  font-family: var(--myFont);
   font-size: 20px;
   margin-top: 20px;
   font-weight: 300;
   color: var(--color3);
 }
 .model {
-  font-family: var(--myFont);
   font-size: 20px;
   margin-top: 20px;
   font-weight: 300;
@@ -84,7 +80,6 @@
   text-transform: capitalize;
 }
 .descTitle {
-  font-family: var(--myFont);
   font-weight: 800;
   font-size: 20px;
   color: var(--color3);
@@ -92,7 +87,7 @@
 }
 .descBody {
   margin-top: 8px;
-  font-family: var(--myFont);
+
   font-size: 16px;
   font-weight: 300;
   color: var(--color3);
@@ -121,7 +116,6 @@
 }
 
 .reviewTitle {
-  font-family: var(--myFont);
   font-size: 35px;
   margin-top: 20px;
   font-weight: 500;
@@ -134,14 +128,12 @@
 }
 
 .overAll {
-  font-family: var(--myFont);
   font-size: 25px;
   margin-top: 20px;
   font-weight: 300;
   color: var(--color3);
 }
 .overAllNum {
-  font-family: var(--myFont);
   font-size: 25px;
   margin-top: 20px;
   font-weight: 600;
@@ -149,14 +141,12 @@
 }
 
 .reveiwParTitle {
-  font-family: var(--myFont);
   font-weight: 800;
   font-size: 20px;
   color: var(--color3);
   text-transform: capitalize;
 }
 .spanQuistionMark {
-  font-family: var(--myFont);
   width: 10px;
   height: 10px;
   text-align: center;
@@ -171,7 +161,6 @@
   font-weight: 600;
 }
 .customerReviewTitle {
-  font-family: var(--myFont);
   font-size: 30px;
   margin-top: 20px;
   font-weight: 500;

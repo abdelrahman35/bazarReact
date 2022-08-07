@@ -14,12 +14,12 @@
 }
 .content h1 {
   font-size: 80px;
-  font-family: var(--myFont);
+
   font-weight: 600;
 }
 .content p {
   font-size: 25px;
-  font-family: var(--myFont);
+
   font-weight: 300;
 }
 
@@ -28,12 +28,10 @@
 }
 
 .deals h3 {
-  font-family: var(--myFont);
   font-weight: 600;
   font-size: 35px;
 }
 .deals h4 {
-  font-family: var(--myFont);
   font-weight: 600;
   font-size: 25px;
   color: var(--color6);
@@ -70,7 +68,6 @@
   margin-top: 70px;
 }
 .Recently h3 {
-  font-family: var(--myFont);
   font-weight: 600;
   font-size: 35px;
 }
@@ -96,7 +93,7 @@
 .cardInfo {
   color: var(--color6);
   font-size: 24px;
-  font-family: var(--myFont);
+
   line-height: 2;
   margin-top: 15px;
 }
@@ -104,7 +101,7 @@
 .btnWarningg {
   background-color: var(--color1) !important;
   font-size: 18px !important;
-  font-family: var(--myFont);
+
   font-weight: 400;
   height: 40px;
   width: 130px;
@@ -207,12 +204,12 @@
   }
   .content h1 {
     font-size: 40px;
-    font-family: var(--myFont);
+
     font-weight: 600;
   }
   .content p {
     font-size: 15px;
-    font-family: var(--myFont);
+
     font-weight: 300;
   }
 }

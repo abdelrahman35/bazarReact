@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { filterProducts } from "../../store/actions/productActions";
+import styles from "./Filter.module.css";
+
 function Filter() {
   const dispatch = useDispatch();
   const [filterObject, setFilterObject] = useState({});
@@ -19,7 +21,7 @@ function Filter() {
     <div>
       <form
         onSubmit={handleSubmit}
-        className="row d-flex justify-content-center align-items-center"
+        className="row d-flex justify-content-center align-items-center m-auto"
       >
         <div className="row d-flex justify-content-evenly align-items-center">
           <label className="col-6" htmlFor="priceMinFilter">
@@ -91,17 +93,17 @@ function Filter() {
           />
           <hr />
           <label className="col-6" htmlFor="modelYearMax">
-            rating
+            Rating
           </label>
           {filterObject?.rating}
+
           <input
-            min={0}
-            className="col-5 m-1"
             name="modelYearMax"
             id="modelYearMax"
             type="range"
-            step={1}
-            max={5}
+            className="form-range  m-1"
+            min="0"
+            max="5"
             onChange={(e) => {
               setFilterObject({
                 ...filterObject,
@@ -109,12 +111,13 @@ function Filter() {
               });
             }}
           />
+
           <hr />
         </div>
         <input
           type={"submit"}
           value="Apply Filters"
-          className="btn btn-outline-primary"
+          className={`btn ${styles.btnWarningg}`}
         />
       </form>
     </div>

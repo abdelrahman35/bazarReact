@@ -5,7 +5,6 @@ import "./App.css";
 
 // components
 import Navbar from "./components/Navbar/index";
-import CategoryNavbar from "./components/CategoryNavbar/CategoryNavbar";
 import Footer from "./components/Footer/Footer";
 
 // admin pages
@@ -42,7 +41,6 @@ function App() {
     <>
       <Router>
         <Navbar />
-        <CategoryNavbar />
         <Routes>
           <Route path="/" index element={<Home />} />
           <Route path="/login" index element={<LoginPage />} />

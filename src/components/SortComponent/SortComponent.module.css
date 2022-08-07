@@ -1,6 +1,3 @@
-.conten {
-  height: 65vh;
-}
 .btnWarningg {
   font-family: var(--myFont) !important;
   font-size: 18px !important;
@@ -8,6 +5,7 @@
   background-color: var(--color1) !important;
   border: 2px solid var(--color1) !important;
   border-radius: 5px !important;
+  width: 120px !important;
   -webkit-border-radius: 5px !important;
   -moz-border-radius: 5px !important;
   -ms-border-radius: 5px !important;
@@ -32,7 +30,8 @@
   -ms-border-radius: 5px !important;
   -o-border-radius: 5px !important;
 }
-
-.marg {
-  margin-top: 85px !important;
+@media (max-width: 1043px) {
+  .btnWarningg {
+    width: 140px !important ;
+  }
 }

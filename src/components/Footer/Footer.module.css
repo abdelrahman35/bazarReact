@@ -16,7 +16,7 @@
   padding-top: 0vw;
   text-decoration: none;
   font-size: x-small;
-  font-family: var(--myFont);
+
   font-weight: 300;
   margin-bottom: 2vw;
 }
@@ -28,20 +28,19 @@
 
   text-decoration: none;
   font-size: x-small;
-  font-family: var(--myFont);
+
   font-weight: lighter;
   margin-bottom: 2vw;
 }
 .TextColor {
   color: var(--color6) !important;
   font-size: x-small;
-  font-family: var(--myFont);
+
   padding-top: 1vw;
 }
 
 .titles {
   font-size: small;
-  font-family: var(--myFont);
 }
 .textsize {
   width: 10vw;

@@ -3,7 +3,7 @@
 }
 .cardio {
   text-decoration: none;
-  font-family: var(--myFont);
+
   height: 200px !important;
   display: flex !important;
   justify-content: center !important;
