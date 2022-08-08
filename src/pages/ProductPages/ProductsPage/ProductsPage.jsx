@@ -47,7 +47,11 @@ function ProudctPage() {
   return (
     <>
       {filteredProductsLoading ? (
-        <Loading />
+        <div
+          className={`container d-flex justify-content-center align-items-center ${styles.conten}`}
+        >
+          <Loading />
+        </div>
       ) : filteredProductsArray?.length > 0 ? (
         <div className={`container-fluid`}>
           <div className="row justify-content-center align-items-start">

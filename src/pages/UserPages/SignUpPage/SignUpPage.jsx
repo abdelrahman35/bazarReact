@@ -5,8 +5,9 @@ import * as Yup from "yup";
 import React, { useEffect } from "react";
 import { register } from "../../../store/actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styles from "./SignUpPage.module.css";
+import ErrorMessage from "../../../components/ErrorMessage/ErrorMessage";
 
 const initialValues = {
   firstName: "",
@@ -27,29 +28,35 @@ const validationSchema = Yup.object({
     .required("Please Enter your password")
     .matches(
       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-      "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
+      "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character",
     ),
 });
 
 function SignUpPage() {
   // declarations
   const navigate = useNavigate();
-  const location = useLocation();
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.userLogin);
-  const { userInfo } = userLogin;
-  const redirect = location.search ? location.search.split("=")[1] : "/";
+  const { error: userError, userInfo } = userLogin;
   // functions
   const onSubmit = (values) => {
     dispatch(
-      register(values.firstName, values.lastName, values.email, values.password)
+      register(
+        values.firstName,
+        values.lastName,
+        values.email,
+        values.password,
+      ),
     );
   };
   useEffect(() => {
-    if (userInfo) {
-      navigate(redirect, { replace: true });
+    if (userError) {
+      navigate("*", { replace: true, state: userError });
     }
-  }, [redirect, navigate, userInfo]);
+    if (userInfo) {
+      navigate(-1, { replace: true });
+    }
+  }, [navigate, userInfo, userError]);
   const formik = useFormik({
     initialValues,
     onSubmit,
@@ -58,78 +65,81 @@ function SignUpPage() {
 
   return (
     <>
-      <section className="container w-100 m-auto">
-        <Form className=" m-auto mt-5" onSubmit={formik.handleSubmit}>
-          <div
-            className={`d-flex flex-column justify-content-center align-items-center mb-5 ${styles.formHeading}`}
-          >
-            <i className="fa-solid fa-user mb-3"></i>
-            <h2 className={`${styles.heading} text-capitalize text-center`}>
-              Create Account !
-            </h2>
-          </div>
-          <Form.Group className="mb-3" controlId="formBasicFirstName">
-            <Form.Control
-              className={`input ${styles.formControl}`}
-              type="text"
-              placeholder="Enter Your first Name"
-              name="firstName"
-              {...formik.getFieldProps("firstName")}
-            />
-            {formik.errors.firstName && formik.touched.firstName ? (
-              <div className={styles.error}>{formik.errors.firstName}</div>
-            ) : null}
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicLastName">
-            <Form.Control
-              className={`input ${styles.formControl}`}
-              type="text"
-              placeholder="Enter last Name"
-              name="lastName"
-              {...formik.getFieldProps("lastName")}
-            />
-            {formik.errors.lastName && formik.touched.lastName ? (
-              <div className={styles.error}>{formik.errors.lastName}</div>
-            ) : null}
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Control
-              className={`input ${styles.formControl}`}
-              type="email"
-              placeholder="Enter email"
-              name="email"
-              {...formik.getFieldProps("email")}
-            />
-            {formik.errors.email && formik.touched.email ? (
-              <div className={styles.error}>{formik.errors.email}</div>
-            ) : null}
-          </Form.Group>
-
-          <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Control
-              className={`input ${styles.formControl}`}
-              type="password"
-              placeholder="Password"
-              name="password"
-              {...formik.getFieldProps("password")}
-            />
-            {formik.errors.password && formik.touched.password ? (
-              <div className={styles.error}>{formik.errors.password}</div>
-            ) : null}
-          </Form.Group>
-          <div className="w-100 d-flex justify-content-center">
-            <Button
-              className={`${styles.btnWarningg}`}
-              variant="primary"
-              type="submit"
-              disabled={!(formik.isValid && formik.dirty)}
+      {!userInfo ? (
+        <section className="container w-100 m-auto">
+          <Form className=" m-auto mt-5" onSubmit={formik.handleSubmit}>
+            <div
+              className={`d-flex flex-column justify-content-center align-items-center mb-5 ${styles.formHeading}`}
             >
-              Create
-              <i className="fa-regular fa-arrow-right ms-2 fs-6"></i>
-            </Button>
-          </div>
-        </Form>
-      </section>
+              <i className="fa-solid fa-user mb-3"></i>
+              <h2 className={`${styles.heading} text-capitalize text-center`}>
+                Create Account !
+              </h2>
+            </div>
+            <Form.Group className="mb-3" controlId="formBasicFirstName">
+              <Form.Control
+                className={`input ${styles.formControl}`}
+                type="text"
+                placeholder="Enter Your first Name"
+                name="firstName"
+                {...formik.getFieldProps("firstName")}
+              />
+              {formik.errors.firstName && formik.touched.firstName ? (
+                <div className={styles.error}>{formik.errors.firstName}</div>
+              ) : null}
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicLastName">
+              <Form.Control
+                className={`input ${styles.formControl}`}
+                type="text"
+                placeholder="Enter last Name"
+                name="lastName"
+                {...formik.getFieldProps("lastName")}
+              />
+              {formik.errors.lastName && formik.touched.lastName ? (
+                <div className={styles.error}>{formik.errors.lastName}</div>
+              ) : null}
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Control
+                className={`input ${styles.formControl}`}
+                type="email"
+                placeholder="Enter email"
+                name="email"
+                {...formik.getFieldProps("email")}
+              />
+              {formik.errors.email && formik.touched.email ? (
+                <div className={styles.error}>{formik.errors.email}</div>
+              ) : null}
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Control
+                className={`input ${styles.formControl}`}
+                type="password"
+                placeholder="Password"
+                name="password"
+                {...formik.getFieldProps("password")}
+              />
+              {formik.errors.password && formik.touched.password ? (
+                <div className={styles.error}>{formik.errors.password}</div>
+              ) : null}
+            </Form.Group>
+            <div className="w-100 d-flex justify-content-center">
+              <Button
+                className={`${styles.btnWarningg}`}
+                type="submit"
+                disabled={!(formik.isValid && formik.dirty)}
+              >
+                Create
+                <i className="fa-regular fa-arrow-right ms-2 fs-6"></i>
+              </Button>
+            </div>
+          </Form>
+        </section>
+      ) : userError ? (
+        <ErrorMessage statusCode={userError} />
+      ) : null}
     </>
   );
 }

@@ -18,7 +18,7 @@ function Category() {
   // };
   return (
     <>
-      <div className="accordion" id="accordionExample">
+      <div className="accordion m-0 mb-3" id="accordionExample">
         <div className="accordion-item">
           <h2 className="accordion-header" id="headingOne">
             <button
@@ -41,11 +41,15 @@ function Category() {
             <div className="accordion-body p-0">
               <ul className="list-unstyled m-0 p-0 text-center">
                 {categoriesArray?.map((category, index) => (
-                  <li key={index} className="nav-item ">
-                    <Link to={`/category/${category._id}`}>
+                  <Link
+                    key={index}
+                    to={`/category/${category._id}`}
+                    className="text-decoration-none"
+                  >
+                    <li className={`nav-item ${styles.Li}`}>
                       {category.categoryName}
-                    </Link>
-                  </li>
+                    </li>
+                  </Link>
                 ))}
               </ul>
             </div>

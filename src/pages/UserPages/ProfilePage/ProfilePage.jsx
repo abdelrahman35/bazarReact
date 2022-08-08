@@ -32,9 +32,9 @@ function ProfilePage() {
         <div className={`row `}>
           <div className="col-lg-4 mt-5">
             <div className={`card shadow w-100 ${styles.leftCard}`}>
-              <div className="card-body">
+              <div className="card-body p-0">
                 <div
-                  className={`card-title m-lg-3 fs-5 ${styles.title}`}
+                  className={`  fs-5 ${styles.title} ${styles["card-title"]}`}
                   onClick={() => {
                     setRenderedData("accountDetails");
                   }}
@@ -46,36 +46,48 @@ function ProfilePage() {
                   onClick={() => {
                     setRenderedData("orders");
                   }}
-                  className={`card-title m-lg-3 fs-5 ${styles.title}`}
+                  className={`${styles["card-title"]}  fs-5 ${styles.title}`}
                 >
                   <i className="fa-regular fa-clipboard-list"></i>{" "}
                   <p className="d-inline ms-2">Orders</p>
                 </div>
+
                 <div
                   onClick={() => {
                     setRenderedData("savedItems");
                   }}
-                  className={`card-title m-lg-3 fs-5 ${styles.title}`}
+                  className={`${styles["card-title"]}  fs-5 ${styles.title}`}
                 >
                   <i className="fa-regular fa-heart"></i>{" "}
                   <p className="d-inline ms-1">Saved Items</p>
                 </div>
-                <hr className={`${styles.hr}`} />
-                <Link to="/" className="text-decoration-none">
-                  <p className="link-dark ms-1  m-lg-3 fs-6 ">Address Book</p>
-                </Link>
-                <Link to="/changePassword" className="text-decoration-none">
-                  <p className="link-dark ms-1  m-lg-3 fs-6 ">
-                    Change Password
-                  </p>
-                </Link>
-                <hr className={`${styles.hr}`} />
+
+                <hr className={`${styles.hr} m-0`} />
+
+                <div
+                  onClick={() => {
+                    setRenderedData("AddressBook");
+                  }}
+                  className={`${styles["card-title"]}  fs-5 ${styles.title}`}
+                >
+                  <p className="d-inline ms-1">Address Book</p>
+                </div>
+
+                <div
+                  onClick={() => {
+                    setRenderedData("ChangePassword");
+                  }}
+                  className={`${styles["card-title"]}  fs-5 ${styles.title}`}
+                >
+                  <p className="d-inline ms-1">Change Password</p>
+                </div>
+
+                <hr className={`${styles.hr} m-0`} />
 
                 <button
                   className={`${styles.btnWarningg}`}
                   onClick={handleLogout}
                 >
-                  {" "}
                   Logout
                 </button>
               </div>
@@ -85,7 +97,7 @@ function ProfilePage() {
             {renderedData === "accountDetails" ? (
               <div className={`card shadow w-100 ${styles.rightCard}`}>
                 <div className="card-body">
-                  <h5 className="card-title">Account Overview</h5>
+                  <h5 className="">Account Overview</h5>
                   <hr className={`${styles.hr}`} />{" "}
                   <h6 className="card-subtitle mb-3 text-muted">
                     Hello {userInfo.firstName + " " + userInfo.lastName}
@@ -104,14 +116,14 @@ function ProfilePage() {
             ) : renderedData === "orders" ? (
               <div className={`card shadow w-100 ${styles.rightCard}`}>
                 <div className="card-body">
-                  <h5 className="card-title">Orders</h5>
+                  <h5 className={`${styles["card-title"]}`}>Orders</h5>
                   <hr className={`${styles.hr}`} />{" "}
                 </div>
               </div>
             ) : renderedData === "savedItems" ? (
               <div className={`card shadow w-100 ${styles.rightCard}`}>
                 <div className="card-body">
-                  <h5 className="card-title">Saved Items</h5>
+                  <h5 className={`${styles["card-title"]}`}>Saved Items</h5>
                   <hr className={`${styles.hr}`} />{" "}
                 </div>
               </div>

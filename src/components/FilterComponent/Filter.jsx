@@ -23,7 +23,7 @@ function Filter() {
         onSubmit={handleSubmit}
         className="row d-flex justify-content-center align-items-center m-auto"
       >
-        <div className="row d-flex justify-content-evenly align-items-center">
+        <div className="row d-flex justify-content-start g-1 align-items-center">
           <label className="col-6" htmlFor="priceMinFilter">
             Min Price
           </label>
@@ -40,7 +40,7 @@ function Filter() {
               });
             }}
           />
-          <hr />
+          <hr className="w-90 ms-1" />
           <label className="col-6" htmlFor="priceMaxFilter">
             Max Price
           </label>
@@ -57,7 +57,7 @@ function Filter() {
               });
             }}
           />
-          <hr />
+          <hr className="w-90 ms-1" />
           <label className="col-6" htmlFor="modelYearMin">
             Max Model Year
           </label>
@@ -74,7 +74,7 @@ function Filter() {
               });
             }}
           />
-          <hr />
+          <hr className="w-90 ms-1" />
           <label className="col-6" htmlFor="modelYearMax">
             Min Model Year
           </label>
@@ -91,11 +91,13 @@ function Filter() {
               });
             }}
           />
-          <hr />
-          <label className="col-6" htmlFor="modelYearMax">
-            Rating
-          </label>
-          {filterObject?.rating}
+          <hr className="w-90 ms-1" />
+          <div className="d-flex justify-content-between w-90 align-content-center mt-0">
+            <label className="col-6" htmlFor="modelYearMax">
+              Rating
+            </label>
+            {filterObject?.rating}
+          </div>
 
           <input
             name="modelYearMax"
@@ -112,7 +114,7 @@ function Filter() {
             }}
           />
 
-          <hr />
+          <hr className="w-90 ms-1" />
         </div>
         <input
           type={"submit"}
@@ -120,12 +122,12 @@ function Filter() {
           className={`btn ${styles.btnWarningg}`}
         />
         <button
-          className="btn btn-outline-success"
+          className={`btn ${styles.btnWarningg} mt-3`}
           onClick={() => {
             setFilterObject({});
           }}
         >
-          reset
+          Reset
         </button>
       </form>
     </div>

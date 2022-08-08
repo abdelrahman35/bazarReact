@@ -1,4 +1,5 @@
 import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
@@ -95,14 +96,16 @@ function LoginPage() {
             </Form.Group>
 
             <div className="d-flex justify-content-between align-content-center ">
-              <button
-                className={`${styles.btnWarningg}`}
+              <Button
+                className={`${styles.btnWarningg} pb-4`}
                 type="submit"
                 data-bs-dismiss="modal"
                 disabled={!(formik.isValid && formik.dirty)}
               >
                 Login
-              </button>
+                <i className="fa-regular fa-arrow-right ms-2 fs-6"></i>
+              </Button>
+
               <Link
                 to="/forgetPassword"
                 className={`${styles.forgetPassword} `}

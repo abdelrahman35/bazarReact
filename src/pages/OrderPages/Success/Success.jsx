@@ -4,10 +4,12 @@ const Success = () => {
   return (
     <>
       <div className={`container  ${styles.Con}`}>
-        <div className="row">
-          <div className={`col-12 col-lg-6  ${styles.component}`}>
-            <i class={`fa-solid fa-circle-check  ${styles.icon}`}></i>
-            Order is placed Successfully
+        <div className="row w-80 justify-content-center align-items-center">
+          <div className={`${styles.component} w-100`}>
+            <i className={`fa-solid fa-circle-check  me-2`}></i>
+            <p className="m-0 mb-1 text-capitalize">
+              Order is placed Successfully
+            </p>
           </div>
         </div>
       </div>

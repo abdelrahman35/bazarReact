@@ -84,7 +84,7 @@
   color: var(--color6) !important;
   background-color: var(--color1) !important;
   border: 2px solid var(--color1) !important;
-  height: 35px !important;
+  height: 45px !important;
   border-radius: 5px !important;
   width: 200px;
   -webkit-border-radius: 5px !important;
@@ -106,7 +106,6 @@
   background-color: transparent !important;
   border: 2px solid var(--color7) !important;
   box-shadow: none !important;
-  height: 35px !important;
   border-radius: 5px !important;
   width: 210px;
   -webkit-border-radius: 5px !important;
