@@ -23,6 +23,8 @@ import CreateProduct from "./pages/AdminPages/Products/CreateProduct/CreateProdu
 import ListCateogries from "./pages/AdminPages/Categories/ListCategories/ListCateogries";
 import CreateCategory from "./pages/AdminPages/Categories/CreateCategory/CreateCategory";
 import CategoryDetails from "./pages/CategoryDetails/CategoryDetails";
+import CartPage from "./pages/CartPage/Cart";
+
 function App() {
   return (
     <>
@@ -44,6 +46,7 @@ function App() {
           <Route path="/forgetPassword" index element={<ForgetPassword />} />
           <Route path="/changePassword" index element={<ChangePassword />} />
           <Route path="/profile" index element={<ProfilePage />} />
+          <Route path="/CartPage" index element={<CartPage />} />
           <Route
             path="/resetPassword/:token"
             index

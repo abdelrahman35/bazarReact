@@ -1,0 +1,193 @@
+.imag {
+  width: 8vw !important;
+  height: 7vw;
+  margin-top: 3vw !important;
+  margin-left: 2vw;
+}
+.title {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 38px;
+  margin-top: 2vw !important;
+
+  color: #000000;
+}
+.title2 {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 23px;
+  margin-top: 2vw !important;
+  width: 0.1vw;
+  color: #2d2723;
+  margin-left: 14vw !important;
+}
+.title3 {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 38px;
+  color: #2d2723;
+}
+.titleDetail {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 24px;
+  margin-top: -3vw !important;
+  color: #000000;
+}
+.titleDetail2 {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 24px;
+  margin-top: -3vw;
+  margin-left: -0.2vw;
+  color: #000000;
+}
+.Cart {
+  width: 100vw;
+  height: 40vw;
+  margin-bottom: 2vw;
+  background-color: var(--color5);
+}
+.Left {
+  width: 50vw;
+  border-radius: 0.3vw;
+  background-color: var(--color6) !important;
+  height: 15vw;
+}
+.Right {
+  width: 23vw;
+
+  border-radius: 0.5vw;
+  background-color: var(--color6) !important;
+  height: 20vw;
+}
+.Text1 {
+  color: var(--color3);
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  color: #000000;
+  font-size: 40px;
+}
+.Text2 {
+  color: var(--color3);
+
+  margin-top: 2vw;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  color: #000000;
+  font-size: 40px;
+}
+.Text4 {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 29px;
+  width: 14vw;
+  margin-top: 2vw !important;
+
+  /* 3 */
+
+  color: #2d2723;
+}
+.Text5 {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 29px;
+  width: 14vw;
+  margin-top: 2vw !important;
+
+  /* 3 */
+
+  color: #2d2723;
+}
+.first {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 43px;
+  color: #2d2723;
+
+  margin-top: 1vw !important;
+}
+.second {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 38px;
+  margin-left: 4vw;
+  margin-top: 1.3vw !important;
+
+  /* 3 */
+
+  color: #2d2723;
+}
+.btnWarningg {
+  font-family: var(--myFont) !important;
+  font-size: 18px !important;
+  color: var(--color6) !important;
+  background-color: var(--color1) !important;
+  border: 2px solid var(--color1) !important;
+  height: 45px !important;
+  border-radius: 5px !important;
+  width: 20vw !important;
+  margin-left: 1.5vw;
+  margin-top: 1vw;
+  -webkit-border-radius: 5px !important;
+  -moz-border-radius: 5px !important;
+  -ms-border-radius: 5px !important;
+  -o-border-radius: 5px !important;
+  transition: all 0.3s !important;
+  -webkit-transition: all 0.3s !important;
+  -moz-transition: all 0.3s !important;
+  -ms-transition: all 0.3s !important;
+  -o-transition: all 0.3s !important;
+  cursor: pointer;
+}
+.btnWarningg:hover,
+.btnWarningg:active {
+  cursor: pointer;
+  color: var(--color7) !important;
+  font-size: 19px !important;
+  background-color: transparent !important;
+  border: 2px solid var(--color7) !important;
+  box-shadow: none !important;
+  height: 45px !important;
+  border-radius: 5px !important;
+  -webkit-border-radius: 5px !important;
+  -moz-border-radius: 5px !important;
+  -ms-border-radius: 5px !important;
+  -o-border-radius: 5px !important;
+}
+.first span {
+  font-weight: 200;
+}
+.form-select {
+  width: 50px !important;
+  height: 40px !important;
+  border: none !important;
+  background-color: var(--color5) !important;
+  color: var(--color3) !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  font-size: 22px !important;
+  margin-top: -4vw;
+  margin-left: 30vw;
+}
