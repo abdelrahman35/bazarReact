@@ -56,7 +56,7 @@ function ProudctPage() {
         <div className={`container-fluid`}>
           <div className="row justify-content-center align-items-start">
             <div className={`col-3 d-none d-lg-block ${styles.marg}`}>
-              <aside>
+              <aside className={styles.filterSide}>
                 <Category />
                 <Filter />
               </aside>
@@ -170,7 +170,7 @@ function ProudctPage() {
           <div className={`container-fluid`}>
             <div className="row justify-content-center align-items-start">
               <div className={`col-3 d-none d-lg-block ${styles.marg}`}>
-                <aside>
+                <aside className={styles.filterSide}>
                   <Category />
                   <Filter />
                 </aside>

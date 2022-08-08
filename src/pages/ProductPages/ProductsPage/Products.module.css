@@ -36,3 +36,8 @@
 .marg {
   margin-top: 85px !important;
 }
+.filterSide {
+  border: 1px solid var(--color5);
+  border-radius: 5px;
+  padding: 10px 15px;
+}

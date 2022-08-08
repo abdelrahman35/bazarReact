@@ -21,7 +21,7 @@ function Filter() {
     <div>
       <form
         onSubmit={handleSubmit}
-        className="row d-flex justify-content-center align-items-center m-auto"
+        className="row d-flex justify-content-start align-items-center m-auto"
       >
         <div className="row d-flex justify-content-start g-1 align-items-center">
           <label className="col-6" htmlFor="priceMinFilter">
@@ -103,7 +103,7 @@ function Filter() {
             name="modelYearMax"
             id="modelYearMax"
             type="range"
-            className="form-range  m-1"
+            className="form-range  m-1 w-90"
             min="0"
             max="5"
             onChange={(e) => {
