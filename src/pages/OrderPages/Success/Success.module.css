@@ -1,0 +1,27 @@
+.Con {
+  height: 80vh;
+}
+.icon {
+  margin-right: 0.5vw;
+}
+.component {
+  width: 65vw !important;
+  height: 20vh;
+  margin-top: 10vw !important;
+  margin-left: 7vw !important;
+  padding-top: 5vw;
+  padding-left: 25vw !important;
+  background: #fafafa;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 48px;
+
+  /* 3 */
+
+  color: #2d2723;
+}

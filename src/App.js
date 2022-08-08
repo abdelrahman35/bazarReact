@@ -2,6 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.js";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
+import OrderCard from "./components/OrderCard/OrderCard";
 
 // components
 import Navbar from "./components/Navbar/index";
@@ -39,7 +40,7 @@ import Payment from "./pages/OrderPages/Payment/Payment";
 import ListOrders from "./pages/AdminPages/Orders/ListOrders/ListOrders";
 import OrderDetailsForAdmin from "./pages/AdminPages/Orders/OrderDetailsForAdmin/OrderDetailsForAdmin";
 import CartPage from "./pages/CartPage/Cart";
-import Sucess from "./pages/OrderPages/Sucess/Success";
+import Success from "./pages/OrderPages/Success/Success";
 function App() {
   return (
     <>
@@ -60,10 +61,11 @@ function App() {
           <Route path="/forgetPassword" index element={<ForgetPassword />} />
           <Route path="/changePassword" index element={<ChangePassword />} />
           <Route path="/order" index element={<Order />} />
-          <Route path="/success" index element={<Sucess />} />
+          <Route path="/success" index element={<Success />} />
           <Route path="/payment" index element={<Payment />} />
           <Route path="/profile" index element={<ProfilePage />} />
           <Route path="/cartPage" index element={<CartPage />} />
+          <Route path="/OrderCard" index element={<OrderCard />} />
           <Route
             path="/resetPassword/:token"
             index
