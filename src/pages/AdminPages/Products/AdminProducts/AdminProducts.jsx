@@ -5,10 +5,15 @@ import { getAllProducts } from "../../../../store/actions/productActions";
 import { Link } from "react-router-dom";
 import Loading from "../../../../components/Loading/Loading";
 import styles from "./AdminProducts.module.css";
+import axiosInstance from "../../../../network/axiosInstance";
 
 function AdminProducts() {
   const dispatch = useDispatch();
-
+  const {
+    loading: userLoading,
+    error: userError,
+    userInfo,
+  } = useSelector((state) => state.userLogin);
   const {
     loading: productsLoading,
     error: productsError,
@@ -34,6 +39,19 @@ function AdminProducts() {
       pageNumber--;
     }
     setPageNum(pageNumber);
+  };
+
+  const handleDelete = async (productId) => {
+    let { data } = await axiosInstance({
+      url: `/product`,
+      method: "delete",
+      data: { productId },
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        authorization: `Bearer ${userInfo?.token}`,
+      },
+    });
   };
   return (
     <div className="container mt-5">
@@ -61,6 +79,7 @@ function AdminProducts() {
                   <th scope="col">Name</th>
                   <th scope="col">Price</th>
                   <th scope="col">Edit</th>
+                  <th scope="col">Delete</th>
                 </tr>
               </thead>
               <tbody>
@@ -73,6 +92,17 @@ function AdminProducts() {
                       <Link to="/">
                         <button className="btn">Edit </button>
                       </Link>
+                    </td>
+                    <td>
+                      <button
+                        onClick={() => {
+                          // console.log(product._id);
+                          handleDelete(product?._id);
+                        }}
+                        className="btn"
+                      >
+                        Delete{" "}
+                      </button>
                     </td>
                   </tr>
                 ))}
