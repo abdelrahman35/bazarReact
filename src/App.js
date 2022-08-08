@@ -38,9 +38,8 @@ import Order from "./pages/OrderPages/Order/Order";
 import Payment from "./pages/OrderPages/Payment/Payment";
 import ListOrders from "./pages/AdminPages/Orders/ListOrders/ListOrders";
 import OrderDetailsForAdmin from "./pages/AdminPages/Orders/OrderDetailsForAdmin/OrderDetailsForAdmin";
-// import CategoryDetails from "./pages/CategoryDetails/CategoryDetails";
 import CartPage from "./pages/CartPage/Cart";
-
+import Sucess from "./pages/OrderPages/Sucess/Success";
 function App() {
   return (
     <>
@@ -61,9 +60,10 @@ function App() {
           <Route path="/forgetPassword" index element={<ForgetPassword />} />
           <Route path="/changePassword" index element={<ChangePassword />} />
           <Route path="/order" index element={<Order />} />
+          <Route path="/success" index element={<Sucess />} />
           <Route path="/payment" index element={<Payment />} />
           <Route path="/profile" index element={<ProfilePage />} />
-          <Route path="/CartPage" index element={<CartPage />} />
+          <Route path="/cartPage" index element={<CartPage />} />
           <Route
             path="/resetPassword/:token"
             index

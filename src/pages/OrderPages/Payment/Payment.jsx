@@ -21,7 +21,7 @@ export default function App() {
   };
   const options = {
     clientSecret:
-      "pi_3LTr5XAMxeDwFF2G2RZpKaBl_secret_vQxtWv0Xwq1vpZlGtpyNgZ4xL",
+      "pi_3LUFaaAMxeDwFF2G0HQWm4kF_secret_jgwniT2Mx9RwIEW5V8ymStZ54",
     appearance,
   };
 

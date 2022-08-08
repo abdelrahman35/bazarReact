@@ -181,7 +181,7 @@ function ProudctPage() {
                     data-bs-target="#offcanvasExample"
                     aria-controls="offcanvasExample"
                   >
-                    for more categories and filter
+                    for more categories and filteer
                   </button>
                   <div
                     className="offcanvas offcanvas-start"
