@@ -1,0 +1,64 @@
+.ancorBtns {
+  color: var(--color3);
+  text-decoration: none;
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+  -o-transition: all 0.2s;
+}
+.ancorBtns:hover {
+  color: var(--color7);
+}
+.btns {
+  font-size: 12px;
+  margin-top: 20px;
+}
+.title {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 35px;
+  color: var(--color3);
+}
+.title2 {
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--color3);
+}
+.titleDetail {
+  font-weight: 300;
+  font-size: 18px;
+  color: var(--color3);
+}
+.titleDetail2 {
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 25px;
+  color: var(--color3);
+}
+.Left {
+  border-radius: 10px;
+  background-color: var(--color6) !important;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  padding: 35px 0px;
+}
+.Text1 {
+  color: var(--color3);
+  font-weight: 700;
+  color: var(--color3);
+  font-size: 40px;
+}
+.form-select {
+  height: 40px !important;
+  border: none !important;
+  background-color: var(--color5) !important;
+  color: var(--color3) !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  font-size: 22px !important;
+}

@@ -100,13 +100,11 @@ function ProfilePage() {
                   <p className="d-inline ms-1">Address Book</p>
                 </div>
 
-                <div
-                  onClick={() => {
-                    setRenderedData("ChangePassword");
-                  }}
-                  className={`${styles["card-title"]}  fs-5 ${styles.title}`}
-                >
-                  <p className="d-inline ms-1">Change Password</p>
+                <div>
+                  <Link to="/changePassword">
+                    className={`${styles["card-title"]}  fs-5 ${styles.title}`}
+                    <p className="d-inline ms-1">Change Password</p>
+                  </Link>
                 </div>
 
                 <hr className={`${styles.hr} m-0`} />
