@@ -41,6 +41,7 @@ import ListOrders from "./pages/AdminPages/Orders/ListOrders/ListOrders";
 import OrderDetailsForAdmin from "./pages/AdminPages/Orders/OrderDetailsForAdmin/OrderDetailsForAdmin";
 import CartPage from "./pages/CartPage/Cart";
 import Success from "./pages/OrderPages/Success/Success";
+import FavouriteItem from "./components/FavouriteItem/FavouriteItem";
 function App() {
   return (
     <>
@@ -66,6 +67,7 @@ function App() {
           <Route path="/profile" index element={<ProfilePage />} />
           <Route path="/cartPage" index element={<CartPage />} />
           <Route path="/OrderCard" index element={<OrderCard />} />
+          <Route path="/FavouriteItem" index element={<FavouriteItem />} />
           <Route
             path="/resetPassword/:token"
             index
