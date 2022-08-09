@@ -72,3 +72,13 @@
 .title {
   cursor: pointer;
 }
+
+.link {
+  color: var(--color3);
+  text-decoration: none;
+  transition: all 0.5s;
+}
+
+.link:hover {
+  color: var(--color6) !important;
+}

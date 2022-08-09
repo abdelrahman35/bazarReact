@@ -100,12 +100,13 @@ function ProfilePage() {
                   <p className="d-inline ms-1">Address Book</p>
                 </div>
 
-                <div>
-                  <Link to="/changePassword">
-                    className={`${styles["card-title"]}  fs-5 ${styles.title}`}
-                    <p className="d-inline ms-1">Change Password</p>
-                  </Link>
-                </div>
+                <Link className={`${styles.link}`} to="/changePassword">
+                  <div
+                    className={`${styles["card-title"]}   fs-5 ${styles.title}`}
+                  >
+                    <p className="d-inline ms-1 ">Change Password</p>
+                  </div>
+                </Link>
 
                 <hr className={`${styles.hr} m-0`} />
 
