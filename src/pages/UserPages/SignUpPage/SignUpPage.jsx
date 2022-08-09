@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styles from "./SignUpPage.module.css";
 import ErrorMessage from "../../../components/ErrorMessage/ErrorMessage";
-
 const initialValues = {
   firstName: "",
   lastName: "",
@@ -28,7 +27,7 @@ const validationSchema = Yup.object({
     .required("Please Enter your password")
     .matches(
       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-      "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character",
+      "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
     ),
 });
 
@@ -36,27 +35,19 @@ function SignUpPage() {
   // declarations
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const userLogin = useSelector((state) => state.userLogin);
-  const { error: userError, userInfo } = userLogin;
+  const userRegister = useSelector((state) => state.userRegister);
+  const { error: userError, userInfo } = userRegister;
   // functions
   const onSubmit = (values) => {
     dispatch(
-      register(
-        values.firstName,
-        values.lastName,
-        values.email,
-        values.password,
-      ),
+      register(values.firstName, values.lastName, values.email, values.password)
     );
   };
   useEffect(() => {
-    if (userError) {
-      navigate("*", { replace: true, state: userError });
-    }
     if (userInfo) {
       navigate(-1, { replace: true });
     }
-  }, [navigate, userInfo, userError]);
+  }, [navigate, userInfo]);
   const formik = useFormik({
     initialValues,
     onSubmit,
@@ -75,6 +66,13 @@ function SignUpPage() {
               <h2 className={`${styles.heading} text-capitalize text-center`}>
                 Create Account !
               </h2>
+              <div className="text-capitalize text-center">
+                {userError ? (
+                  <ErrorMessage statusCode={userError} />
+                ) : (
+                  "Create new account"
+                )}
+              </div>
             </div>
             <Form.Group className="mb-3" controlId="formBasicFirstName">
               <Form.Control
@@ -137,8 +135,6 @@ function SignUpPage() {
             </div>
           </Form>
         </section>
-      ) : userError ? (
-        <ErrorMessage statusCode={userError} />
       ) : null}
     </>
   );

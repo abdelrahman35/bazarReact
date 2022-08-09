@@ -18,6 +18,19 @@ function AdminPanel() {
             </Link>
           </div>
         </div>
+        <div className="row mt-0 mt-lg-3">
+          <div className="col-lg-6">
+            <Link to="/admin/order" className={`card ${styles.cardio}`}>
+              Orders
+              <div className="card-title"></div>
+            </Link>
+          </div>
+          <div className="col-lg-6">
+            <Link to="/admin/categories" className={`card ${styles.cardio}`}>
+              <div className="card-title">Categories</div>
+            </Link>
+          </div>
+        </div>
       </div>
     </>
   );

@@ -16,6 +16,7 @@ import {
   filterProductsReducer,
 } from "./productReducers";
 import {
+  getUserOrdersReducer,
   listAllOrdersReducer,
   orderDetailsForAdminReducer,
 } from "./ordersReducers";
@@ -36,4 +37,5 @@ export default combineReducers({
   // orderReducers
   allOrders: listAllOrdersReducer,
   orderDetailsForAdmin: orderDetailsForAdminReducer,
+  userOrders: getUserOrdersReducer,
 });

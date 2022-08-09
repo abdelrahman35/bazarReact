@@ -27,6 +27,7 @@ function ProudctPage() {
   const [pageNum, setPageNum] = useState(1);
   useEffect(() => {
     dispatch(getAllProducts(pageNum));
+    console.log(products);
   }, [pageNum, filteredProducts]);
   const nextPage = () => {
     let pageNumber;

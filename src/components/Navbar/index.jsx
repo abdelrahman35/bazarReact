@@ -182,7 +182,7 @@ function Navbar() {
             </div>
           </div>
         </div>
-      ) : (
+      ) : userInfo ? (
         <div
           className="modal fade "
           id="exampleModal"
@@ -195,7 +195,7 @@ function Navbar() {
             </div>
           </div>
         </div>
-      )}
+      ) : null}
     </>
   );
 }

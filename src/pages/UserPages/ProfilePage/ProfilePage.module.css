@@ -1,6 +1,7 @@
 .page {
   background-color: var(--color6);
-  height: 80vh;
+  height: auto;
+  margin-bottom: 20px;
 }
 .leftCard {
   background-color: rgb(245, 245, 245) !important;

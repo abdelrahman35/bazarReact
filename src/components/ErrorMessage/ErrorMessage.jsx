@@ -8,7 +8,7 @@ function ErrorMessage({ statusCode }) {
         setMessage("Not Found Page");
         break;
       case 422:
-        setMessage("wrong email or password");
+        setMessage("user already exists");
         break;
       case 401:
         setMessage("Invalid Email or Password");

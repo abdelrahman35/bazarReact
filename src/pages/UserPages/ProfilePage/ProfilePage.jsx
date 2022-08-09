@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import ErrorMessage from "../../../components/ErrorMessage/ErrorMessage";
 import Loading from "../../../components/Loading/Loading";
+import { getUserOrders } from "../../../store/actions/ordersActions";
+import OrderCard from "../../../components/OrderCard/OrderCard";
 function ProfilePage() {
   const [renderedData, setRenderedData] = useState("accountDetails");
   const dispatch = useDispatch();
@@ -16,19 +18,44 @@ function ProfilePage() {
     dispatch(logout());
     navigate("/", { replace: true });
   };
+  const {
+    loading: userOrdersLoading,
+    error: userOrdersError,
+    userOrders,
+  } = useSelector((state) => state.userOrders);
+  const userOrdersArray = userOrders?.orders;
+  const [pageNum, setPageNum] = useState(1);
+
+  const nextPage = () => {
+    let pageNumber;
+    pageNumber = pageNum;
+    if (pageNum < userOrders?.numberOfPages) {
+      pageNumber++;
+    }
+    setPageNum(pageNumber);
+  };
+  const prevPage = () => {
+    let pageNumber;
+    pageNumber = pageNum;
+    if (pageNum > 1) {
+      pageNumber--;
+    }
+    setPageNum(pageNumber);
+  };
   useEffect(() => {
     if (!userInfo) {
       navigate("*", { replace: true });
+    } else if (userInfo) {
+      dispatch(getUserOrders(pageNum));
     }
-  }, [userInfo, navigate]);
-
+  }, [userInfo, navigate, pageNum]);
   return userLoading ? (
     <Loading />
   ) : userError ? (
     <ErrorMessage />
   ) : userInfo ? (
     <div className={`${styles.page}`}>
-      <div className={`container `}>
+      <div className={`container`}>
         <div className={`row `}>
           <div className="col-lg-4 mt-5">
             <div className={`card shadow w-100 ${styles.leftCard}`}>
@@ -118,6 +145,63 @@ function ProfilePage() {
                 <div className="card-body">
                   <h5 className={`${styles["card-title"]}`}>Orders</h5>
                   <hr className={`${styles.hr}`} />{" "}
+                  <div>
+                    {userOrdersLoading ? (
+                      <Loading />
+                    ) : userOrders ? (
+                      <>
+                        {userOrdersArray?.map((order, index) => (
+                          <OrderCard key={index} order={order} />
+                        ))}
+                      </>
+                    ) : userOrdersError ? (
+                      <ErrorMessage statusCode={userOrdersError} />
+                    ) : null}
+                  </div>
+                  <div>
+                    <nav aria-label="Page navigation example">
+                      <ul className="pagination ">
+                        <li className="page-item  ">
+                          <Link
+                            to="#"
+                            className="page-link text-dark bg-outline-dark"
+                            onClick={() => {
+                              prevPage();
+                            }}
+                          >
+                            Previous
+                          </Link>
+                        </li>
+                        <li className="page-item">
+                          <Link
+                            to="#"
+                            className="page-link text-dark bg-outline-dark "
+                            onClick={() => {
+                              prevPage();
+                            }}
+                          >
+                            {pageNum}
+                          </Link>
+                        </li>
+
+                        <li className="page-item">
+                          <Link
+                            className={`page-link text-dark bg-outline-dark ${
+                              pageNum === userOrders?.numberOfPages
+                                ? "disabled"
+                                : ""
+                            }`}
+                            to="#"
+                            onClick={() => {
+                              nextPage();
+                            }}
+                          >
+                            Next
+                          </Link>
+                        </li>
+                      </ul>
+                    </nav>
+                  </div>
                 </div>
               </div>
             ) : renderedData === "savedItems" ? (

@@ -65,12 +65,10 @@ export const register =
       });
       localStorage.setItem("userInfo", JSON.stringify(data));
     } catch (error) {
+      console.log(error);
       dispatch({
         type: "USER_REGISTER_FAIL",
-        payload:
-          error.response && error.response.data.detail
-            ? error.response.data.detail
-            : error.message,
+        payload: error.response ? error.response.status : error,
       });
     }
   };

@@ -1,30 +1,37 @@
 import React from "react";
 import styles from "./OrderCard.module.css";
-import image from "../../assets/images/productimage2.png";
-const OrderCard = () => {
+const OrderCard = ({ order }) => {
+  console.log(order);
   return (
-    <div className={`container ${styles.con}`}>
+    <div className={`container `}>
       <div className={`card mb-3" ${styles.card}`}>
         <div className="row g-0">
-          <div className="col-md-4">
-            <img src={image} className="img-fluid rounded-start" alt="..." />
-          </div>
           <div className="col-md-8">
             <div className="card-body">
               <h5 className={`card-title ${styles.Title}`}>
-                Laptop Shoulder Bag
+                Order Number: {order?._id}
               </h5>
-              <p className={`card-text ${styles.OrderNumber}`}>
-                Order Number: <span>9354678</span>
-              </p>
+
               <p className={`card-text ${styles.OrderStatus}`}>
-                CANCELLED-PAYMENT UNSUCCESSFULL
+                {order?.status}
               </p>
               <p className={`card-text ${styles.Date}`}>
-                <p>On 26-6-2020</p>
+                <p>On {order?.createdAt?.substring(0, 10)}</p>
               </p>
               <p className={`card-text ${styles.Button}`}>
-                <button className={styles.btnWarningg}>Cancel Item</button>
+                {order?.status === "pending" || order?.status === "Pending" ? (
+                  <button className={styles.btnWarningg}>Cancel Item</button>
+                ) : order?.status === "cancelled" ||
+                  order?.status === "Cancelled" ? (
+                  <div>Cancelled</div>
+                ) : (
+                  <>
+                    <button className={styles.btnWarningg}>
+                      {" "}
+                      view details
+                    </button>
+                  </>
+                )}
               </p>
             </div>
           </div>

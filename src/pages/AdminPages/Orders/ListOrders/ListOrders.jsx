@@ -6,6 +6,8 @@ import ErrorMessage from "../../../../components/ErrorMessage/ErrorMessage";
 import { Link } from "react-router-dom";
 import styles from "./ListOrders.module.css";
 function ListOrders() {
+  const [pageNum, setPageNum] = useState(1);
+
   const dispatch = useDispatch();
   const {
     loading: ordersLoading,
@@ -14,10 +16,27 @@ function ListOrders() {
   } = useSelector((state) => state.allOrders);
   const ordersArray = orders?.orders;
   useEffect(() => {
-    dispatch(listAllOrders());
-  }, []);
+    console.log(orders);
 
-  console.log(orders);
+    dispatch(listAllOrders(pageNum));
+  }, [pageNum]);
+
+  const nextPage = () => {
+    let pageNumber;
+    pageNumber = pageNum;
+    if (pageNum < orders?.numberOfPages) {
+      pageNumber++;
+    }
+    setPageNum(pageNumber);
+  };
+  const prevPage = () => {
+    let pageNumber;
+    pageNumber = pageNum;
+    if (pageNum > 1) {
+      pageNumber--;
+    }
+    setPageNum(pageNumber);
+  };
   return (
     <div className="container mt-5">
       {ordersLoading ? (
@@ -28,12 +47,12 @@ function ListOrders() {
         </div>
       ) : orders ? (
         <div className={`${styles.page}`}>
-          {" "}
           <div className="row d-flex justify-content-evenly">
             <table className="table table-striped ">
               <thead>
                 <tr>
                   <th scope="col">Number</th>
+                  <th scope="col">id</th>
                   <th scope="col">user</th>
                   <th scope="col">created at</th>
                   <th scope="col">total price</th>
@@ -45,7 +64,8 @@ function ListOrders() {
               <tbody>
                 {ordersArray?.map((order, index) => (
                   <tr key={index}>
-                    <th scope="row">{index}</th>
+                    <th scope="row">{index + 1}</th>
+                    <th scope="row">{order._id}</th>
                     <td>{order.user.firstName + " " + order.user.lastName}</td>
                     <td>{order.createdAt.substring(0, 10)}</td>
                     <td>{order.totalPrice}</td>
@@ -62,6 +82,46 @@ function ListOrders() {
                 ))}
               </tbody>
             </table>
+            <nav aria-label="Page navigation example">
+              <ul className="pagination ">
+                <li className="page-item  ">
+                  <Link
+                    to="#"
+                    className="page-link text-dark bg-outline-dark"
+                    onClick={() => {
+                      prevPage();
+                    }}
+                  >
+                    Previous
+                  </Link>
+                </li>
+                <li className="page-item">
+                  <Link
+                    to="#"
+                    className="page-link text-dark bg-outline-dark "
+                    onClick={() => {
+                      prevPage();
+                    }}
+                  >
+                    {pageNum}
+                  </Link>
+                </li>
+
+                <li className="page-item">
+                  <Link
+                    className={`page-link text-dark bg-outline-dark ${
+                      pageNum === orders?.numberOfPages ? "disabled" : ""
+                    }`}
+                    to="#"
+                    onClick={() => {
+                      nextPage();
+                    }}
+                  >
+                    Next
+                  </Link>
+                </li>
+              </ul>
+            </nav>
           </div>
         </div>
       ) : ordersError ? (

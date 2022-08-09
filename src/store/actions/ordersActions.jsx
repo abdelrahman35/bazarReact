@@ -1,6 +1,6 @@
 import axiosInstace from "../../network/axiosInstance";
 
-export const listAllOrders = () => async (dispatch, getState) => {
+export const listAllOrders = (pageNum) => async (dispatch, getState) => {
   try {
     dispatch({ type: "LIST_ALL_ORDERS_REQUEST" });
     const token = getState().userLogin.userInfo.token;
@@ -9,7 +9,9 @@ export const listAllOrders = () => async (dispatch, getState) => {
       "Access-Control-Allow-Origin": "*",
       authorization: `Bearer ${token}`,
     };
-    const { data } = await axiosInstace.get("/order", { headers });
+    const { data } = await axiosInstace.get(`/order?page=${pageNum}`, {
+      headers,
+    });
     dispatch({
       type: "LIST_ALL_ORDERS_SUCCESS",
       payload: data,
@@ -39,6 +41,30 @@ export const orderDetailsForAdmin = (orderId) => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: "ADMIN_ORDER_DETAILS_FAIL",
+      payload: error.response ? error.response.status : error,
+    });
+  }
+};
+
+export const getUserOrders = (pageNum) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: "GET_USER_ORDERS_REQUEST" });
+    const token = getState().userLogin.userInfo.token;
+    const headers = {
+      "Content-Type": "multipart/form-data",
+      "Access-Control-Allow-Origin": "*",
+      authorization: `Bearer ${token}`,
+    };
+    const { data } = await axiosInstace.get(`/order/me?page=${pageNum}`, {
+      headers,
+    });
+    dispatch({
+      type: "GET_USER_ORDERS_SUCCESS",
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: "GET_USER_ORDERS_FAIL",
       payload: error.response ? error.response.status : error,
     });
   }
