@@ -81,33 +81,12 @@ function ProfilePage() {
 
                 <div
                   onClick={() => {
-                    setRenderedData("savedItems");
-                  }}
-                  className={`${styles["card-title"]}  fs-5 ${styles.title}`}
-                >
-                  <i className="fa-regular fa-heart"></i>{" "}
-                  <p className="d-inline ms-1">Saved Items</p>
-                </div>
-
-                <hr className={`${styles.hr} m-0`} />
-
-                <div
-                  onClick={() => {
                     setRenderedData("AddressBook");
                   }}
                   className={`${styles["card-title"]}  fs-5 ${styles.title}`}
                 >
                   <p className="d-inline ms-1">Address Book</p>
                 </div>
-
-                <Link className={`${styles.link}`} to="/changePassword">
-                  <div
-                    className={`${styles["card-title"]}   fs-5 ${styles.title}`}
-                  >
-                    <p className="d-inline ms-1 ">Change Password</p>
-                  </div>
-                </Link>
-
                 <hr className={`${styles.hr} m-0`} />
 
                 <button
@@ -124,27 +103,38 @@ function ProfilePage() {
               <div className={`card shadow w-100 ${styles.rightCard}`}>
                 <div className="card-body">
                   <h5 className="">Account Overview</h5>
-                  <hr className={`${styles.hr}`} />{" "}
-                  <h6 className="card-subtitle mb-3 text-muted">
-                    Hello {userInfo.firstName + " " + userInfo.lastName}
-                  </h6>
-                  <h6 className="card-subtitle mb-3 text-muted">
-                    email : {userInfo.email}{" "}
-                  </h6>
-                  <h6 className="card-subtitle mb-3 text-muted">
-                    Number of Saved Addresses : {userInfo.address.length}{" "}
-                  </h6>
-                  <h6 className="card-subtitle mb-3 text-muted">
-                    Number of Orders : {userInfo.address.length}{" "}
-                  </h6>
+                  <hr className={`${styles.hr}`} />
+                  <div className="d-flex justify-content-between mx-5 align-items-center mt-4">
+                    <h6 className="card-subtitle mb-3 text-muted fs-5">
+                      Hello {userInfo.firstName + " " + userInfo.lastName}
+                    </h6>
+                    <h6 className="card-subtitle mb-3 text-muted fs-5">
+                      email : {userInfo.email}{" "}
+                    </h6>
+                  </div>
+                  <div className="d-flex justify-content-between mx-5 align-items-center mt-4 mb-4">
+                    <h6 className="card-subtitle mb-3 text-muted fs-5">
+                      Number of Saved Addresses : {userInfo.address.length}{" "}
+                    </h6>
+                    <h6 className="card-subtitle mb-3 text-muted fs-5">
+                      Number of Orders : {userInfo.address.length}{" "}
+                    </h6>
+                  </div>
+
+                  <Link
+                    className={`${styles.btnWarningg} ${styles.changePassword} d-flex justify-content-between px-2 mx-4  align-items-center mt-4 mb-4`}
+                    to="/changePassword"
+                  >
+                    Change Password
+                  </Link>
                 </div>
               </div>
             ) : renderedData === "orders" ? (
               <div className={`card shadow w-100 ${styles.rightCard}`}>
                 <div className="card-body">
-                  <h5 className={`${styles["card-title"]}`}>Orders</h5>
+                  <h5>Orders</h5>
                   <hr className={`${styles.hr}`} />{" "}
-                  <div>
+                  <div className="d-flex flex-column gap-3 w-100">
                     {userOrdersLoading ? (
                       <Loading />
                     ) : userOrders ? (
@@ -201,13 +191,6 @@ function ProfilePage() {
                       </ul>
                     </nav>
                   </div>
-                </div>
-              </div>
-            ) : renderedData === "savedItems" ? (
-              <div className={`card shadow w-100 ${styles.rightCard}`}>
-                <div className="card-body">
-                  <h5 className={`${styles["card-title"]}`}>Saved Items</h5>
-                  <hr className={`${styles.hr}`} />{" "}
                 </div>
               </div>
             ) : null}

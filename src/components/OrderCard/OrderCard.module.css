@@ -1,60 +1,41 @@
-/* .con {
-  height: 100vh;
-} */
 .card {
-  max-width: 540px;
   box-sizing: border-box;
-  width: 100vw !important;
+  width: 100% !important;
   background: rgba(234, 234, 234, 0.5) !important;
   border: 1px solid rgba(117, 117, 117, 0.5);
   border-radius: 5px;
 }
+
 .Title {
-  font-family: "Lato";
-  font-style: normal;
   font-weight: 400;
   font-size: 32px;
   line-height: 37px;
-  /* identical to box height */
-
-  /* 3 */
-  color: #2d2723;
+  color: var(--color3);
 }
 .Date {
-  font-family: "Lato";
-  font-style: normal;
   font-weight: 400;
-  font-size: 32px;
+  font-size: 20px;
   line-height: 37px;
-  /* identical to box height */
-
-  /* 3 */
   color: var(--color4);
+  margin: 0;
 }
 .OrderNumber {
-  font-family: "Lato";
-  font-style: normal;
   font-weight: 300;
   font-size: 18px;
   line-height: 23px;
-
-  /* 4 */
-  color: #9b959a;
+  color: var(--color4);
 }
 .OrderStatus {
-  width: 194px;
-  height: 17px;
-
-  background: #d9d9d9;
-  font-family: "Lato";
-  font-style: normal;
+  display: flex;
+  height: 25px;
+  background: var(--color5);
   font-weight: 400;
-  font-size: 9px;
-  line-height: 11px;
-  padding-top: 0.2vw;
+  font-size: 15px;
   text-align: center;
-  /* 3 */
-  color: #2d2723;
+  color: var(--color3);
+  align-items: center;
+  justify-content: center;
+  margin: 0;
 }
 .btnWarningg {
   background-color: var(--color1) !important;
@@ -78,11 +59,8 @@
 }
 .btnWarningg:hover,
 .btnWarningg:active {
-  color: var(--color6) !important;
+  color: var(--color7) !important;
   background-color: transparent !important;
   border: 2px solid var(--color7) !important;
   box-shadow: none !important;
-}
-.button {
-  margin-top: -2vw;
 }

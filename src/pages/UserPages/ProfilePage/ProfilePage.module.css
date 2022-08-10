@@ -1,7 +1,10 @@
 .page {
   background-color: var(--color6);
-  height: auto;
+  height: 70vh;
   margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .leftCard {
   background-color: rgb(245, 245, 245) !important;
@@ -48,23 +51,20 @@
   background-color: var(--color1) !important;
   border-bottom-left-radius: calc(0.375rem - 1px);
   border-bottom-right-radius: calc(0.375rem - 1px);
-
-  /*cursor: pointer;
-  color: var(--color7) !important;
-  font-size: 19px !important;
-  background-color: transparent !important;
-  border: 2px solid var(--color7) !important;
-  box-shadow: none !important;
-  height: 35px !important;
-  border-radius: 5px !important;
-  width: 210px;
-  -webkit-border-radius: 20px ;
-  -moz-border-radius: 20px ;
-  -ms-border-radius: 20px ;
-  -o-border-radius: 20px ;
-    */
 }
-
+.changePassword {
+  padding: 20px;
+  border-radius: 10px !important;
+  -webkit-border-radius: 10px !important;
+  -moz-border-radius: 10px !important;
+  -ms-border-radius: 10px !important;
+  -o-border-radius: 10px !important;
+  text-decoration: none;
+  width: 30% !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .hr {
   width: 100%;
 }

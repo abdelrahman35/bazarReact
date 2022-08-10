@@ -1,43 +1,49 @@
 import React from "react";
 import styles from "./OrderCard.module.css";
 const OrderCard = ({ order }) => {
-  console.log(order);
   return (
-    <div className={`container `}>
-      <div className={`card mb-3" ${styles.card}`}>
-        <div className="row g-0">
-          <div className="col-md-8">
-            <div className="card-body">
-              <h5 className={`card-title ${styles.Title}`}>
-                Order Number: {order?._id}
+    <>
+      <div className={`container-fluid `}>
+        <div className={`card mb-3" ${styles.card}`}>
+          <div className="col-md-8 w-100">
+            <div className="card-body p-0 px-2 py-3">
+              <h5
+                className={`m-0 card-title ${styles.Title} d-flex justify-content-start gap-4`}
+              >
+                <p className="m-0 mb-1">Order Number :</p>
+                <p className="m-0 mb-1">({order?._id.substring(0, 10)})</p>
               </h5>
 
               <p className={`card-text ${styles.OrderStatus}`}>
                 {order?.status}
               </p>
-              <p className={`card-text ${styles.Date}`}>
-                <p>On {order?.createdAt?.substring(0, 10)}</p>
-              </p>
-              <p className={`card-text ${styles.Button}`}>
-                {order?.status === "pending" || order?.status === "Pending" ? (
-                  <button className={styles.btnWarningg}>Cancel Item</button>
-                ) : order?.status === "cancelled" ||
-                  order?.status === "Cancelled" ? (
-                  <div>Cancelled</div>
-                ) : (
-                  <>
-                    <button className={styles.btnWarningg}>
-                      {" "}
-                      view details
-                    </button>
-                  </>
-                )}
-              </p>
+              <div className="d-flex justify-content-between mt-2">
+                <p className={`card-text ${styles.Date}`}>
+                  <span>On {order?.createdAt?.substring(0, 10)}</span>
+                </p>
+                <p className={`card-text ${styles.Button}`}>
+                  {order?.status === "pending" ||
+                  order?.status === "Pending" ? (
+                    <button className={styles.btnWarningg}>Cancel Item</button>
+                  ) : order?.status === "cancelled" ||
+                    order?.status === "Cancelled" ? (
+                    <span>Cancelled</span>
+                  ) : (
+                    <>
+                      <button className={styles.btnWarningg}>
+                        {" "}
+                        view details
+                      </button>
+                    </>
+                  )}
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+      <hr />
+    </>
   );
 };
 
