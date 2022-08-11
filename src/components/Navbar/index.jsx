@@ -12,6 +12,7 @@ function Navbar() {
   const [revGenButton, setRevGenButton] = useState(styles.revGenButton);
   const userLogin = useSelector((state) => state.userLogin);
   const { loading: userLoading, userInfo } = userLogin;
+  const cartItems = useSelector((state) => state.cartItems);
 
   return (
     <>
@@ -81,9 +82,11 @@ function Navbar() {
                 <a className={`  nav-link ${styles.navLink} me-2`} href="/">
                   <i className="fa-solid fa-heart"></i>
                 </a>
-                <a className={`  nav-link ${styles.navLink}`} href="/">
-                  <i className="fa-solid fa-cart-shopping"></i>
-                </a>
+                <Link className={`  nav-link ${styles.navLink}`} to="/cart">
+                  <i className="fa-solid fa-cart-shopping">
+                    {cartItems?.cartArray?.length}
+                  </i>
+                </Link>
               </div>
               <div className="col-12 col-md-2 mb-3 mb-md-0">
                 {userLoading ? (

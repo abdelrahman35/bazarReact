@@ -20,6 +20,7 @@ import {
   listAllOrdersReducer,
   orderDetailsForAdminReducer,
 } from "./ordersReducers";
+import { cartReducer } from "./cartReducers";
 export default combineReducers({
   // userReducers
   userRegister: userRegisterReducer,
@@ -38,4 +39,6 @@ export default combineReducers({
   allOrders: listAllOrdersReducer,
   orderDetailsForAdmin: orderDetailsForAdminReducer,
   userOrders: getUserOrdersReducer,
+  // cart reducers
+  cartItems: cartReducer,
 });

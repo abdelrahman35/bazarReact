@@ -7,7 +7,7 @@ import Loading from "../../../components/Loading/Loading";
 import ErrorMessage from "../../../components/ErrorMessage/ErrorMessage";
 import ReviewCard from "../../../components/ReviewCard/ReviewCard";
 import Rateing from "../../../components/Rateing/Rateing";
-
+import { addToCart } from "../../../store/actions/cartAction";
 const ProductDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -26,6 +26,9 @@ const ProductDetails = () => {
     { length: productQuantity },
     (_, index) => index + 1
   );
+  const addToCartHandler = () => {
+    dispatch(addToCart(product));
+  };
   return (
     <>
       {productLoading ? (
@@ -87,7 +90,12 @@ const ProductDetails = () => {
                     ))}
                   </select>
 
-                  <button className={`${styles.btnWarningg}`}>
+                  <button
+                    className={`${styles.btnWarningg}`}
+                    onClick={() => {
+                      addToCartHandler();
+                    }}
+                  >
                     <i className="fa-solid fa-cart-plus me-2"></i>
                     Add to cart
                   </button>
