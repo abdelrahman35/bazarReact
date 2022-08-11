@@ -6,9 +6,14 @@ import thunk from "redux-thunk";
 const userFromLocalStorage = localStorage.getItem("userInfo")
   ? JSON.parse(localStorage.getItem("userInfo"))
   : undefined;
+const cartFromLocalStorage = localStorage.getItem("cartItems")
+  ? JSON.parse(localStorage.getItem("cartItems"))
+  : undefined;
 const stateFromLocalStorage = {
   userLogin: { userInfo: userFromLocalStorage },
+  cart: { cartItems: cartFromLocalStorage },
 };
+
 const store = createStore(
   reducers,
   stateFromLocalStorage,

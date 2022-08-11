@@ -65,7 +65,7 @@ function App() {
           <Route path="/success" index element={<Success />} />
           <Route path="/payment" index element={<Payment />} />
           <Route path="/profile" index element={<ProfilePage />} />
-          <Route path="/cartPage" index element={<CartPage />} />
+          <Route path="/cart" index element={<CartPage />} />
           <Route path="/OrderCard" index element={<OrderCard />} />
           <Route path="/FavouriteItem" index element={<FavouriteItem />} />
           <Route

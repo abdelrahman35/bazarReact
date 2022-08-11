@@ -1,24 +1,31 @@
 import styles from "./Cart.module.css";
 import { useSelector } from "react-redux";
-
+import { useEffect } from "react";
 import CartCard from "../../components/CartCard/CartCard";
-const Cart = () => {
+const CartPage = () => {
   const {
     loading: productLoading,
     error: productError,
     product,
   } = useSelector((state) => state.oneProduct);
-
+  const cartItems = useSelector((state) => state.cartItems);
   const productQuantity = product?.product?.quantity;
+  useEffect(() => {
+    console.log(cartItems?.cartArray);
+  }, [cartItems]);
+
   const quantityArray = Array.from(
     { length: productQuantity },
-    (_, index) => index + 1,
+    (_, index) => index + 1
   );
+
   return (
     <section className={`${styles.cartSection}`}>
       <div className={`container p-0`}>
         <div className={`row`}>
-          <CartCard />
+          {cartItems?.cartArray?.map((item, index) => (
+            <CartCard key={index} productFromCart={item} />
+          ))}
 
           <div className={`col-12  col-md-5 col-lg-4 `}>
             <h2 className={`${styles.Text2}`}>Order Summary</h2>
@@ -48,4 +55,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default CartPage;
