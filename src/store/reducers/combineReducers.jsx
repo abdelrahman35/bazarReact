@@ -40,5 +40,5 @@ export default combineReducers({
   orderDetailsForAdmin: orderDetailsForAdminReducer,
   userOrders: getUserOrdersReducer,
   // cart reducers
-  cartItems: cartReducer,
+  cart: cartReducer,
 });

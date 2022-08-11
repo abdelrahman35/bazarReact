@@ -8,12 +8,13 @@ const userFromLocalStorage = localStorage.getItem("userInfo")
   : undefined;
 const cartFromLocalStorage = localStorage.getItem("cartItems")
   ? JSON.parse(localStorage.getItem("cartItems"))
-  : undefined;
+  : [];
+console.log(cartFromLocalStorage);
 const stateFromLocalStorage = {
   userLogin: { userInfo: userFromLocalStorage },
   cart: { cartItems: cartFromLocalStorage },
 };
-
+console.log(stateFromLocalStorage);
 const store = createStore(
   reducers,
   stateFromLocalStorage,

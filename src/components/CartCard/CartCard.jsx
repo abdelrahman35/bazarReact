@@ -17,9 +17,9 @@ const CartCard = ({ productFromCart }) => {
     { length: productQuantity },
     (_, index) => index + 1
   );
-
+  console.log(productFromCart);
   const removeFromCartHandler = () => {
-    dispatch(removeFromCart(productFromCart._id));
+    dispatch(removeFromCart(productFromCart.productId));
   };
 
   return (
@@ -28,7 +28,7 @@ const CartCard = ({ productFromCart }) => {
         <div className={`d-flex row  ${styles.Left} w-100 m-0 px-5 px-md-0`}>
           <div className={`col-md-3 `}>
             <img
-              src={`https://bazaarshop.s3.eu-west-3.amazonaws.com${productFromCart?.image}`}
+              src={`https://bazaarshop.s3.eu-west-3.amazonaws.com${productFromCart?.productImage}`}
               className={`w-100`}
               alt="order img"
             />
@@ -38,15 +38,7 @@ const CartCard = ({ productFromCart }) => {
           >
             <div className="d-flex flex-column gap-1">
               <p className={` m-0 p-0 w-100   col-6 ${styles.title}`}>
-                {productFromCart?.name}
-              </p>
-
-              <p className={` m-0 p-0 w-100   col-6 ${styles.titleDetail}`}>
-                model year: {productFromCart?.modelYear}
-              </p>
-
-              <p className={` m-0 p-0 w-100  ${styles.titleDetail2}`}>
-                {productFromCart?.reviews?.length} Review
+                {productFromCart?.productName}
               </p>
             </div>
             <div className="d-flex justify-content-start gap-4">
@@ -74,7 +66,7 @@ const CartCard = ({ productFromCart }) => {
 
           <div className="col-md-3 d-flex flex-column align-items-center">
             <p className={`p-2 col-12  w-50 ${styles.title2}`}>
-              {productFromCart?.price} EGP
+              {productFromCart?.productPrice} EGP
             </p>
             <select
               id="quantity"

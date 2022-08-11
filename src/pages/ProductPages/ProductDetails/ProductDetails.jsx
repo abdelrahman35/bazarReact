@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import styles from "./ProductDetails.module.css";
@@ -9,6 +9,8 @@ import ReviewCard from "../../../components/ReviewCard/ReviewCard";
 import Rateing from "../../../components/Rateing/Rateing";
 import { addToCart } from "../../../store/actions/cartAction";
 const ProductDetails = () => {
+  const [qty, setQty] = useState(1);
+  console.log(qty);
   const { id } = useParams();
   const dispatch = useDispatch();
   const {
@@ -27,7 +29,7 @@ const ProductDetails = () => {
     (_, index) => index + 1
   );
   const addToCartHandler = () => {
-    dispatch(addToCart(product));
+    dispatch(addToCart(id, qty));
   };
   return (
     <>
@@ -82,6 +84,9 @@ const ProductDetails = () => {
                     id="quantity"
                     className={`form-select ${styles["form-select"]}`}
                     aria-label="Default select example"
+                    onChange={(e) => {
+                      setQty(parseInt(e.target.value));
+                    }}
                   >
                     {quantityArray.map((x, index) => (
                       <option key={index} value={x}>

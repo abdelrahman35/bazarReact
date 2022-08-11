@@ -1,33 +1,44 @@
-export const cartReducer = (
-  state = { cartItems: [], shippingAddress: {} },
-  action
-) => {
+export const cartReducer = (state = { cartItems: [] }, action) => {
   switch (action.type) {
-    case "ADD_TO_CART":
-      const item = action.payload;
-      const existItem = state.cartItems.find((x) => x.product === item.product);
-
-      if (existItem) {
+    case "ADD_TO_CART_SUCCESS":
+      const newProduct = action.payload;
+      console.log(state);
+      const isExist = state.cartItems.find(
+        (productFromCart) =>
+          productFromCart.productId.toString() ===
+          newProduct.productId.toString()
+      );
+      console.log(isExist);
+      if (isExist) {
         return {
           ...state,
-          cartItems: state.cartItems.map((x) =>
-            x.product === existItem.product ? item : x
-          ),
+          cartItems: state.cartItems.map((productFromCart) => {
+            if (productFromCart.productId === isExist.productId) {
+              productFromCart.qty = productFromCart.qty + newProduct.qty;
+              return productFromCart;
+            } else {
+              return newProduct;
+            }
+          }),
         };
       } else {
         return {
           ...state,
-          cartItems: [...state.cartItems, item],
+          cartItems: [...state.cartItems, newProduct],
         };
       }
-
-    case "CART_REMOVE_ITEM":
+    case "ADD_TO_CART_FAIL":
+      return { error: action.payload };
+    case "REMOVE_FROM_CART":
       return {
         ...state,
-        cartItems: state.cartItems.filter((x) => x.product !== action.payload),
+        cartItems: state.cartItems.filter(
+          (productFromCart) =>
+            productFromCart.productId !== newProduct.productId
+        ),
       };
 
-    case "CART_CLEAR_ITEMS":
+    case "CLEAR_CART":
       return {
         ...state,
         cartItems: [],

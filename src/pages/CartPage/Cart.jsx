@@ -8,10 +8,10 @@ const CartPage = () => {
     error: productError,
     product,
   } = useSelector((state) => state.oneProduct);
-  const cartItems = useSelector((state) => state.cartItems);
+  const { cartItems } = useSelector((state) => state.cart);
   const productQuantity = product?.product?.quantity;
   useEffect(() => {
-    console.log(cartItems?.cartArray);
+    console.log(cartItems);
   }, [cartItems]);
 
   const quantityArray = Array.from(
@@ -23,7 +23,7 @@ const CartPage = () => {
     <section className={`${styles.cartSection}`}>
       <div className={`container p-0`}>
         <div className={`row`}>
-          {cartItems?.cartArray?.map((item, index) => (
+          {cartItems?.map((item, index) => (
             <CartCard key={index} productFromCart={item} />
           ))}
 
