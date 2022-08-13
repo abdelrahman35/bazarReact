@@ -45,3 +45,18 @@ export const deleteCategoryReducer = (state = {}, action) => {
       return state;
   }
 };
+
+// update CATEGORY REDUCER
+
+export const updateCategoryReducer = (state = {}, action) => {
+  switch (action.type) {
+    case "UPDATE_CATEGORY_REQUEST":
+      return { loading: true };
+    case "UPDATE_CATEGORY_SUCCESS":
+      return { loading: false, isUpdated: action.payload };
+    case "update_CATEGORY_FAIL":
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};

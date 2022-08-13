@@ -8,6 +8,7 @@ import {
   getAllCategoriesReducer,
   createCategoryReducer,
   deleteCategoryReducer,
+  updateCategoryReducer,
 } from "./categoriesReducers";
 import {
   getAllProductsReducer,
@@ -32,6 +33,7 @@ export default combineReducers({
   allCategories: getAllCategoriesReducer,
   createCategory: createCategoryReducer,
   deleteCategoryState: deleteCategoryReducer,
+  updateCategory: updateCategoryReducer,
   // productReducers
   allProducts: getAllProductsReducer,
   createdProduct: createProductReducer,

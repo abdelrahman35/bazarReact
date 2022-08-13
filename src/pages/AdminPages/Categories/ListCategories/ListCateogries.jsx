@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import {
   getAllCategories,
   deleteCategory,
+  updateCategory,
 } from "../../../../store/actions/categoriesActions";
 function ListCateogries() {
   const navigate = useNavigate();
@@ -24,6 +25,7 @@ function ListCateogries() {
   } = useSelector((state) => state.allCategories);
   const categoriesArray = categories?.categories;
   const { deletedCategory } = useSelector((state) => state.deleteCategoryState);
+  const { isUpdated } = useSelector((state) => state.updateCategory);
   useEffect(() => {
     if (userInfo?.isAdmin) {
       dispatch(getAllCategories());
@@ -35,15 +37,24 @@ function ListCateogries() {
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [deletedCategory]);
+  }, [deletedCategory, isUpdated]);
 
-  const handleDeleteCategory = async (categoryId, categoryName) => {
+  // function to delete cateogory
+  const handleDeleteCategory = (categoryId, categoryName) => {
     const respond = window.confirm(`Do you want to delete ${categoryName}`);
     if (respond) {
       dispatch(deleteCategory(categoryId));
     }
   };
-
+  // function to update category :
+  const handleUpdateCategory = (categoryId, categoryName) => {
+    const newCategoryName = window.prompt(
+      `please enter new name of category: ${categoryName}`
+    );
+    if (newCategoryName) {
+      dispatch(updateCategory(categoryId, newCategoryName));
+    }
+  };
   return (
     <div className="container mt-5">
       {categoriesLoading ? (
@@ -69,6 +80,7 @@ function ListCateogries() {
                   <th scope="col">Number</th>
                   <th scope="col">Name</th>
                   <th scope="col">Delete</th>
+                  <th scope="col">Update</th>
                 </tr>
               </thead>
               <tbody>
@@ -88,6 +100,20 @@ function ListCateogries() {
                       >
                         {" "}
                         Delete
+                      </Button>
+                    </td>
+                    <td>
+                      <Button
+                        variant="outline-primary"
+                        onClick={() => {
+                          handleUpdateCategory(
+                            category._id,
+                            category.categoryName
+                          );
+                        }}
+                      >
+                        {" "}
+                        Update
                       </Button>
                     </td>
                   </tr>

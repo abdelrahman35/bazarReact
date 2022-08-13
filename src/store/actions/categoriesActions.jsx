@@ -72,3 +72,35 @@ export const deleteCategory = (categoryId) => async (dispatch, getState) => {
     });
   }
 };
+export const updateCategory =
+  (categoryId, categoryName) => async (dispatch, getState) => {
+    try {
+      dispatch({ type: "UPDATE_CATEGORY_REQUEST" });
+      const token = getState().userLogin.userInfo.token;
+
+      let { data } = await axiosInstance({
+        url: `/category`,
+        method: "put",
+        data: {
+          payload: {
+            categoryId,
+            categoryName,
+          },
+        },
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          authorization: `Bearer ${token}`,
+        },
+      });
+      dispatch({
+        type: "UPDATE_CATEGORY_SUCCESS",
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: "UPDATE_CATEGORY_FAIL",
+        payload: error.response ? error.response.status : error,
+      });
+    }
+  };
