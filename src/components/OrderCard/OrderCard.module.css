@@ -64,3 +64,30 @@
   border: 2px solid var(--color7) !important;
   box-shadow: none !important;
 }
+
+.moreBtn {
+  background-color: transparent !important;
+  font-size: 16px !important;
+  font-weight: 400;
+  height: 35px;
+  width: 100px;
+  border-radius: 7px;
+  border: 2px solid var(--color1) !important;
+  cursor: pointer;
+  color: var(--color7) !important;
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -o-border-radius: 7px;
+}
+.moreBtn:hover,
+.moreBtn:active {
+  color: var(--color6) !important;
+  background-color: var(--color1) !important;
+  box-shadow: none !important;
+}

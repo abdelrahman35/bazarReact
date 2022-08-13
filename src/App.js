@@ -42,6 +42,7 @@ import OrderDetailsForAdmin from "./pages/AdminPages/Orders/OrderDetailsForAdmin
 import CartPage from "./pages/CartPage/Cart";
 import Success from "./pages/OrderPages/Success/Success";
 import FavouriteItem from "./components/FavouriteItem/FavouriteItem";
+import ViewOrderDetails from "./pages/OrderPages/ViewOrderDetails/ViewOrderDetails";
 function App() {
   return (
     <>
@@ -61,13 +62,15 @@ function App() {
           <Route path="/aboutus" index element={<AboutUsPage />} />
           <Route path="/forgetPassword" index element={<ForgetPassword />} />
           <Route path="/changePassword" index element={<ChangePassword />} />
-          <Route path="/order" index element={<Order />} />
           <Route path="/success" index element={<Success />} />
           <Route path="/payment" index element={<Payment />} />
           <Route path="/profile" index element={<ProfilePage />} />
           <Route path="/cart" index element={<CartPage />} />
-          <Route path="/OrderCard" index element={<OrderCard />} />
           <Route path="/FavouriteItem" index element={<FavouriteItem />} />
+          {/* order routes for user */}
+          <Route path="/order" index element={<Order />} />
+          <Route path="/order/:orderId" index element={<ViewOrderDetails />} />
+
           <Route
             path="/resetPassword/:token"
             index

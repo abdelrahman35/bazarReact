@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { cancelOrderIfPending } from "../../store/actions/ordersActions";
 import styles from "./OrderCard.module.css";
 const OrderCard = ({ order }) => {
@@ -21,13 +22,29 @@ const OrderCard = ({ order }) => {
         <div className={`card mb-3" ${styles.card}`}>
           <div className="col-md-8 w-100">
             <div className="card-body p-0 px-2 py-3">
-              <h5
-                className={`m-0 card-title ${styles.Title} d-flex justify-content-start gap-4`}
+              <p
+                className={`m-0 card-title ${styles.Title} d-flex justify-content-between  gap-4`}
               >
-                <p className="m-0 mb-1">Order Number :</p>
-                <p className="m-0 mb-1">({order?._id.substring(0, 10)})</p>
-                <button className="">more</button>
-              </h5>
+                <p className="m-0 mb-1 ">
+                  Order Number :
+                  <span className="m-0 mb-1">
+                    ({order?._id.substring(0, 10)})
+                  </span>
+                </p>
+                <Link to={`/order/${order?._id}`}>
+                  <button
+                    className={` ${styles.moreBtn}`}
+                    onClick={() => {
+                      localStorage.setItem(
+                        "orderDetails",
+                        JSON.stringify(order)
+                      );
+                    }}
+                  >
+                    Details
+                  </button>
+                </Link>
+              </p>
 
               <p className={`card-text ${styles.OrderStatus}`}>
                 {order?.status}
