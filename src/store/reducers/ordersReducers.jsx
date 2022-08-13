@@ -35,3 +35,16 @@ export const getUserOrdersReducer = (state = { userOrders: [] }, action) => {
       return state;
   }
 };
+
+export const cancelOrderIfPendingReducer = (state = {}, action) => {
+  switch (action.type) {
+    case "CANCEL_ORDER_REQUEST":
+      return { loading: true };
+    case "CANCEL_ORDER_SUCCESS":
+      return { loading: false, orderIsCancelled: action.payload };
+    case "CANCEL_ORDER_FAIL":
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};

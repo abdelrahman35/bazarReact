@@ -1,4 +1,3 @@
-import axios from "axios";
 import axiosInstance from "./../../network/axiosInstance";
 
 export const getAllCategories = () => async (dispatch) => {
@@ -33,7 +32,7 @@ export const createCategory = (categoryName) => async (dispatch, getState) => {
     const { data } = await axiosInstance.post(
       "/category",
       { payload: { categoryName } },
-      { headers },
+      { headers }
     );
     dispatch({
       type: "CREATE_NEW_CATEGORY_SUCCESS",

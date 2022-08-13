@@ -16,6 +16,7 @@ import {
   filterProductsReducer,
 } from "./productReducers";
 import {
+  cancelOrderIfPendingReducer,
   getUserOrdersReducer,
   listAllOrdersReducer,
   orderDetailsForAdminReducer,
@@ -39,6 +40,7 @@ export default combineReducers({
   allOrders: listAllOrdersReducer,
   orderDetailsForAdmin: orderDetailsForAdminReducer,
   userOrders: getUserOrdersReducer,
+  cancelOrder: cancelOrderIfPendingReducer,
   // cart reducers
   cart: cartReducer,
 });

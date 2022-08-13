@@ -1,6 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { cancelOrderIfPending } from "../../store/actions/ordersActions";
 import styles from "./OrderCard.module.css";
 const OrderCard = ({ order }) => {
+  const dispatch = useDispatch();
+  // function to cancel order of if the status or the order is still pending
+  const handleCancelOrder = () => {
+    if (order.status === "pending" || order?.status === "Pending") {
+      dispatch(cancelOrderIfPending(order?._id));
+    } else {
+      let x = "order can not be cancelled.";
+      return x;
+    }
+  };
+  useEffect(() => {}, []);
+
   return (
     <>
       <div className={`container-fluid `}>
@@ -12,6 +26,7 @@ const OrderCard = ({ order }) => {
               >
                 <p className="m-0 mb-1">Order Number :</p>
                 <p className="m-0 mb-1">({order?._id.substring(0, 10)})</p>
+                <button className="">more</button>
               </h5>
 
               <p className={`card-text ${styles.OrderStatus}`}>
@@ -24,7 +39,16 @@ const OrderCard = ({ order }) => {
                 <p className={`card-text ${styles.Button}`}>
                   {order?.status === "pending" ||
                   order?.status === "Pending" ? (
-                    <button className={styles.btnWarningg}>Cancel Item</button>
+                    <>
+                      <button
+                        className={styles.btnWarningg}
+                        onClick={() => {
+                          handleCancelOrder();
+                        }}
+                      >
+                        Cancel Item
+                      </button>
+                    </>
                   ) : order?.status === "cancelled" ||
                     order?.status === "Cancelled" ? (
                     <span>Cancelled</span>

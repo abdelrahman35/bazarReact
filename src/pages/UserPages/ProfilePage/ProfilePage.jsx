@@ -9,9 +9,13 @@ import Loading from "../../../components/Loading/Loading";
 import { getUserOrders } from "../../../store/actions/ordersActions";
 import OrderCard from "../../../components/OrderCard/OrderCard";
 function ProfilePage() {
-  const [renderedData, setRenderedData] = useState("accountDetails");
+  // declarations
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  // states
+  const [pageNum, setPageNum] = useState(1);
+  const [renderedData, setRenderedData] = useState("accountDetails");
+  // store states
   const userLogin = useSelector((state) => state.userLogin);
   const { loading: userLoading, error: userError, userInfo } = userLogin;
   const handleLogout = () => {
@@ -24,8 +28,8 @@ function ProfilePage() {
     userOrders,
   } = useSelector((state) => state.userOrders);
   const userOrdersArray = userOrders?.orders;
-  const [pageNum, setPageNum] = useState(1);
-
+  const { orderIsCancelled } = useSelector((state) => state.cancelOrder);
+  // pagination functions
   const nextPage = () => {
     let pageNumber;
     pageNumber = pageNum;
@@ -48,7 +52,8 @@ function ProfilePage() {
     } else if (userInfo) {
       dispatch(getUserOrders(pageNum));
     }
-  }, [userInfo, navigate, pageNum]);
+  }, [userInfo, navigate, pageNum, orderIsCancelled]);
+
   return userLoading ? (
     <Loading />
   ) : userError ? (
