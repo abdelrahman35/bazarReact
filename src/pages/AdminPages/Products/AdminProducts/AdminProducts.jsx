@@ -1,33 +1,36 @@
 import React, { useState, useEffect } from "react";
-import { ProductCard } from "../../../../components/ProductCard/ProductCard";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllProducts } from "../../../../store/actions/productActions";
+import {
+  deleteProduct,
+  getAllProducts,
+} from "../../../../store/actions/productActions";
 import { Link } from "react-router-dom";
 import Loading from "../../../../components/Loading/Loading";
 import styles from "./AdminProducts.module.css";
-import axiosInstance from "../../../../network/axiosInstance";
-
+import { useNavigate } from "react-router-dom";
 function AdminProducts() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const {
-    loading: userLoading,
-    error: userError,
-    userInfo,
-  } = useSelector((state) => state.userLogin);
-  const {
-    loading: productsLoading,
-    error: productsError,
-    products,
-  } = useSelector((state) => state.allProducts);
+  const { error: userError, userInfo } = useSelector(
+    (state) => state.userLogin
+  );
+  const { loading: productsLoading, products } = useSelector(
+    (state) => state.allProducts
+  );
   const prodcutsArray = products?.products;
+  const { isDeleted } = useSelector((state) => state.deletedProduct);
   const [pageNum, setPageNum] = useState(1);
   useEffect(() => {
-    dispatch(getAllProducts(pageNum));
-  }, [dispatch, pageNum]);
+    if (userInfo && userInfo?.isAdmin) {
+      dispatch(getAllProducts(pageNum));
+    } else {
+      navigate("*", { replace: true, state: userError });
+    }
+  }, [dispatch, pageNum, isDeleted]);
   const nextPage = () => {
     let pageNumber;
     pageNumber = pageNum;
-    if (pageNum < 522) {
+    if (pageNum < products?.numberOfPages) {
       pageNumber++;
     }
     setPageNum(pageNumber);
@@ -41,18 +44,18 @@ function AdminProducts() {
     setPageNum(pageNumber);
   };
 
-  const handleDelete = async (productId) => {
-    let { data } = await axiosInstance({
-      url: `/product`,
-      method: "delete",
-      data: { productId },
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-        authorization: `Bearer ${userInfo?.token}`,
-      },
-    });
+  const handleDelete = (productId) => {
+    const productToDelete = prodcutsArray?.find(
+      (product) => product._id === productId
+    );
+    const respond = window.confirm(
+      `Do you want to delete ${productToDelete?.name}`
+    );
+    if (respond) {
+      dispatch(deleteProduct(productId));
+    }
   };
+
   return (
     <div className="container mt-5">
       {productsLoading ? (
@@ -96,10 +99,9 @@ function AdminProducts() {
                     <td>
                       <button
                         onClick={() => {
-                          // console.log(product._id);
                           handleDelete(product?._id);
                         }}
-                        className="btn"
+                        className="btn btn-outline-danger"
                       >
                         Delete{" "}
                       </button>

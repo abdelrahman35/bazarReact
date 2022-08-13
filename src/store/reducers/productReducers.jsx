@@ -55,3 +55,16 @@ export const filterProductsReducer = (
       return state;
   }
 };
+
+export const deleteProductReducer = (state = {}, action) => {
+  switch (action.type) {
+    case "DELETE_PRODUCT_REQUEST":
+      return { loading: true };
+    case "DELETE_PRODUCT_SUCCESS":
+      return { loading: false, isDeleted: action.payload };
+    case "DELETE_PRODUCT_FAIL":
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
