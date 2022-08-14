@@ -68,3 +68,15 @@ export const deleteProductReducer = (state = {}, action) => {
       return state;
   }
 };
+export const updateProductReducer = (state = {}, action) => {
+  switch (action.type) {
+    case "UPDATE_PRODUCT_REQUEST":
+      return { loading: true };
+    case "UPDATE_PRODUCT_SUCCESS":
+      return { loading: false, productIsUpdated: action.payload };
+    case "UPDATE_PRODUCT_FAIL":
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};

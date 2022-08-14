@@ -9,17 +9,23 @@ import Loading from "../../../../components/Loading/Loading";
 import styles from "./AdminProducts.module.css";
 import { useNavigate } from "react-router-dom";
 function AdminProducts() {
+  // declarations
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  // user info state from store
   const { error: userError, userInfo } = useSelector(
     (state) => state.userLogin
   );
+  // products state from store
   const { loading: productsLoading, products } = useSelector(
     (state) => state.allProducts
   );
   const prodcutsArray = products?.products;
+  // state for deleted product from store
   const { isDeleted } = useSelector((state) => state.deletedProduct);
+  // state for page number for pagination
   const [pageNum, setPageNum] = useState(1);
+  //
   useEffect(() => {
     if (userInfo && userInfo?.isAdmin) {
       dispatch(getAllProducts(pageNum));
@@ -27,6 +33,8 @@ function AdminProducts() {
       navigate("*", { replace: true, state: userError });
     }
   }, [dispatch, pageNum, isDeleted]);
+
+  // functions for pagination
   const nextPage = () => {
     let pageNumber;
     pageNumber = pageNum;
@@ -43,7 +51,7 @@ function AdminProducts() {
     }
     setPageNum(pageNumber);
   };
-
+  // delete product function
   const handleDelete = (productId) => {
     const productToDelete = prodcutsArray?.find(
       (product) => product._id === productId
@@ -92,7 +100,7 @@ function AdminProducts() {
                     <td>{product.name}</td>
                     <td>{product.price}</td>
                     <td>
-                      <Link to="/">
+                      <Link to={`/admin/updateproduct/${product._id}`}>
                         <button className="btn">Edit </button>
                       </Link>
                     </td>

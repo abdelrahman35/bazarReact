@@ -118,3 +118,48 @@ export const filterProducts = (filterQuery) => async (dispatch) => {
     });
   }
 };
+
+export const updateProduct =
+  (productId, values, category) => async (dispatch, getState) => {
+    try {
+      dispatch({ type: "UPDATE_PRODUCT_REQUEST" });
+      const token = getState().userLogin.userInfo.token;
+      const { data } = axiosInstance({
+        url: "/product",
+        method: "put",
+        data: {
+          productId,
+          payload: {
+            name: values?.name,
+            description: values?.description,
+            price: values?.price,
+            modelYear: values?.modelYear,
+            quantity: values?.quantity,
+            category,
+          },
+        },
+        // data: {
+        //   productId,
+        //   payload: {
+        //     values,
+        //     category,
+        //   },
+        // },
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          authorization: `Bearer ${token}`,
+        },
+      });
+      // const data = {};
+      dispatch({
+        type: "UPDATE_PRODUCT_SUCCESS",
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: "UPDATE_PRODUCT_FAIL",
+        payload: error.response ? error.response.status : error,
+      });
+    }
+  };

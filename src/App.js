@@ -14,6 +14,7 @@ import AdminProducts from "./pages/AdminPages/Products/AdminProducts/AdminProduc
 import CreateProduct from "./pages/AdminPages/Products/CreateProduct/CreateProduct";
 import CreateCategory from "./pages/AdminPages/Categories/CreateCategory/CreateCategory";
 import ListCateogries from "./pages/AdminPages/Categories/ListCategories/ListCateogries";
+import UpdateProduct from "./pages/AdminPages/Products/UpdateProduct/UpdateProduct";
 // main pages
 import AboutUsPage from "./pages/MainPages/AboutUsPage/AboutUsPage";
 import Home from "./pages/MainPages/HomePage/HomePage";
@@ -77,13 +78,18 @@ function App() {
             element={<ResetPassword />}
           />
           <Route path="/adminpanel" index element={<AdminPanel />} />
+          {/* admin routes for products */}
           <Route path="/admin/products" index element={<AdminProducts />} />
           <Route
             path="/admin/products/create"
             index
             element={<CreateProduct />}
           />
-
+          <Route
+            path="/admin/updateproduct/:productId"
+            index
+            element={<UpdateProduct />}
+          />
           {/* categories routes */}
           <Route
             path="/category/:categoryId"
