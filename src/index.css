@@ -13,6 +13,8 @@ body {
   --color7: #e74518;
   --color8: rgba(231, 98, 9, 0.25);
   --color9: #7a726aa1;
+  --color10: rgba(234, 234, 234, 0.5);
+  --color11: rgba(117, 117, 117, 0.5);
 }
 * {
   font-family: var(--myFont);
