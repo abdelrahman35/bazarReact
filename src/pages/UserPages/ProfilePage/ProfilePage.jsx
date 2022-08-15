@@ -100,8 +100,7 @@ function ProfilePage() {
                   }}
                   className={`${styles["card-title"]}  fs-5 ${styles.title}`}
                 >
-                  <i className="fa-solid fa-address-book"></i>
-                  <p className="d-inline ms-2">Address Book</p>
+                  <p className="d-inline ms-1">Address Book</p>
                 </div>
                 <hr className={`${styles.hr} m-0`} />
 
@@ -145,6 +144,12 @@ function ProfilePage() {
                     to="/changePassword"
                   >
                     Change Password
+                  </Link>
+                  <Link
+                    className={`${styles.btnWarningg} ${styles.changePassword} d-flex justify-content-between px-2 mx-4  align-items-center mt-4 mb-4`}
+                    to="/"
+                  >
+                    Edit Your Profile
                   </Link>
                 </div>
               </div>
@@ -209,37 +214,6 @@ function ProfilePage() {
                         </li>
                       </ul>
                     </nav>
-                  </div>
-                </div>
-              </div>
-            ) : renderedData === "AddressBook" ? (
-              <div className={`card shadow w-100 ${styles.rightCard}`}>
-                <div className="card-body">
-                  <div className="container">
-                    <div className="d-flex justify-content-end">
-                      <Link
-                        to={"/address/add"}
-                        className={`btn ${styles.addBtn}`}
-                      >
-                        {" "}
-                        <i className="fa-solid fa-plus"></i>
-                      </Link>
-                    </div>
-                    <div className="row">
-                      {statusCode === 201
-                        ? address?.map((address, index) => (
-                            <div key={index} className="col-lg-6">
-                              {" "}
-                              <AddressBook index={index} address={address} />
-                            </div>
-                          ))
-                        : userInfo?.address?.map((address, index) => (
-                            <div key={index} className="col-lg-6">
-                              {" "}
-                              <AddressBook index={index} address={address} />
-                            </div>
-                          ))}
-                    </div>
                   </div>
                 </div>
               </div>

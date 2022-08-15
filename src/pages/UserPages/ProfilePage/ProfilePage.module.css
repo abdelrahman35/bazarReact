@@ -1,5 +1,6 @@
 .page {
   background-color: var(--color6);
+  height: 70vh;
   margin-bottom: 20px;
   display: flex;
   justify-content: center;
@@ -10,6 +11,7 @@
 }
 .rightCard {
   background-color: rgb(245, 245, 245) !important;
+  margin-bottom: 160px;
 }
 .card-title {
   margin: 0px !important;
