@@ -10,6 +10,8 @@ import { getUserOrders } from "../../../store/actions/ordersActions";
 import OrderCard from "../../../components/OrderCard/OrderCard";
 import AddressBook from "../../../components/AddressBook/AddressBook";
 function ProfilePage() {
+  //
+  const { address, statusCode } = useSelector((state) => state.addAddress);
   // declarations
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -19,6 +21,7 @@ function ProfilePage() {
   // store states
   const userLogin = useSelector((state) => state.userLogin);
   const { loading: userLoading, error: userError, userInfo } = userLogin;
+
   const handleLogout = () => {
     dispatch(logout());
     navigate("/", { replace: true });
@@ -54,6 +57,12 @@ function ProfilePage() {
       dispatch(getUserOrders(pageNum));
     }
   }, [userInfo, navigate, pageNum, orderIsCancelled]);
+  // useEffect(
+  //   () => async () => {
+
+  //   },
+  //   [addAddress]
+  // );
 
   return userLoading ? (
     <Loading />
@@ -121,7 +130,10 @@ function ProfilePage() {
                   </div>
                   <div className="d-flex justify-content-between mx-5 align-items-center mt-4 mb-4">
                     <h6 className="card-subtitle mb-3 text-muted fs-5">
-                      Number of Saved Addresses : {userInfo.address.length}{" "}
+                      Number of Saved Addresses :{" "}
+                      {statusCode === 201
+                        ? address?.length
+                        : userInfo?.address?.length}{" "}
                     </h6>
                     <h6 className="card-subtitle mb-3 text-muted fs-5">
                       Number of Orders : {userOrdersArray?.length}{" "}
@@ -214,12 +226,19 @@ function ProfilePage() {
                       </Link>
                     </div>
                     <div className="row">
-                      {userInfo?.address?.map((address, index) => (
-                        <div key={index} className="col-lg-6">
-                          {" "}
-                          <AddressBook index={index} address={address} />
-                        </div>
-                      ))}
+                      {statusCode === 201
+                        ? address?.map((address, index) => (
+                            <div key={index} className="col-lg-6">
+                              {" "}
+                              <AddressBook index={index} address={address} />
+                            </div>
+                          ))
+                        : userInfo?.address?.map((address, index) => (
+                            <div key={index} className="col-lg-6">
+                              {" "}
+                              <AddressBook index={index} address={address} />
+                            </div>
+                          ))}
                     </div>
                   </div>
                 </div>

@@ -9,12 +9,15 @@ const userFromLocalStorage = localStorage.getItem("userInfo")
 const cartFromLocalStorage = localStorage.getItem("cartItems")
   ? JSON.parse(localStorage.getItem("cartItems"))
   : [];
-console.log(cartFromLocalStorage);
+const addressArrayFromLocalStorage = localStorage.getItem("address")
+  ? JSON.parse(localStorage.getItem("address"))
+  : [];
 const stateFromLocalStorage = {
   userLogin: { userInfo: userFromLocalStorage },
   cart: { cartItems: cartFromLocalStorage },
+  addAddress: { address: addressArrayFromLocalStorage },
 };
-console.log(stateFromLocalStorage);
+
 const store = createStore(
   reducers,
   stateFromLocalStorage,

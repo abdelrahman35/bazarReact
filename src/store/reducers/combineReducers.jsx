@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
 import {
+  addNewAddressReducer,
   userChangePasswordReducer,
   userLoginReducers,
   userRegisterReducer,
@@ -30,6 +31,7 @@ export default combineReducers({
   userRegister: userRegisterReducer,
   userLogin: userLoginReducers,
   changePassword: userChangePasswordReducer,
+  addAddress: addNewAddressReducer,
   // categoryReducers
   allCategories: getAllCategoriesReducer,
   createCategory: createCategoryReducer,

@@ -71,3 +71,25 @@ export const userChangePasswordReducer = (state = {}, action) => {
       return state;
   }
 };
+
+export const addNewAddressReducer = (state = {}, action) => {
+  switch (action.type) {
+    case "ADD_NEW_ADDRESS_REQUEST":
+      return { loading: true };
+    // case "ADD_NEW_ADDRESS_SUCCESS":
+    //   return {
+    //     loading: false,
+    //     address: action.payload,
+    //   };
+    case "ADD_NEW_ADDRESS_SUCCESS":
+      return {
+        loading: false,
+        address: action.payload,
+        statusCode: action.statusCode,
+      };
+    case "ADD_NEW_ADDRESS_FAIL":
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};

@@ -44,6 +44,7 @@ import CartPage from "./pages/CartPage/Cart";
 import Success from "./pages/OrderPages/Success/Success";
 import FavouriteItem from "./components/FavouriteItem/FavouriteItem";
 import ViewOrderDetails from "./pages/OrderPages/ViewOrderDetails/ViewOrderDetails";
+import AddNewAddress from "./pages/UserPages/AddNewAddress/AddNewAddress";
 function App() {
   return (
     <>
@@ -68,6 +69,7 @@ function App() {
           <Route path="/profile" index element={<ProfilePage />} />
           <Route path="/cart" index element={<CartPage />} />
           <Route path="/FavouriteItem" index element={<FavouriteItem />} />
+          <Route path="/address/add" index element={<AddNewAddress />} />
           {/* order routes for user */}
           <Route path="/order" index element={<Order />} />
           <Route path="/order/:orderId" index element={<ViewOrderDetails />} />

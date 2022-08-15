@@ -1,3 +1,4 @@
+import { useState } from "react";
 import axiosInstance from "./../../network/axiosInstance";
 
 export const login = (email, password) => async (dispatch) => {
@@ -20,9 +21,10 @@ export const login = (email, password) => async (dispatch) => {
       type: "USER_LOGIN_SUCCESS",
       payload: data,
     });
-
     localStorage.setItem("userInfo", JSON.stringify(data));
+    localStorage.setItem("address", JSON.stringify(data?.address));
   } catch (error) {
+    console.log(error);
     dispatch({
       type: "USER_LOGIN_FAIL",
       payload: error.response ? error.response.status : error,
@@ -172,3 +174,52 @@ export const changePassword =
       });
     }
   };
+
+export const addNewAddress = (values, city) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: "ADD_NEW_ADDRESS_REQUEST" });
+    const token = getState().userLogin.userInfo.token;
+    const address = getState().userLogin.userInfo.address;
+
+    const headers = {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      authorization: `Bearer ${token}`,
+    };
+
+    const data = await axiosInstance.post(
+      "/user/address",
+      {
+        payload: {
+          street: values.street,
+          country: values.country,
+          mobile: values.mobile,
+          city,
+        },
+      },
+      { headers }
+    );
+
+    const newAddress = {
+      street: values.street,
+      country: values.country,
+      mobile: values.mobile,
+      city,
+    };
+    const newAddressArray =
+      data?.status === 201 ? [...address, newAddress] : [...address];
+    dispatch({
+      type: "ADD_NEW_ADDRESS_SUCCESS",
+      payload: newAddressArray,
+      statusCode: data.status,
+    });
+    localStorage.setItem("address", JSON.stringify(newAddressArray));
+  } catch (error) {
+    console.log(error);
+
+    dispatch({
+      type: "ADD_NEW_ADDRESS_FAIL",
+      payload: error.response ? error.response.status : error,
+    });
+  }
+};
