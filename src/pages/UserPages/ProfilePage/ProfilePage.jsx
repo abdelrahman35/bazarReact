@@ -8,6 +8,7 @@ import ErrorMessage from "../../../components/ErrorMessage/ErrorMessage";
 import Loading from "../../../components/Loading/Loading";
 import { getUserOrders } from "../../../store/actions/ordersActions";
 import OrderCard from "../../../components/OrderCard/OrderCard";
+import AddressBook from "../../../components/AddressBook/AddressBook";
 function ProfilePage() {
   // declarations
   const dispatch = useDispatch();
@@ -90,7 +91,8 @@ function ProfilePage() {
                   }}
                   className={`${styles["card-title"]}  fs-5 ${styles.title}`}
                 >
-                  <p className="d-inline ms-1">Address Book</p>
+                  <i className="fa-solid fa-address-book"></i>
+                  <p className="d-inline ms-2">Address Book</p>
                 </div>
                 <hr className={`${styles.hr} m-0`} />
 
@@ -122,7 +124,7 @@ function ProfilePage() {
                       Number of Saved Addresses : {userInfo.address.length}{" "}
                     </h6>
                     <h6 className="card-subtitle mb-3 text-muted fs-5">
-                      Number of Orders : {userInfo.address.length}{" "}
+                      Number of Orders : {userOrdersArray?.length}{" "}
                     </h6>
                   </div>
 
@@ -195,6 +197,30 @@ function ProfilePage() {
                         </li>
                       </ul>
                     </nav>
+                  </div>
+                </div>
+              </div>
+            ) : renderedData === "AddressBook" ? (
+              <div className={`card shadow w-100 ${styles.rightCard}`}>
+                <div className="card-body">
+                  <div className="container">
+                    <div className="d-flex justify-content-end">
+                      <Link
+                        to={"/address/add"}
+                        className={`btn ${styles.addBtn}`}
+                      >
+                        {" "}
+                        <i className="fa-solid fa-plus"></i>
+                      </Link>
+                    </div>
+                    <div className="row">
+                      {userInfo?.address?.map((address, index) => (
+                        <div key={index} className="col-lg-6">
+                          {" "}
+                          <AddressBook index={index} address={address} />
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>

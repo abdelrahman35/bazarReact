@@ -38,9 +38,38 @@ export const createProduct =
         authorization: `Bearer ${token}`,
       };
 
-      const data = await axiosInstance.post("/product", productFormData, {
-        headers,
-      });
+      // const { data } = await axiosInstance.post("/product", productFormData, {
+      //   headers,
+      // });
+      const data = await axiosInstance
+        .post(
+          "/product/validateNewProduct",
+          {
+            payload: {
+              name: formValues.name,
+              category: category,
+              description: formValues.description,
+              price: formValues.price,
+              quantity: formValues.quantity,
+              modelYear: formValues.modelYear,
+            },
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+              "Access-Control-Allow-Origin": "*",
+              authorization: `Bearer ${token}`,
+            },
+          }
+        )
+        .then(async (res) => {
+          if (res.status === 200) {
+            await axiosInstance.post("/product", productFormData, {
+              headers,
+            });
+          }
+        });
+      console.log(data);
       dispatch({
         type: "CREATE_PRODUCT_SUCCESS",
         payload: data,
@@ -138,20 +167,13 @@ export const updateProduct =
             category,
           },
         },
-        // data: {
-        //   productId,
-        //   payload: {
-        //     values,
-        //     category,
-        //   },
-        // },
+
         headers: {
           "Content-Type": "application/json",
           "Access-Control-Allow-Origin": "*",
           authorization: `Bearer ${token}`,
         },
       });
-      // const data = {};
       dispatch({
         type: "UPDATE_PRODUCT_SUCCESS",
         payload: data,

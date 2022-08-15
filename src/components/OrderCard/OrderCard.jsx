@@ -22,7 +22,7 @@ const OrderCard = ({ order }) => {
         <div className={`card mb-3" ${styles.card}`}>
           <div className="col-md-8 w-100">
             <div className="card-body p-0 px-2 py-3">
-              <p
+              <div
                 className={`m-0 card-title ${styles.Title} d-flex justify-content-between  gap-4`}
               >
                 <p className="m-0 mb-1 ">
@@ -44,7 +44,7 @@ const OrderCard = ({ order }) => {
                     Details
                   </button>
                 </Link>
-              </p>
+              </div>
 
               <p className={`card-text ${styles.OrderStatus}`}>
                 {order?.status}
