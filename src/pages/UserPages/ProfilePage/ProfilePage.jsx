@@ -85,7 +85,18 @@ function ProfilePage() {
                   }}
                   className={`${styles["card-title"]}  fs-5 ${styles.title}`}
                 >
+                  <i class="fa-solid fa-location-dot"></i>{" "}
                   <p className="d-inline ms-1">Address Book</p>
+                </div>
+
+                <div
+                  onClick={() => {
+                    setRenderedData("savedItem");
+                  }}
+                  className={`${styles["card-title"]}  fs-5 ${styles.title}`}
+                >
+                  <i className="fa-regular fa-heart"></i>
+                  <p className="d-inline ms-2">Saved Item</p>
                 </div>
                 <hr className={`${styles.hr} m-0`} />
 
@@ -126,6 +137,12 @@ function ProfilePage() {
                     to="/changePassword"
                   >
                     Change Password
+                  </Link>
+                  <Link
+                    className={`${styles.btnWarningg} ${styles.changePassword} d-flex justify-content-between px-2 mx-4  align-items-center mt-4 mb-4`}
+                    to="/"
+                  >
+                    Edit Your Profile
                   </Link>
                 </div>
               </div>
@@ -191,6 +208,134 @@ function ProfilePage() {
                       </ul>
                     </nav>
                   </div>
+                </div>
+              </div>
+            ) : renderedData === "savedItem" ? (
+              <div className={`card shadow w-100 ${styles.rightCard}`}>
+                <div className="card-body">
+                  <h5>Saved Item</h5>
+                  <hr className={`${styles.hr}`} />
+                  {/* <div className="d-flex flex-column gap-3 w-100">
+                    {userOrdersLoading ? (
+                      <Loading />
+                    ) : userOrders ? (
+                      <>
+                        {userOrdersArray?.map((order, index) => (
+                          <OrderCard key={index} order={order} />
+                        ))}
+                      </>
+                    ) : userOrdersError ? (
+                      <ErrorMessage statusCode={userOrdersError} />
+                    ) : null}
+                  </div>
+                  <div>
+                    <nav aria-label="Page navigation example">
+                      <ul className="pagination ">
+                        <li className="page-item  ">
+                          <Link
+                            to="#"
+                            className="page-link text-dark bg-outline-dark"
+                            onClick={() => {
+                              prevPage();
+                            }}
+                          >
+                            Previous
+                          </Link>
+                        </li>
+                        <li className="page-item">
+                          <Link
+                            to="#"
+                            className="page-link text-dark bg-outline-dark "
+                            onClick={() => {
+                              prevPage();
+                            }}
+                          >
+                            {pageNum}
+                          </Link>
+                        </li>
+
+                        <li className="page-item">
+                          <Link
+                            className={`page-link text-dark bg-outline-dark ${
+                              pageNum === userOrders?.numberOfPages
+                                ? "disabled"
+                                : ""
+                            }`}
+                            to="#"
+                            onClick={() => {
+                              nextPage();
+                            }}
+                          >
+                            Next
+                          </Link>
+                        </li>
+                      </ul>
+                    </nav>
+                  </div> */}
+                </div>
+              </div>
+            ) : renderedData === "AddressBook" ? (
+              <div className={`card shadow w-100 ${styles.rightCard}`}>
+                <div className="card-body">
+                  <h5>Address Book</h5>
+                  <hr className={`${styles.hr}`} />
+                  {/* <div className="d-flex flex-column gap-3 w-100">
+                    {userOrdersLoading ? (
+                      <Loading />
+                    ) : userOrders ? (
+                      <>
+                        {userOrdersArray?.map((order, index) => (
+                          <OrderCard key={index} order={order} />
+                        ))}
+                      </>
+                    ) : userOrdersError ? (
+                      <ErrorMessage statusCode={userOrdersError} />
+                    ) : null}
+                  </div>
+                  <div>
+                    <nav aria-label="Page navigation example">
+                      <ul className="pagination ">
+                        <li className="page-item  ">
+                          <Link
+                            to="#"
+                            className="page-link text-dark bg-outline-dark"
+                            onClick={() => {
+                              prevPage();
+                            }}
+                          >
+                            Previous
+                          </Link>
+                        </li>
+                        <li className="page-item">
+                          <Link
+                            to="#"
+                            className="page-link text-dark bg-outline-dark "
+                            onClick={() => {
+                              prevPage();
+                            }}
+                          >
+                            {pageNum}
+                          </Link>
+                        </li>
+
+                        <li className="page-item">
+                          <Link
+                            className={`page-link text-dark bg-outline-dark ${
+                              pageNum === userOrders?.numberOfPages
+                                ? "disabled"
+                                : ""
+                            }`}
+                            to="#"
+                            onClick={() => {
+                              nextPage();
+                            }}
+                          >
+                            Next
+                          </Link>
+                        </li>
+                      </ul>
+                    </nav>
+                  </div> */}
                 </div>
               </div>
             ) : null}
