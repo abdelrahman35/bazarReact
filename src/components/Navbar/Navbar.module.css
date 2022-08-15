@@ -47,12 +47,12 @@
 
 .search:focus {
   border-radius: 50px !important;
-  color: var(--color3);
-  background-color: var(--color6);
-  border-color: var(--color1);
-  text-align: center;
-  outline: 0;
-  box-shadow: 0 0 0 2.5px var(--color8);
+  color: var(--color3) !important;
+  background-color: var(--color6) !important;
+  border-color: var(--color1) !important;
+  text-align: center !important;
+  outline: 0 !important;
+  box-shadow: 0 0 0 2.5px var(--color8) !important;
   -webkit-border-radius: 50px !important;
   -moz-border-radius: 50px !important;
   -ms-border-radius: 50px !important;

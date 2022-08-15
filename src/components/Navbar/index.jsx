@@ -17,7 +17,7 @@ function Navbar() {
   return (
     <>
       <nav className={`navbar navbar-expand-lg pt-2 pb-2 ${styles.nav}`}>
-        <div className="container-fluid">
+        <div className="container p-0">
           <div className="row w-100 justify-content-start m-auto align-items-center">
             <div className={`col-12 col-md-2 text-end ${styles.aa} p-0`}>
               <div className="row justify-content-center align-items-center">
