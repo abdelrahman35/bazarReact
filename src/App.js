@@ -42,7 +42,7 @@ import ListOrders from "./pages/AdminPages/Orders/ListOrders/ListOrders";
 import OrderDetailsForAdmin from "./pages/AdminPages/Orders/OrderDetailsForAdmin/OrderDetailsForAdmin";
 import CartPage from "./pages/CartPage/Cart";
 import Success from "./pages/OrderPages/Success/Success";
-import FavouriteItem from "./components/FavouriteItem/FavouriteItem";
+import FavouriteItem from "./pages/FavoritePage/Favorite";
 import ViewOrderDetails from "./pages/OrderPages/ViewOrderDetails/ViewOrderDetails";
 import AddNewAddress from "./pages/UserPages/AddNewAddress/AddNewAddress";
 function App() {
