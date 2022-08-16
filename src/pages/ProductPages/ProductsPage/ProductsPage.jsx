@@ -8,9 +8,16 @@ import styles from "./Products.module.css";
 import Filter from "../../../components/FilterComponent/Filter";
 import SortComponent from "../../../components/SortComponent/SortComponent";
 import Category from "../../../components/Category/Category";
+import MyPagination from "../../../components/Pagination";
 
 function ProudctPage() {
   const dispatch = useDispatch();
+  const [currPage, setCurrPage] = useState(1);
+  const [tagList, setTagList] = useState([]);
+
+  const afterPageClicked = (page_number) => {
+    setCurrPage(page_number);
+  };
 
   const {
     loading: productsLoading,
@@ -24,27 +31,9 @@ function ProudctPage() {
   } = useSelector((state) => state.filteredProducts);
   const filteredProductsArray = filteredProducts?.products;
   const prodcutsArray = products?.products;
-  const [pageNum, setPageNum] = useState(1);
   useEffect(() => {
-    dispatch(getAllProducts(pageNum));
-    console.log(products);
-  }, [pageNum, filteredProducts]);
-  const nextPage = () => {
-    let pageNumber;
-    pageNumber = pageNum;
-    if (pageNum < 522) {
-      pageNumber++;
-    }
-    setPageNum(pageNumber);
-  };
-  const prevPage = () => {
-    let pageNumber;
-    pageNumber = pageNum;
-    if (pageNum > 1) {
-      pageNumber--;
-    }
-    setPageNum(pageNumber);
-  };
+    dispatch(getAllProducts(currPage));
+  }, [currPage, filteredProducts]);
   return (
     <>
       {filteredProductsLoading ? (
@@ -56,24 +45,15 @@ function ProudctPage() {
       ) : filteredProductsArray?.length > 0 ? (
         <div className={`container-fluid`}>
           <div className="row justify-content-center align-items-start">
-            <div className={`col-3 d-none d-lg-block ${styles.marg}`}>
+            <div className={`col-12  d-none  ${styles.marg}`}>
               <aside className={styles.filterSide}>
                 <Category />
                 <Filter />
               </aside>
             </div>
 
-            <div className="col-12  d-block d-lg-none">
+            <div className="col-12  d-block ">
               <aside>
-                <button
-                  className={`btn ${styles.btnWarningg} w-100 mt-4 text-capitalize`}
-                  type="button"
-                  data-bs-toggle="offcanvas"
-                  data-bs-target="#offcanvasExample"
-                  aria-controls="offcanvasExample"
-                >
-                  for more categories and filter
-                </button>
                 <div
                   className="offcanvas offcanvas-start"
                   id="offcanvasExample"
@@ -98,7 +78,7 @@ function ProudctPage() {
               </aside>
             </div>
 
-            <div className="col-12 col-lg-9">
+            <div className="col-12  ">
               <div
                 className="row d-flex justify-content-center
             align-items-center"
@@ -109,7 +89,7 @@ function ProudctPage() {
               <div className="row mb-0 mb-lg-3  g-4  ">
                 {filteredProductsArray?.map((product, index) => (
                   <div
-                    className={`col-12 col-md-6 col-lg-4 d-flex justify-content-center mb-3 mb-lg-0`}
+                    className={`col-12 col-md-6 col-lg-3 d-flex justify-content-center mb-3 mb-lg-0`}
                     key={index}
                   >
                     <ProductCard product={product} />
@@ -119,44 +99,19 @@ function ProudctPage() {
             </div>
           </div>
 
-          <div aria-label="Page navigation example d-flex justify-centent-center m-auto">
-            <ul className="pagination justify-content-center">
-              <li className="page-item  ">
-                <Link
-                  to="#"
-                  className="page-link text-dark bg-outline-dark"
-                  onClick={() => {
-                    prevPage();
-                  }}
-                >
-                  Previous
-                </Link>
-              </li>
-              <li className="page-item">
-                <Link
-                  to="#"
-                  className="page-link text-dark bg-outline-dark"
-                  onClick={() => {
-                    prevPage();
-                  }}
-                >
-                  {pageNum}
-                </Link>
-              </li>
-
-              <li className="page-item">
-                <Link
-                  className="page-link text-dark bg-outline-dark"
-                  to="#"
-                  onClick={() => {
-                    nextPage();
-                  }}
-                >
-                  Next
-                </Link>
-              </li>
+          <MyPagination
+            totPages={10}
+            currentPage={currPage}
+            pageClicked={(ele) => {
+              afterPageClicked(ele);
+            }}
+          >
+            <ul>
+              {tagList.map((ele, ind) => (
+                <li key={ele + ind}>{ele}</li>
+              ))}
             </ul>
-          </div>
+          </MyPagination>
         </div>
       ) : productsLoading ? (
         <div
@@ -166,28 +121,17 @@ function ProudctPage() {
         </div>
       ) : products ? (
         <>
-          {/* <CategoryNavbar /> */}
-
           <div className={`container-fluid`}>
-            <div className="row justify-content-center align-items-start">
-              <div className={`col-3 d-none d-lg-block ${styles.marg}`}>
+            <div className="row justify-content-center align-items-start p-0  px-lg-5">
+              <div className={`col-12  d-none  ${styles.marg}`}>
                 <aside className={styles.filterSide}>
                   <Category />
                   <Filter />
                 </aside>
               </div>
 
-              <div className="col-12  d-block d-lg-none">
+              <div className="col-12  d-block ">
                 <aside>
-                  <button
-                    className={`btn ${styles.btnWarningg} w-100 mt-4 text-capitalize`}
-                    type="button"
-                    data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasExample"
-                    aria-controls="offcanvasExample"
-                  >
-                    for more categories and filteer
-                  </button>
                   <div
                     className="offcanvas offcanvas-start"
                     id="offcanvasExample"
@@ -215,7 +159,7 @@ function ProudctPage() {
                 </aside>
               </div>
 
-              <div className="col-12 col-lg-9">
+              <div className="col-12   ">
                 <div
                   className="row d-flex justify-content-center
                 align-items-center"
@@ -226,7 +170,7 @@ function ProudctPage() {
                 <div className="row mb-0 mb-lg-3  g-4  ">
                   {prodcutsArray?.map((product, index) => (
                     <div
-                      className={`col-12 col-md-6 col-lg-4 d-flex justify-content-center mb-3 mb-lg-0`}
+                      className={`col-12 col-md-6 col-lg-3 d-flex justify-content-center mb-3 mb-lg-0`}
                       key={index}
                     >
                       <ProductCard product={product} />
@@ -236,44 +180,19 @@ function ProudctPage() {
               </div>
             </div>
 
-            <div aria-label="Page navigation example d-flex justify-centent-center m-auto">
-              <ul className="pagination justify-content-center">
-                <li className="page-item  ">
-                  <Link
-                    to="#"
-                    className="page-link text-dark bg-outline-dark"
-                    onClick={() => {
-                      prevPage();
-                    }}
-                  >
-                    Previous
-                  </Link>
-                </li>
-                <li className="page-item">
-                  <Link
-                    to="#"
-                    className="page-link text-dark bg-outline-dark"
-                    onClick={() => {
-                      prevPage();
-                    }}
-                  >
-                    {pageNum}
-                  </Link>
-                </li>
-
-                <li className="page-item">
-                  <Link
-                    className="page-link text-dark bg-outline-dark"
-                    to="#"
-                    onClick={() => {
-                      nextPage();
-                    }}
-                  >
-                    Next
-                  </Link>
-                </li>
+            <MyPagination
+              totPages={products?.numberOfPages}
+              currentPage={currPage}
+              pageClicked={(ele) => {
+                afterPageClicked(ele);
+              }}
+            >
+              <ul>
+                {tagList.map((ele, ind) => (
+                  <li key={ele + ind}>{ele}</li>
+                ))}
               </ul>
-            </div>
+            </MyPagination>
           </div>
         </>
       ) : null}

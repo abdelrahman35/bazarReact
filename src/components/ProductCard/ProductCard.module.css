@@ -1,7 +1,6 @@
 .cardInfo {
   color: var(--color6);
   font-size: 24px;
-
   line-height: 2;
   margin-top: 15px;
 }
@@ -11,15 +10,14 @@
   width: 100%;
   height: 100%;
   background: var(--color9);
-  border-radius: 20px;
+  border-radius: 6px;
   background-size: 100% 100%;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -o-border-radius: 20px;
-  padding: 28px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
 }
 
 .box17 {
@@ -60,7 +58,7 @@
 .box17:hover img {
   transform: scale(1.2);
 }
-.box17 h1 {
+.box17 h3 {
   opacity: 1;
   transition: all 0.5s ease 0s;
   -webkit-transition: all 0.5s ease 0s;
@@ -68,8 +66,23 @@
   -ms-transition: all 0.5s ease 0s;
   -o-transition: all 0.5s ease 0s;
 }
-.box17:hover h1 {
+.box17:hover h3 {
   opacity: 0;
+}
+
+.cardDescreptionHover {
+  font-size: 20px !important;
+  text-align: center !important;
+  color: var(--color6) !important;
+  padding: 10px !important;
+}
+
+.favIcon {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 30px;
+  color: var(--color6);
 }
 .box17 .icon {
   width: 100%;
@@ -97,7 +110,6 @@
 }
 .box17 .boxContent {
   width: 100%;
-  padding: 20px 10px;
   background: rgba(0, 0, 0, 0.1);
   bottom: -100px;
   left: 0;
@@ -105,7 +117,13 @@
 }
 .box17:hover .boxContent {
   bottom: 0px;
-  height: 110px;
+  height: 70px;
+}
+.review {
+  font-size: 20px;
+  margin-top: 20px;
+  font-weight: 300;
+  color: var(--color3);
 }
 .box17:hover .icon1 {
   opacity: 1;
@@ -125,15 +143,23 @@
   .box17 {
     margin-bottom: 30px;
   }
+  .box17 img {
+    width: 250px !important;
+    height: auto !important;
+    transition: all 0.5s ease 0s;
+    -webkit-transition: all 0.5s ease 0s;
+    -moz-transition: all 0.5s ease 0s;
+    -ms-transition: all 0.5s ease 0s;
+    -o-transition: all 0.5s ease 0s;
+  }
 }
 
 .btnWarningg {
   background-color: var(--color1) !important;
-  font-size: 18px !important;
-
+  font-size: 15px !important;
   font-weight: 400;
-  height: 50px;
-  width: 130px;
+  height: 40px;
+  width: 100px;
   border-radius: 7px;
   border: 2px solid var(--color1) !important;
   cursor: pointer;

@@ -3,6 +3,7 @@ import styles from "./ProductCard.module.css";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../store/actions/cartAction";
+import Rateing from "../Rateing/Rateing";
 export const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
   const [qty, setQty] = useState(1);
@@ -22,11 +23,25 @@ export const ProductCard = ({ product }) => {
             alt={product.name}
           />
         </div>
-        <h1 className={`${styles.cardInfo}`}>{product.name}</h1>
+
+        <div className="d-flex flex-column w-90 align-items-start text-capitalize">
+          <h3 className={`${styles.title}  `}> {product.name}</h3>
+          <h3 className={`${styles.title}`}>
+            EGP <strong className="fs-4">{product.price}</strong>
+          </h3>
+          <h3
+            className={`${styles.title} ${styles.review} d-flex align-items-center gap-2`}
+          >
+            <Rateing rate={product.rating} size={"xs"} />
+            {product.rating}
+          </h3>
+        </div>
+
         <div className={`${styles.icon} ${styles.icon1}`}>
-          <h3 className={styles.title}> {product.name}</h3>
-          <h3 className={styles.title}> {product.modelYear} yr</h3>
-          <h3 className={styles.title}> {product.price}EGP</h3>
+          <Link to="/">
+            <i className={`fa-regular fa-heart ${styles.favIcon}`}></i>
+          </Link>
+          <h2 className={styles.cardDescreptionHover}>{product.description}</h2>
         </div>
         <div className={`${styles.boxContent}`}>
           <ul

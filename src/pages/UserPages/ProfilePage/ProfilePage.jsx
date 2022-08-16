@@ -114,7 +114,7 @@ function ProfilePage() {
               </div>
             </div>
           </div>
-          <div className="col-lg-8 mt-5">
+          <div className="col-lg-8 mt-5 mb-5">
             {renderedData === "accountDetails" ? (
               <div className={`card shadow w-100 ${styles.rightCard}`}>
                 <div className="card-body">
