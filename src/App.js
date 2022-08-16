@@ -42,9 +42,9 @@ import ListOrders from "./pages/AdminPages/Orders/ListOrders/ListOrders";
 import OrderDetailsForAdmin from "./pages/AdminPages/Orders/OrderDetailsForAdmin/OrderDetailsForAdmin";
 import CartPage from "./pages/CartPage/Cart";
 import Success from "./pages/OrderPages/Success/Success";
-import FavouriteItem from "./pages/FavoritePage/Favorite";
 import ViewOrderDetails from "./pages/OrderPages/ViewOrderDetails/ViewOrderDetails";
 import AddNewAddress from "./pages/UserPages/AddNewAddress/AddNewAddress";
+import FavouritePage from "./pages/FavouritePage/FavouritePage";
 function App() {
   return (
     <>
@@ -68,7 +68,7 @@ function App() {
           <Route path="/payment" index element={<Payment />} />
           <Route path="/profile" index element={<ProfilePage />} />
           <Route path="/cart" index element={<CartPage />} />
-          <Route path="/FavouriteItem" index element={<FavouriteItem />} />
+          <Route path="/favourites" index element={<FavouritePage />} />
           <Route path="/address/add" index element={<AddNewAddress />} />
           {/* order routes for user */}
           <Route path="/order" index element={<Order />} />
