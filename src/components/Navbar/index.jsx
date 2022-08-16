@@ -79,9 +79,12 @@ function Navbar() {
                 </form>
               </div>
               <div className="col-1 d-flex justify-content-evenly fs-5 mb-3 mb-md-0 ps-4">
-                <a className={`  nav-link ${styles.navLink} me-2`} href="/">
+                <Link
+                  className={`  nav-link ${styles.navLink} me-2`}
+                  to="/favourites"
+                >
                   <i className="fa-solid fa-heart"></i>
-                </a>
+                </Link>
                 <Link className={`  nav-link ${styles.navLink}`} to="/cart">
                   <i className="fa-solid fa-cart-shopping">
                     {cartItems?.cartArray?.length}
