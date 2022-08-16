@@ -1,7 +1,8 @@
 import styles from "./Cart.module.css";
 import { useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import CartCard from "../../components/CartCard/CartCard";
+import { Link } from "react-router-dom";
 const CartPage = () => {
   const {
     loading: productLoading,
@@ -9,15 +10,6 @@ const CartPage = () => {
     product,
   } = useSelector((state) => state.oneProduct);
   const { cartItems } = useSelector((state) => state.cart);
-  const productQuantity = product?.product?.quantity;
-  useEffect(() => {
-    console.log(cartItems);
-  }, [cartItems]);
-
-  const quantityArray = Array.from(
-    { length: productQuantity },
-    (_, index) => index + 1
-  );
 
   return (
     <section className={`${styles.cartSection}`}>
@@ -26,29 +18,43 @@ const CartPage = () => {
           {cartItems?.map((item, index) => (
             <CartCard key={index} productFromCart={item} />
           ))}
-
-          <div className={`col-12  col-md-5 col-lg-4 `}>
-            <h2 className={`${styles.Text2}`}>Order Summary</h2>
-            <div className={`   ${styles.Right} `}>
-              <div className="d-flex justify-content-between align-items-center ">
-                <p className={` ${styles.first}`}>
-                  Subtotal<span>(6items)</span>
-                </p>
-                <p className={` ${styles.second}`}>3,599.99EGP</p>
-              </div>
-              <div className="d-flex justify-content-between align-items-center ">
-                <p className={` ${styles.first}`}>Shipping</p>
-                <p className={` ${styles.second}`}>Free</p>
-              </div>
-              <div className="d-flex justify-content-between align-items-center ">
-                <p className={` ${styles.first}`}>Taxes</p>
-                <p className={` ${styles.second}`}>Price Include 14% vat</p>
-              </div>
-              <div className={`row`}>
-                <button className={`${styles.btnWarningg}`}>CHECK OUT</button>
+          {cartItems?.length > 0 ? (
+            <div className={`col-12  col-md-5 col-lg-4 `}>
+              <h2 className={`${styles.Text2}`}>Order Summary</h2>
+              <div className={`   ${styles.Right} `}>
+                <div className="d-flex justify-content-between align-items-center ">
+                  <div className={` ${styles.first}`}>
+                    Subtotal<span>{cartItems?.length}items</span>
+                  </div>
+                  <p className={` ${styles.second}`}>
+                    {cartItems?.reduce(
+                      (contedPrice, product) =>
+                        contedPrice + product.productPrice * product.qty,
+                      0
+                    )}
+                  </p>
+                </div>
+                <div className="d-flex justify-content-between align-items-center ">
+                  <p className={` ${styles.first}`}>Shipping</p>
+                  <p className={` ${styles.second}`}>Free</p>
+                </div>
+                <div className="d-flex justify-content-between align-items-center ">
+                  <p className={` ${styles.first}`}>Taxes</p>
+                  <p className={` ${styles.second}`}>Price Include 14% vat</p>
+                </div>
+                <div className={`row`}>
+                  <button className={`${styles.btnWarningg}`}>CHECK OUT</button>
+                </div>
               </div>
             </div>
-          </div>
+          ) : (
+            <div>
+              your cart is empty, please add some products{" "}
+              <Link className={`${styles.redirectLink}`} to={"/products"}>
+                find some products from here
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </section>

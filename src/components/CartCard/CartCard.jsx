@@ -1,26 +1,18 @@
 import styles from "./CartCard.module.css";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import image from "../../assets/images/Productimage1.png";
 import { Link } from "react-router-dom";
-import { removeFromCart } from "../../store/actions/cartAction";
+import { addToCart, removeFromCart } from "../../store/actions/cartAction";
 const CartCard = ({ productFromCart }) => {
   const dispatch = useDispatch();
-  const {
-    loading: productLoading,
-    error: productError,
-    product,
-  } = useSelector((state) => state.oneProduct);
 
-  const productQuantity = product?.product?.quantity;
-  const quantityArray = Array.from(
-    { length: productQuantity },
-    (_, index) => index + 1
-  );
-  console.log(productFromCart);
   const removeFromCartHandler = () => {
     dispatch(removeFromCart(productFromCart.productId));
   };
+  const quantityArray = Array.from(
+    { length: productFromCart.productStock },
+    (_, index) => index + 1
+  );
 
   return (
     <>
@@ -49,17 +41,13 @@ const CartCard = ({ productFromCart }) => {
                   </p>
                 </Link>
               </div>
-              <div className={`col-6 `}>
-                <button
-                  className={styles.ancorBtns}
+              <div className={`col-6 ${styles.ancorBtns} ${styles.btns}`}>
+                <i className="fa-solid fa-trash me-2"></i>Remove from cart
+                <p
                   onClick={() => {
                     removeFromCartHandler();
                   }}
-                >
-                  <p className={styles.btns}>
-                    <i className="fa-solid fa-trash me-2"></i>Remove from cart
-                  </p>
-                </button>
+                ></p>
               </div>
             </div>
           </div>
@@ -72,8 +60,26 @@ const CartCard = ({ productFromCart }) => {
               id="quantity"
               className={`form-select col-12 w-50 ${styles["form-select"]}`}
               aria-label="Default select example"
+              value={productFromCart?.qty}
+              onChange={(e) => {
+                if (Number(e.target.value < productFromCart?.qty)) {
+                  dispatch(
+                    addToCart(
+                      productFromCart?.productId,
+                      -(productFromCart?.qty - Number(e.target.value))
+                    )
+                  );
+                } else if (Number(e.target.value > productFromCart?.qty)) {
+                  dispatch(
+                    addToCart(
+                      productFromCart?.productId,
+                      Number(e.target.value) - productFromCart?.qty
+                    )
+                  );
+                }
+              }}
             >
-              {quantityArray.map((x, index) => (
+              {quantityArray?.map((x, index) => (
                 <option key={index} value={x}>
                   {x}
                 </option>

@@ -19,16 +19,12 @@ function ProudctPage() {
     setCurrPage(page_number);
   };
 
-  const {
-    loading: productsLoading,
-    error: productsError,
-    products,
-  } = useSelector((state) => state.allProducts);
-  const {
-    loading: filteredProductsLoading,
-    error: filteredProductsError,
-    filteredProducts,
-  } = useSelector((state) => state.filteredProducts);
+  const { loading: productsLoading, products } = useSelector(
+    (state) => state.allProducts
+  );
+  const { loading: filteredProductsLoading, filteredProducts } = useSelector(
+    (state) => state.filteredProducts
+  );
   const filteredProductsArray = filteredProducts?.products;
   const prodcutsArray = products?.products;
   useEffect(() => {

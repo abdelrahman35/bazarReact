@@ -67,6 +67,15 @@
   -ms-border-radius: 5px !important;
   -o-border-radius: 5px !important;
 }
-.first span {
-  font-weight: 200;
+.redirectLink {
+  text-decoration: none;
+  color: var(--color1);
+  transition: all 0.3s !important;
+  -webkit-transition: all 0.3s !important;
+  -moz-transition: all 0.3s !important;
+  -ms-transition: all 0.3s !important;
+  -o-transition: all 0.3s !important;
+}
+.redirectLink:hover {
+  color: var(--color2);
 }
