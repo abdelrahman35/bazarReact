@@ -7,7 +7,7 @@ function AboutUsPage() {
     <>
       <section>
         <div className={styles.Banner}>
-          <h1>ABOUT BAZAAR !</h1>
+          <h1 className="ms-5 ms-lg-0">ABOUT BAZAAR !</h1>
         </div>
         <div className={styles.Middle}>
           <p>
@@ -57,7 +57,7 @@ function AboutUsPage() {
               </div>
               <div className="col-12 col-md-4">
                 <div>
-                  <img src={image1} alt="" />
+                  <img className="w-100 mt-3 mt-md-0" src={image1} alt="" />
                 </div>
               </div>
             </div>

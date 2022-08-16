@@ -20,8 +20,13 @@ function Navbar() {
         <div className="container p-0">
           <div className="row w-100 justify-content-start m-auto align-items-center">
             <div className={`col-12 col-md-2 text-end ${styles.aa} p-0`}>
-              <div className="row justify-content-center align-items-center">
-                <div className="col-6 d-flex">
+              <div className="d-none d-lg-block">
+                <Link to="/" className={styles.brand}>
+                  Bazaar{" "}
+                </Link>
+              </div>
+              <div className="row justify-content-center align-items-center w-100">
+                <div className="col-6 d-flex justify-content-center d-block d-lg-none">
                   <Link to="/" className={styles.brand}>
                     Bazaar{" "}
                   </Link>
