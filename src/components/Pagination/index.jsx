@@ -59,6 +59,7 @@ export default function MyPagination(props) {
               toReturn.push(
                 <Pagination.First
                   key={"firstpage"}
+                  disabled={props.currentPage === props.totPages ? true : false}
                   onClick={
                     props.currentPage === 1
                       ? () => {}
@@ -72,6 +73,7 @@ export default function MyPagination(props) {
               toReturn.push(
                 <Pagination.Prev
                   key={"prevpage"}
+                  disabled={props.currentPage === props.totPages ? true : false}
                   onClick={() => {
                     if (props.currentPage > 1) {
                       props.pageClicked(props.currentPage - 1);
@@ -117,7 +119,6 @@ export default function MyPagination(props) {
               toReturn.push(
                 <Pagination.Last
                   key={"lastpage"}
-                  // disabled={props.currentPage === props.totPages ? true : false}
                   disabled={props.currentPage === props.totPages ? true : false}
                   onClick={
                     props.currentPage === ele

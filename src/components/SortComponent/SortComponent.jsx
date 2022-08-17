@@ -56,7 +56,7 @@ function SortComponent() {
             </button>
           </div>
           <div className="col-lg-4 form-check d-flex justify-content-evenly ">
-            <div className="col-lg-6">
+            <div className="col-lg-6 d-flex justify-content-lg-start ms-5 ">
               <input
                 className="form-check-input"
                 type="radio"
@@ -76,7 +76,7 @@ function SortComponent() {
                 Descending Price
               </label>
             </div>
-            <div className="col-lg-6">
+            <div className="col-lg-6 d-flex justify-content-lg-center me-5">
               <input
                 className="form-check-input"
                 type="radio"
@@ -99,7 +99,7 @@ function SortComponent() {
           </div>
 
           <div className="col-lg-4 form-check d-flex justify-content-evenly">
-            <div className="col-lg-6">
+            <div className="col-lg-6 d-flex justify-content-lg-start ms-5 ">
               <input
                 className="form-check-input"
                 type="radio"
@@ -119,7 +119,7 @@ function SortComponent() {
                 Descending Year
               </label>
             </div>
-            <div className="col-lg-6">
+            <div className="col-lg-6 d-flex justify-content-lg-center me-5">
               <input
                 className="form-check-input"
                 type="radio"

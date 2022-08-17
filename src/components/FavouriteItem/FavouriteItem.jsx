@@ -9,14 +9,14 @@ const FavouriteItem = () => {
         <img src={image} className={`card-img-top ${styles.image}`} alt="..." />
         <div className="card-body">
           <h5 className={`card-title ${styles.productName}`}>product Name</h5>
-          <p className="card-text">
+          <div className="card-text">
             <h6>price: 255 L.E</h6>
             <i className="fa-solid fa-star"></i>{" "}
             <i className="fa-solid fa-star"></i>{" "}
             <i className="fa-solid fa-star"></i>{" "}
             <i className="fa-solid fa-star"></i>{" "}
             <i className="fa-solid fa-star"></i> <span>3.8</span>
-          </p>
+          </div>
         </div>
         <div className="card-footer d-flex justify-content-between">
           <Link to="#" className={`btn ${styles.btnWarningg}`}>

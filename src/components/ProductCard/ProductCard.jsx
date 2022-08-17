@@ -12,58 +12,50 @@ export const ProductCard = ({ product }) => {
   };
   return (
     <>
-      <div
-        className={`${styles.box17} d-flex flex-column justify-content-center
-                        align-items-center`}
-      >
-        <div className="text-center ">
-          <img
-            className="m-3 w-50"
-            src={`https://bazaarshop.s3.eu-west-3.amazonaws.com${product.image}`}
-            alt={product.name}
-          />
-        </div>
-
-        <div className="d-flex flex-column w-90 align-items-start text-capitalize">
-          <h3 className={`${styles.title}  `}> {product.name}</h3>
-          <h3 className={`${styles.title}`}>
-            EGP <strong className="fs-4">{product.price}</strong>
-          </h3>
-          <h3
-            className={`${styles.title} ${styles.review} d-flex align-items-center gap-2`}
-          >
-            <Rateing rate={product.rating} size={"xs"} />
-            {product.rating}
-          </h3>
-        </div>
-
-        <div className={`${styles.icon} ${styles.icon1}`}>
-          <Link to="/">
-            <i className={`fa-regular fa-heart ${styles.favIcon}`}></i>
+      <div className="m-3 w-100">
+        <div className={`card ${styles.cardBody} p-4`}>
+          <Link className="text-start" to="/">
+            <i className={`fa-light fa-heart ${styles.colorFav}`}></i>
           </Link>
-          <h2 className={styles.cardDescreptionHover}>{product.description}</h2>
-        </div>
-        <div className={`${styles.boxContent}`}>
-          <ul
-            className={`${styles.icon} d-flex justify-content-evenly
-                                align-items-center list-unstyled`}
+
+          <Link
+            to={`/product-details/${product._id}`}
+            className={`text-decoration-none ${styles.cardLinkReset}`}
           >
-            <li>
-              <Link to={`/product-details/${product._id}`}>
-                <button className={styles.btnWarningg}>View Item</button>
-              </Link>
-            </li>
-            <li>
+            <div className={`${styles.imgContainer} text-end `}>
+              <img
+                className={`card-img-top ${styles.image} p-0`}
+                src={`https://bazaarshop.s3.eu-west-3.amazonaws.com${product.image}`}
+                alt={product.name}
+              />
+            </div>
+          </Link>
+
+          <div className="d-flex justify-content-between align-items-end">
+            <div className="card-body text-start p-0 ">
+              <h5 className={`card-title ${styles.productName}`}>
+                {product.name.length >= 15
+                  ? `${product.name.substring(0, 15)}...`
+                  : product.name}
+              </h5>
+              <div className="card-text">
+                <h6>price: {product.price} L.E</h6>
+
+                <Rateing rate={product.rating} size={"xs"} />
+                <span>{product.rating}</span>
+              </div>
+            </div>
+            <div className="d-flex justify-content-end">
               <button
-                className={styles.btnWarningg}
+                className={`d-flex align-items-end  ${styles.btnWarningg}`}
                 onClick={() => {
                   addToCartHandler();
                 }}
               >
-                Add To Cart
+                <i className="fa-solid fa-cart-circle-arrow-up"></i>
               </button>
-            </li>
-          </ul>
+            </div>
+          </div>
         </div>
       </div>
     </>

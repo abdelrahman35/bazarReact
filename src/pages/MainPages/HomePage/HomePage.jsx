@@ -137,13 +137,10 @@ function Home() {
             <h3>Recently Added Products</h3>
             <div className={styles.HR}></div>
           </div>
-          <div className={`container`}>
+          <div className={`container `}>
             <div className="row mb-0 mb-lg-3  g-4 mt-5 ">
               {prodcutsArray?.slice(-6).map((product, index) => (
-                <div
-                  className={`col-12 col-md-6 col-lg-4 d-flex justify-content-center mb-3 mb-lg-0`}
-                  key={index}
-                >
+                <div className={`col-lg-4 col-md-6 col-12 `} key={index}>
                   <ProductCard product={product} />
                 </div>
               ))}

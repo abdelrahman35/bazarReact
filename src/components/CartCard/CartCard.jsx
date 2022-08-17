@@ -11,7 +11,7 @@ const CartCard = ({ productFromCart }) => {
   };
   const quantityArray = Array.from(
     { length: productFromCart.productStock },
-    (_, index) => index + 1
+    (_, index) => index + 1,
   );
 
   return (
@@ -42,12 +42,13 @@ const CartCard = ({ productFromCart }) => {
                 </Link>
               </div>
               <div className={`col-6 ${styles.ancorBtns} ${styles.btns}`}>
-                <i className="fa-solid fa-trash me-2"></i>Remove from cart
-                <p
+                <button
                   onClick={() => {
                     removeFromCartHandler();
                   }}
-                ></p>
+                >
+                  <i className="fa-solid fa-trash me-2"></i>Remove from cart
+                </button>
               </div>
             </div>
           </div>
@@ -66,15 +67,15 @@ const CartCard = ({ productFromCart }) => {
                   dispatch(
                     addToCart(
                       productFromCart?.productId,
-                      -(productFromCart?.qty - Number(e.target.value))
-                    )
+                      -(productFromCart?.qty - Number(e.target.value)),
+                    ),
                   );
                 } else if (Number(e.target.value > productFromCart?.qty)) {
                   dispatch(
                     addToCart(
                       productFromCart?.productId,
-                      Number(e.target.value) - productFromCart?.qty
-                    )
+                      Number(e.target.value) - productFromCart?.qty,
+                    ),
                   );
                 }
               }}
