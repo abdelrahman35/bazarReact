@@ -76,11 +76,7 @@ export const addNewAddressReducer = (state = {}, action) => {
   switch (action.type) {
     case "ADD_NEW_ADDRESS_REQUEST":
       return { loading: true };
-    // case "ADD_NEW_ADDRESS_SUCCESS":
-    //   return {
-    //     loading: false,
-    //     address: action.payload,
-    //   };
+
     case "ADD_NEW_ADDRESS_SUCCESS":
       return {
         loading: false,

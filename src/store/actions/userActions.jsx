@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { addressArrayFromLocalStorage } from "../store";
 import axiosInstance from "./../../network/axiosInstance";
 
 export const login = (email, password) => async (dispatch) => {
@@ -23,6 +24,7 @@ export const login = (email, password) => async (dispatch) => {
     });
     localStorage.setItem("userInfo", JSON.stringify(data));
     localStorage.setItem("address", JSON.stringify(data?.address));
+    localStorage.setItem("wishlist", JSON.stringify(data?.wishlist));
   } catch (error) {
     console.log(error);
     dispatch({
@@ -76,6 +78,8 @@ export const register =
   };
 export const logout = () => async (dispatch) => {
   localStorage.removeItem("userInfo");
+  localStorage.removeItem("wishlist");
+  localStorage.removeItem("address");
   dispatch({ type: "USER_LOGOUT" });
 };
 
@@ -206,8 +210,15 @@ export const addNewAddress = (values, city) => async (dispatch, getState) => {
       mobile: values.mobile,
       city,
     };
+
     const newAddressArray =
-      data?.status === 201 ? [...address, newAddress] : [...address];
+      data?.status === 201
+        ? [...addressArrayFromLocalStorage, newAddress]
+        : [
+            ...(addressArrayFromLocalStorage
+              ? addressArrayFromLocalStorage
+              : address),
+          ];
     dispatch({
       type: "ADD_NEW_ADDRESS_SUCCESS",
       payload: newAddressArray,

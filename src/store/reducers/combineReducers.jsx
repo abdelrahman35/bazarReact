@@ -25,7 +25,7 @@ import {
   listAllOrdersReducer,
   orderDetailsForAdminReducer,
 } from "./ordersReducers";
-import { cartReducer } from "./cartReducers";
+import { addToFavouritesReducer, cartReducer } from "./cartReducers";
 export default combineReducers({
   // userReducers
   userRegister: userRegisterReducer,
@@ -51,4 +51,5 @@ export default combineReducers({
   cancelOrder: cancelOrderIfPendingReducer,
   // cart reducers
   cart: cartReducer,
+  favouritesProducts: addToFavouritesReducer,
 });

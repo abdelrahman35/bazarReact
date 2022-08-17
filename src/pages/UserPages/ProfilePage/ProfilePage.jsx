@@ -57,12 +57,6 @@ function ProfilePage() {
       dispatch(getUserOrders(pageNum));
     }
   }, [userInfo, navigate, pageNum, orderIsCancelled]);
-  // useEffect(
-  //   () => async () => {
-
-  //   },
-  //   [addAddress]
-  // );
 
   return userLoading ? (
     <Loading />
@@ -130,10 +124,7 @@ function ProfilePage() {
                   </div>
                   <div className="d-flex justify-content-between mx-5 align-items-center mt-4 mb-4">
                     <h6 className="card-subtitle mb-3 text-muted fs-5">
-                      Number of Saved Addresses :{" "}
-                      {statusCode === 201
-                        ? address?.length
-                        : userInfo?.address?.length}{" "}
+                      Number of Saved Addresses : {address?.length}
                     </h6>
                     <h6 className="card-subtitle mb-3 text-muted fs-5">
                       Number of Orders : {userOrdersArray?.length}{" "}
@@ -226,19 +217,12 @@ function ProfilePage() {
                       </Link>
                     </div>
                     <div className="row">
-                      {statusCode === 201
-                        ? address?.map((address, index) => (
-                            <div key={index} className="col-lg-6">
-                              {" "}
-                              <AddressBook index={index} address={address} />
-                            </div>
-                          ))
-                        : userInfo?.address?.map((address, index) => (
-                            <div key={index} className="col-lg-6">
-                              {" "}
-                              <AddressBook index={index} address={address} />
-                            </div>
-                          ))}
+                      {address?.map((address, index) => (
+                        <div key={index} className="col-lg-6">
+                          {" "}
+                          <AddressBook index={index} address={address} />
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>

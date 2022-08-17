@@ -9,13 +9,17 @@ const userFromLocalStorage = localStorage.getItem("userInfo")
 const cartFromLocalStorage = localStorage.getItem("cartItems")
   ? JSON.parse(localStorage.getItem("cartItems"))
   : [];
-const addressArrayFromLocalStorage = localStorage.getItem("address")
+export const addressArrayFromLocalStorage = localStorage.getItem("address")
   ? JSON.parse(localStorage.getItem("address"))
+  : [];
+export const favouritesArrayFromLocalStorage = localStorage.getItem("wishlist")
+  ? JSON.parse(localStorage.getItem("wishlist"))
   : [];
 const stateFromLocalStorage = {
   userLogin: { userInfo: userFromLocalStorage },
   cart: { cartItems: cartFromLocalStorage },
   addAddress: { address: addressArrayFromLocalStorage },
+  favouritesProducts: { favourites: favouritesArrayFromLocalStorage },
 };
 
 const store = createStore(
