@@ -13,7 +13,7 @@ const FavouritePage = () => {
     favourites,
   } = useSelector((state) => state.favouritesProducts);
   const { error: userError, userInfo } = useSelector(
-    (state) => state.userLogin
+    (state) => state.userLogin,
   );
   useEffect(() => {
     if (!userInfo) {
@@ -26,7 +26,7 @@ const FavouritePage = () => {
       {favLoading ? (
         <Loading />
       ) : favourites?.length > 0 ? (
-        <div className={`container mt-5 mb-5`}>
+        <div className={`container mt-5 mb-5 `}>
           <div className="row">
             {favourites?.map((product, index) => (
               <div key={index} className="col-lg-4 col-md-6 col-12">
@@ -36,12 +36,28 @@ const FavouritePage = () => {
           </div>
         </div>
       ) : (
-        <div className={`container mt-5 mb-5`}>
-          your favourites are empty, please add some products{" "}
-          <Link className={`${styles.redirectLink}`} to={"/products"}>
-            find some products from here
-          </Link>
-        </div>
+        <>
+          <section className={`${styles.cartSection}`}>
+            <div className={`container  ${styles.Con}`}>
+              <div className="row w-80 justify-content-center align-items-center">
+                <div className={`${styles.component} w-100`}>
+                  <p className="m-0 mb-1 text-capitalize">
+                    your favourites are empty, please add some products <br />
+                    <div className="d-flex justify-content-evenly align-items-center">
+                      <Link
+                        className={`${styles.redirectLink}`}
+                        to={"/products"}
+                      >
+                        find some products from here
+                      </Link>
+                      <i className="fa-duotone fa-sitemap"></i>
+                    </div>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+        </>
       )}
     </>
   );
