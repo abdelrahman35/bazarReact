@@ -83,30 +83,34 @@ function Navbar() {
                   />
                 </form>
               </div>
-              <div className="col-1 d-flex justify-content-evenly fs-5 mb-3 mb-md-0 ps-4">
+              <div className="col-1 d-flex align-items-center justify-content-evenly fs-5 mb-3 mb-md-0 ps-4">
                 <Link
                   className={`  nav-link ${styles.navLink} me-2`}
                   to="/favourites"
                 >
                   <i className="fa-solid fa-heart"></i>
                 </Link>
-                <Link className={`  nav-link ${styles.navLink}`} to="/cart">
+                <Link
+                  className={`  nav-link ${styles.navLink} d-flex`}
+                  to="/cart"
+                >
                   <i className="fa-solid fa-cart-shopping"></i>
+                  <sup className={`mt-2`}>{cartItems?.length}</sup>
                 </Link>
-                <sup> {cartItems?.length}</sup>
               </div>
               <div className="col-12 col-md-2 mb-3 mb-md-0">
                 {userLoading ? (
                   <Loading />
                 ) : (
-                  <div className="d-flex justify-content-evenly align-items-center">
+                  <div className="d-flex justify-content-between align-items-center">
                     {userInfo ? (
                       <Link
                         className={`text-decoration-none ${styles.profileLink}`}
                         to="/profile"
                       >
-                        {" "}
-                        <div>Hi {userInfo.firstName}!</div>
+                        <div className={styles.profile}>
+                          Hi {userInfo.firstName}!
+                        </div>
                       </Link>
                     ) : (
                       <div>
@@ -128,9 +132,8 @@ function Navbar() {
                       {userInfo && userInfo?.isAdmin ? (
                         <Link
                           to="/adminPanel"
-                          className={`d-flex  nav-link ${styles.navLink}`}
+                          className={`d-flex nav-link ${styles.navLink}`}
                         >
-                          {" "}
                           <i className="fa-solid fa-user-shield"></i>
                         </Link>
                       ) : null}

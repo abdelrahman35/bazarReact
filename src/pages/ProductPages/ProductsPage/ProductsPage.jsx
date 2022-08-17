@@ -20,10 +20,10 @@ function ProudctPage() {
   };
 
   const { loading: productsLoading, products } = useSelector(
-    (state) => state.allProducts
+    (state) => state.allProducts,
   );
   const { loading: filteredProductsLoading, filteredProducts } = useSelector(
-    (state) => state.filteredProducts
+    (state) => state.filteredProducts,
   );
   const filteredProductsArray = filteredProducts?.products;
   const prodcutsArray = products?.products;
@@ -41,13 +41,6 @@ function ProudctPage() {
       ) : filteredProductsArray?.length > 0 ? (
         <div className={`container-fluid`}>
           <div className="row justify-content-center align-items-start">
-            <div className={`col-12  d-none  ${styles.marg}`}>
-              <aside className={styles.filterSide}>
-                <Category />
-                <Filter />
-              </aside>
-            </div>
-
             <div className="col-12  d-block ">
               <aside>
                 <div
@@ -74,7 +67,7 @@ function ProudctPage() {
               </aside>
             </div>
 
-            <div className="col-12  ">
+            <div className="col-12 col-12  d-flex flex-column justify-content-center align-items-center ">
               <div
                 className="row d-flex justify-content-center
             align-items-center"
@@ -96,7 +89,7 @@ function ProudctPage() {
           </div>
 
           <MyPagination
-            totPages={10}
+            totPages={products?.numberOfPages}
             currentPage={currPage}
             pageClicked={(ele) => {
               afterPageClicked(ele);
@@ -119,13 +112,6 @@ function ProudctPage() {
         <>
           <div className={`container-fluid`}>
             <div className="row justify-content-center align-items-start p-0  px-lg-5">
-              <div className={`col-12  d-none  ${styles.marg}`}>
-                <aside className={styles.filterSide}>
-                  <Category />
-                  <Filter />
-                </aside>
-              </div>
-
               <div className="col-12  d-block ">
                 <aside>
                   <div
@@ -155,7 +141,7 @@ function ProudctPage() {
                 </aside>
               </div>
 
-              <div className="col-12   ">
+              <div className="col-12  d-flex flex-column justify-content-center align-items-center ">
                 <div
                   className="row d-flex justify-content-center
                 align-items-center"
@@ -163,15 +149,14 @@ function ProudctPage() {
                   <SortComponent />
                 </div>
 
-                <div className="row mb-0 mb-lg-3  g-4  ">
-                  {prodcutsArray?.map((product, index) => (
-                    <div
-                      className={`col-12 col-md-6 col-lg-3 d-flex justify-content-center mb-3 mb-lg-0`}
-                      key={index}
-                    >
-                      <ProductCard product={product} />
-                    </div>
-                  ))}
+                <div className="container  mb-5">
+                  <div className="row">
+                    {prodcutsArray?.map((product, index) => (
+                      <div className={`col-lg-4 col-md-6 col-12`} key={index}>
+                        <ProductCard product={product} />
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>

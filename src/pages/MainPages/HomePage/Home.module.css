@@ -196,7 +196,7 @@
 
 @media (min-width: 200px) and (max-width: 1251px) {
   .banner img {
-    width: 108%;
+    width: 100%;
   }
   .content {
     color: var(--color6);

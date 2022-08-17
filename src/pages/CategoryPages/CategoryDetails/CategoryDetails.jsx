@@ -5,7 +5,7 @@ import { filterProducts } from "../../../store/actions/productActions";
 import { ProductCard } from "../../../components/ProductCard/ProductCard";
 import Loading from "../../../components/Loading/Loading";
 import styles from "./CategoryDetails.module.css";
-import SortComponent from "../../../components/SortComponent/SortComponent";
+import SortComponentOnCategory from "../../../components/SortComponentOnCategory/SortComponentOnCategory";
 import Filter from "../../../components/FilterComponent/Filter";
 import Category from "../../../components/Category/Category";
 function CategoryDetails() {
@@ -26,12 +26,6 @@ function CategoryDetails() {
   return (
     <>
       <div className={`container ${styles.conten}`}>
-        <h2 className="text-center text-capitalize">
-          {categoriesArray?.map((category) =>
-            category._id === categoryId ? category.categoryName : null,
-          )}
-        </h2>
-
         {loading ? (
           <div
             className={`container d-flex justify-content-center align-items-center ${styles.contenn}`}
@@ -45,13 +39,6 @@ function CategoryDetails() {
         ) : (
           <div className={`container-fluid  `}>
             <div className="row justify-content-center align-items-start p-0  px-lg-5">
-              <div className={`col-12  d-none  ${styles.marg}`}>
-                <aside className={styles.filterSide}>
-                  <Category />
-                  <Filter />
-                </aside>
-              </div>
-
               <div className="col-12  d-block ">
                 <aside>
                   <div
@@ -75,29 +62,34 @@ function CategoryDetails() {
                     </div>
                     <div className="offcanvas-body">
                       <Category />
-                      <Filter />
                     </div>
                   </div>
                 </aside>
               </div>
 
-              <div className="col-12   ">
+              <div className="col-12 d-flex flex-column justify-content-center align-items-center   ">
                 <div
-                  className="row d-flex justify-content-center
-                align-items-center"
+                  className="row d-flex justify-content-between
+                align-items-center w-90"
                 >
-                  <SortComponent />
+                  <h2 className="text-center text-capitalize w-20">
+                    {categoriesArray?.map((category) =>
+                      category._id === categoryId
+                        ? category.categoryName
+                        : null,
+                    )}
+                  </h2>
+                  <SortComponentOnCategory />
                 </div>
 
-                <div className="row mb-0 mb-lg-3  g-4  ">
-                  {productsArray?.map((product, index) => (
-                    <div
-                      className={`col-12 col-md-6 col-lg-3 d-flex justify-content-center mb-3 mb-lg-0`}
-                      key={index}
-                    >
-                      <ProductCard product={product} />
-                    </div>
-                  ))}
+                <div className="container  mb-5">
+                  <div className="row">
+                    {productsArray?.map((product, index) => (
+                      <div className={`col-lg-4 col-md-6 col-12`} key={index}>
+                        <ProductCard product={product} />
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
