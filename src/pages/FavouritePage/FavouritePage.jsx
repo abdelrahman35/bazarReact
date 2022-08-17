@@ -28,8 +28,11 @@ const FavouritePage = () => {
       ) : favourites?.length > 0 ? (
         <div className={`container mt-5 mb-5`}>
           <div className="row">
-            {favourites?.map((product, index) => (
-              <div key={index} className="col-lg-4 col-md-6 col-12">
+            {favourites?.map((product) => (
+              <div
+                key={product?.product._id}
+                className="col-lg-4 col-md-6 col-12"
+              >
                 <FavouriteItem product={product?.product} />
               </div>
             ))}
