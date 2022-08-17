@@ -50,6 +50,7 @@
 .imgContainer {
   width: 100% !important;
   height: 220px !important;
+  text-align: center;
 }
 
 .cardLinkReset {

@@ -30,7 +30,7 @@ const CartPage = () => {
                     {cartItems?.reduce(
                       (contedPrice, product) =>
                         contedPrice + product.productPrice * product.qty,
-                      0
+                      0,
                     )}
                   </p>
                 </div>
@@ -48,12 +48,27 @@ const CartPage = () => {
               </div>
             </div>
           ) : (
-            <div>
-              your cart is empty, please add some products{" "}
-              <Link className={`${styles.redirectLink}`} to={"/products"}>
-                find some products from here
-              </Link>
-            </div>
+            <>
+              <div className={`container  ${styles.Con}`}>
+                <div className="row w-80 justify-content-center align-items-center">
+                  <div className={`${styles.component} w-100`}>
+                    <p className="m-0 mb-1 text-capitalize">
+                      your cart is empty, please add some products
+                      <br />
+                      <div className="d-flex justify-content-evenly align-items-center">
+                        <Link
+                          className={`${styles.redirectLink}`}
+                          to={"/products"}
+                        >
+                          find some products from here
+                        </Link>
+                        <i className="fa-duotone fa-sitemap"></i>
+                      </div>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </>
           )}
         </div>
       </div>
