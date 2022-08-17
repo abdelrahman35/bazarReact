@@ -3,7 +3,10 @@ import styles from "./FavouriteItem.module.css";
 import { Link } from "react-router-dom";
 import Rateing from "../Rateing/Rateing";
 import { useDispatch } from "react-redux";
-import { removeFromFavourites } from "../../store/actions/cartAction";
+import {
+  addToCart,
+  removeFromFavourites,
+} from "../../store/actions/cartAction";
 const FavouriteItem = ({ product }) => {
   const dispatch = useDispatch();
   return (
@@ -34,9 +37,15 @@ const FavouriteItem = ({ product }) => {
           </div>
         </div>
         <div className="card-footer d-flex justify-content-between">
-          <Link to="#" className={`btn ${styles.btnWarningg}`}>
+          <button
+            className={`btn ${styles.btnWarningg}`}
+            onClick={() => {
+              dispatch(addToCart(product._id, 1));
+              dispatch(removeFromFavourites(product._id));
+            }}
+          >
             <i className="fa-solid fa-cart-shopping"></i>
-          </Link>
+          </button>
           <button
             onClick={() => {
               dispatch(removeFromFavourites(product._id));

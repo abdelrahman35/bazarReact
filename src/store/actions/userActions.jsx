@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { addressArrayFromLocalStorage } from "../store";
 import axiosInstance from "./../../network/axiosInstance";
 
@@ -217,7 +216,11 @@ export const addNewAddress = (values, city) => async (dispatch, getState) => {
     const newAddressArray =
       status === 201
         ? [...addressArrayFromLocalStorage, newAddress]
-        : [...addressArrayFromLocalStorage];
+        : [
+            ...(addressArrayFromLocalStorage
+              ? addressArrayFromLocalStorage
+              : address),
+          ];
     localStorage.setItem("address", JSON.stringify(newAddressArray));
 
     dispatch({

@@ -9,6 +9,7 @@ import Loading from "../../../components/Loading/Loading";
 import { getUserOrders } from "../../../store/actions/ordersActions";
 import OrderCard from "../../../components/OrderCard/OrderCard";
 import AddressBook from "../../../components/AddressBook/AddressBook";
+import { addressArrayFromLocalStorage } from "../../../store/store";
 function ProfilePage() {
   const { loading: addressLoading, address } = useSelector(
     (state) => state.addAddress
@@ -59,6 +60,7 @@ function ProfilePage() {
       dispatch(getUserOrders(pageNum));
     }
   }, [userInfo, navigate, pageNum, orderIsCancelled]);
+  useEffect(() => {}, [addressArrayFromLocalStorage]);
 
   return userLoading ? (
     <Loading />

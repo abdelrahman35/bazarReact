@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./ProductCard.module.css";
 import { Link, lazy, suspense } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   addToCart,
   addToFavourites,
@@ -9,6 +9,7 @@ import {
 } from "../../store/actions/cartAction";
 import Rateing from "../Rateing/Rateing";
 export const ProductCard = ({ product }) => {
+  const { favourites } = useSelector((state) => state.favouritesProducts);
   const dispatch = useDispatch();
   const addToCartHandler = () => {
     dispatch(addToCart(product._id, 1));
@@ -17,14 +18,27 @@ export const ProductCard = ({ product }) => {
     <>
       <div className="m-3 w-100">
         <div className={`card ${styles.cardBody} p-4`}>
-          <button
-            className={`text-start  ${styles.Btn}`}
-            onClick={() => {
-              dispatch(removeFromFavourites(product._id));
-            }}
-          >
-            <i className={`fa-light fa-heart ${styles.colorFav}`}></i>
-          </button>
+          {favourites?.map((item) =>
+            item.product._id !== product._id ? (
+              <button
+                className={`text-start  ${styles.Btn}`}
+                onClick={() => {
+                  dispatch(addToFavourites(product._id));
+                }}
+              >
+                <i className={`fa-light fa-heart ${styles.colorFav}`}></i>
+              </button>
+            ) : (
+              <button
+                className={`text-start  ${styles.Btn}`}
+                onClick={() => {
+                  dispatch(removeFromFavourites(product._id));
+                }}
+              >
+                <i className={`fa-solid fa-heart ${styles.colorFav}`}></i>
+              </button>
+            )
+          )}
 
           <Link
             to={`/product-details/${product._id}`}
