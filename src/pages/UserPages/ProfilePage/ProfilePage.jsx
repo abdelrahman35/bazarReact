@@ -10,8 +10,10 @@ import { getUserOrders } from "../../../store/actions/ordersActions";
 import OrderCard from "../../../components/OrderCard/OrderCard";
 import AddressBook from "../../../components/AddressBook/AddressBook";
 function ProfilePage() {
-  //
-  const { address, statusCode } = useSelector((state) => state.addAddress);
+  const { loading: addressLoading, address } = useSelector(
+    (state) => state.addAddress
+  );
+  console.log(addressLoading);
   // declarations
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -204,29 +206,35 @@ function ProfilePage() {
                 </div>
               </div>
             ) : renderedData === "AddressBook" ? (
-              <div className={`card shadow w-100 ${styles.rightCard}`}>
-                <div className="card-body">
-                  <div className="container">
-                    <div className="d-flex justify-content-end">
-                      <Link
-                        to={"/address/add"}
-                        className={`btn ${styles.addBtn}`}
-                      >
-                        {" "}
-                        <i className="fa-solid fa-plus"></i>
-                      </Link>
-                    </div>
-                    <div className="row">
-                      {address?.map((address, index) => (
-                        <div key={index} className="col-lg-6">
-                          {" "}
-                          <AddressBook index={index} address={address} />
+              <>
+                {addressLoading ? (
+                  <Loading />
+                ) : (
+                  <div className={`card shadow w-100 ${styles.rightCard}`}>
+                    <div className="card-body">
+                      <div className="container">
+                        <div className="d-flex justify-content-end">
+                          <Link
+                            to={"/address/add"}
+                            className={`btn ${styles.addBtn}`}
+                          >
+                            {" "}
+                            <i className="fa-solid fa-plus"></i>
+                          </Link>
                         </div>
-                      ))}
+                        <div className="row">
+                          {address?.map((address, index) => (
+                            <div key={index} className="col-lg-6">
+                              {" "}
+                              <AddressBook index={index} address={address} />
+                            </div>
+                          ))}
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
+                )}
+              </>
             ) : null}
           </div>
         </div>

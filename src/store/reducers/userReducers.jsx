@@ -85,6 +85,16 @@ export const addNewAddressReducer = (state = {}, action) => {
       };
     case "ADD_NEW_ADDRESS_FAIL":
       return { loading: false, error: action.payload };
+    case "DELETE_ADDRES_REQUEST":
+      return { loading: true };
+    case "DELETE_ADDRES_SUCCESS":
+      return {
+        loading: false,
+        address: action.payload,
+        statusCode: action.statusCode,
+      };
+    case "DELETE_ADDRES_FAIL":
+      return { loading: false, error: action.payload };
     default:
       return state;
   }
