@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { addressArrayFromLocalStorage } from "../store";
 import axiosInstance from "./../../network/axiosInstance";
 
 export const login = (email, password) => async (dispatch) => {
@@ -23,6 +24,7 @@ export const login = (email, password) => async (dispatch) => {
     });
     localStorage.setItem("userInfo", JSON.stringify(data));
     localStorage.setItem("address", JSON.stringify(data?.address));
+    localStorage.setItem("wishlist", JSON.stringify(data?.wishlist));
   } catch (error) {
     console.log(error);
     dispatch({
@@ -76,6 +78,8 @@ export const register =
   };
 export const logout = () => async (dispatch) => {
   localStorage.removeItem("userInfo");
+  localStorage.removeItem("wishlist");
+  localStorage.removeItem("address");
   dispatch({ type: "USER_LOGOUT" });
 };
 
@@ -187,7 +191,7 @@ export const addNewAddress = (values, city) => async (dispatch, getState) => {
       authorization: `Bearer ${token}`,
     };
 
-    const data = await axiosInstance.post(
+    const { status } = await axiosInstance.post(
       "/user/address",
       {
         payload: {
@@ -205,20 +209,67 @@ export const addNewAddress = (values, city) => async (dispatch, getState) => {
       country: values.country,
       mobile: values.mobile,
       city,
+      _id:
+        addressArrayFromLocalStorage[addressArrayFromLocalStorage.length - 1]
+          ._id + 1,
     };
+
     const newAddressArray =
-      data?.status === 201 ? [...address, newAddress] : [...address];
+      status === 201
+        ? [...addressArrayFromLocalStorage, newAddress]
+        : [...addressArrayFromLocalStorage];
+    localStorage.setItem("address", JSON.stringify(newAddressArray));
+
     dispatch({
       type: "ADD_NEW_ADDRESS_SUCCESS",
       payload: newAddressArray,
-      statusCode: data.status,
+      statusCode: status,
     });
-    localStorage.setItem("address", JSON.stringify(newAddressArray));
   } catch (error) {
     console.log(error);
 
     dispatch({
       type: "ADD_NEW_ADDRESS_FAIL",
+      payload: error.response ? error.response.status : error,
+    });
+  }
+};
+
+export const deleteAddress = (addressId) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: "DELETE_ADDRESS_REQUEST" });
+    const token = getState().userLogin.userInfo.token;
+
+    const { status } = await axiosInstance({
+      url: `/user/address/${addressId}`,
+      method: "delete",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        authorization: `Bearer ${token}`,
+      },
+    });
+    const address = getState().userLogin.userInfo.address;
+
+    const newAddressArray =
+      status === 200
+        ? addressArrayFromLocalStorage.filter(
+            (address) => address?._id !== addressId
+          )
+        : addressArrayFromLocalStorage
+        ? addressArrayFromLocalStorage.filter(
+            (address) => address?._id !== addressId
+          )
+        : address.filter((address) => address?._id !== addressId);
+    localStorage.setItem("address", JSON.stringify(newAddressArray));
+    dispatch({
+      type: "DELETE_ADDRESS_SUCCESS",
+      payload: newAddressArray,
+      statusCode: status,
+    });
+  } catch (error) {
+    dispatch({
+      type: "DELETE_ADDRESS_FAIL",
       payload: error.response ? error.response.status : error,
     });
   }

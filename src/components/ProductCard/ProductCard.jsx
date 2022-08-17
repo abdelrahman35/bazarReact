@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import styles from "./ProductCard.module.css";
-import { Link } from "react-router-dom";
+import { Link, lazy, suspense } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../../store/actions/cartAction";
+import { addToCart, addToFavourites } from "../../store/actions/cartAction";
 import Rateing from "../Rateing/Rateing";
 export const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
-  const [qty, setQty] = useState(1);
   const addToCartHandler = () => {
-    dispatch(addToCart(product._id, qty));
+    dispatch(addToCart(product._id, 1));
   };
   return (
     <>
@@ -38,9 +37,13 @@ export const ProductCard = ({ product }) => {
         </div>
 
         <div className={`${styles.icon} ${styles.icon1}`}>
-          <Link to="/">
+          <button
+            onClick={() => {
+              dispatch(addToFavourites(product._id));
+            }}
+          >
             <i className={`fa-regular fa-heart ${styles.favIcon}`}></i>
-          </Link>
+          </button>
           <h2 className={styles.cardDescreptionHover}>{product.description}</h2>
         </div>
         <div className={`${styles.boxContent}`}>

@@ -34,16 +34,24 @@
   -o-border-radius: 5px !important;
 }
 
-.image {
-  width: 200px;
-  margin: auto;
-}
-
 .cardBody {
   border-radius: 10px;
+  width: fit-content;
 }
 
 .productName {
   color: var(--color3);
-  font-size: x-large;
+  object-fit: contain;
+}
+.review {
+  font-size: 20px;
+  margin-top: 20px;
+  font-weight: 300;
+  color: var(--color3);
+}
+.title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color3);
+  margin-top: 0;
 }

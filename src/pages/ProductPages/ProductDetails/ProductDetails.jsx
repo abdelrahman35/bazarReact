@@ -7,7 +7,7 @@ import Loading from "../../../components/Loading/Loading";
 import ErrorMessage from "../../../components/ErrorMessage/ErrorMessage";
 import ReviewCard from "../../../components/ReviewCard/ReviewCard";
 import Rateing from "../../../components/Rateing/Rateing";
-import { addToCart } from "../../../store/actions/cartAction";
+import { addToCart, addToFavourites } from "../../../store/actions/cartAction";
 const ProductDetails = () => {
   const [qty, setQty] = useState(1);
   console.log(qty);
@@ -104,11 +104,12 @@ const ProductDetails = () => {
                     <i className="fa-solid fa-cart-plus me-2"></i>
                     Add to cart
                   </button>
-                  <div>
-                    <i
-                      className={`fa-solid fa-square-heart ${styles.favIcon}`}
-                    ></i>
-                  </div>
+                  <button
+                    className={`fa-solid fa-square-heart ${styles.favIcon}`}
+                    onClick={() => {
+                      dispatch(addToFavourites(id));
+                    }}
+                  ></button>
                 </div>
               </div>
             </div>

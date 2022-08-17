@@ -43,3 +43,30 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
       return state;
   }
 };
+
+export const addToFavouritesReducer = (state = {}, action) => {
+  switch (action.type) {
+    case "ADD_TO_FAVOURITES_REQUEST":
+      return { loading: true };
+    case "ADD_TO_FAVOURITES_SUCCESS":
+      return {
+        loading: false,
+        favourites: action.payload,
+        statusCode: action.statusCode,
+      };
+    case "ADD_TO_FAVOURITES_FAIL":
+      return { loading: false, error: action.payload };
+    case "REMOVE_FROM_FAVOURITES_REQUEST":
+      return { loading: true };
+    case "REMOVE_FROM_FAVOURITES_SUCCESS":
+      return {
+        loading: false,
+        favourites: action.payload,
+        statusCode: action.statusCode,
+      };
+    case "REMOVE_FROM_FAVOURITES_FAIL":
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};

@@ -10,8 +10,10 @@ import { getUserOrders } from "../../../store/actions/ordersActions";
 import OrderCard from "../../../components/OrderCard/OrderCard";
 import AddressBook from "../../../components/AddressBook/AddressBook";
 function ProfilePage() {
-  //
-  const { address, statusCode } = useSelector((state) => state.addAddress);
+  const { loading: addressLoading, address } = useSelector(
+    (state) => state.addAddress
+  );
+  console.log(addressLoading);
   // declarations
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -57,12 +59,6 @@ function ProfilePage() {
       dispatch(getUserOrders(pageNum));
     }
   }, [userInfo, navigate, pageNum, orderIsCancelled]);
-  // useEffect(
-  //   () => async () => {
-
-  //   },
-  //   [addAddress]
-  // );
 
   return userLoading ? (
     <Loading />
@@ -130,10 +126,7 @@ function ProfilePage() {
                   </div>
                   <div className="d-flex justify-content-between mx-5 align-items-center mt-4 mb-4">
                     <h6 className="card-subtitle mb-3 text-muted fs-5">
-                      Number of Saved Addresses :{" "}
-                      {statusCode === 201
-                        ? address?.length
-                        : userInfo?.address?.length}{" "}
+                      Number of Saved Addresses : {address?.length}
                     </h6>
                     <h6 className="card-subtitle mb-3 text-muted fs-5">
                       Number of Orders : {userOrdersArray?.length}{" "}
@@ -213,36 +206,35 @@ function ProfilePage() {
                 </div>
               </div>
             ) : renderedData === "AddressBook" ? (
-              <div className={`card shadow w-100 ${styles.rightCard}`}>
-                <div className="card-body">
-                  <div className="container">
-                    <div className="d-flex justify-content-end">
-                      <Link
-                        to={"/address/add"}
-                        className={`btn ${styles.addBtn}`}
-                      >
-                        {" "}
-                        <i className="fa-solid fa-plus"></i>
-                      </Link>
-                    </div>
-                    <div className="row">
-                      {statusCode === 201
-                        ? address?.map((address, index) => (
-                            <div key={index} className="col-lg-6">
-                              {" "}
-                              <AddressBook index={index} address={address} />
-                            </div>
-                          ))
-                        : userInfo?.address?.map((address, index) => (
+              <>
+                {addressLoading ? (
+                  <Loading />
+                ) : (
+                  <div className={`card shadow w-100 ${styles.rightCard}`}>
+                    <div className="card-body">
+                      <div className="container">
+                        <div className="d-flex justify-content-end">
+                          <Link
+                            to={"/address/add"}
+                            className={`btn ${styles.addBtn}`}
+                          >
+                            {" "}
+                            <i className="fa-solid fa-plus"></i>
+                          </Link>
+                        </div>
+                        <div className="row">
+                          {address?.map((address, index) => (
                             <div key={index} className="col-lg-6">
                               {" "}
                               <AddressBook index={index} address={address} />
                             </div>
                           ))}
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
+                )}
+              </>
             ) : null}
           </div>
         </div>
