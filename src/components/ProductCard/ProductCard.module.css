@@ -59,3 +59,9 @@
   color: var(--color7);
   font-size: 25px;
 }
+
+.Btn {
+  background-color: transparent;
+  border: 0;
+  width: fit-content;
+}

@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import styles from "./ProductCard.module.css";
 import { Link, lazy, suspense } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addToCart, addToFavourites } from "../../store/actions/cartAction";
+import {
+  addToCart,
+  addToFavourites,
+  removeFromFavourites,
+} from "../../store/actions/cartAction";
 import Rateing from "../Rateing/Rateing";
 export const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
@@ -13,15 +17,20 @@ export const ProductCard = ({ product }) => {
     <>
       <div className="m-3 w-100">
         <div className={`card ${styles.cardBody} p-4`}>
-          <Link className="text-start" to="/">
+          <button
+            className={`text-start  ${styles.Btn}`}
+            onClick={() => {
+              dispatch(removeFromFavourites(product._id));
+            }}
+          >
             <i className={`fa-light fa-heart ${styles.colorFav}`}></i>
-          </Link>
+          </button>
 
           <Link
             to={`/product-details/${product._id}`}
             className={`text-decoration-none ${styles.cardLinkReset}`}
           >
-            <div className={`${styles.imgContainer} text-end `}>
+            <div className={`${styles.imgContainer}`}>
               <img
                 className={`card-img-top ${styles.image} p-0`}
                 src={`https://bazaarshop.s3.eu-west-3.amazonaws.com${product.image}`}
