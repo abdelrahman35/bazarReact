@@ -95,7 +95,7 @@ function Navbar() {
                   to="/cart"
                 >
                   <i className="fa-solid fa-cart-shopping"></i>
-                  <sup className={`mt-2`}>{cartItems?.length}</sup>
+                  <sup className={`mt-2 ms-1`}>{cartItems?.length}</sup>
                 </Link>
               </div>
               <div className="col-12 col-md-2 mb-3 mb-md-0">
