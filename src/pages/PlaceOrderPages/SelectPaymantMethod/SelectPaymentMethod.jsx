@@ -15,8 +15,8 @@ function SelectPaymentMethod() {
     <>
       <CheckoutBar step1 step2 />
       <div className="d-flex justify-content-around">
-        {paymentMethodsArray.map((method) => (
-          <div className="form-check">
+        {paymentMethodsArray.map((method, index) => (
+          <div className="form-check" key={index}>
             <input
               className="form-check-input"
               type="radio"

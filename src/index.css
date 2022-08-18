@@ -29,7 +29,6 @@ p,
 sup,
 strong,
 div,
-button,
 select,
 option {
   font-family: var(--myFont) !important;

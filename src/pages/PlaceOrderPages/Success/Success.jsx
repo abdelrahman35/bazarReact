@@ -13,8 +13,6 @@ const Success = () => {
       dispatch({ type: "CLEAR_CART" });
 
       dispatch(successPaymentHandler());
-    } else if (!clientSecret && statusCode === 201) {
-      dispatch({ type: "CLEAR_CART" });
     }
   }, [statusCode]);
 

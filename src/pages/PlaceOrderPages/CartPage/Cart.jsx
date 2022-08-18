@@ -1,14 +1,11 @@
 import styles from "./Cart.module.css";
 import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
-import CartCard from "../../components/CartCard/CartCard";
+import CartCard from "../../../components/CartCard/CartCard";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 const CartPage = () => {
   const navigate = useNavigate();
-  const { error: userError, userInfo } = useSelector(
-    (state) => state.userLogin
-  );
+  const { userInfo } = useSelector((state) => state.userLogin);
   const { cartItems } = useSelector((state) => state.cart);
   console.log(cartItems);
   const checkoutHandler = () => {

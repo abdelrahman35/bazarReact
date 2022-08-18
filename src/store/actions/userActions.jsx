@@ -1,4 +1,3 @@
-import { addressArrayFromLocalStorage } from "../store";
 import axiosInstance from "./../../network/axiosInstance";
 
 export const login = (email, password) => async (dispatch) => {
@@ -307,8 +306,8 @@ export const addNewAddress = (values, city) => async (dispatch, getState) => {
       payload: data,
       statusCode: status,
     });
+    localStorage.setItem("ad", JSON.stringify(status));
   } catch (error) {
-    console.log(error);
     dispatch({
       type: "ADD_NEW_ADDRESS_FAIL",
       payload: error.response ? error.response.status : error,

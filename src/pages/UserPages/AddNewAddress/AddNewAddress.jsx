@@ -37,7 +37,10 @@ function AddNewAddress() {
   const onSubmit = (values) => {
     dispatch(addNewAddress(values, city));
   };
-  const { address, status } = useSelector((state) => state.addAddress);
+  const { address } = useSelector((state) => state.addAddress);
+  const statusCode = localStorage.getItem("ad")
+    ? JSON.parse(localStorage.getItem("ad"))
+    : null;
   // formik
   const formik = useFormik({
     initialValues,
@@ -45,10 +48,11 @@ function AddNewAddress() {
     validationSchema,
   });
   useEffect(() => {
-    if (address && status === 201) {
+    if (address && statusCode === 201) {
       navigate(-1, { replace: true });
+      localStorage.removeItem("ad");
     }
-  }, [address, status]);
+  }, [address, statusCode]);
 
   return (
     <div>

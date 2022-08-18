@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
-import FavouriteItem from "../../components/FavouriteItem/FavouriteItem";
-import { useDispatch, useSelector } from "react-redux";
+import FavouriteItem from "../../../components/FavouriteItem/FavouriteItem";
+import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { favouritesArrayFromLocalStorage } from "../../store/store";
 import styles from "./FavouritePage.module.css";
-import Loading from "../../components/Loading/Loading";
+import Loading from "../../../components/Loading/Loading";
 const FavouritePage = () => {
   const navigate = useNavigate();
   const { loading: favLoading, favourites } = useSelector(

@@ -1,10 +1,8 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import { useDispatch } from "react-redux";
 import { deleteAddress } from "../../store/actions/userActions";
 import styles from "./AddressItem.module.css";
 function AddressItem({ addressToRender, index }) {
-  const { address, status } = useSelector((state) => state.addAddress);
   const dispatch = useDispatch();
   return (
     <>

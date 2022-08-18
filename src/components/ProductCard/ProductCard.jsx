@@ -1,11 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./ProductCard.module.css";
-import { Link, lazy, suspense } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  NotificationContainer,
-  NotificationManager,
-} from "react-notifications";
+import { NotificationManager } from "react-notifications";
 import {
   addToCart,
   addToFavourites,
@@ -41,7 +38,7 @@ export const ProductCard = ({ product }) => {
               >
                 <i className={`fa-solid fa-heart ${styles.colorFav}`}></i>
               </button>
-            ),
+            )
           )}
 
           <Link
@@ -78,7 +75,7 @@ export const ProductCard = ({ product }) => {
                   addToCartHandler();
                   NotificationManager.success(
                     "Product Added Successfully",
-                    "Bazaar Shop",
+                    "Bazaar Shop"
                   );
                 }}
               >

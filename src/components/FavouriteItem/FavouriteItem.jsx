@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./FavouriteItem.module.css";
-import { Link } from "react-router-dom";
 import Rateing from "../Rateing/Rateing";
 import { useDispatch } from "react-redux";
 import {

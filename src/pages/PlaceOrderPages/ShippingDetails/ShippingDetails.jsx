@@ -43,6 +43,7 @@ function ShippingDetails() {
                         <i className="fa-solid fa-plus"></i>
                       </Link>
                     </div>
+
                     <div className="row">
                       {addressArray?.map((address, index) => (
                         <>
@@ -101,6 +102,15 @@ function ShippingDetails() {
               ) : (
                 <div className="card-body">
                   <div className="container">
+                    <div className="d-flex justify-content-end">
+                      <Link
+                        to={"/address/add"}
+                        className={`btn ${styles.addBtn}`}
+                      >
+                        {" "}
+                        <i className="fa-solid fa-plus"></i>
+                      </Link>
+                    </div>
                     <div className="row">
                       {addressArrayFromUserInfo?.map((address, index) => (
                         <>

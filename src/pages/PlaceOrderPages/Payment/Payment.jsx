@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
-import { useSelector } from "react-redux";
 import CheckoutForm from "./Checkout";
 import styles from "./payment.module.css";
 import { useLocation } from "react-router-dom";
