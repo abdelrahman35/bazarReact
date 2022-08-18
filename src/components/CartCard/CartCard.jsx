@@ -17,7 +17,7 @@ const CartCard = ({ productFromCart }) => {
   return (
     <>
       <div
-        className={`d-flex row  ${styles.Left} w-100 m-0 px-5 px-md-0 mb-md-4 justify-content-center align-items-center`}
+        className={`d-flex flex-column flex-md-row  ${styles.Left} w-100 m-0 px-5 px-md-0 mb-4  justify-content-center align-items-center`}
       >
         <div className={`col-md-3 `}>
           <img
@@ -29,7 +29,7 @@ const CartCard = ({ productFromCart }) => {
         <div
           className={`col-md-6 p-0 d-flex flex-column justify-content-center justify-content-md-between  h-85`}
         >
-          <div className="d-flex flex-column ">
+          <div className="d-flex flex-column  ">
             <p className={` m-0 p-0 w-100   col-6 ${styles.title}`}>
               {productFromCart?.productName}
             </p>
@@ -59,8 +59,8 @@ const CartCard = ({ productFromCart }) => {
           </div>
         </div>
 
-        <div className="col-md-3 d-flex flex-column align-items-center">
-          <p className={`p-2 col-12  w-50 ${styles.title2}`}>
+        <div className="col-12 col-md-3 d-flex flex-row flex-md-column justify-content-center align-items-center mt-4 mt-md-0">
+          <p className={`p-2 col-12  w-50 ${styles.title2} m-0`}>
             {productFromCart?.productPrice} EGP
           </p>
           <select

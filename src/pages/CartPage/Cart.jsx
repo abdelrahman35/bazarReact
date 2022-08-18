@@ -14,14 +14,16 @@ const CartPage = () => {
   return (
     <section className={`${styles.cartSection}`}>
       <div className={`container p-0`}>
-        <div className={`row`}>
-          <div className="col-12 col-md-7 col-lg-8 d-flex align-items-start flex-column m-0 ">
+        <div className={`row w-100`}>
+          <div className="col-12  col-md-10 m-md-auto col-lg-8 d-flex align-items-start flex-column m-0 ">
             {cartItems?.map((item, index) => (
               <CartCard key={index} productFromCart={item} />
             ))}
           </div>
           {cartItems?.length > 0 ? (
-            <div className={`col-12 col-md-5 col-lg-4 ${styles.Right}`}>
+            <div
+              className={`col-12 col-md-9 m-md-auto  col-lg-4 ${styles.Right}`}
+            >
               <div className={styles.header}>
                 <h2 className={`${styles.Text2}`}>Order Summary</h2>
                 <hr />
