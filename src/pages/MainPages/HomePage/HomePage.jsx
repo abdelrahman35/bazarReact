@@ -9,6 +9,7 @@ import itemCard5 from "../../../assets/images/try.png";
 import { ProductCard } from "../../../components/ProductCard/ProductCard";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProducts } from "../../../store/actions/productActions";
+import { NotificationContainer } from "react-notifications";
 
 function Home() {
   const dispatch = useDispatch();
@@ -147,6 +148,7 @@ function Home() {
             </div>
           </div>
         </div>
+        <NotificationContainer />
       </section>
     </>
   );
