@@ -37,12 +37,12 @@ import ProudctPage from "./pages/ProductPages/ProductsPage/ProductsPage";
 // category pages
 import CategoryDetails from "./pages/CategoryPages/CategoryDetails/CategoryDetails";
 // order pages
-import Order from "./pages/OrderPages/Order/Order";
-import Payment from "./pages/OrderPages/Payment/Payment";
+import Order from "./pages/PlaceOrderPages/Order/Order";
+import Payment from "./pages/PlaceOrderPages/Payment/Payment";
 import ListOrders from "./pages/AdminPages/Orders/ListOrders/ListOrders";
 import OrderDetailsForAdmin from "./pages/AdminPages/Orders/OrderDetailsForAdmin/OrderDetailsForAdmin";
 import CartPage from "./pages/CartPage/Cart";
-import Success from "./pages/OrderPages/Success/Success";
+import Success from "./pages/PlaceOrderPages/Success/Success";
 import ViewOrderDetails from "./pages/OrderPages/ViewOrderDetails/ViewOrderDetails";
 import AddNewAddress from "./pages/UserPages/AddNewAddress/AddNewAddress";
 import FavouritePage from "./pages/FavouritePage/FavouritePage";

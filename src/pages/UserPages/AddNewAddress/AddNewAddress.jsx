@@ -37,13 +37,18 @@ function AddNewAddress() {
   const onSubmit = (values) => {
     dispatch(addNewAddress(values, city));
   };
-
+  const { address, status } = useSelector((state) => state.addAddress);
   // formik
   const formik = useFormik({
     initialValues,
     onSubmit,
     validationSchema,
   });
+  useEffect(() => {
+    if (address && status === 201) {
+      navigate(-1, { replace: true });
+    }
+  }, [address, status]);
 
   return (
     <div>

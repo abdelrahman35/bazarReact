@@ -98,3 +98,43 @@ export const cancelOrderIfPending = (orderId) => async (dispatch, getState) => {
     });
   }
 };
+
+export const createOrder =
+  (productsArray, paymentMethod, shippingAddress) =>
+  async (dispatch, getState) => {
+    console.log(productsArray, "products");
+    console.log(paymentMethod, "pay");
+    console.log(shippingAddress, "ship");
+    try {
+      dispatch({ type: "CREATE_ORDER_REQUEST" });
+      const token = getState().userLogin.userInfo.token;
+      const headers = {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        authorization: `Bearer ${token}`,
+      };
+
+      const { data } = axiosInstance.post(
+        "/order",
+        {
+          payload: {
+            productsArray,
+            paymentMethod,
+            shippingAddress,
+          },
+        },
+        { headers }
+      );
+      console.log(data);
+      dispatch({
+        type: "CREATE_ORDER_SUCCESS",
+        payload: data,
+      });
+    } catch (error) {
+      console.log(error);
+      dispatch({
+        type: "CREATE_ORDER_FAIL",
+        payload: error.response ? error.response.status : error,
+      });
+    }
+  };

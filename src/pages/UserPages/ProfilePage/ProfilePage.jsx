@@ -8,13 +8,14 @@ import ErrorMessage from "../../../components/ErrorMessage/ErrorMessage";
 import Loading from "../../../components/Loading/Loading";
 import { getUserOrders } from "../../../store/actions/ordersActions";
 import OrderCard from "../../../components/OrderCard/OrderCard";
-import AddressBook from "../../../components/AddressBook/AddressBook";
+import AddressItem from "../../../components/AddressItem/AddressItem";
 import { addressArrayFromLocalStorage } from "../../../store/store";
 function ProfilePage() {
   const { loading: addressLoading, address } = useSelector(
     (state) => state.addAddress
   );
-  console.log(addressLoading);
+  console.log(address);
+  const addressArray = address?.address;
   // declarations
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ function ProfilePage() {
   // store states
   const userLogin = useSelector((state) => state.userLogin);
   const { loading: userLoading, error: userError, userInfo } = userLogin;
-
+  const addressArrayFromUserInfo = userInfo?.address;
   const handleLogout = () => {
     dispatch(logout());
     navigate("/", { replace: true });
@@ -128,7 +129,10 @@ function ProfilePage() {
                   </div>
                   <div className="d-flex justify-content-between mx-5 align-items-center mt-4 mb-4">
                     <h6 className="card-subtitle mb-3 text-muted fs-5">
-                      Number of Saved Addresses : {address?.length}
+                      Number of Saved Addresses :{" "}
+                      {addressArray?.length > 0
+                        ? addressArray?.length
+                        : addressArrayFromUserInfo?.length}
                     </h6>
                     <h6 className="card-subtitle mb-3 text-muted fs-5">
                       Number of Orders : {userOrdersArray?.length}{" "}
@@ -213,27 +217,51 @@ function ProfilePage() {
                   <Loading />
                 ) : (
                   <div className={`card shadow w-100 ${styles.rightCard}`}>
-                    <div className="card-body">
-                      <div className="container">
-                        <div className="d-flex justify-content-end">
-                          <Link
-                            to={"/address/add"}
-                            className={`btn ${styles.addBtn}`}
-                          >
-                            {" "}
-                            <i className="fa-solid fa-plus"></i>
-                          </Link>
-                        </div>
-                        <div className="row">
-                          {address?.map((address, index) => (
-                            <div key={index} className="col-lg-6">
+                    {addressArray?.length > 0 ? (
+                      <div className="card-body">
+                        <div className="container">
+                          <div className="d-flex justify-content-end">
+                            <Link
+                              to={"/address/add"}
+                              className={`btn ${styles.addBtn}`}
+                            >
                               {" "}
-                              <AddressBook index={index} address={address} />
-                            </div>
-                          ))}
+                              <i className="fa-solid fa-plus"></i>
+                            </Link>
+                          </div>
+                          <div className="row">
+                            {addressArray?.map((address, index) => (
+                              <div key={index} className="col-lg-6">
+                                {" "}
+                                <AddressItem index={index} address={address} />
+                              </div>
+                            ))}
+                          </div>
                         </div>
                       </div>
-                    </div>
+                    ) : (
+                      <div className="card-body">
+                        <div className="container">
+                          <div className="d-flex justify-content-end">
+                            <Link
+                              to={"/address/add"}
+                              className={`btn ${styles.addBtn}`}
+                            >
+                              {" "}
+                              <i className="fa-solid fa-plus"></i>
+                            </Link>
+                          </div>
+                          <div className="row">
+                            {addressArrayFromUserInfo?.map((address, index) => (
+                              <div key={address?._id} className="col-lg-6">
+                                {" "}
+                                <AddressItem index={index} address={address} />
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 )}
               </>

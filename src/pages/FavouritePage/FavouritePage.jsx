@@ -7,13 +7,11 @@ import styles from "./FavouritePage.module.css";
 import Loading from "../../components/Loading/Loading";
 const FavouritePage = () => {
   const navigate = useNavigate();
-  const {
-    loading: favLoading,
-    error: favError,
-    favourites,
-  } = useSelector((state) => state.favouritesProducts);
+  const { loading: favLoading, favourites } = useSelector(
+    (state) => state.favouritesProducts
+  );
   const { error: userError, userInfo } = useSelector(
-    (state) => state.userLogin,
+    (state) => state.userLogin
   );
   useEffect(() => {
     if (!userInfo) {
@@ -33,6 +31,20 @@ const FavouritePage = () => {
         <div className={`container mt-5 mb-5 `}>
           <div className="row">
             {favourites?.map((product) => (
+              <div
+                key={product?.product._id}
+                className="col-lg-4 col-md-6 col-12 px-2 m-0"
+              >
+                <FavouriteItem product={product?.product} />
+              </div>
+            ))}
+          </div>
+        </div>
+      ) : JSON.parse(localStorage.getItem("wishlist"))?.length > 0 &&
+        favourites?.length === 0 ? (
+        <div className={`container mt-5 mb-5 `}>
+          <div className="row">
+            {JSON.parse(localStorage.getItem("wishlist"))?.map((product) => (
               <div
                 key={product?.product._id}
                 className="col-lg-4 col-md-6 col-12 px-2 m-0"
