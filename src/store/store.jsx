@@ -12,16 +12,26 @@ const cartFromLocalStorage = localStorage.getItem("cartItems")
 const stockFromLocalStorage = localStorage.getItem("cartStock")
   ? JSON.parse(localStorage.getItem("cartStock"))
   : [];
-export const addressArrayFromLocalStorage = localStorage.getItem("address")
+const addressArrayFromLocalStorage = localStorage.getItem("address")
   ? JSON.parse(localStorage.getItem("address"))
   : [];
-export const favouritesArrayFromLocalStorage = localStorage.getItem("wishlist")
+const favouritesArrayFromLocalStorage = localStorage.getItem("wishlist")
   ? JSON.parse(localStorage.getItem("wishlist"))
   : [];
-console.log(localStorage.getItem("wishlist"));
+const shippingAddressFromLocalStorage = localStorage.getItem("shippingAddress")
+  ? JSON.parse(localStorage.getItem("shippingAddress"))
+  : {};
+const paymentMethodFromLocalStorage = localStorage.getItem("paymentMethod")
+  ? JSON.parse(localStorage.getItem("paymentMethod"))
+  : "";
 const stateFromLocalStorage = {
   userLogin: { userInfo: userFromLocalStorage },
-  cart: { cartItems: cartFromLocalStorage, stock: stockFromLocalStorage },
+  cart: {
+    cartItems: cartFromLocalStorage,
+    stock: stockFromLocalStorage,
+    shippingAddress: shippingAddressFromLocalStorage,
+    paymentMethod: paymentMethodFromLocalStorage,
+  },
   addAddress: { address: addressArrayFromLocalStorage },
   favouritesProducts: { favourites: favouritesArrayFromLocalStorage },
 };

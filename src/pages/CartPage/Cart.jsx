@@ -12,11 +12,7 @@ const CartPage = () => {
   const { cartItems } = useSelector((state) => state.cart);
   console.log(cartItems);
   const checkoutHandler = () => {
-    if (!userInfo) {
-      navigate("/login", { replace: true });
-    } else {
-      navigate("*", { replace: true, state: userError });
-    }
+    navigate("/shippingDetails", { replace: true });
   };
   return (
     <section className={`${styles.cartSection}`}>

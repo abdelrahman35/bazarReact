@@ -9,12 +9,10 @@ import Loading from "../../../components/Loading/Loading";
 import { getUserOrders } from "../../../store/actions/ordersActions";
 import OrderCard from "../../../components/OrderCard/OrderCard";
 import AddressItem from "../../../components/AddressItem/AddressItem";
-import { addressArrayFromLocalStorage } from "../../../store/store";
 function ProfilePage() {
   const { loading: addressLoading, address } = useSelector(
     (state) => state.addAddress
   );
-  console.log(address);
   const addressArray = address?.address;
   // declarations
   const dispatch = useDispatch();
@@ -60,8 +58,7 @@ function ProfilePage() {
     } else if (userInfo) {
       dispatch(getUserOrders(pageNum));
     }
-  }, [userInfo, navigate, pageNum, orderIsCancelled]);
-  useEffect(() => {}, [addressArrayFromLocalStorage]);
+  }, [userInfo, navigate, pageNum, orderIsCancelled, addressArray]);
 
   return userLoading ? (
     <Loading />
@@ -233,7 +230,10 @@ function ProfilePage() {
                             {addressArray?.map((address, index) => (
                               <div key={index} className="col-lg-6">
                                 {" "}
-                                <AddressItem index={index} address={address} />
+                                <AddressItem
+                                  index={index}
+                                  addressToRender={address}
+                                />
                               </div>
                             ))}
                           </div>
@@ -255,7 +255,10 @@ function ProfilePage() {
                             {addressArrayFromUserInfo?.map((address, index) => (
                               <div key={address?._id} className="col-lg-6">
                                 {" "}
-                                <AddressItem index={index} address={address} />
+                                <AddressItem
+                                  index={index}
+                                  addressToRender={address}
+                                />
                               </div>
                             ))}
                           </div>

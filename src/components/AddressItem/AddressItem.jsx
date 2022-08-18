@@ -21,8 +21,10 @@ function AddressItem({ addressToRender, index }) {
                 onClick={() => {
                   dispatch(deleteAddress(addressToRender?._id));
                 }}
-                className="btn fa fa-trash"
-              ></button>
+                className={`${styles.trashBtn}`}
+              >
+                <i className="fa fa-trash"></i>
+              </button>
             </span>
           </li>
           <li className={`list-group-item ${styles.item}`}>

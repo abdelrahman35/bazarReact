@@ -5,3 +5,12 @@
 span {
   font-weight: 300;
 }
+.trashBtn {
+  border: 0;
+  background-color: transparent;
+  color: var(--color3);
+}
+
+.trashBtn:hover {
+  color: var(--color1);
+}

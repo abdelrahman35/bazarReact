@@ -100,11 +100,8 @@ export const cancelOrderIfPending = (orderId) => async (dispatch, getState) => {
 };
 
 export const createOrder =
-  (productsArray, paymentMethod, shippingAddress) =>
+  (productsArray, shippingAddress, paymentMethod) =>
   async (dispatch, getState) => {
-    console.log(productsArray, "products");
-    console.log(paymentMethod, "pay");
-    console.log(shippingAddress, "ship");
     try {
       dispatch({ type: "CREATE_ORDER_REQUEST" });
       const token = getState().userLogin.userInfo.token;
@@ -114,27 +111,56 @@ export const createOrder =
         authorization: `Bearer ${token}`,
       };
 
-      const { data } = axiosInstance.post(
+      const { data, status } = await axiosInstance.post(
         "/order",
         {
           payload: {
-            productsArray,
+            products: productsArray,
             paymentMethod,
             shippingAddress,
           },
         },
         { headers }
       );
-      console.log(data);
       dispatch({
         type: "CREATE_ORDER_SUCCESS",
         payload: data,
+        statusCode: status,
       });
     } catch (error) {
-      console.log(error);
       dispatch({
         type: "CREATE_ORDER_FAIL",
         payload: error.response ? error.response.status : error,
       });
     }
   };
+
+export const successPaymentHandler = () => async (dispatch, getState) => {
+  try {
+    const orderId = JSON.parse(localStorage.getItem("cs"));
+    const token = getState().userLogin.userInfo.token;
+
+    dispatch({
+      type: "SUCCESS_PAYMENT_HANDLE_REQUEST",
+    });
+    const headers = {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      authorization: `Bearer ${token}`,
+    };
+    const { data } = await axiosInstance.get(`/order/success/${orderId[1]}`, {
+      headers,
+    });
+    console.log(data);
+    dispatch({
+      type: "SUCCESS_PAYMENT_HANDLE_SUCCESS",
+      payload: data,
+    });
+    localStorage.removeItem("cs");
+  } catch (error) {
+    dispatch({
+      type: "SUCCESS_PAYMENT_HANDLE_FAIL",
+      payload: error.response ? error.response.status : error,
+    });
+  }
+};

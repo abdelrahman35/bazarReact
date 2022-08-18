@@ -40,6 +40,30 @@ export const removeFromCart = (id) => (dispatch, getState) => {
   localStorage.setItem("cartStock", JSON.stringify(getState()?.cart?.stock));
 };
 
+export const setShippingAddress = (shippingAddress) => (dispatch) => {
+  const addressToStore = {
+    city: shippingAddress.city,
+    country: shippingAddress.country,
+    mobile: shippingAddress.mobile,
+    street: shippingAddress.street,
+  };
+
+  dispatch({
+    type: "SET_SHIPPING_ADDRESS",
+    payload: addressToStore,
+  });
+
+  localStorage.setItem("shippingAddress", JSON.stringify(addressToStore));
+};
+export const setPaymentMethod = (paymentMethod) => (dispatch) => {
+  console.log(paymentMethod);
+  dispatch({
+    type: "SET_PAYMENT_METHOD",
+    payload: paymentMethod,
+  });
+
+  localStorage.setItem("paymentMethod", JSON.stringify(paymentMethod));
+};
 export const addToFavourites = (productId) => async (dispatch, getState) => {
   try {
     dispatch({ type: "ADD_TO_FAVOURITES_REQUEST" });

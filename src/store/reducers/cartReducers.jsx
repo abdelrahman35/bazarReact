@@ -1,4 +1,7 @@
-export const cartReducer = (state = { cartItems: [], stock: [] }, action) => {
+export const cartReducer = (
+  state = { cartItems: [], stock: [], shippingAddress: {}, paymentMethod: "" },
+  action
+) => {
   switch (action.type) {
     case "ADD_TO_CART_SUCCESS":
       // product data from action
@@ -37,12 +40,23 @@ export const cartReducer = (state = { cartItems: [], stock: [] }, action) => {
           (productFromStock) => productFromStock.productId !== action.payload
         ),
       };
-
+    case "SET_SHIPPING_ADDRESS":
+      return {
+        ...state,
+        shippingAddress: action.payload,
+      };
+    case "SET_PAYMENT_METHOD":
+      return {
+        ...state,
+        paymentMethod: action.payload,
+      };
     case "CLEAR_CART":
       return {
         ...state,
         cartItems: [],
         stock: [],
+        shippingAddress: {},
+        paymentMethod: "",
       };
 
     default:

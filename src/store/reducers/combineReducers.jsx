@@ -21,6 +21,7 @@ import {
 } from "./productReducers";
 import {
   cancelOrderIfPendingReducer,
+  createOrderReducer,
   getUserOrdersReducer,
   listAllOrdersReducer,
   orderDetailsForAdminReducer,
@@ -49,6 +50,7 @@ export default combineReducers({
   orderDetailsForAdmin: orderDetailsForAdminReducer,
   userOrders: getUserOrdersReducer,
   cancelOrder: cancelOrderIfPendingReducer,
+  orderIsPlaced: createOrderReducer,
   // cart reducers
   cart: cartReducer,
   favouritesProducts: addToFavouritesReducer,

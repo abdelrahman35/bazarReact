@@ -28,7 +28,7 @@ function CheckoutBar({ step1, step2, step3 }) {
             <Link
               className="nav-link active"
               aria-current="page"
-              to="/paymentSelection"
+              to="/paymentmethod"
             >
               payment
             </Link>
@@ -36,7 +36,26 @@ function CheckoutBar({ step1, step2, step3 }) {
             <Link
               className="nav-link disabled"
               aria-current="page"
-              to="/paymentSelection"
+              to="/paymentmethod"
+            >
+              payment
+            </Link>
+          )}
+        </li>
+        <li className="nav-item">
+          {step3 ? (
+            <Link
+              className="nav-link active"
+              aria-current="page"
+              to="/placeorder"
+            >
+              place order
+            </Link>
+          ) : (
+            <Link
+              className="nav-link disabled"
+              aria-current="page"
+              to="/placeorder"
             >
               payment
             </Link>

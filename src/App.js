@@ -37,7 +37,7 @@ import ProudctPage from "./pages/ProductPages/ProductsPage/ProductsPage";
 // category pages
 import CategoryDetails from "./pages/CategoryPages/CategoryDetails/CategoryDetails";
 // order pages
-import Order from "./pages/PlaceOrderPages/Order/Order";
+import PlaceOrder from "./pages/PlaceOrderPages/PlaceOrder/PlaceOrder";
 import Payment from "./pages/PlaceOrderPages/Payment/Payment";
 import ListOrders from "./pages/AdminPages/Orders/ListOrders/ListOrders";
 import OrderDetailsForAdmin from "./pages/AdminPages/Orders/OrderDetailsForAdmin/OrderDetailsForAdmin";
@@ -48,6 +48,7 @@ import AddNewAddress from "./pages/UserPages/AddNewAddress/AddNewAddress";
 import FavouritePage from "./pages/FavouritePage/FavouritePage";
 import { NotificationContainer } from "react-notifications";
 import ShippingDetails from "./pages/PlaceOrderPages/ShippingDetails/ShippingDetails";
+import SelectPaymentMethod from "./pages/PlaceOrderPages/SelectPaymantMethod/SelectPaymentMethod";
 function App() {
   return (
     <>
@@ -67,16 +68,12 @@ function App() {
           <Route path="/aboutus" index element={<AboutUsPage />} />
           <Route path="/forgetPassword" index element={<ForgetPassword />} />
           <Route path="/changePassword" index element={<ChangePassword />} />
-          <Route path="/success" index element={<Success />} />
-          <Route path="/payment" index element={<Payment />} />
           <Route path="/profile" index element={<ProfilePage />} />
           <Route path="/cart" index element={<CartPage />} />
           <Route path="/favourites" index element={<FavouritePage />} />
           <Route path="/address/add" index element={<AddNewAddress />} />
           {/* order routes for user */}
-          <Route path="/order" index element={<Order />} />
           <Route path="/order/:orderId" index element={<ViewOrderDetails />} />
-          <Route path="/shippingDetails" index element={<ShippingDetails />} />
           {/*  */}
           <Route
             path="/resetPassword/:token"
@@ -116,6 +113,17 @@ function App() {
             element={<OrderDetailsForAdmin />}
           />
           <Route path={"*"} element={<NotFoundPage />} />
+          {/* placing order routes */}
+          <Route path="/shippingDetails" index element={<ShippingDetails />} />
+
+          <Route
+            path="/paymentmethod"
+            index
+            element={<SelectPaymentMethod />}
+          />
+          <Route path="/placeorder" index element={<PlaceOrder />} />
+          <Route path="/success" index element={<Success />} />
+          <Route path="/payment" index element={<Payment />} />
         </Routes>
         <Footer />
         <NotificationContainer />
