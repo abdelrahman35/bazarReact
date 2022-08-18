@@ -2,8 +2,9 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { deleteAddress } from "../../store/actions/userActions";
-import styles from "./AddressBook.module.css";
-function AddressBook({ address, index }) {
+import styles from "./AddressItem.module.css";
+function AddressItem({ addressToRender, index }) {
+  const { address, status } = useSelector((state) => state.addAddress);
   const dispatch = useDispatch();
   return (
     <>
@@ -18,23 +19,23 @@ function AddressBook({ address, index }) {
             <span className="col-lg-2">
               <button
                 onClick={() => {
-                  dispatch(deleteAddress(address?._id));
+                  dispatch(deleteAddress(addressToRender?._id));
                 }}
                 className="btn fa fa-trash"
               ></button>
             </span>
           </li>
           <li className={`list-group-item ${styles.item}`}>
-            street name: <span>{address.street}</span>
+            street name: <span>{addressToRender.street}</span>
           </li>
           <li className={`list-group-item ${styles.item}`}>
-            city: <span>{address.city}</span>
+            city: <span>{addressToRender.city}</span>
           </li>{" "}
           <li className={`list-group-item ${styles.item}`}>
-            country: <span>{address.country}</span>
+            country: <span>{addressToRender.country}</span>
           </li>
           <li className={`list-group-item ${styles.item}`}>
-            phone number: <span>+2{address.mobile}</span>
+            phone number: <span>+2{addressToRender.mobile}</span>
           </li>
         </ul>
       </div>
@@ -42,4 +43,4 @@ function AddressBook({ address, index }) {
   );
 }
 
-export default AddressBook;
+export default AddressItem;

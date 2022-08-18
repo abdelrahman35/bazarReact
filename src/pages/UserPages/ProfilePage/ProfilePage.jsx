@@ -8,7 +8,7 @@ import ErrorMessage from "../../../components/ErrorMessage/ErrorMessage";
 import Loading from "../../../components/Loading/Loading";
 import { getUserOrders } from "../../../store/actions/ordersActions";
 import OrderCard from "../../../components/OrderCard/OrderCard";
-import AddressBook from "../../../components/AddressBook/AddressBook";
+import AddressItem from "../../../components/AddressItem/AddressItem";
 import { addressArrayFromLocalStorage } from "../../../store/store";
 function ProfilePage() {
   const { loading: addressLoading, address } = useSelector(
@@ -233,7 +233,7 @@ function ProfilePage() {
                             {addressArray?.map((address, index) => (
                               <div key={index} className="col-lg-6">
                                 {" "}
-                                <AddressBook index={index} address={address} />
+                                <AddressItem index={index} address={address} />
                               </div>
                             ))}
                           </div>
@@ -255,7 +255,7 @@ function ProfilePage() {
                             {addressArrayFromUserInfo?.map((address, index) => (
                               <div key={address?._id} className="col-lg-6">
                                 {" "}
-                                <AddressBook index={index} address={address} />
+                                <AddressItem index={index} address={address} />
                               </div>
                             ))}
                           </div>
