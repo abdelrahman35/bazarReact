@@ -1,8 +1,9 @@
+// general imports
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.js";
+import "react-notifications/lib/notifications.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-import OrderCard from "./components/OrderCard/OrderCard";
 
 // components
 import Navbar from "./components/Navbar/index";
@@ -45,6 +46,7 @@ import Success from "./pages/OrderPages/Success/Success";
 import ViewOrderDetails from "./pages/OrderPages/ViewOrderDetails/ViewOrderDetails";
 import AddNewAddress from "./pages/UserPages/AddNewAddress/AddNewAddress";
 import FavouritePage from "./pages/FavouritePage/FavouritePage";
+import { NotificationContainer } from "react-notifications";
 function App() {
   return (
     <>
@@ -114,6 +116,7 @@ function App() {
           <Route path={"*"} element={<NotFoundPage />} />
         </Routes>
         <Footer />
+        <NotificationContainer />
       </Router>
     </>
   );

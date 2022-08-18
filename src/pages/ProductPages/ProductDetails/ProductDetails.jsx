@@ -8,6 +8,7 @@ import ErrorMessage from "../../../components/ErrorMessage/ErrorMessage";
 import ReviewCard from "../../../components/ReviewCard/ReviewCard";
 import Rateing from "../../../components/Rateing/Rateing";
 import { addToCart, addToFavourites } from "../../../store/actions/cartAction";
+import { NotificationManager } from "react-notifications";
 const ProductDetails = () => {
   const [qty, setQty] = useState(1);
   console.log(qty);
@@ -26,7 +27,7 @@ const ProductDetails = () => {
   const productQuantity = product?.product?.quantity;
   const quantityArray = Array.from(
     { length: productQuantity },
-    (_, index) => index + 1
+    (_, index) => index + 1,
   );
   const addToCartHandler = () => {
     dispatch(addToCart(id, qty));
@@ -99,6 +100,10 @@ const ProductDetails = () => {
                     className={`${styles.btnWarningg}`}
                     onClick={() => {
                       addToCartHandler();
+                      NotificationManager.success(
+                        "Product Added Successfully",
+                        "Bazaar Shop",
+                      );
                     }}
                   >
                     <i className="fa-solid fa-cart-plus me-2"></i>

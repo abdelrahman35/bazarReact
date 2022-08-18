@@ -10,8 +10,8 @@ import {
 const FavouriteItem = ({ product }) => {
   const dispatch = useDispatch();
   return (
-    <div className="m-3">
-      <div className={`card ${styles.cardBody}`}>
+    <div className="m-0">
+      <div className={`card ${styles.cardBody} align-items-center`}>
         <div className={styles.imageWrapper}>
           <img
             src={`https://bazaarshop.s3.eu-west-3.amazonaws.com${product.image}`}
@@ -20,7 +20,7 @@ const FavouriteItem = ({ product }) => {
           />
         </div>
 
-        <div className="card-body">
+        <div className="card-body w-100">
           <h5 className={`card-title ${styles.productName}`}>{product.name}</h5>
           <div className="card-text">
             <h6>price: {product.price}</h6>
@@ -32,7 +32,7 @@ const FavouriteItem = ({ product }) => {
             </span>
           </div>
         </div>
-        <div className="card-footer d-flex justify-content-between">
+        <div className="card-footer d-flex justify-content-between w-100">
           <button
             className={`btn ${styles.btnWarningg}`}
             onClick={() => {

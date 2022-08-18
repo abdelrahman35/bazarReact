@@ -35,7 +35,7 @@ const FavouritePage = () => {
             {favourites?.map((product) => (
               <div
                 key={product?.product._id}
-                className="col-lg-4 col-md-6 col-12"
+                className="col-lg-4 col-md-6 col-12 px-2 m-0"
               >
                 <FavouriteItem product={product?.product} />
               </div>

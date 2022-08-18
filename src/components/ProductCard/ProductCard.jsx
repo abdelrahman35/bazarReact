@@ -3,6 +3,10 @@ import styles from "./ProductCard.module.css";
 import { Link, lazy, suspense } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  NotificationContainer,
+  NotificationManager,
+} from "react-notifications";
+import {
   addToCart,
   addToFavourites,
   removeFromFavourites,
@@ -37,7 +41,7 @@ export const ProductCard = ({ product }) => {
               >
                 <i className={`fa-solid fa-heart ${styles.colorFav}`}></i>
               </button>
-            )
+            ),
           )}
 
           <Link
@@ -72,6 +76,10 @@ export const ProductCard = ({ product }) => {
                 className={`d-flex align-items-end  ${styles.btnWarningg}`}
                 onClick={() => {
                   addToCartHandler();
+                  NotificationManager.success(
+                    "Product Added Successfully",
+                    "Bazaar Shop",
+                  );
                 }}
               >
                 <i className="fa-solid fa-cart-circle-arrow-up"></i>
