@@ -13,7 +13,7 @@ const CartPage = () => {
 
   return (
     <section className={`${styles.cartSection}`}>
-      <div className={`container p-0`}>
+      <div className={`container p-0 d-flex justify-content-center`}>
         <div className={`row w-100`}>
           <div className="col-12  col-md-10 m-md-auto col-lg-8 d-flex align-items-start flex-column m-0 ">
             {cartItems?.map((item, index) => (
