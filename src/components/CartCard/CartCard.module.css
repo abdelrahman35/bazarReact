@@ -11,9 +11,19 @@
   color: var(--color7);
 }
 .btns {
-  font-size: 12px;
-  margin-top: 20px;
-  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+  width: fit-content;
+  font-size: 12px !important;
+  color: var(--color3);
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  -o-transition: all 0.5s;
+}
+.btns:hover {
+  color: var(--color7);
 }
 .title {
   font-weight: 400;
@@ -46,6 +56,12 @@
   -o-border-radius: 10px;
   padding: 35px 0px;
 }
+.Left img {
+  width: 150px !important;
+  height: 150px !important;
+  object-fit: scale-down;
+}
+
 .Text1 {
   color: var(--color3);
   font-weight: 700;
