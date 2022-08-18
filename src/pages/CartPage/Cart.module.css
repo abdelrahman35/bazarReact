@@ -15,10 +15,13 @@
   -moz-border-radius: 0.5vw;
   -ms-border-radius: 0.5vw;
   -o-border-radius: 0.5vw;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .Text2 {
-  color: var(--color3);
   font-weight: 700;
   color: var(--color3);
   font-size: 30px;

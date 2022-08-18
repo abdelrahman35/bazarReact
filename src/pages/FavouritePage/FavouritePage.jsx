@@ -24,7 +24,11 @@ const FavouritePage = () => {
   return (
     <>
       {favLoading ? (
-        <Loading />
+        <div
+          className={`container d-flex justify-content-center align-items-center ${styles.conten}`}
+        >
+          <Loading />
+        </div>
       ) : favourites?.length > 0 ? (
         <div className={`container mt-5 mb-5 `}>
           <div className="row">

@@ -21,7 +21,7 @@ body {
 * {
   font-family: var(--myFont);
 }
-.w-10 {
+.h-10 {
   width: 10% !important;
 }
 .w-15 {
@@ -66,7 +66,51 @@ body {
 .w-95 {
   width: 95% !important;
 }
-
+.h-10 {
+  height: 10% !important;
+}
+.h-15 {
+  height: 15% !important;
+}
+.h-20 {
+  height: 20% !important;
+}
+.h-30 {
+  height: 30% !important;
+}
+.h-35 {
+  height: 35% !important;
+}
+.h-40 {
+  height: 40% !important;
+}
+.h-45 {
+  height: 45% !important;
+}
+.h-55 {
+  height: 55% !important;
+}
+.h-60 {
+  height: 60% !important;
+}
+.h-65 {
+  height: 65% !important;
+}
+.h-70 {
+  height: 70% !important;
+}
+.h-80 {
+  height: 80% !important;
+}
+.h-85 {
+  height: 85% !important;
+}
+.h-90 {
+  height: 90% !important;
+}
+.h-95 {
+  height: 95% !important;
+}
 .end-0 {
   right: 0 !important;
 }

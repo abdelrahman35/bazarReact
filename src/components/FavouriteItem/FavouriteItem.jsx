@@ -12,16 +12,10 @@ const FavouriteItem = ({ product }) => {
   return (
     <div className="m-3">
       <div className={`card ${styles.cardBody}`}>
-        <div className={`${styles.imageWrapper}`}>
+        <div className={styles.imageWrapper}>
           <img
             src={`https://bazaarshop.s3.eu-west-3.amazonaws.com${product.image}`}
             className={`card-img-top `}
-            style={{
-              width: "300px",
-              height: "300px",
-              objectFit: "scale-down",
-              margin: "auto",
-            }}
             alt={product.name}
           />
         </div>
@@ -30,9 +24,11 @@ const FavouriteItem = ({ product }) => {
           <h5 className={`card-title ${styles.productName}`}>{product.name}</h5>
           <div className="card-text">
             <h6>price: {product.price}</h6>
-            <span className={`${styles.title} ${styles.review} `}>
+            <span
+              className={`${styles.title} ${styles.review} d-flex justify-content-start gap-2 align-items-center`}
+            >
               <Rateing rate={product.rating} size={"xs"} />
-              <span>({product.rating})</span>
+              <span className="mt-1">{product.rating}</span>
             </span>
           </div>
         </div>
