@@ -47,6 +47,7 @@ import ViewOrderDetails from "./pages/OrderPages/ViewOrderDetails/ViewOrderDetai
 import AddNewAddress from "./pages/UserPages/AddNewAddress/AddNewAddress";
 import FavouritePage from "./pages/FavouritePage/FavouritePage";
 import { NotificationContainer } from "react-notifications";
+import ShippingDetails from "./pages/PlaceOrderPages/ShippingDetails/ShippingDetails";
 function App() {
   return (
     <>
@@ -75,7 +76,8 @@ function App() {
           {/* order routes for user */}
           <Route path="/order" index element={<Order />} />
           <Route path="/order/:orderId" index element={<ViewOrderDetails />} />
-
+          <Route path="/shippingDetails" index element={<ShippingDetails />} />
+          {/*  */}
           <Route
             path="/resetPassword/:token"
             index

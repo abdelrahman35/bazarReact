@@ -122,9 +122,6 @@ function Navbar() {
                         >
                           Login/Signup
                         </button>
-                        {userInfo && userInfo?.isAdmin ? (
-                          <div> admin</div>
-                        ) : null}
                       </div>
                     )}
                     <div>

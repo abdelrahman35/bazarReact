@@ -1,4 +1,4 @@
-export const cartReducer = (state = { cartItems: [] }, action) => {
+export const cartReducer = (state = { cartItems: [], stock: [] }, action) => {
   switch (action.type) {
     case "ADD_TO_CART_SUCCESS":
       // product data from action
@@ -7,6 +7,7 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
       const inCart = state.cartItems.find((item) =>
         item.productId === newProduct.productId ? true : false
       );
+      const productStock = action.stock;
       return {
         ...state,
         cartItems: inCart
@@ -22,6 +23,7 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
             )
           : // if the inCart is false then return the old cart and add the new product to it
             [...state.cartItems, newProduct],
+        stock: inCart ? [...state.stock] : [...state.stock, productStock],
       };
     case "ADD_TO_CART_FAIL":
       return { error: action.payload };
@@ -31,12 +33,16 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
         cartItems: state.cartItems.filter(
           (productFromCart) => productFromCart.productId !== action.payload
         ),
+        stock: state.stock.filter(
+          (productFromStock) => productFromStock.productId !== action.payload
+        ),
       };
 
     case "CLEAR_CART":
       return {
         ...state,
         cartItems: [],
+        stock: [],
       };
 
     default:

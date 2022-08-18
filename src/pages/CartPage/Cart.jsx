@@ -3,21 +3,28 @@ import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import CartCard from "../../components/CartCard/CartCard";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const CartPage = () => {
-  const {
-    loading: productLoading,
-    error: productError,
-    product,
-  } = useSelector((state) => state.oneProduct);
+  const navigate = useNavigate();
+  const { error: userError, userInfo } = useSelector(
+    (state) => state.userLogin
+  );
   const { cartItems } = useSelector((state) => state.cart);
-
+  console.log(cartItems);
+  const checkoutHandler = () => {
+    if (!userInfo) {
+      navigate("/login", { replace: true });
+    } else {
+      navigate("*", { replace: true, state: userError });
+    }
+  };
   return (
     <section className={`${styles.cartSection}`}>
       <div className={`container p-0`}>
         <div className={`row w-100`}>
           <div className="col-12  col-md-10 m-md-auto col-lg-8 d-flex align-items-start flex-column m-0 ">
             {cartItems?.map((item, index) => (
-              <CartCard key={index} productFromCart={item} />
+              <CartCard key={item.productId} productFromCart={item} />
             ))}
           </div>
           {cartItems?.length > 0 ? (
@@ -38,8 +45,8 @@ const CartPage = () => {
                   <p className={` ${styles.second}`}>
                     {cartItems?.reduce(
                       (contedPrice, product) =>
-                        contedPrice + product.productPrice * product.qty,
-                      0,
+                        contedPrice + product.price * product.quantity,
+                      0
                     )}
                   </p>
                 </div>
@@ -53,9 +60,25 @@ const CartPage = () => {
                 </div>
               </div>
               <div className={styles.footer}>
-                <button className={`${styles.btnWarningg} w-100 m-0`}>
-                  CHECK OUT
-                </button>
+                {userInfo ? (
+                  <button
+                    className={`${styles.btnWarningg} w-100 m-0`}
+                    onClick={() => {
+                      checkoutHandler();
+                    }}
+                  >
+                    CHECK OUT
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    data-bs-toggle="modal"
+                    data-bs-target="#exampleModal"
+                    className={`${styles.btnWarningg} w-100 m-0`}
+                  >
+                    CHECK OUT
+                  </button>
+                )}
               </div>
             </div>
           ) : (
@@ -63,7 +86,7 @@ const CartPage = () => {
               <div className={`container  ${styles.Con}`}>
                 <div className="row w-80 justify-content-center align-items-center">
                   <div className={`${styles.component} w-100`}>
-                    <p className="m-0 mb-1 text-capitalize">
+                    <div className="m-0 mb-1 text-capitalize">
                       your cart is empty, please add some products
                       <br />
                       <div className="d-flex justify-content-evenly align-items-center">
@@ -75,7 +98,7 @@ const CartPage = () => {
                         </Link>
                         <i className="fa-duotone fa-sitemap"></i>
                       </div>
-                    </p>
+                    </div>
                   </div>
                 </div>
               </div>

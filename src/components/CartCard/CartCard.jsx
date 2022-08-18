@@ -1,17 +1,20 @@
 import styles from "./CartCard.module.css";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { addToCart, removeFromCart } from "../../store/actions/cartAction";
 const CartCard = ({ productFromCart }) => {
   const dispatch = useDispatch();
-
   const removeFromCartHandler = () => {
     dispatch(removeFromCart(productFromCart.productId));
   };
+  const { stock } = useSelector((state) => state.cart);
+  const productInStock = stock.filter(
+    (product) => product.productId === productFromCart.productId
+  );
+
   const quantityArray = Array.from(
-    { length: productFromCart.productStock },
-    (_, index) => index + 1,
+    { length: productInStock[0].stock },
+    (_, index) => index + 1
   );
 
   return (
@@ -21,7 +24,7 @@ const CartCard = ({ productFromCart }) => {
       >
         <div className={`col-md-3 `}>
           <img
-            src={`https://bazaarshop.s3.eu-west-3.amazonaws.com${productFromCart?.productImage}`}
+            src={`https://bazaarshop.s3.eu-west-3.amazonaws.com${productFromCart?.image}`}
             className={`w-100`}
             alt="order img"
           />
@@ -31,13 +34,7 @@ const CartCard = ({ productFromCart }) => {
         >
           <div className="d-flex flex-column  ">
             <p className={` m-0 p-0 w-100   col-6 ${styles.title}`}>
-              {productFromCart?.productName}
-            </p>
-            <p className={` m-0 p-0 w-100   col-6 `}>
-              {productFromCart?.productReviewNums.length}
-            </p>
-            <p className={` m-0 p-0 w-100   col-6 `}>
-              {productFromCart?.productModel}
+              {productFromCart?.name}
             </p>
           </div>
           <div className="d-flex justify-content-start align-items-center gap-4">
@@ -61,27 +58,27 @@ const CartCard = ({ productFromCart }) => {
 
         <div className="col-12 col-md-3 d-flex flex-row flex-md-column justify-content-center align-items-center mt-4 mt-md-0">
           <p className={`p-2 col-12  w-50 ${styles.title2} m-0`}>
-            {productFromCart?.productPrice} EGP
+            {productFromCart?.price} EGP
           </p>
           <select
             id="quantity"
             className={`form-select col-12 w-50 ${styles["form-select"]}`}
             aria-label="Default select example"
-            value={productFromCart?.qty}
+            value={productFromCart?.quantity}
             onChange={(e) => {
-              if (Number(e.target.value < productFromCart?.qty)) {
+              if (Number(e.target.value < productFromCart?.quantity)) {
                 dispatch(
                   addToCart(
                     productFromCart?.productId,
-                    -(productFromCart?.qty - Number(e.target.value)),
-                  ),
+                    -(productFromCart?.quantity - Number(e.target.value))
+                  )
                 );
-              } else if (Number(e.target.value > productFromCart?.qty)) {
+              } else if (Number(e.target.value > productFromCart?.quantity)) {
                 dispatch(
                   addToCart(
                     productFromCart?.productId,
-                    Number(e.target.value) - productFromCart?.qty,
-                  ),
+                    Number(e.target.value) - productFromCart?.quantity
+                  )
                 );
               }
             }}
