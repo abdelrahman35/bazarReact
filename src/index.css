@@ -28,7 +28,10 @@ h6,
 p,
 sup,
 strong,
-div {
+div,
+button,
+select,
+option {
   font-family: var(--myFont) !important;
 }
 

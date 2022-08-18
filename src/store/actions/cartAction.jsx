@@ -13,12 +13,14 @@ export const addToCart = (id, qty) => async (dispatch, getState) => {
         productImage: product.image,
         productPrice: product.price,
         productStock: product.quantity,
+        productReviewNums: product.reviews,
+        productModel: product.modelYear,
         qty,
       },
     });
     localStorage.setItem(
       "cartItems",
-      JSON.stringify(getState()?.cart?.cartItems)
+      JSON.stringify(getState()?.cart?.cartItems),
     );
   } catch (error) {
     dispatch({ type: "ADD_TO_CART_FAIL", payload: error });
@@ -32,7 +34,7 @@ export const removeFromCart = (id) => (dispatch, getState) => {
 
   localStorage.setItem(
     "cartItems",
-    JSON.stringify(getState()?.cart?.cartItems)
+    JSON.stringify(getState()?.cart?.cartItems),
   );
 };
 
@@ -48,7 +50,7 @@ export const addToFavourites = (productId) => async (dispatch, getState) => {
     const { status } = await axiosInstance.put(
       "/user/wishlist",
       { productId },
-      { headers }
+      { headers },
     );
 
     const { data } = await axiosInstance.get(`/product/${productId}`);
@@ -64,7 +66,7 @@ export const addToFavourites = (productId) => async (dispatch, getState) => {
     const filteredArray = JSON.parse(localStorage.getItem("wishlist")).filter(
       (product) => {
         return product?.product?._id !== productId;
-      }
+      },
     );
     // const filteredArray = favouritesArrayFromLocalStorage.filter((product) => {
     //   return product?.product?._id !== productId;
@@ -87,7 +89,7 @@ export const addToFavourites = (productId) => async (dispatch, getState) => {
     });
     console.log(
       favouritesArrayFromLocalStorage,
-      "local storage array add after"
+      "local storage array add after",
     );
   } catch (error) {
     dispatch({
@@ -116,12 +118,12 @@ export const removeFromFavourites =
       // const wishlist = getState().userLogin.userInfo.wishlist;
       console.log(
         favouritesArrayFromLocalStorage,
-        "local storage array delete before"
+        "local storage array delete before",
       );
       const filteredArray = JSON.parse(localStorage.getItem("wishlist")).filter(
         (product) => {
           return product?.product?._id !== productId;
-        }
+        },
       );
       const newWishListArray =
         status === 200
@@ -137,7 +139,7 @@ export const removeFromFavourites =
       });
       console.log(
         favouritesArrayFromLocalStorage,
-        "local storage array delete after"
+        "local storage array delete after",
       );
     } catch (error) {
       dispatch({

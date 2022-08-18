@@ -27,11 +27,17 @@ const CartCard = ({ productFromCart }) => {
           />
         </div>
         <div
-          className={`col-md-6 p-0 d-flex flex-column justify-content-center justify-content-md-between  h-70`}
+          className={`col-md-6 p-0 d-flex flex-column justify-content-center justify-content-md-between  h-85`}
         >
-          <div className="d-flex flex-column gap-1">
+          <div className="d-flex flex-column ">
             <p className={` m-0 p-0 w-100   col-6 ${styles.title}`}>
               {productFromCart?.productName}
+            </p>
+            <p className={` m-0 p-0 w-100   col-6 `}>
+              {productFromCart?.productReviewNums.length}
+            </p>
+            <p className={` m-0 p-0 w-100   col-6 `}>
+              {productFromCart?.productModel}
             </p>
           </div>
           <div className="d-flex justify-content-start align-items-center gap-4">

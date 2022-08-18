@@ -19,7 +19,7 @@ function Navbar() {
       <nav className={`navbar navbar-expand-lg pt-2 pb-2 ${styles.nav}`}>
         <div className="container p-0">
           <div className="row w-100 justify-content-start m-auto align-items-center">
-            <div className={`col-12 col-md-2 text-end ${styles.aa} p-0`}>
+            <div className={`col-12 col-md-2  ${styles.aa} p-0`}>
               <div className="d-none d-lg-block">
                 <Link to="/" className={styles.brand}>
                   Bazaar{" "}
@@ -31,7 +31,7 @@ function Navbar() {
                     Bazaar{" "}
                   </Link>
                 </div>
-                <div className="col-6">
+                <div className="col-6 d-flex justify-content-end  ">
                   <button
                     className="navbar-toggler"
                     type="button"
