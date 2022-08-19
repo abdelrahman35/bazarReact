@@ -26,8 +26,8 @@ function AdminPanel() {
             </Link>
           </div>
           <div className="col-lg-6">
-            <Link to="/admin/categories" className={`card ${styles.cardio}`}>
-              <div className="card-title">Categories</div>
+            <Link to="/admin/users" className={`card ${styles.cardio}`}>
+              <div className="card-title">Users</div>
             </Link>
           </div>
         </div>

@@ -49,6 +49,8 @@ import FavouritePage from "./pages/UserPages/FavouritePage/FavouritePage";
 import { NotificationContainer } from "react-notifications";
 import ShippingDetails from "./pages/PlaceOrderPages/ShippingDetails/ShippingDetails";
 import SelectPaymentMethod from "./pages/PlaceOrderPages/SelectPaymantMethod/SelectPaymentMethod";
+import ListUsers from "./pages/AdminPages/Users/ListUsers/ListUsers";
+import UserDetails from "./pages/AdminPages/Users/UserDetails/UserDetails";
 function App() {
   return (
     <>
@@ -111,6 +113,13 @@ function App() {
             path="/admin/order/:id"
             index
             element={<OrderDetailsForAdmin />}
+          />
+          {/* admin routes for users */}
+          <Route path="/admin/users" index element={<ListUsers />} />
+          <Route
+            path="/admin/user/details/:userId"
+            index
+            element={<UserDetails />}
           />
           <Route path={"*"} element={<NotFoundPage />} />
           {/* placing order routes */}
