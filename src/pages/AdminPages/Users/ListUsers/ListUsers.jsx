@@ -31,7 +31,7 @@ function ListUsers() {
     } else if (error) {
       navigate("*", { replace: true, state: error });
     }
-  }, [userInfo, userInfoError]);
+  }, [userInfo, userInfoError, error]);
 
   return (
     <div className="mt-5">
