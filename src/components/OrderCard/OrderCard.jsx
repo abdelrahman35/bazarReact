@@ -21,7 +21,7 @@ const OrderCard = ({ order }) => {
       <div className={`container-fluid `}>
         <div className={`card mb-3" ${styles.card}`}>
           <div className="col-md-8 w-100">
-            <div className="card-body p-0 px-2 py-3">
+            <div className="card-body p-0 px-2 py-3 d-flex flex-column justify-content-evenly gap-1">
               <div
                 className={`m-0 card-title ${styles.Title} d-flex justify-content-between  gap-4`}
               >
@@ -37,7 +37,7 @@ const OrderCard = ({ order }) => {
                     onClick={() => {
                       localStorage.setItem(
                         "orderDetails",
-                        JSON.stringify(order)
+                        JSON.stringify(order),
                       );
                     }}
                   >
@@ -46,9 +46,26 @@ const OrderCard = ({ order }) => {
                 </Link>
               </div>
 
-              <p className={`card-text ${styles.OrderStatus}`}>
-                {order?.status}
-              </p>
+              {order?.status === "success" ? (
+                <p
+                  className={`card-text ${styles.OrderStatus} ${styles.OrderStatusSuc} w-25`}
+                >
+                  {order?.status}
+                </p>
+              ) : order?.status === "pending" ? (
+                <p
+                  className={`card-text ${styles.OrderStatus} ${styles.OrderStatusPen} w-25`}
+                >
+                  {order?.status}
+                </p>
+              ) : (
+                <p
+                  className={`card-text ${styles.OrderStatus} ${styles.OrderStatusCan} w-25`}
+                >
+                  {order?.status}
+                </p>
+              )}
+
               <div className="d-flex justify-content-between mt-2">
                 <p className={`card-text ${styles.Date}`}>
                   <span>On {order?.createdAt?.substring(0, 10)}</span>
@@ -68,7 +85,13 @@ const OrderCard = ({ order }) => {
                     </>
                   ) : order?.status === "cancelled" ||
                     order?.status === "Cancelled" ? (
-                    <span>Cancelled</span>
+                    <input
+                      className="form-control m-auto text-center"
+                      type="text"
+                      placeholder="Order Cancelled"
+                      aria-label="Disabled input example"
+                      disabled
+                    />
                   ) : (
                     <>
                       <button className={styles.btnWarningg}>

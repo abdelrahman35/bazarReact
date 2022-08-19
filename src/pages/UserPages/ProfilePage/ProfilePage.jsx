@@ -11,7 +11,7 @@ import OrderCard from "../../../components/OrderCard/OrderCard";
 import AddressItem from "../../../components/AddressItem/AddressItem";
 function ProfilePage() {
   const { loading: addressLoading, address } = useSelector(
-    (state) => state.addAddress
+    (state) => state.addAddress,
   );
   const addressArray = address?.address;
   // declarations
@@ -114,34 +114,43 @@ function ProfilePage() {
             {renderedData === "accountDetails" ? (
               <div className={`card shadow w-100 ${styles.rightCard}`}>
                 <div className="card-body">
-                  <h5 className="">Account Overview</h5>
+                  <h5 className="text-capitalize">Account Overview</h5>
                   <hr className={`${styles.hr}`} />
-                  <div className="d-flex justify-content-between mx-5 align-items-center mt-4">
-                    <h6 className="card-subtitle mb-3 text-muted fs-5">
-                      Hello {userInfo.firstName + " " + userInfo.lastName}
-                    </h6>
-                    <h6 className="card-subtitle mb-3 text-muted fs-5">
-                      email : {userInfo.email}{" "}
-                    </h6>
-                  </div>
-                  <div className="d-flex justify-content-between mx-5 align-items-center mt-4 mb-4">
-                    <h6 className="card-subtitle mb-3 text-muted fs-5">
-                      Number of Saved Addresses :{" "}
-                      {addressArray?.length > 0
-                        ? addressArray?.length
-                        : addressArrayFromUserInfo?.length}
-                    </h6>
-                    <h6 className="card-subtitle mb-3 text-muted fs-5">
-                      Number of Orders : {userOrdersArray?.length}{" "}
-                    </h6>
-                  </div>
 
-                  <Link
-                    className={`${styles.btnWarningg} ${styles.changePassword} d-flex justify-content-between px-2 mx-4  align-items-center mt-4 mb-4`}
-                    to="/changePassword"
-                  >
-                    Change Password
-                  </Link>
+                  <div className="card">
+                    <div className="card-header d-flex justify-content-between align-items-center">
+                      <p className=" m-0 p-0 text-capitalize">
+                        <h4 className="card-title m-0 p-0 fs-4">
+                          Hello {userInfo.firstName + " " + userInfo.lastName}
+                        </h4>{" "}
+                      </p>
+                      <Link to="/" className={styles.edit}>
+                        <i className="fa-solid fa-pen"></i>
+                      </Link>
+                    </div>
+                    <div className="card-body d-flex flex-column justify-content-around gap-4 mt-1 text-capitalize">
+                      <div className="card-text d-flex flex-column justify-content-between gap-2">
+                        <h6 className="card-subtitle  text-muted fs-5 m-0 p-0 fs-6">
+                          email : {userInfo.email}{" "}
+                        </h6>
+                        <h6 className="card-subtitle  text-muted fs-5 m-0 p-0 fs-6">
+                          Number of Saved Addresses :{" "}
+                          {addressArray?.length > 0
+                            ? addressArray?.length
+                            : addressArrayFromUserInfo?.length}
+                        </h6>
+                        <h6 className=" card-subtitle  text-muted fs-5 m-0 p-0 fs-6">
+                          Number of Orders : {userOrdersArray?.length}{" "}
+                        </h6>
+                      </div>
+                      <Link
+                        className={`d-flex justify-content-between  align-items-center text-decoration-none  ${styles.nonedit} text-capitalize fs-5 `}
+                        to="/changePassword"
+                      >
+                        Change Password
+                      </Link>
+                    </div>
+                  </div>
                 </div>
               </div>
             ) : renderedData === "orders" ? (
@@ -228,7 +237,7 @@ function ProfilePage() {
                           </div>
                           <div className="row">
                             {addressArray?.map((address, index) => (
-                              <div key={index} className="col-lg-6">
+                              <div key={index} className="col-lg-6 ">
                                 {" "}
                                 <AddressItem
                                   index={index}
@@ -240,7 +249,7 @@ function ProfilePage() {
                         </div>
                       </div>
                     ) : (
-                      <div className="card-body">
+                      <div className="card-body text-capitalize">
                         <div className="container">
                           <div className="d-flex justify-content-end">
                             <Link
@@ -253,7 +262,7 @@ function ProfilePage() {
                           </div>
                           <div className="row">
                             {addressArrayFromUserInfo?.map((address, index) => (
-                              <div key={address?._id} className="col-lg-6">
+                              <div key={address?._id} className="col-lg-6 mb-4">
                                 {" "}
                                 <AddressItem
                                   index={index}

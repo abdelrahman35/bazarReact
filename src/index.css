@@ -325,3 +325,18 @@ option {
 .notification-success {
   background-color: var(--color1) !important;
 }
+.slick-prev {
+  left: -40px !important;
+}
+.slick-prev:before,
+.slick-next:before {
+  font-family: "slick" !important;
+  font-size: 35px !important;
+  line-height: 1 !important;
+  opacity: 0.75 !important;
+  color: var(--color7) !important;
+}
+.slick-dots li button:before,
+.slick-dots li.slick-active button:before {
+  color: var(--color3) !important;
+}

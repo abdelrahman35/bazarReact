@@ -18,7 +18,7 @@ export const ProductCard = ({ product }) => {
   return (
     <>
       <div className="m-3 w-100">
-        <div className={`card ${styles.cardBody} p-4`}>
+        <div className={`card ${styles.cardBody} p-4 mx-3`}>
           {favourites?.map((item) =>
             item.product._id !== product._id ? (
               <button
@@ -38,7 +38,7 @@ export const ProductCard = ({ product }) => {
               >
                 <i className={`fa-solid fa-heart ${styles.colorFav}`}></i>
               </button>
-            )
+            ),
           )}
 
           <Link
@@ -47,7 +47,7 @@ export const ProductCard = ({ product }) => {
           >
             <div className={`${styles.imgContainer}`}>
               <img
-                className={`card-img-top ${styles.image} p-0`}
+                className={`card-img-top ${styles.image} p-0 w-100`}
                 src={`https://bazaarshop.s3.eu-west-3.amazonaws.com${product.image}`}
                 alt={product.name}
               />
@@ -75,7 +75,7 @@ export const ProductCard = ({ product }) => {
                   addToCartHandler();
                   NotificationManager.success(
                     "Product Added Successfully",
-                    "Bazaar Shop"
+                    "Bazaar Shop",
                   );
                 }}
               >

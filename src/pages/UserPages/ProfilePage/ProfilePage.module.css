@@ -92,3 +92,25 @@
   color: var(--color6) !important;
   background-color: var(--color1) !important;
 }
+.edit {
+  color: var(--color3);
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+  -o-transition: all 0.2s;
+}
+.edit:hover {
+  color: var(--color7);
+}
+.nonedit {
+  color: var(--color7);
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+  -o-transition: all 0.2s;
+}
+.nonedit:hover {
+  color: var(--color3);
+}

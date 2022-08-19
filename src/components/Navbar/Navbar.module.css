@@ -67,7 +67,6 @@
 
 .login {
   border: 0;
-
   font-size: 24px;
   font-weight: 400;
   border-bottom-right-radius: 40px;
@@ -75,7 +74,6 @@
 }
 .signup {
   border: 0;
-
   font-size: 24px;
   font-weight: 400;
   border-bottom-left-radius: 40px;
@@ -100,14 +98,21 @@
   -ms-transition: all 0.3s;
   -o-transition: all 0.3s;
 }
+
 .btnClose {
   bottom: 76px;
   right: 8px;
-  border: 0 !important;
+  border: 16 !important;
   border-radius: 0 !important;
-  background: url(../../assets/images/close.png) center/1em auto no-repeat !important;
-  background-color: var(--color1) !important;
+  border: 0 !important;
+  border-bottom-left-radius: 15px !important;
+  background: url(../../assets/images/closeMai.svg) center/1em auto no-repeat !important;
+  opacity: 1 !important;
+  background-color: var(--color6) !important;
+  top: 7.5px;
+  left: 0;
 }
+
 .btnClose:focus {
   box-shadow: none !important;
 }

@@ -10,9 +10,51 @@ import { ProductCard } from "../../../components/ProductCard/ProductCard";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProducts } from "../../../store/actions/productActions";
 import { NotificationContainer } from "react-notifications";
+import Slider from "react-slick";
+import AaibImg from "../../../assets/images/aaib.png";
+import ItiImg from "../../../assets/images/iti.png";
+import MotImg from "../../../assets/images/mot.png";
 
 function Home() {
   const dispatch = useDispatch();
+  const settings = {
+    dots: true,
+    infinite: true,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    pauseOnHover: true,
+  };
+  const settings2 = {
+    dots: false,
+    infinite: true,
+    slidesToShow: 1,
+    fade: true,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    pauseOnHover: true,
+    arrows: false,
+  };
+
+  const sponsers = [
+    {
+      id: 1,
+      name: "Arab African International Bank",
+      img: AaibImg,
+    },
+    {
+      id: 2,
+      name: "Information Technology Institute",
+      img: ItiImg,
+    },
+    {
+      id: 3,
+      name: "Ministry of Tourism and Antiquities",
+      img: MotImg,
+    },
+  ];
 
   const {
     loading: productsLoading,
@@ -138,16 +180,57 @@ function Home() {
             <h3>Recently Added Products</h3>
             <div className={styles.HR}></div>
           </div>
-          <div className={`container `}>
-            <div className="row mb-0 mb-lg-3  g-4 mt-5 ">
+          <div className={`container d-none d-lg-block w-90`}>
+            <div className="row mb-0 mb-lg-3  g-4   ">
+              <Slider {...settings}>
+                {prodcutsArray?.slice(-6).map((product, index) => (
+                  <div className="{`col-lg-4 col-md-6 col-12 `}" key={index}>
+                    <ProductCard product={product} />
+                  </div>
+                ))}
+              </Slider>
+            </div>
+          </div>
+          <div className={`container d-block d-lg-none `}>
+            <div className="row mb-0 mb-lg-3  g-4  ">
               {prodcutsArray?.slice(-6).map((product, index) => (
-                <div className={`col-lg-4 col-md-6 col-12 `} key={index}>
+                <div className="{`col-lg-4 col-md-6 col-12 `}" key={index}>
                   <ProductCard product={product} />
                 </div>
               ))}
             </div>
           </div>
         </div>
+
+        <div className={` text-center  ${styles.Recently} mt-5 mb-5`}>
+          <div
+            className={`  d-flex flex-column justify-content-center align-items-center   ${styles.title}`}
+          >
+            <h3 className="text-capitalize">sponsored by</h3>
+          </div>
+          <div className={`container `}>
+            <div className="row mb-0 mb-lg-3  g-4  ">
+              <Slider {...settings2}>
+                {sponsers.map((sponser, index) => (
+                  <div
+                    className="{`col-lg-4 col-md-6 col-12 d-flex flex-column justify-content-center aliggn-items-center `}"
+                    key={index}
+                  >
+                    <div className={styles.imgWraap}>
+                      <img
+                        src={sponser.img}
+                        className={`w-20 ${styles.sponser}`}
+                        alt={sponser.name}
+                      />
+                    </div>
+                    <h1>{sponser.name}</h1>
+                  </div>
+                ))}
+              </Slider>
+            </div>
+          </div>
+        </div>
+
         <NotificationContainer />
       </section>
     </>

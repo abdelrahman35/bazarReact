@@ -9,12 +9,12 @@ const CartCard = ({ productFromCart }) => {
   };
   const { stock } = useSelector((state) => state.cart);
   const productInStock = stock.filter(
-    (product) => product.productId === productFromCart.productId
+    (product) => product.productId === productFromCart.productId,
   );
 
   const quantityArray = Array.from(
     { length: productInStock[0].stock },
-    (_, index) => index + 1
+    (_, index) => index + 1,
   );
 
   return (
@@ -22,7 +22,7 @@ const CartCard = ({ productFromCart }) => {
       <div
         className={`d-flex flex-column flex-md-row  ${styles.Left} w-100 m-0 px-5 px-md-0 mb-4  justify-content-center align-items-center`}
       >
-        <div className={`col-md-3 `}>
+        <div className={`col-md-3 d-flex justify-content-center`}>
           <img
             src={`https://bazaarshop.s3.eu-west-3.amazonaws.com${productFromCart?.image}`}
             className={`w-100`}
@@ -70,15 +70,15 @@ const CartCard = ({ productFromCart }) => {
                 dispatch(
                   addToCart(
                     productFromCart?.productId,
-                    -(productFromCart?.quantity - Number(e.target.value))
-                  )
+                    -(productFromCart?.quantity - Number(e.target.value)),
+                  ),
                 );
               } else if (Number(e.target.value > productFromCart?.quantity)) {
                 dispatch(
                   addToCart(
                     productFromCart?.productId,
-                    Number(e.target.value) - productFromCart?.quantity
-                  )
+                    Number(e.target.value) - productFromCart?.quantity,
+                  ),
                 );
               }
             }}

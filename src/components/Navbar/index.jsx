@@ -156,7 +156,6 @@ function Navbar() {
                   <button
                     onClick={() => {
                       setModal("login");
-
                       setGenButtonStyle(styles.genButton);
                       setRevGenButton(styles.revGenButton);
                     }}

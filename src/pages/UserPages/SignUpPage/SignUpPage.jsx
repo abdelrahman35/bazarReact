@@ -27,7 +27,7 @@ const validationSchema = Yup.object({
     .required("Please Enter your password")
     .matches(
       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-      "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
+      "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character",
     ),
 });
 
@@ -40,7 +40,12 @@ function SignUpPage() {
   // functions
   const onSubmit = (values) => {
     dispatch(
-      register(values.firstName, values.lastName, values.email, values.password)
+      register(
+        values.firstName,
+        values.lastName,
+        values.email,
+        values.password,
+      ),
     );
   };
   useEffect(() => {
@@ -74,7 +79,10 @@ function SignUpPage() {
                 )}
               </div>
             </div>
-            <Form.Group className="mb-3" controlId="formBasicFirstName">
+            <Form.Group
+              className={`mb-3 position-relative ${styles.allInput}`}
+              controlId="formBasicFirstName"
+            >
               <Form.Control
                 className={`input ${styles.formControl}`}
                 type="text"
@@ -82,11 +90,15 @@ function SignUpPage() {
                 name="firstName"
                 {...formik.getFieldProps("firstName")}
               />
+              <i className="fa-solid fa-circle-1"></i>{" "}
               {formik.errors.firstName && formik.touched.firstName ? (
                 <div className={styles.error}>{formik.errors.firstName}</div>
               ) : null}
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicLastName">
+            <Form.Group
+              className={`mb-3 position-relative ${styles.allInput}`}
+              controlId="formBasicLastName"
+            >
               <Form.Control
                 className={`input ${styles.formControl}`}
                 type="text"
@@ -94,11 +106,15 @@ function SignUpPage() {
                 name="lastName"
                 {...formik.getFieldProps("lastName")}
               />
+              <i className="fa-solid fa-circle-2"></i>{" "}
               {formik.errors.lastName && formik.touched.lastName ? (
                 <div className={styles.error}>{formik.errors.lastName}</div>
               ) : null}
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Group
+              className={`mb-3 position-relative ${styles.allInput}`}
+              controlId="formBasicEmail"
+            >
               <Form.Control
                 className={`input ${styles.formControl}`}
                 type="email"
@@ -106,12 +122,16 @@ function SignUpPage() {
                 name="email"
                 {...formik.getFieldProps("email")}
               />
+              <i className="fa-solid fa-envelope"></i>
               {formik.errors.email && formik.touched.email ? (
                 <div className={styles.error}>{formik.errors.email}</div>
               ) : null}
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Group
+              className={`mb-3 position-relative ${styles.allInput}`}
+              controlId="formBasicPassword"
+            >
               <Form.Control
                 className={`input ${styles.formControl}`}
                 type="password"
@@ -119,6 +139,8 @@ function SignUpPage() {
                 name="password"
                 {...formik.getFieldProps("password")}
               />
+              <i className="fa-solid fa-lock"></i>
+
               {formik.errors.password && formik.touched.password ? (
                 <div className={styles.error}>{formik.errors.password}</div>
               ) : null}

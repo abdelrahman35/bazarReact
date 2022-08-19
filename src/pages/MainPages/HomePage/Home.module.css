@@ -6,7 +6,7 @@
   height: 90vh;
 }
 .banner img {
-  width: 115%;
+  width: 110%;
 }
 .content {
   color: var(--color6);
@@ -193,6 +193,16 @@
   -ms-transform: rotateY(180deg);
   -o-transform: rotateY(180deg);
 }
+.imgWraap {
+  width: 100% !important;
+  height: 220px !important;
+  text-align: center;
+}
+.sponser {
+  width: 100% !important;
+  height: 200px !important;
+  object-fit: scale-down;
+}
 
 @media (min-width: 200px) and (max-width: 1251px) {
   .banner img {
@@ -213,6 +223,7 @@
     font-weight: 300;
   }
 }
+
 @media (min-width: 0px) and (max-width: 768px) {
   .rsw {
     height: 80vh;
