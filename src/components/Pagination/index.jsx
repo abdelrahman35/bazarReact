@@ -59,7 +59,7 @@ export default function MyPagination(props) {
               toReturn.push(
                 <Pagination.First
                   key={"firstpage"}
-                  disabled={props.currentPage === props.totPages ? true : false}
+                  disabled={props.currentPage === 1 ? true : false}
                   onClick={
                     props.currentPage === 1
                       ? () => {}
@@ -67,19 +67,19 @@ export default function MyPagination(props) {
                           props.pageClicked(1);
                         }
                   }
-                />,
+                />
               );
 
               toReturn.push(
                 <Pagination.Prev
                   key={"prevpage"}
-                  disabled={props.currentPage === props.totPages ? true : false}
+                  disabled={props.currentPage === 1 ? true : false}
                   onClick={() => {
                     if (props.currentPage > 1) {
                       props.pageClicked(props.currentPage - 1);
                     }
                   }}
-                />,
+                />
               );
             }
 
@@ -98,7 +98,7 @@ export default function MyPagination(props) {
                   }
                 >
                   {ele}
-                </Pagination.Item>,
+                </Pagination.Item>
               );
 
             if (ind === pageArray.length - 1) {
@@ -113,7 +113,7 @@ export default function MyPagination(props) {
                           props.pageClicked(props.currentPage + 1);
                         }
                   }
-                />,
+                />
               );
 
               toReturn.push(
@@ -127,7 +127,7 @@ export default function MyPagination(props) {
                           props.pageClicked(ele);
                         }
                   }
-                />,
+                />
               );
             }
 

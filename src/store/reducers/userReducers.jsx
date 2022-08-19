@@ -99,3 +99,29 @@ export const addNewAddressReducer = (state = {}, action) => {
       return state;
   }
 };
+
+export const getAllUsersReducer = (state = {}, action) => {
+  switch (action.type) {
+    case "GET_ALL_USERS_REQUEST":
+      return { loading: true };
+    case "GET_ALL_USERS_SUCCESS":
+      return { loading: false, users: action.payload };
+    case "GET_ALL_USERS_FAIL":
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const getUsersDetailsReducer = (state = {}, action) => {
+  switch (action.type) {
+    case "GET_USER_DETAILS_REQUEST":
+      return { loading: true };
+    case "GET_USER_DETAILS_SUCCESS":
+      return { loading: false, user: action.payload };
+    case "GET_USER_DETAILS_FAIL":
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};

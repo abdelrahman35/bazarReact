@@ -9,14 +9,15 @@ const CartCard = ({ productFromCart }) => {
   };
   const { stock } = useSelector((state) => state.cart);
   const productInStock = stock.filter(
-    (product) => product.productId === productFromCart.productId,
+    (product) => product.productId === productFromCart.productId
   );
 
   const quantityArray = Array.from(
     { length: productInStock[0].stock },
-    (_, index) => index + 1,
+    (_, index) => index + 1
   );
-
+  console.log(productFromCart);
+  console.log(productInStock[0]);
   return (
     <>
       <div
@@ -64,21 +65,34 @@ const CartCard = ({ productFromCart }) => {
             id="quantity"
             className={`form-select col-12 w-50 ${styles["form-select"]}`}
             aria-label="Default select example"
-            value={productFromCart?.quantity}
+            value={Number(productFromCart?.quantity)}
             onChange={(e) => {
-              if (Number(e.target.value < productFromCart?.quantity)) {
-                dispatch(
-                  addToCart(
-                    productFromCart?.productId,
-                    -(productFromCart?.quantity - Number(e.target.value)),
-                  ),
+              console.log(e.target.value);
+              console.log(productFromCart?.quantity);
+              if (Number(e.target.value < Number(productFromCart?.quantity))) {
+                console.log(
+                  -(Number(productFromCart?.quantity) - Number(e.target.value))
                 );
-              } else if (Number(e.target.value > productFromCart?.quantity)) {
                 dispatch(
                   addToCart(
                     productFromCart?.productId,
-                    Number(e.target.value) - productFromCart?.quantity,
-                  ),
+                    -(
+                      Number(productFromCart?.quantity) - Number(e.target.value)
+                    )
+                  )
+                );
+              } else if (
+                Number(e.target.value > Number(productFromCart?.quantity))
+              ) {
+                console.log(
+                  Number(e.target.value) - Number(productFromCart?.quantity)
+                );
+
+                dispatch(
+                  addToCart(
+                    productFromCart?.productId,
+                    Number(e.target.value) - Number(productFromCart?.quantity)
+                  )
                 );
               }
             }}

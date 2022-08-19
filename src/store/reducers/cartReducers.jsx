@@ -19,7 +19,8 @@ export const cartReducer = (
                 ? // if the product in the cart is that from action then spread it and modify the quantity for it
                   {
                     ...productFromCart,
-                    qty: productFromCart.qty + action.payload.qty,
+                    quantity:
+                      productFromCart.quantity + action.payload.quantity,
                   }
                 : // if not then return the products in the action as they were in the cart
                   productFromCart
