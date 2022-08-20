@@ -125,3 +125,19 @@ export const getUsersDetailsReducer = (state = {}, action) => {
       return state;
   }
 };
+export const updateUserInfoReducer = (state = {}, action) => {
+  switch (action.type) {
+    case "UPDATE_USER_INFO_REQUEST":
+      return { loading: true };
+    case "UPDATE_USER_INFO_SUCCESS":
+      return {
+        loading: false,
+        updated: action.payload,
+        statusCode: action.statusCode,
+      };
+    case "UPDATE_USER_INFO_FAIL":
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};

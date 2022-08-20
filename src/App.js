@@ -32,7 +32,7 @@ import LoginPage from "./pages/UserPages/LoginPage/LoginPage";
 import ChangePassword from "./pages/UserPages/ChangePassword/ChangePassword";
 import ProfilePage from "./pages/UserPages/ProfilePage/ProfilePage";
 import ForgetPassword from "./pages/UserPages/ForgetPassword/ForgetPassword";
-
+import UpdateInfo from "./pages/UserPages/UpdateInfo/UpdateInfo";
 // product pages
 import ProductDetails from "./pages/ProductPages/ProductDetails/ProductDetails";
 import ProudctPage from "./pages/ProductPages/ProductsPage/ProductsPage";
@@ -74,6 +74,7 @@ function App() {
           <Route path="/forgetPassword" index element={<ForgetPassword />} />
           <Route path="/changePassword" index element={<ChangePassword />} />
           <Route path="/profile" index element={<ProfilePage />} />
+          <Route path="/updateinfo" index element={<UpdateInfo />} />
           <Route path="/cart" index element={<CartPage />} />
           <Route path="/favourites" index element={<FavouritePage />} />
           <Route path="/address/add" index element={<AddNewAddress />} />

@@ -11,7 +11,7 @@ import OrderCard from "../../../components/OrderCard/OrderCard";
 import AddressItem from "../../../components/AddressItem/AddressItem";
 function ProfilePage() {
   const { loading: addressLoading, address } = useSelector(
-    (state) => state.addAddress,
+    (state) => state.addAddress
   );
   const addressArray = address?.address;
   // declarations
@@ -124,7 +124,7 @@ function ProfilePage() {
                           Hello {userInfo.firstName + " " + userInfo.lastName}
                         </h4>{" "}
                       </p>
-                      <Link to="/" className={styles.edit}>
+                      <Link to="/updateinfo" className={styles.edit}>
                         <i className="fa-solid fa-pen"></i>
                       </Link>
                     </div>

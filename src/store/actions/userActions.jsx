@@ -287,7 +287,6 @@ export const getUserDetails =
           headers,
         }
       );
-      console.log(data);
       dispatch({
         type: "GET_USER_DETAILS_SUCCESS",
         payload: data,
@@ -299,3 +298,35 @@ export const getUserDetails =
       });
     }
   };
+export const updateUserInfo = (userData) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: "UPDATE_USER_INFO_REQUEST" });
+    const token = getState().userLogin.userInfo.token;
+
+    const { data, status } = await axiosInstance({
+      url: "/user",
+      method: "patch",
+      data: {
+        payload: {
+          ...userData,
+        },
+      },
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        authorization: `Bearer ${token}`,
+      },
+    });
+    dispatch({
+      type: "UPDATE_USER_INFO_SUCCESS",
+      payload: data,
+      statusCode: status,
+    });
+    localStorage.setItem("US", JSON.stringify([data, status]));
+  } catch (error) {
+    dispatch({
+      type: "UPDATE_USER_INFO_FAIL",
+      payload: error.response ? error.response.status : error,
+    });
+  }
+};

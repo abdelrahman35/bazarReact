@@ -40,7 +40,6 @@ const ResetPassword = () => {
 
   const dispatch = useDispatch();
   const onSubmit = (values) => {
-    changePassword();
     dispatch(changePassword(values.oldPassword, values.newPassword));
   };
 

@@ -3,6 +3,7 @@ import {
   addNewAddressReducer,
   getAllUsersReducer,
   getUsersDetailsReducer,
+  updateUserInfoReducer,
   userChangePasswordReducer,
   userLoginReducers,
   userRegisterReducer,
@@ -38,6 +39,7 @@ export default combineReducers({
   addAddress: addNewAddressReducer,
   allUsers: getAllUsersReducer,
   userDetails: getUsersDetailsReducer,
+  userUpdated: updateUserInfoReducer,
   // categoryReducers
   allCategories: getAllCategoriesReducer,
   createCategory: createCategoryReducer,
