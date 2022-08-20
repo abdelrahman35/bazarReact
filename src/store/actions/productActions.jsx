@@ -38,9 +38,6 @@ export const createProduct =
         authorization: `Bearer ${token}`,
       };
 
-      // const { data } = await axiosInstance.post("/product", productFormData, {
-      //   headers,
-      // });
       const data = await axiosInstance
         .post(
           "/product/validateNewProduct",
@@ -181,6 +178,34 @@ export const updateProduct =
     } catch (error) {
       dispatch({
         type: "UPDATE_PRODUCT_FAIL",
+        payload: error.response ? error.response.status : error,
+      });
+    }
+  };
+
+export const createReview =
+  (productId, comment, rating) => async (dispatch, getState) => {
+    try {
+      dispatch({ type: "CREATE_REVIEW_REQUEST" });
+      const token = getState().userLogin.userInfo.token;
+      const headers = {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        authorization: `Bearer ${token}`,
+      };
+      const { data, status } = await axiosInstance.post(
+        "/review",
+        { payload: { productId, comment, rating } },
+        { headers }
+      );
+      dispatch({
+        type: "CREATE_REVIEW_SUCCESS",
+        payload: data,
+        statusCode: status,
+      });
+    } catch (error) {
+      dispatch({
+        type: "CREATE_REVIEW_FAIL",
         payload: error.response ? error.response.status : error,
       });
     }

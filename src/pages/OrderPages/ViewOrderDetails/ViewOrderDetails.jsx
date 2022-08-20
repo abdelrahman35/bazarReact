@@ -2,6 +2,8 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Loading from "../../../components/Loading/Loading";
+import CreateReview from "../../../components/CreateReview/CreateReview";
+import styles from "./ViewOrderDetails.module.css";
 function ViewOrderDetails() {
   // get order id from params
   const { orderId } = useParams();
@@ -26,14 +28,12 @@ function ViewOrderDetails() {
     <div className="container mt-2">
       <div className="row">
         <h4>Order Details</h4>
-        <p>ordered at : {order?.createdAt.substring(0, 10)} </p>
+        <p>ordered at : {order?.createdAt?.substring(0, 10)} </p>
 
         <div className="card">
           <div className="card-body row">
             <div className="col-lg-8">
               <h5 className="card-title">shipping details</h5>
-              <p>{order?.user?.firstName + " " + order?.user?.lastName}</p>
-
               <p>
                 {order?.shippingAddress.street +
                   ", " +
@@ -42,7 +42,7 @@ function ViewOrderDetails() {
                   order?.shippingAddress.country +
                   "."}
               </p>
-              <p>+2{order?.shippingAddress?.phone}</p>
+              <p>+2{order?.shippingAddress?.mobile}</p>
             </div>
             <div className="col-lg-4">
               <p>order status:</p>
@@ -63,7 +63,7 @@ function ViewOrderDetails() {
         <div>
           <div className="accordion mt-4" id="accordionExample">
             {order?.products?.map((product, index) => (
-              <div key={index} className="accordion-item ">
+              <div key={product.productId} className="accordion-item ">
                 <h2 className="accordion-header" id="headingOne">
                   <button
                     className="accordion-button "
@@ -95,6 +95,46 @@ function ViewOrderDetails() {
                           style={{ width: "50px", height: "50px" }}
                         />
                       </div>
+                      {order?.status === "delivered" ? (
+                        <div>
+                          <button
+                            type="button"
+                            className={`${styles.btnWarningg}`}
+                            data-bs-toggle="modal"
+                            data-bs-target="#reviewModal"
+                          >
+                            Add Review
+                          </button>
+
+                          <div
+                            className="modal fade"
+                            id="reviewModal"
+                            data-bs-backdrop="static"
+                            data-bs-keyboard="false"
+                            tabIndex="-1"
+                            aria-labelledby="staticBackdropLabel"
+                            aria-hidden="true"
+                          >
+                            <div className="modal-dialog">
+                              <div className="modal-content">
+                                <div className="modal-header">
+                                  <button
+                                    type="button"
+                                    className="btn-close"
+                                    data-bs-dismiss="modal"
+                                    aria-label="Close"
+                                  ></button>
+                                </div>
+                                <div className="modal-body">
+                                  <CreateReview
+                                    productId={product?.productId}
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      ) : null}
                     </div>
                   </div>
                 </div>
