@@ -78,6 +78,7 @@ export const logout = () => async (dispatch) => {
   localStorage.removeItem("userInfo");
   localStorage.removeItem("wishlist");
   localStorage.removeItem("address");
+  localStorage.removeItem("orderDetails");
   dispatch({ type: "USER_LOGOUT" });
 };
 
@@ -177,72 +178,6 @@ export const changePassword =
     }
   };
 
-export const addNewAddress = (values, city) => async (dispatch, getState) => {
-  try {
-    dispatch({ type: "ADD_NEW_ADDRESS_REQUEST" });
-    const token = getState().userLogin.userInfo.token;
-
-    const headers = {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-      authorization: `Bearer ${token}`,
-    };
-
-    const { data, status } = await axiosInstance.post(
-      "/user/address",
-      {
-        payload: {
-          street: values.street,
-          country: values.country,
-          mobile: values.mobile,
-          city,
-        },
-      },
-      { headers }
-    );
-
-    dispatch({
-      type: "ADD_NEW_ADDRESS_SUCCESS",
-      payload: data,
-      statusCode: status,
-    });
-    localStorage.setItem("ad", JSON.stringify(status));
-  } catch (error) {
-    dispatch({
-      type: "ADD_NEW_ADDRESS_FAIL",
-      payload: error.response ? error.response.status : error,
-    });
-  }
-};
-
-export const deleteAddress = (addressId) => async (dispatch, getState) => {
-  try {
-    dispatch({ type: "DELETE_ADDRESS_REQUEST" });
-    const token = getState().userLogin.userInfo.token;
-
-    const { data, status } = await axiosInstance({
-      url: `/user/address/${addressId}`,
-      method: "delete",
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-        authorization: `Bearer ${token}`,
-      },
-    });
-
-    dispatch({
-      type: "DELETE_ADDRESS_SUCCESS",
-      payload: data,
-      statusCode: status,
-    });
-  } catch (error) {
-    dispatch({
-      type: "DELETE_ADDRESS_FAIL",
-      payload: error.response ? error.response.status : error,
-    });
-  }
-};
-
 export const getAllUsers = (pageNum) => async (dispatch, getState) => {
   try {
     dispatch({ type: "GET_ALL_USERS_REQUEST" });
@@ -330,3 +265,106 @@ export const updateUserInfo = (userData) => async (dispatch, getState) => {
     });
   }
 };
+
+export const addNewAddress = (values, city) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: "ADD_NEW_ADDRESS_REQUEST" });
+    const token = getState().userLogin.userInfo.token;
+
+    const headers = {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      authorization: `Bearer ${token}`,
+    };
+
+    const { data, status } = await axiosInstance.post(
+      "/user/address",
+      {
+        payload: {
+          street: values.street,
+          country: values.country,
+          mobile: values.mobile,
+          city,
+        },
+      },
+      { headers }
+    );
+
+    dispatch({
+      type: "ADD_NEW_ADDRESS_SUCCESS",
+      payload: data,
+      statusCode: status,
+    });
+    localStorage.setItem("ad", JSON.stringify(status));
+  } catch (error) {
+    dispatch({
+      type: "ADD_NEW_ADDRESS_FAIL",
+      payload: error.response ? error.response.status : error,
+    });
+  }
+};
+
+export const deleteAddress = (addressId) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: "DELETE_ADDRESS_REQUEST" });
+    const token = getState().userLogin.userInfo.token;
+
+    const { data, status } = await axiosInstance({
+      url: `/user/address/${addressId}`,
+      method: "delete",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        authorization: `Bearer ${token}`,
+      },
+    });
+
+    dispatch({
+      type: "DELETE_ADDRESS_SUCCESS",
+      payload: data,
+      statusCode: status,
+    });
+  } catch (error) {
+    dispatch({
+      type: "DELETE_ADDRESS_FAIL",
+      payload: error.response ? error.response.status : error,
+    });
+  }
+};
+
+export const updateAddress =
+  (addressId, newAddress) => async (dispatch, getState) => {
+    console.log(addressId);
+    console.log(newAddress);
+    try {
+      dispatch({ type: "UPDATE_ADDRESS_REQUEST" });
+      const token = getState().userLogin.userInfo.token;
+      const { data, status } = await axiosInstance({
+        url: "/user/address",
+        method: "put",
+        data: {
+          addressId,
+          payload: {
+            ...newAddress,
+          },
+        },
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          authorization: `Bearer ${token}`,
+        },
+      });
+
+      dispatch({
+        type: "UPDATE_ADDRESS_SUCCESS",
+        payload: data,
+        statusCode: status,
+      });
+      localStorage.setItem("ad", JSON.stringify(status));
+    } catch (error) {
+      dispatch({
+        type: "UPDATE_ADDRESS_FAIL",
+        payload: error.response ? error.response.status : error,
+      });
+    }
+  };

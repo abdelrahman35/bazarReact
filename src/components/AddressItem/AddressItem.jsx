@@ -1,8 +1,10 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { deleteAddress } from "../../store/actions/userActions";
 import styles from "./AddressItem.module.css";
 function AddressItem({ addressToRender, index }) {
+  console.log(addressToRender._id);
   const dispatch = useDispatch();
   return (
     <>
@@ -23,6 +25,12 @@ function AddressItem({ addressToRender, index }) {
               >
                 <i className="fa fa-trash"></i>
               </button>
+              <Link
+                to={`/address/edit/${addressToRender._id}`}
+                className={`${styles.trashBtn}`}
+              >
+                <i className="fa-solid fa-pen"></i>
+              </Link>
             </span>
           </li>
           <li className={`list-group-item ${styles.item}`}>

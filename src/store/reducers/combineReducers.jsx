@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import {
-  addNewAddressReducer,
+  addressReducer,
   getAllUsersReducer,
   getUsersDetailsReducer,
   updateUserInfoReducer,
@@ -36,7 +36,7 @@ export default combineReducers({
   userRegister: userRegisterReducer,
   userLogin: userLoginReducers,
   changePassword: userChangePasswordReducer,
-  addAddress: addNewAddressReducer,
+  addAddress: addressReducer,
   allUsers: getAllUsersReducer,
   userDetails: getUsersDetailsReducer,
   userUpdated: updateUserInfoReducer,

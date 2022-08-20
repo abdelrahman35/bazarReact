@@ -11,7 +11,6 @@ import { addToCart, addToFavourites } from "../../../store/actions/cartAction";
 import { NotificationManager } from "react-notifications";
 const ProductDetails = () => {
   const [qty, setQty] = useState(1);
-  console.log(qty);
   const { id } = useParams();
   const dispatch = useDispatch();
   const {
@@ -27,7 +26,7 @@ const ProductDetails = () => {
   const productQuantity = product?.product?.quantity;
   const quantityArray = Array.from(
     { length: productQuantity },
-    (_, index) => index + 1,
+    (_, index) => index + 1
   );
   const addToCartHandler = () => {
     dispatch(addToCart(id, qty));
@@ -42,7 +41,7 @@ const ProductDetails = () => {
         </div>
       ) : product ? (
         <section>
-          <div className="container p-5">
+          <div className="container p-5 ">
             <div className="row mt-5 justify-content-center align-items-center">
               <div className="col-12 col-md-6">
                 <div className="d-flex justify-content-center align-content-center">
@@ -82,6 +81,7 @@ const ProductDetails = () => {
                 </label>
                 <div className="d-flex justify-content-start gap-3 align-items-center">
                   <select
+                    disabled={product?.product?.quantity > 0 ? false : true}
                     id="quantity"
                     className={`form-select ${styles["form-select"]}`}
                     aria-label="Default select example"
@@ -89,20 +89,25 @@ const ProductDetails = () => {
                       setQty(parseInt(e.target.value));
                     }}
                   >
-                    {quantityArray.map((x, index) => (
-                      <option key={index} value={x}>
-                        {x}
-                      </option>
-                    ))}
+                    {product?.product?.quantity > 0 ? (
+                      quantityArray.map((x, index) => (
+                        <option key={index} value={x}>
+                          {x}
+                        </option>
+                      ))
+                    ) : (
+                      <option>{0}</option>
+                    )}
                   </select>
 
                   <button
-                    className={`${styles.btnWarningg}`}
+                    className={`${styles.btnWarningg} disabled`}
+                    disabled={product?.product?.quantity > 0 ? false : true}
                     onClick={() => {
                       addToCartHandler();
                       NotificationManager.success(
                         "Product Added Successfully",
-                        "Bazaar Shop",
+                        "Bazaar Shop"
                       );
                     }}
                   >
@@ -118,7 +123,7 @@ const ProductDetails = () => {
                 </div>
               </div>
             </div>
-            <div className="row justify-content-center">
+            <div className="row justify-content-center mt-5">
               <h2 className={styles.reviewTitle}>Reviews</h2>
               <hr className={styles.reviewHr}></hr>
               <div className="row mb-5">

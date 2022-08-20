@@ -54,6 +54,8 @@ import ShippingDetails from "./pages/PlaceOrderPages/ShippingDetails/ShippingDet
 import SelectPaymentMethod from "./pages/PlaceOrderPages/SelectPaymantMethod/SelectPaymentMethod";
 import ListUsers from "./pages/AdminPages/Users/ListUsers/ListUsers";
 import UserDetails from "./pages/AdminPages/Users/UserDetails/UserDetails";
+import UpdateAddress from "./pages/UserPages/UpdateExistingAddress/UpdateAddress";
+
 function App() {
   return (
     <>
@@ -85,6 +87,11 @@ function App() {
             path="/resetPassword/:token"
             index
             element={<ResetPassword />}
+          />
+          <Route
+            path="/address/edit/:addressId"
+            index
+            element={<UpdateAddress />}
           />
           <Route path="/adminpanel" index element={<AdminPanel />} />
           {/* admin routes for products */}
