@@ -9,15 +9,14 @@ const CartCard = ({ productFromCart }) => {
   };
   const { stock } = useSelector((state) => state.cart);
   const productInStock = stock.filter(
-    (product) => product.productId === productFromCart.productId
+    (product) => product.productId === productFromCart.productId,
   );
 
   const quantityArray = Array.from(
     { length: productInStock[0].stock },
-    (_, index) => index + 1
+    (_, index) => index + 1,
   );
-  console.log(productFromCart);
-  console.log(productInStock[0]);
+
   return (
     <>
       <div
@@ -31,10 +30,12 @@ const CartCard = ({ productFromCart }) => {
           />
         </div>
         <div
-          className={`col-md-6 p-0 d-flex flex-column justify-content-center justify-content-md-between  h-85`}
+          className={`col-md-6 p-0 d-flex flex-column justify-content-center justify-content-md-between  h-85 `}
         >
           <div className="d-flex flex-column  ">
-            <p className={` m-0 p-0 w-100   col-6 ${styles.title}`}>
+            <p
+              className={` m-0 p-0 w-100   col-6 ${styles.title} fs-2 fw-bold text-capitalize`}
+            >
               {productFromCart?.name}
             </p>
           </div>
@@ -58,7 +59,7 @@ const CartCard = ({ productFromCart }) => {
         </div>
 
         <div className="col-12 col-md-3 d-flex flex-row flex-md-column justify-content-center align-items-center mt-4 mt-md-0">
-          <p className={`p-2 col-12  w-50 ${styles.title2} m-0`}>
+          <p className={`p-2 col-12  w-50 text-center ${styles.title2} m-0`}>
             {productFromCart?.price} EGP
           </p>
           <select
@@ -71,28 +72,28 @@ const CartCard = ({ productFromCart }) => {
               console.log(productFromCart?.quantity);
               if (Number(e.target.value < Number(productFromCart?.quantity))) {
                 console.log(
-                  -(Number(productFromCart?.quantity) - Number(e.target.value))
+                  -(Number(productFromCart?.quantity) - Number(e.target.value)),
                 );
                 dispatch(
                   addToCart(
                     productFromCart?.productId,
                     -(
                       Number(productFromCart?.quantity) - Number(e.target.value)
-                    )
-                  )
+                    ),
+                  ),
                 );
               } else if (
                 Number(e.target.value > Number(productFromCart?.quantity))
               ) {
                 console.log(
-                  Number(e.target.value) - Number(productFromCart?.quantity)
+                  Number(e.target.value) - Number(productFromCart?.quantity),
                 );
 
                 dispatch(
                   addToCart(
                     productFromCart?.productId,
-                    Number(e.target.value) - Number(productFromCart?.quantity)
-                  )
+                    Number(e.target.value) - Number(productFromCart?.quantity),
+                  ),
                 );
               }
             }}

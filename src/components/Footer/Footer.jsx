@@ -17,10 +17,8 @@ const Footer = () => {
                     BAZAAR
                   </h3>
                   <p className={`${styles.pFooter} m-auto m-lg-0`}>
-                    There are many variations of passages of Lorem Ipsum
-                    available,but the majority have suffered alteration in some
-                    form,by injected humour,or randomised words which don't look
-                    even slightly believable.
+                    We are delighted to offer a great range of unique vintage
+                    items that make you realize your aesthetic vision
                   </p>
                   <div className="d-flex mt-3 justify-content-center justify-content-lg-start">
                     <ul className={` d-flex list-unstyled mb-0 `}>
@@ -49,7 +47,7 @@ const Footer = () => {
                   <ul className="list-unstyled mb-0 mt-3 d-flex flex-column align-items-start gap-1">
                     <li>
                       <Link
-                        to="/"
+                        to="/products"
                         className={`${styles.socialIcon} ${styles.pFooter}`}
                       >
                         Products
@@ -57,7 +55,7 @@ const Footer = () => {
                     </li>
                     <li>
                       <Link
-                        to="/"
+                        to="/cart"
                         className={`${styles.socialIcon} ${styles.pFooter}`}
                       >
                         Cart
@@ -65,7 +63,7 @@ const Footer = () => {
                     </li>
                     <li>
                       <Link
-                        to="/"
+                        to="/favourites"
                         className={`${styles.socialIcon} ${styles.pFooter}`}
                       >
                         Favorite
@@ -73,7 +71,7 @@ const Footer = () => {
                     </li>
                     <li>
                       <Link
-                        to="/"
+                        to="/profile"
                         className={`${styles.socialIcon} ${styles.pFooter}`}
                       >
                         Orders

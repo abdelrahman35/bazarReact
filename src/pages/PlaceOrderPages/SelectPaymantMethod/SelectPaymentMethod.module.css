@@ -1,3 +1,7 @@
+.section {
+  height: 60vh;
+  margin-top: 20px;
+}
 .btnWarningg {
   font-family: var(--myFont) !important;
   font-size: 18px !important;
@@ -34,4 +38,17 @@
   -moz-border-radius: 5px !important;
   -ms-border-radius: 5px !important;
   -o-border-radius: 5px !important;
+}
+.btingo {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border: 2px solid transparent !important;
+  height: 60px;
+  font-size: 25px !important;
+  font-weight: 500 !important;
+}
+.btingo:active,
+.btingo:hover,
+.btingo:focus,
+.btingo:focus-visible {
+  border: 2px solid var(--color1) !important;
 }

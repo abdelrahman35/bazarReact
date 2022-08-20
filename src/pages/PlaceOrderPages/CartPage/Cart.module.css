@@ -4,8 +4,8 @@
   align-items: center;
   background-color: var(--color5);
   height: auto;
-  padding-bottom: 80px;
-  padding-top: 80px;
+  padding-bottom: 180px;
+  padding-top: 180px;
 }
 .Right {
   border-radius: 0.5vw;
@@ -15,10 +15,15 @@
   -moz-border-radius: 0.5vw;
   -ms-border-radius: 0.5vw;
   -o-border-radius: 0.5vw;
-  height: 50vh;
+  height: 36vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
+
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  margin: 0 !important;
 }
 
 .Text2 {
@@ -109,4 +114,12 @@
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
+}
+.hieg {
+  height: 100% !important;
+}
+@media (max-width: 991px) {
+  .hieg {
+    height: 50% !important;
+  }
 }

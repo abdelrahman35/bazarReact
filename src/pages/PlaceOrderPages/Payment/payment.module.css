@@ -4,6 +4,56 @@
   justify-content: center;
   align-items: center;
 }
+.formCheck {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 60px 80px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.btnWarningg {
+  font-family: var(--myFont) !important;
+  font-size: 21px !important;
+  color: var(--color6) !important;
+  background-color: var(--color1) !important;
+  border: 2px solid var(--color1) !important;
+  height: 50px !important;
+  border-radius: 5px !important;
+  width: 200px;
+  font-weight: lighter;
+  -webkit-border-radius: 5px !important;
+  -moz-border-radius: 5px !important;
+  -ms-border-radius: 5px !important;
+  -o-border-radius: 5px !important;
+  transition: all 0.3s !important;
+  -webkit-transition: all 0.3s !important;
+  -moz-transition: all 0.3s !important;
+  -ms-transition: all 0.3s !important;
+  -o-transition: all 0.3s !important;
+  cursor: pointer;
+}
+.btnWarningg:hover,
+.btnWarningg:active {
+  cursor: pointer;
+  color: var(--color7) !important;
+  font-size: 21px !important;
+  background-color: transparent !important;
+  border: 2px solid var(--color7) !important;
+  box-shadow: none !important;
+  border-radius: 5px !important;
+  -webkit-border-radius: 5px !important;
+  -moz-border-radius: 5px !important;
+  -ms-border-radius: 5px !important;
+  -o-border-radius: 5px !important;
+}
+
+.Input,
+.p-FauxInput {
+  background-color: var(--color5) !important;
+}
 
 /* .binding {
   border: 2px solid black;

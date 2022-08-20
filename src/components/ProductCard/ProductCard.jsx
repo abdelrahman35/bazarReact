@@ -19,9 +19,10 @@ export const ProductCard = ({ product }) => {
     <>
       <div className="m-3 w-100">
         <div className={`card ${styles.cardBody} p-4 mx-3`}>
-          {favourites?.map((item) =>
+          {favourites?.map((item, index) =>
             item.product._id !== product._id ? (
               <button
+                key={index}
                 className={`text-start  ${styles.Btn}`}
                 onClick={() => {
                   dispatch(addToFavourites(product._id));
@@ -31,6 +32,7 @@ export const ProductCard = ({ product }) => {
               </button>
             ) : (
               <button
+                key={index}
                 className={`text-start  ${styles.Btn}`}
                 onClick={() => {
                   dispatch(removeFromFavourites(product._id));

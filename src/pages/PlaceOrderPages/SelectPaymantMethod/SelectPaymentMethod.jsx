@@ -13,40 +13,43 @@ function SelectPaymentMethod() {
   const [paymentMethodIsSelected, setPaymentMethodIsSelected] = useState(false);
   return (
     <>
-      <CheckoutBar step1 step2 />
-      <div className="d-flex justify-content-around">
-        {paymentMethodsArray.map((method, index) => (
-          <div className="form-check" key={index}>
-            <input
-              className="form-check-input"
-              type="radio"
-              name="paymentMethod"
-              htmlFor="paymentMethod"
-              value={method}
-              onChange={(e) => {
-                setPaymentMethodType(e.target.value);
-                setPaymentMethodIsSelected(true);
+      <section className={styles.section}>
+        <CheckoutBar step1 step2 />
+        <h3 className="ms-5 text-capitalize fw-normal">
+          Choose Payment Method :
+        </h3>
+        <div className="d-flex justify-content-around mt-5 align-items-center">
+          {paymentMethodsArray.map((method, index) => (
+            <div className="w-40" key={index}>
+              <button
+                className={`btn w-100 ${styles.btingo} `}
+                name="paymentMethod"
+                id="paymentMethod"
+                value={method}
+                onClick={(e) => {
+                  setPaymentMethodType(e.target.value);
+                  setPaymentMethodIsSelected(true);
+                }}
+              >
+                Pay Using {method}
+              </button>
+            </div>
+          ))}
+        </div>
+        <div className="d-flex justify-content-end m-3">
+          {paymentMethodIsSelected ? (
+            <button
+              className={`${styles.btnWarningg}`}
+              onClick={() => {
+                dispatch(setPaymentMethod(paymentMethodType));
+                navigate("/placeorder", { replace: true });
               }}
-            />
-            <label className="form-check-label" htmlFor="paymentMethod">
-              {method}
-            </label>
-          </div>
-        ))}
-      </div>
-      <div className="d-flex justify-content-end m-3">
-        {paymentMethodIsSelected ? (
-          <button
-            className={`${styles.btnWarningg}`}
-            onClick={() => {
-              dispatch(setPaymentMethod(paymentMethodType));
-              navigate("/placeorder", { replace: true });
-            }}
-          >
-            Next
-          </button>
-        ) : null}
-      </div>
+            >
+              Next
+            </button>
+          ) : null}
+        </div>
+      </section>
     </>
   );
 }

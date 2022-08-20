@@ -14,16 +14,16 @@ const CartPage = () => {
   return (
     <section className={`${styles.cartSection}`}>
       <div className={`container p-0 d-flex justify-content-center`}>
-        <div className={`row w-100`}>
-          <div className="col-12  col-md-10 m-md-auto col-lg-8 d-flex align-items-start flex-column m-0 ">
+        <div className={`row w-100 h-100 justify-content-center`}>
+          <div
+            className={`col-12  col-md-10 col-lg-8 d-flex align-items-start flex-column S ${styles.hieg} m-auto m-lg-0 `}
+          >
             {cartItems?.map((item, index) => (
               <CartCard key={item.productId} productFromCart={item} />
             ))}
           </div>
           {cartItems?.length > 0 ? (
-            <div
-              className={`col-12 col-md-9 m-md-auto  col-lg-4 ${styles.Right}`}
-            >
+            <div className={`col-12 col-md-9   col-lg-4 ${styles.Right} px-4 `}>
               <div className={styles.header}>
                 <h2 className={`${styles.Text2}`}>Order Summary</h2>
                 <hr />
@@ -39,7 +39,7 @@ const CartPage = () => {
                     {cartItems?.reduce(
                       (contedPrice, product) =>
                         contedPrice + product.price * product.quantity,
-                      0
+                      0,
                     )}
                   </p>
                 </div>
@@ -76,7 +76,7 @@ const CartPage = () => {
             </div>
           ) : (
             <>
-              <div className={`container  ${styles.Con}`}>
+              <div className={`container  ${styles.Con} h-100`}>
                 <div className="row w-80 justify-content-center align-items-center">
                   <div className={`${styles.component} w-100`}>
                     <div className="m-0 mb-1 text-capitalize">

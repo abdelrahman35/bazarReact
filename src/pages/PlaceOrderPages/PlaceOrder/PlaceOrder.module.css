@@ -24,15 +24,16 @@
 .btnWarningg:active {
   cursor: pointer;
   color: var(--color7) !important;
-  font-size: 19px !important;
   background-color: transparent !important;
   border: 2px solid var(--color7) !important;
   box-shadow: none !important;
-  width: 85%;
-  height: 55px !important;
   border-radius: 5px !important;
   -webkit-border-radius: 5px !important;
   -moz-border-radius: 5px !important;
   -ms-border-radius: 5px !important;
   -o-border-radius: 5px !important;
+}
+.section {
+  height: auto;
+  margin-top: 20px;
 }

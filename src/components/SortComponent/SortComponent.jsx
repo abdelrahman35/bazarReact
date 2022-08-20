@@ -55,7 +55,7 @@ function SortComponent() {
               <i className="fa-solid fa-filter-list fs-4 mt-1"></i>
             </button>
           </div>
-          <div className="col-lg-4 form-check d-flex justify-content-evenly ">
+          <div className="col-lg-4 form-check d-flex justify-content-between justify-content-md-around justify-content-lg-evenly gap-5 gap-md-3 ">
             <div className="col-lg-6 d-flex justify-content-lg-start ms-5 ">
               <input
                 className="form-check-input"
@@ -98,7 +98,7 @@ function SortComponent() {
             </div>
           </div>
 
-          <div className="col-lg-4 form-check d-flex justify-content-evenly">
+          <div className="col-lg-4 form-check d-flex justify-content-between justify-content-md-around justify-content-lg-evenly gap-5 gap-md-3">
             <div className="col-lg-6 d-flex justify-content-lg-start ms-5 ">
               <input
                 className="form-check-input"

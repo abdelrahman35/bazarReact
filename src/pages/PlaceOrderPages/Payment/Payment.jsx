@@ -11,15 +11,19 @@ import { useLocation } from "react-router-dom";
 // Don’t submit any personally identifiable information in requests made with this key.
 // Sign in to see your own test API key embedded in code samples.
 const stripePromise = loadStripe(
-  "pk_test_51LSyOMAMxeDwFF2GnIEaAajxGJmGSw4ZOSzMufvvMjSfHdQCn55GJF5tLicn2fcSqJQwGjX71cm2nyyawfQkLc3o004oLlDExl"
+  "pk_test_51LSyOMAMxeDwFF2GnIEaAajxGJmGSw4ZOSzMufvvMjSfHdQCn55GJF5tLicn2fcSqJQwGjX71cm2nyyawfQkLc3o004oLlDExl",
 );
 
 export default function App() {
   const location = useLocation();
   const clientSecert = location.state ? location.state : null;
   const appearance = {
-    theme: "night",
-    labels: "floating",
+    variables: {},
+    rules: {
+      ".Input, .Block": {
+        backgroundColor: "#ececec",
+      },
+    },
   };
   const options = {
     clientSecret: clientSecert[0],
