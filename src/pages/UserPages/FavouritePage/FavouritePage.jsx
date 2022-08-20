@@ -16,7 +16,7 @@ const FavouritePage = () => {
     if (!userInfo) {
       navigate("*", { replace: true, state: userError });
     }
-  }, [favourites]);
+  }, [userInfo, userError]);
 
   return (
     <>

@@ -85,18 +85,20 @@ function Navbar() {
               </div>
               <div className="col-1 d-flex align-items-center justify-content-evenly fs-5 mb-3 mb-md-0 ps-4">
                 <Link
-                  className={`  nav-link ${styles.navLink} me-2`}
-                  to="/favourites"
-                >
-                  <i className="fa-solid fa-heart"></i>
-                </Link>
-                <Link
                   className={`  nav-link ${styles.navLink} d-flex`}
                   to="/cart"
                 >
                   <i className="fa-solid fa-cart-shopping"></i>
                   <sup className={`mt-2 ms-1`}>{cartItems?.length}</sup>
                 </Link>
+                {userInfo ? (
+                  <Link
+                    className={`  nav-link ${styles.navLink} ms-2`}
+                    to="/favourites"
+                  >
+                    <i className="fa-solid fa-heart"></i>
+                  </Link>
+                ) : null}
               </div>
               <div className="col-12 col-md-2 mb-3 mb-md-0">
                 {userLoading ? (

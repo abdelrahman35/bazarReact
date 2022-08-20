@@ -66,8 +66,10 @@ function ListOrders() {
                   <tr key={index}>
                     <th scope="row">{index + 1}</th>
                     <th scope="row">{order._id}</th>
-                    <td>{order.user.firstName + " " + order.user.lastName}</td>
-                    <td>{order.createdAt.substring(0, 10)}</td>
+                    <td>
+                      {order?.user?.firstName + " " + order?.user?.lastName}
+                    </td>
+                    <td>{order.createdAt?.substring(0, 10)}</td>
                     <td>{order.totalPrice}</td>
                     <td>{order.paymentMethod}</td>
                     <td>{order.status}</td>
