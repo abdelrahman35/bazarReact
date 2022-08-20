@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { ProductCard } from "../../../components/ProductCard/ProductCard";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllProducts } from "../../../store/actions/productActions";
-import { Link } from "react-router-dom";
+import {
+  filterProducts,
+  getAllProducts,
+} from "../../../store/actions/productActions";
 import Loading from "../../../components/Loading/Loading";
 import styles from "./Products.module.css";
 import Filter from "../../../components/FilterComponent/Filter";
@@ -19,17 +21,18 @@ function ProudctPage() {
     setCurrPage(page_number);
   };
 
-  const { loading: productsLoading, products } = useSelector(
-    (state) => state.allProducts,
-  );
   const { loading: filteredProductsLoading, filteredProducts } = useSelector(
-    (state) => state.filteredProducts,
+    (state) => state.filteredProducts
   );
-  const filteredProductsArray = filteredProducts?.products;
-  const prodcutsArray = products?.products;
+  const filteredProductsArray = filteredProducts?.data?.products;
+
+  // const prodcutsArray = products?.products;
   useEffect(() => {
-    dispatch(getAllProducts(currPage));
-  }, [currPage, filteredProducts]);
+    // dispatch(getAllProducts(currPage));
+    dispatch(filterProducts(currPage));
+  }, [currPage]);
+
+  console.log(filteredProductsArray);
   return (
     <>
       {filteredProductsLoading ? (
@@ -75,11 +78,11 @@ function ProudctPage() {
                 <SortComponent />
               </div>
 
-              <div className="row mb-0 mb-lg-3  g-4  ">
+              <div className="row mb-0 mb-lg-3  g-4">
                 {filteredProductsArray?.map((product, index) => (
                   <div
                     className={`col-12 col-md-6 col-lg-3 d-flex justify-content-center mb-3 mb-lg-0`}
-                    key={index}
+                    key={product._id}
                   >
                     <ProductCard product={product} />
                   </div>
@@ -87,9 +90,8 @@ function ProudctPage() {
               </div>
             </div>
           </div>
-
           <MyPagination
-            totPages={products?.numberOfPages}
+            totPages={filteredProducts?.data?.numberOfPages}
             currentPage={currPage}
             pageClicked={(ele) => {
               afterPageClicked(ele);
@@ -102,80 +104,6 @@ function ProudctPage() {
             </ul>
           </MyPagination>
         </div>
-      ) : productsLoading ? (
-        <div
-          className={`container d-flex justify-content-center align-items-center ${styles.conten}`}
-        >
-          <Loading />
-        </div>
-      ) : products ? (
-        <>
-          <div className={`container-fluid`}>
-            <div className="row justify-content-center align-items-start p-0  px-lg-5">
-              <div className="col-12  d-block ">
-                <aside>
-                  <div
-                    className="offcanvas offcanvas-start"
-                    id="offcanvasExample"
-                    aria-labelledby="offcanvasExampleLabel"
-                  >
-                    <div className="offcanvas-header">
-                      <h5
-                        className="offcanvas-title"
-                        id="offcanvasExampleLabel"
-                      >
-                        Filter
-                      </h5>
-                      <button
-                        type="button"
-                        className="btn-close"
-                        data-bs-dismiss="offcanvas"
-                        aria-label="Close"
-                      ></button>
-                    </div>
-                    <div className="offcanvas-body">
-                      <Category />
-                      <Filter />
-                    </div>
-                  </div>
-                </aside>
-              </div>
-
-              <div className="col-12  d-flex flex-column justify-content-center align-items-center ">
-                <div
-                  className="row d-flex justify-content-center
-                align-items-center"
-                >
-                  <SortComponent />
-                </div>
-
-                <div className="container  mb-5">
-                  <div className="row">
-                    {prodcutsArray?.map((product, index) => (
-                      <div className={`col-lg-4 col-md-6 col-12`} key={index}>
-                        <ProductCard product={product} />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <MyPagination
-              totPages={products?.numberOfPages}
-              currentPage={currPage}
-              pageClicked={(ele) => {
-                afterPageClicked(ele);
-              }}
-            >
-              <ul>
-                {tagList.map((ele, ind) => (
-                  <li key={ele + ind}>{ele}</li>
-                ))}
-              </ul>
-            </MyPagination>
-          </div>
-        </>
       ) : null}
     </>
   );
