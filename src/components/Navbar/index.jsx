@@ -48,7 +48,7 @@ function Navbar() {
             </div>
 
             <div
-              className="col-10 collapse navbar-collapse justify-content-evenly p-0"
+              className="col-10 collapse navbar-collapse justify-content-evenly px-5 px-lg-0"
               id="navbarSupportedContent"
             >
               <div className="col-12 col-md-3 mb-3 mb-md-0">
@@ -100,7 +100,7 @@ function Navbar() {
                   </Link>
                 ) : null}
               </div>
-              <div className="col-12 col-md-2 mb-3 mb-md-0">
+              <div className="col-12 col-lg-2 mb-3 mb-md-0">
                 {userLoading ? (
                   <Loading />
                 ) : (

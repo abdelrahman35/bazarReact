@@ -4,6 +4,7 @@ import {
   useStripe,
   useElements,
 } from "@stripe/react-stripe-js";
+import styles from "./payment.module.css";
 
 export default function CheckoutForm() {
   const stripe = useStripe();
@@ -82,9 +83,18 @@ export default function CheckoutForm() {
   };
 
   return (
-    <form id="payment-form" onSubmit={handleSubmit}>
+    <form
+      id="payment-form"
+      className={`w-75 ${styles.formCheck} `}
+      onSubmit={handleSubmit}
+    >
+      <h2 className="text-center mb-5">Card Details</h2>
       <PaymentElement id="payment-element" />
-      <button disabled={isLoading || !stripe || !elements} id="submit">
+      <button
+        className={`mt-4 w-30 m-auto d-flex justify-content-center align-items-center  ${styles.btnWarningg}`}
+        disabled={isLoading || !stripe || !elements}
+        id="submit"
+      >
         <span id="button-text">
           {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
         </span>

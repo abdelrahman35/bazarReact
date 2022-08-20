@@ -119,7 +119,7 @@ function ProfilePage() {
 
                   <div className="card">
                     <div className="card-header d-flex justify-content-between align-items-center">
-                      <p className=" m-0 p-0 text-capitalize">
+                      <div className=" m-0 p-0 text-capitalize">
                         <h4 className="card-title m-0 p-0 fs-4">
                           Hello {userInfo.firstName + " " + userInfo.lastName}
                         </h4>{" "}
@@ -237,7 +237,7 @@ function ProfilePage() {
                           </div>
                           <div className="row">
                             {addressArray?.map((address, index) => (
-                              <div key={index} className="col-lg-6 ">
+                              <div key={index} className="col-lg-6 mb-4">
                                 {" "}
                                 <AddressItem
                                   index={index}
@@ -262,8 +262,7 @@ function ProfilePage() {
                           </div>
                           <div className="row">
                             {addressArrayFromUserInfo?.map((address, index) => (
-                              <div key={address?._id} className="col-lg-6 mb-4">
-                                {" "}
+                              <div key={index} className="col-lg-6 mb-4">
                                 <AddressItem
                                   index={index}
                                   addressToRender={address}

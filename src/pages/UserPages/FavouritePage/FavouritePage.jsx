@@ -7,10 +7,10 @@ import Loading from "../../../components/Loading/Loading";
 const FavouritePage = () => {
   const navigate = useNavigate();
   const { loading: favLoading, favourites } = useSelector(
-    (state) => state.favouritesProducts
+    (state) => state.favouritesProducts,
   );
   const { error: userError, userInfo } = useSelector(
-    (state) => state.userLogin
+    (state) => state.userLogin,
   );
   useEffect(() => {
     if (!userInfo) {
@@ -59,7 +59,7 @@ const FavouritePage = () => {
             <div className={`container  ${styles.Con}`}>
               <div className="row w-80 justify-content-center align-items-center">
                 <div className={`${styles.component} w-100`}>
-                  <p className="m-0 mb-1 text-capitalize">
+                  <div className="m-0 mb-1 text-capitalize">
                     your favourites are empty, please add some products <br />
                     <div className="d-flex justify-content-evenly align-items-center">
                       <Link
@@ -70,7 +70,7 @@ const FavouritePage = () => {
                       </Link>
                       <i className="fa-duotone fa-sitemap"></i>
                     </div>
-                  </p>
+                  </div>
                 </div>
               </div>
             </div>

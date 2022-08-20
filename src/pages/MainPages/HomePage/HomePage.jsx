@@ -67,8 +67,6 @@ function Home() {
     dispatch(getAllProducts(pageNum));
   }, [dispatch, pageNum]);
 
-  console.log(products);
-
   return (
     <>
       <section>
@@ -78,12 +76,13 @@ function Home() {
               <div className="row justify-content-center justify-content-lg-between  align-items-end  align-items-lg-center ">
                 <div className="col-12 col-md-6 col-lg-7">
                   <div className={`${styles.content}`}>
-                    <h1>Create a beautiful user experience in no time</h1>
+                    <h1 className="text-capitalize">
+                      Welcome to another world of aesthetics!
+                    </h1>
                     <p>
-                      There are many variations of passages of Lorem Ipsum
-                      available,but the majority have suffered alteration in
-                      some form,by injected humour,or randomised words which
-                      don't look even slightly believable.
+                      Need a refresh for your home or your workplace? Bazaar is
+                      the perfect destination to discover hundreds of
+                      high-quality antiques never go out of style.
                     </p>
                   </div>
                 </div>
@@ -184,7 +183,7 @@ function Home() {
             <div className="row mb-0 mb-lg-3  g-4   ">
               <Slider {...settings}>
                 {prodcutsArray?.slice(-6).map((product, index) => (
-                  <div className="{`col-lg-4 col-md-6 col-12 `}" key={index}>
+                  <div className="col-lg-4 col-md-6 col-12" key={index}>
                     <ProductCard product={product} />
                   </div>
                 ))}
@@ -194,7 +193,7 @@ function Home() {
           <div className={`container d-block d-lg-none `}>
             <div className="row mb-0 mb-lg-3  g-4  ">
               {prodcutsArray?.slice(-6).map((product, index) => (
-                <div className="{`col-lg-4 col-md-6 col-12 `}" key={index}>
+                <div className="d-flex col-lg-4 col-md-6 col-12 " key={index}>
                   <ProductCard product={product} />
                 </div>
               ))}

@@ -10,24 +10,18 @@ function AboutUsPage() {
           <h1 className="ms-5 ms-lg-0">ABOUT BAZAAR !</h1>
         </div>
         <div className={styles.Middle}>
+          <div
+            className={`  d-flex flex-column justify-content-center align-items-center  ${styles.title}`}
+          >
+            <h3>About Us </h3>
+            <div className={styles.HR}></div>
+          </div>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-            vulputate libero et velit interdum, ac aliquet odio mattis. Class
-            aptent taciti sociosqu ad litora torquent per conubia nostra, per
-            inceptos himenaeos. Curabitur tempus urna at turpis condimentum
-            lobortis. Ut commodo efficitur neque. Ut diam quam, semper iaculis
-            condimentum ac, vestibulum eu nisl.Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Nunc vulputate libero et velit
-            interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad
-            litora torquent per conubia nostra, per inceptos himenaeos.
-            Curabitur tempus urna at turpis condimentum lobortis. Ut commodo
-            efficitur neque. Ut diam quam, semper iaculis condimentum ac,
-            vestibulum eu nisl.Lorem ipsum dolor sit amet, consectetur
-            adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet
-            odio mattis. Class aptent taciti sociosqu ad litora torquent per
-            conubia nostra, per inceptos himenaeos. Curabitur tempus urna at
-            turpis condimentum lobortis. Ut commodo efficitur neque. Ut diam
-            quam, semper iaculis condimentum ac, vestibulum eu nisl.
+            Whether you are dreaming of an aesthetic home that includes precious
+            antique items, or wanting your work office to be more vintage and
+            classy. Bazaar is an all-in-one place for antique lovers. Discover
+            thousands of high-quality valuable items with competitive prices to
+            complete the best shopping experience ever!
           </p>
         </div>
         <div className={styles.LastTitle}>
@@ -41,18 +35,12 @@ function AboutUsPage() {
             <div className="row justify-content-center justify-content-lg-between text-center text-md-start align-items-center">
               <div className="col-12 col-md-7">
                 <div className={styles.Last}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-                  vulputate libero et velit interdum, ac aliquet odio mattis.
-                  Class aptent taciti sociosqu ad litora torquent per conubia
-                  nostra, per inceptos himenaeos. Curabitur tempus urna at
-                  turpis condimentutum lobortis. Ut commodo efficitur neque. Ut
-                  diam quam, semper iaculis condimentum ac, vestibulum eu
-                  nisl.Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Nunc vulputate libero et velit interdum, ac aliquet odio
-                  mattis. Class aptent taciti sociosqu ad litora torquent per
-                  conubia nostra, per inceptos himenaeos. Curabitur tempus urna
-                  at turpis condimentum lobortis. Ut commodo efficitur neque. Ut
-                  diam quam, semper iaculis condimentum ac, vestibulum eu nisl.
+                  Our talented artists combine professionalism and attention to
+                  details, along with their passion in art and vintage items.
+                  Seeking to ensure the best quality antiques Our minds are
+                  always fresh and open to come up with new items We focus on
+                  diversity in all items to make sure that you find exactly what
+                  matches your taste
                 </div>
               </div>
               <div className="col-12 col-md-4">

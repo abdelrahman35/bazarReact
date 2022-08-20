@@ -1,0 +1,70 @@
+.HR {
+  border-radius: 15px;
+  content: "";
+  background-color: var(--color3);
+  width: 28%;
+  height: 5px;
+  z-index: -1;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  margin-top: 5px;
+}
+.nav-link.active {
+  color: var(--color3) !important;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: capitalize;
+  text-decoration: none;
+}
+.nav-link.active span {
+  background-color: var(--color1) !important;
+  color: var(--color3) !important;
+  pointer-events: none;
+  cursor: default;
+  text-decoration: none;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  font-size: 20px;
+  font-weight: 600;
+}
+.nav-link.disabled {
+  color: var(--color4) !important;
+  pointer-events: none;
+  cursor: default;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: capitalize;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.nav-link.disabled span {
+  background-color: var(--color3) !important;
+  color: var(--color6) !important;
+  pointer-events: none;
+  cursor: default;
+  text-decoration: none;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  font-size: 20px;
+  font-weight: 600;
+}
