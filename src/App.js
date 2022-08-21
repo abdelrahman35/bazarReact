@@ -55,6 +55,7 @@ import SelectPaymentMethod from "./pages/PlaceOrderPages/SelectPaymantMethod/Sel
 import ListUsers from "./pages/AdminPages/Users/ListUsers/ListUsers";
 import UserDetails from "./pages/AdminPages/Users/UserDetails/UserDetails";
 import UpdateAddress from "./pages/UserPages/UpdateExistingAddress/UpdateAddress";
+import DarkMode from "./components/DarkMode/DarkMode";
 
 function App() {
   return (
@@ -144,7 +145,9 @@ function App() {
           <Route path="/placeorder" index element={<PlaceOrder />} />
           <Route path="/success" index element={<Success />} />
           <Route path="/payment" index element={<Payment />} />
+          <Route path="/DarkMode" index element={<DarkMode />} />
         </Routes>
+        <DarkMode />
         <Footer />
         <NotificationContainer />
       </Router>

@@ -1,5 +1,6 @@
 .conten {
   height: 65vh;
+  background-color: var(--color12) !important;
 }
 .btnWarningg {
   font-family: var(--myFont) !important;
