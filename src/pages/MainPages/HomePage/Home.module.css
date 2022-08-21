@@ -240,6 +240,16 @@ div h1 {
     text-align: center;
   }
 }
+.sponserr {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 50px;
+  width: 75%;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+}
 section {
   background-color: var(--color12);
 }

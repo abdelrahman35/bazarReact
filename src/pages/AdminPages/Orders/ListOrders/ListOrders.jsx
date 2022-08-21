@@ -5,10 +5,18 @@ import Loading from "../../../../components/Loading/Loading";
 import ErrorMessage from "../../../../components/ErrorMessage/ErrorMessage";
 import { Link } from "react-router-dom";
 import styles from "./ListOrders.module.css";
+import MyPagination from "../../../../components/Pagination";
 function ListOrders() {
   const [pageNum, setPageNum] = useState(1);
 
   const dispatch = useDispatch();
+  const [currPage, setCurrPage] = useState(1);
+  const [tagList, setTagList] = useState([]);
+
+  const afterPageClicked = (page_number) => {
+    setCurrPage(page_number);
+  };
+
   const {
     loading: ordersLoading,
     error: ordersError,
@@ -18,27 +26,11 @@ function ListOrders() {
   useEffect(() => {
     console.log(orders);
 
-    dispatch(listAllOrders(pageNum));
-  }, [pageNum]);
+    dispatch(listAllOrders(currPage));
+  }, [currPage]);
 
-  const nextPage = () => {
-    let pageNumber;
-    pageNumber = pageNum;
-    if (pageNum < orders?.numberOfPages) {
-      pageNumber++;
-    }
-    setPageNum(pageNumber);
-  };
-  const prevPage = () => {
-    let pageNumber;
-    pageNumber = pageNum;
-    if (pageNum > 1) {
-      pageNumber--;
-    }
-    setPageNum(pageNumber);
-  };
   return (
-    <div className="container mt-5">
+    <div className="container mt-5 text-capitalize">
       {ordersLoading ? (
         <div
           className={`container d-flex justify-content-center align-items-center ${styles.conten}`}
@@ -48,13 +40,12 @@ function ListOrders() {
       ) : orders ? (
         <div className={`${styles.page}`}>
           <div className="row d-flex justify-content-evenly">
-            <table className="table table-striped ">
+            <table className="table table-hover text-capitalize ">
               <thead>
                 <tr>
                   <th scope="col">Number</th>
                   <th scope="col">id</th>
                   <th scope="col">user</th>
-                  <th scope="col">created at</th>
                   <th scope="col">total price</th>
                   <th scope="col">payment method</th>
                   <th scope="col">order status</th>
@@ -69,13 +60,12 @@ function ListOrders() {
                     <td>
                       {order?.user?.firstName + " " + order?.user?.lastName}
                     </td>
-                    <td>{order.createdAt?.substring(0, 10)}</td>
                     <td>{order.totalPrice}</td>
                     <td>{order.paymentMethod}</td>
                     <td>{order.status}</td>
                     <td>
                       <Link to={`/admin/order/${order._id}`}>
-                        <button className="btn btn-outline-success">
+                        <button className="btn btn-outline-success text-capitalize">
                           details
                         </button>
                       </Link>
@@ -84,46 +74,20 @@ function ListOrders() {
                 ))}
               </tbody>
             </table>
-            <nav aria-label="Page navigation example">
-              <ul className="pagination ">
-                <li className="page-item  ">
-                  <Link
-                    to="#"
-                    className="page-link text-dark bg-outline-dark"
-                    onClick={() => {
-                      prevPage();
-                    }}
-                  >
-                    Previous
-                  </Link>
-                </li>
-                <li className="page-item">
-                  <Link
-                    to="#"
-                    className="page-link text-dark bg-outline-dark "
-                    onClick={() => {
-                      prevPage();
-                    }}
-                  >
-                    {pageNum}
-                  </Link>
-                </li>
 
-                <li className="page-item">
-                  <Link
-                    className={`page-link text-dark bg-outline-dark ${
-                      pageNum === orders?.numberOfPages ? "disabled" : ""
-                    }`}
-                    to="#"
-                    onClick={() => {
-                      nextPage();
-                    }}
-                  >
-                    Next
-                  </Link>
-                </li>
+            <MyPagination
+              totPages={orders?.numberOfPages}
+              currentPage={currPage}
+              pageClicked={(ele) => {
+                afterPageClicked(ele);
+              }}
+            >
+              <ul>
+                {tagList.map((ele, ind) => (
+                  <li key={ele + ind}>{ele}</li>
+                ))}
               </ul>
-            </nav>
+            </MyPagination>
           </div>
         </div>
       ) : ordersError ? (

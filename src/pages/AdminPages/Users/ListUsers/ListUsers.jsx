@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "../../../../components/Loading/Loading";
 import { useNavigate } from "react-router";
+import styles from "./ListUsers.module.css";
 import { getAllUsers } from "../../../../store/actions/userActions";
 import MyPagination from "../../../../components/Pagination";
 import { Link } from "react-router-dom";
@@ -9,7 +10,7 @@ function ListUsers() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { error: userInfoError, userInfo } = useSelector(
-    (state) => state.userLogin
+    (state) => state.userLogin,
   );
   const { loading, error, users } = useSelector((state) => state.allUsers);
   console.log(users);
@@ -34,12 +35,16 @@ function ListUsers() {
   }, [userInfo, userInfoError, error]);
 
   return (
-    <div className="mt-5">
+    <div className="mt-5 text-capitalize">
       {loading ? (
-        <Loading />
+        <div
+          className={`container d-flex justify-content-center align-items-center ${styles.conten}`}
+        >
+          <Loading />
+        </div>
       ) : users ? (
         <div className="container-fluid">
-          <table className="table table-striped">
+          <table className="table table-hover">
             <thead>
               <tr>
                 <th>#</th>
@@ -47,23 +52,25 @@ function ListUsers() {
                 <th>email</th>
                 <th>admin</th>
                 <th>created at</th>
+                <th>details</th>
               </tr>
             </thead>
             <tbody>
               {usersArray?.map((user, index) => (
                 <tr key={user._id}>
                   <td>{index + 1}</td>
-                  <td>
-                    <Link
-                      to={`/admin/user/details/${user._id}`}
-                      className="text-dark text-decoration-none"
-                    >
-                      {user.firstName + " " + user.lastName}
-                    </Link>
-                  </td>
+                  <td>{user.firstName + " " + user.lastName}</td>
                   <td>{user.email}</td>
                   <td>{user.isAdmin ? "yes" : "no"}</td>
                   <td>{user.createdAt}</td>
+                  <td>
+                    <Link
+                      to={`/admin/user/details/${user._id}`}
+                      className={`text-decoration-none btn btn-outline-success ${styles.details} `}
+                    >
+                      details
+                    </Link>
+                  </td>
                 </tr>
               ))}
             </tbody>
