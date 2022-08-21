@@ -31,7 +31,6 @@
   -moz-transition: all 0.3s !important;
   -ms-transition: all 0.3s !important;
   -o-transition: all 0.3s !important;
-  cursor: pointer;
 }
 .btnWarningg:hover,
 .btnWarningg:active {

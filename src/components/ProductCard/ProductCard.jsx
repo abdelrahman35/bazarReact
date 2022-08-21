@@ -17,32 +17,8 @@ export const ProductCard = ({ product }) => {
   };
   return (
     <>
-      <div className="m-3 w-100">
+      <div className="m-3">
         <div className={`card ${styles.cardBody} p-4 mx-3`}>
-          {favourites?.map((item, index) =>
-            item.product._id !== product._id ? (
-              <button
-                key={index}
-                className={`text-start  ${styles.Btn}`}
-                onClick={() => {
-                  dispatch(addToFavourites(product._id));
-                }}
-              >
-                <i className={`fa-light fa-heart ${styles.colorFav}`}></i>
-              </button>
-            ) : (
-              <button
-                key={index}
-                className={`text-start  ${styles.Btn}`}
-                onClick={() => {
-                  dispatch(removeFromFavourites(product._id));
-                }}
-              >
-                <i className={`fa-solid fa-heart ${styles.colorFav}`}></i>
-              </button>
-            ),
-          )}
-
           <Link
             to={`/product-details/${product._id}`}
             className={`text-decoration-none ${styles.cardLinkReset}`}
@@ -60,7 +36,7 @@ export const ProductCard = ({ product }) => {
             <div className="card-body text-start p-0 ">
               <h5 className={`card-title ${styles.productName}`}>
                 {product.name.length >= 15
-                  ? `${product.name.substring(0, 15)}...`
+                  ? `${product.name.substring(0, 10)}...`
                   : product.name}
               </h5>
               <div className="card-text">
@@ -77,7 +53,7 @@ export const ProductCard = ({ product }) => {
                   addToCartHandler();
                   NotificationManager.success(
                     "Product Added Successfully",
-                    "Bazaar Shop",
+                    "Bazaar Shop"
                   );
                 }}
               >

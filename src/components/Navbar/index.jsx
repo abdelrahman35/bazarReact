@@ -6,6 +6,7 @@ import LoginPage from "../../pages/UserPages/LoginPage/LoginPage";
 import SignUpPage from "../../pages/UserPages/SignUpPage/SignUpPage";
 import Loading from "../Loading/Loading";
 import Thanks from "../../pages/MainPages/ThanksForm/Thanks";
+import SearchBar from "../SearchBar/SearchBar";
 function Navbar() {
   const [modal, setModal] = useState("login");
   const [genButton, setGenButtonStyle] = useState(styles.genButton);
@@ -74,15 +75,7 @@ function Navbar() {
                   </li>
                 </ul>
               </div>
-              <div className="col-12 col-md-4 mb-3 mb-md-0">
-                <form className="d-flex">
-                  <input
-                    className={`form-control ${styles.search} me-2 `}
-                    type="search"
-                    placeholder="SEARCH PRODUCT"
-                  />
-                </form>
-              </div>
+              <SearchBar />
               <div className="col-1 d-flex align-items-center justify-content-evenly fs-5 mb-3 mb-md-0 ps-4">
                 <Link
                   className={`  nav-link ${styles.navLink} d-flex`}

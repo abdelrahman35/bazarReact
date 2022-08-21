@@ -72,34 +72,6 @@ export const userChangePasswordReducer = (state = {}, action) => {
   }
 };
 
-export const addNewAddressReducer = (state = {}, action) => {
-  switch (action.type) {
-    case "ADD_NEW_ADDRESS_REQUEST":
-      return { loading: true };
-
-    case "ADD_NEW_ADDRESS_SUCCESS":
-      return {
-        loading: false,
-        address: action.payload,
-        statusCode: action.statusCode,
-      };
-    case "ADD_NEW_ADDRESS_FAIL":
-      return { loading: false, error: action.payload };
-    case "DELETE_ADDRESS_REQUEST":
-      return { loading: true };
-    case "DELETE_ADDRESS_SUCCESS":
-      return {
-        loading: false,
-        address: action.payload,
-        statusCode: action.statusCode,
-      };
-    case "DELETE_ADDRESS_FAIL":
-      return { loading: false, error: action.payload };
-    default:
-      return state;
-  }
-};
-
 export const getAllUsersReducer = (state = {}, action) => {
   switch (action.type) {
     case "GET_ALL_USERS_REQUEST":
@@ -136,6 +108,44 @@ export const updateUserInfoReducer = (state = {}, action) => {
         statusCode: action.statusCode,
       };
     case "UPDATE_USER_INFO_FAIL":
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const addressReducer = (state = {}, action) => {
+  switch (action.type) {
+    case "ADD_NEW_ADDRESS_REQUEST":
+      return { loading: true };
+
+    case "ADD_NEW_ADDRESS_SUCCESS":
+      return {
+        loading: false,
+        address: action.payload,
+        statusCode: action.statusCode,
+      };
+    case "ADD_NEW_ADDRESS_FAIL":
+      return { loading: false, error: action.payload };
+    case "DELETE_ADDRESS_REQUEST":
+      return { loading: true };
+    case "DELETE_ADDRESS_SUCCESS":
+      return {
+        loading: false,
+        address: action.payload,
+        statusCode: action.statusCode,
+      };
+    case "DELETE_ADDRESS_FAIL":
+      return { loading: false, error: action.payload };
+    case "UPDATE_ADDRESS_REQUEST":
+      return { loading: true };
+    case "UPDATE_ADDRESS_SUCCESS":
+      return {
+        loading: false,
+        address: action.payload,
+        statusCode: action.statusCode,
+      };
+    case "UPDATE_ADDRESS_FAIL":
       return { loading: false, error: action.payload };
     default:
       return state;

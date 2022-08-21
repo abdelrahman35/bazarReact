@@ -73,7 +73,11 @@ export const updateProductReducer = (state = {}, action) => {
     case "UPDATE_PRODUCT_REQUEST":
       return { loading: true };
     case "UPDATE_PRODUCT_SUCCESS":
-      return { loading: false, productIsUpdated: action.payload };
+      return {
+        loading: false,
+        productIsUpdated: action.payload,
+        statusCode: action.statusCode,
+      };
     case "UPDATE_PRODUCT_FAIL":
       return { loading: false, error: action.payload };
     default:

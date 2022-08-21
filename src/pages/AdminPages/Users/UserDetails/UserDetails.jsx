@@ -20,7 +20,7 @@ function UserDetails() {
   };
   useEffect(() => {
     dispatch(getUserDetails(userId, currPage));
-  }, [userId]);
+  }, [userId, currPage]);
 
   return (
     <>

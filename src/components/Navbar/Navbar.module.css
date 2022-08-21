@@ -35,36 +35,6 @@
   box-shadow: none;
 }
 
-.search {
-  border-radius: 50px !important;
-  border: 1px solid transparent;
-  text-align: center;
-  -webkit-border-radius: 50px !important;
-  -moz-border-radius: 50px !important;
-  -ms-border-radius: 50px !important;
-  -o-border-radius: 50px !important;
-}
-
-.search:focus {
-  border-radius: 50px !important;
-  color: var(--color3) !important;
-  background-color: var(--color6) !important;
-  border-color: var(--color1) !important;
-  text-align: center !important;
-  outline: 0 !important;
-  box-shadow: 0 0 0 2.5px var(--color8) !important;
-  -webkit-border-radius: 50px !important;
-  -moz-border-radius: 50px !important;
-  -ms-border-radius: 50px !important;
-  -o-border-radius: 50px !important;
-}
-.search::placeholder {
-  color: var(--color5);
-  opacity: 1;
-  font-size: 16px;
-  font-weight: 300;
-}
-
 .login {
   border: 0;
   font-size: 24px;

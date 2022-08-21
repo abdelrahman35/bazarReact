@@ -56,22 +56,32 @@ function CreateProduct() {
     (state) => state.allCategories
   );
   const categoriesArray = allCategories?.categories;
-  const { product } = useSelector((state) => state.createdProduct);
+  const { product, statusCode } = useSelector((state) => state.updateProduct);
   // products state from store
-  const { loading: productsLoading, products } = useSelector(
-    (state) => state.allProducts
-  );
+  const {
+    loading: productsLoading,
+    error,
+    products,
+  } = useSelector((state) => state.allProducts);
   const prodcutsArray = products?.products;
   const productToEdit = prodcutsArray?.find(
     (product) => product._id === productId
   );
-  console.log(productToEdit);
+  const redirectArrayAfterSuccessUpdate = localStorage.getItem("PR")
+    ? JSON.parse(localStorage.getItem("PR"))
+    : [];
   useEffect(() => {
     dispatch(getAllCategories());
-    if (product?.data?.product) {
+    if (
+      redirectArrayAfterSuccessUpdate[0] &&
+      redirectArrayAfterSuccessUpdate[1] === 200
+    ) {
+      localStorage.removeItem("PR");
       navigate("/admin/products", { replace: true });
+    } else if (error) {
+      navigate("*", { replace: true, state: error });
     }
-  }, [dispatch, product, navigate]);
+  }, [product, statusCode, error]);
 
   // function to send product details to create product action
   // check if product is returned in response
@@ -218,6 +228,8 @@ function CreateProduct() {
         </section>
       ) : userError ? (
         <ErrorMessage />
+      ) : productsLoading ? (
+        <Loading />
       ) : null}
     </div>
   );

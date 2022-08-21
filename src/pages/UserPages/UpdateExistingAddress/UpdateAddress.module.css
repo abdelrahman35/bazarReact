@@ -1,0 +1,132 @@
+.formHeading i {
+  background-color: var(--color1);
+  color: var(--color6);
+  padding: 15px;
+  width: 57px;
+  height: 57px;
+  border-radius: 53px;
+  -webkit-border-radius: 53px;
+  -moz-border-radius: 53px;
+  -ms-border-radius: 53px;
+  -o-border-radius: 53px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+}
+.formHeading h2 {
+  font-family: var(--myFont) !important;
+  font-weight: 600;
+  font-size: 24px;
+  margin: 0;
+}
+.formHeading p {
+  font-family: var(--myFont) !important;
+  color: var(--color4);
+  font-weight: 600;
+  font-size: 20px;
+  margin: 0;
+}
+.formControl {
+  display: block !important;
+  width: 100% !important;
+  padding: 0 !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  line-height: 1.5 !important;
+  color: var(--color3) !important;
+  background-clip: padding-box !important;
+  border-bottom: 1px solid #ced4da !important;
+  border-top: transparent !important;
+  border-left: transparent !important;
+  border-right: transparent !important;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+  appearance: none !important;
+  border-radius: 0 !important;
+  transition: all 0.3s !important ;
+  -webkit-transition: all 0.3s !important ;
+  -moz-transition: all 0.3s !important ;
+  -ms-transition: all 0.3s !important ;
+  -o-transition: all 0.3s !important ;
+  -webkit-border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  -ms-border-radius: 0 !important;
+  -o-border-radius: 0 !important;
+}
+
+.formControl:focus {
+  box-shadow: none !important;
+}
+
+.formControl::placeholder {
+  color: var(--color4) !important;
+}
+
+.allInput i {
+  position: absolute;
+  top: 15px;
+  right: 5px;
+  font-size: 20px;
+  color: var(--color4);
+}
+
+.btnWarningg {
+  font-family: var(--myFont) !important;
+  font-size: 18px !important;
+  color: var(--color6) !important;
+  background-color: var(--color1) !important;
+  border: 2px solid var(--color1) !important;
+  height: 45px !important;
+  border-radius: 5px !important;
+  width: 200px;
+  margin: 20px;
+  -webkit-border-radius: 5px !important;
+  -moz-border-radius: 5px !important;
+  -ms-border-radius: 5px !important;
+  -o-border-radius: 5px !important;
+  transition: all 0.3s !important;
+  -webkit-transition: all 0.3s !important;
+  -moz-transition: all 0.3s !important;
+  -ms-transition: all 0.3s !important;
+  -o-transition: all 0.3s !important;
+  cursor: pointer;
+}
+.btnWarningg:hover,
+.btnWarningg:active {
+  cursor: pointer;
+  color: var(--color7) !important;
+  font-size: 19px !important;
+  background-color: transparent !important;
+  border: 2px solid var(--color7) !important;
+  box-shadow: none !important;
+  height: 45px !important;
+  border-radius: 5px !important;
+  width: 210px;
+  -webkit-border-radius: 5px !important;
+  -moz-border-radius: 5px !important;
+  -ms-border-radius: 5px !important;
+  -o-border-radius: 5px !important;
+}
+.forgetPassword {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+.forgetPassword small {
+  font-weight: 700;
+  color: var(--color1);
+}
+
+.error {
+  color: var(--color1);
+
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.smallText {
+  font-style: italic;
+  color: var(--color1);
+}

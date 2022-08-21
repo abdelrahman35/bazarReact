@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { filterProducts } from "../../../store/actions/productActions";
@@ -8,20 +8,26 @@ import styles from "./CategoryDetails.module.css";
 import SortComponentOnCategory from "../../../components/SortComponentOnCategory/SortComponentOnCategory";
 import Filter from "../../../components/FilterComponent/Filter";
 import Category from "../../../components/Category/Category";
+import MyPagination from "../../../components/Pagination";
 function CategoryDetails() {
   const { categories } = useSelector((state) => state.allCategories);
   const categoriesArray = categories?.categories;
   const { loading, error, filteredProducts } = useSelector(
-    (state) => state.filteredProducts,
+    (state) => state.filteredProducts
   );
-
-  const productsArray = filteredProducts?.products;
+  console.log(filteredProducts?.data?.numberOfPages);
+  const productsArray = filteredProducts?.data?.products;
   const dispatch = useDispatch();
   const { categoryId } = useParams();
+  const [currPage, setCurrPage] = useState(1);
+  const [tagList, setTagList] = useState([]);
 
+  const afterPageClicked = (page_number) => {
+    setCurrPage(page_number);
+  };
   useEffect(() => {
-    dispatch(filterProducts(`categoryId=${categoryId}`));
-  }, [categoryId]);
+    dispatch(filterProducts(currPage, `categoryId=${categoryId}`));
+  }, [categoryId, currPage]);
 
   return (
     <>
@@ -74,9 +80,7 @@ function CategoryDetails() {
                 >
                   <h2 className="text-center text-capitalize w-20">
                     {categoriesArray?.map((category) =>
-                      category._id === categoryId
-                        ? category.categoryName
-                        : null,
+                      category._id === categoryId ? category.categoryName : null
                     )}
                   </h2>
                   <SortComponentOnCategory />
@@ -93,6 +97,19 @@ function CategoryDetails() {
                 </div>
               </div>
             </div>
+            <MyPagination
+              totPages={filteredProducts?.data?.numberOfPages}
+              currentPage={currPage}
+              pageClicked={(ele) => {
+                afterPageClicked(ele);
+              }}
+            >
+              <ul>
+                {tagList.map((ele, ind) => (
+                  <li key={ele + ind}>{ele}</li>
+                ))}
+              </ul>
+            </MyPagination>
           </div>
         )}
       </div>

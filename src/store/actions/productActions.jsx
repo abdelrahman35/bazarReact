@@ -127,11 +127,19 @@ export const getProductById = (id) => async (dispatch) => {
   }
 };
 
-export const filterProducts = (filterQuery) => async (dispatch) => {
+export const filterProducts = (pageNum, filterQuery) => async (dispatch) => {
   try {
     dispatch({ type: "FILTER_PRODUCTS_REQUEST" });
-
-    const { data } = await axiosInstance.get(`/product/filter?${filterQuery}`);
+    let data;
+    if (filterQuery) {
+      console.log("test");
+      data = await axiosInstance.get(
+        `/product/filter?page=${pageNum}&${filterQuery}`
+      );
+    } else {
+      console.log("ss");
+      data = await axiosInstance.get(`/product/?page=${pageNum}`);
+    }
 
     dispatch({
       type: "FILTER_PRODUCTS_SUCCESS",
@@ -150,7 +158,7 @@ export const updateProduct =
     try {
       dispatch({ type: "UPDATE_PRODUCT_REQUEST" });
       const token = getState().userLogin.userInfo.token;
-      const { data } = axiosInstance({
+      const { data, status } = await axiosInstance({
         url: "/product",
         method: "put",
         data: {
@@ -174,7 +182,9 @@ export const updateProduct =
       dispatch({
         type: "UPDATE_PRODUCT_SUCCESS",
         payload: data,
+        statusCode: status,
       });
+      localStorage.setItem("PR", JSON.stringify([data, status]));
     } catch (error) {
       dispatch({
         type: "UPDATE_PRODUCT_FAIL",
