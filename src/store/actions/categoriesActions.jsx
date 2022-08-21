@@ -29,11 +29,12 @@ export const createCategory = (categoryName) => async (dispatch, getState) => {
       "Access-Control-Allow-Origin": "*",
       authorization: `Bearer ${token}`,
     };
-    const { data } = await axiosInstance.post(
+    const { data, status } = await axiosInstance.post(
       "/category",
       { payload: { categoryName } },
       { headers }
     );
+    localStorage.setItem("CA", JSON.stringify([data, status]));
     dispatch({
       type: "CREATE_NEW_CATEGORY_SUCCESS",
       payload: data,

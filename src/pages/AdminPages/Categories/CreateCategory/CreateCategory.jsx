@@ -25,8 +25,16 @@ function CreateCategory() {
     e.preventDefault();
     dispatch(createCategory(newCategory));
   };
+  const redirectArrayAfterSuccessUpdate = localStorage.getItem("CA")
+    ? JSON.parse(localStorage.getItem("CA"))
+    : [];
+  //   CA => category
   useEffect(() => {
-    if (category?.message === "category added") {
+    if (
+      redirectArrayAfterSuccessUpdate[0] &&
+      redirectArrayAfterSuccessUpdate[1] === 201
+    ) {
+      localStorage.removeItem("CA");
       navigate("/admin/categories", { replace: true });
     }
   }, [category, navigate]);
