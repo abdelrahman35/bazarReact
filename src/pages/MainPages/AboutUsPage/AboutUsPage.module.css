@@ -20,14 +20,12 @@
   margin: auto;
   margin-top: 10vw;
   width: 75vw;
-  color: var(--color13);
   text-align: center;
 
   line-height: 2;
 }
 .LastTitle {
   margin-top: 70px;
-  color: var(--color13);
 }
 
 .LastTitle h3 {
@@ -55,5 +53,4 @@
 }
 .Last {
   text-align: center;
-  color: var(--color13);
 }
