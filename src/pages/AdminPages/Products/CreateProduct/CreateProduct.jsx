@@ -49,7 +49,7 @@ function CreateProduct() {
   const [category, setCategory] = useState("");
   // array of categories from store
   const { categories: allCategories } = useSelector(
-    (state) => state.allCategories
+    (state) => state.allCategories,
   );
   const categoriesArray = allCategories?.categories;
   const { product } = useSelector((state) => state.createdProduct);
@@ -79,9 +79,13 @@ function CreateProduct() {
   return (
     <div>
       {userLoading ? (
-        <Loading />
+        <div
+          className={`container d-flex justify-content-center align-items-center ${styles.conten}`}
+        >
+          <Loading />
+        </div>
       ) : userInfo && userInfo?.isAdmin ? (
-        <section className="container w-100 m-auto">
+        <section className="container w-100 m-auto mb-5">
           <Form className=" m-auto mt-5" onSubmit={formik.handleSubmit}>
             <div
               className={`d-flex flex-column justify-content-center align-items-center mb-5 ${styles.formHeading}`}
@@ -92,7 +96,7 @@ function CreateProduct() {
               </h2>
             </div>
             <Form.Group className="mb-3" controlId="formBasicName">
-              <Form.Label>Enter Product Name</Form.Label>
+              <Form.Label className="m-0">Enter Product Name</Form.Label>
 
               <Form.Control
                 className={`input ${styles.formControl}`}

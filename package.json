@@ -41,6 +41,7 @@
     "strip": "^3.0.0",
     "stripe": "^10.0.0",
     "styled-components": "^5.3.5",
+    "sweetalert2": "^11.4.29",
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11"
   },

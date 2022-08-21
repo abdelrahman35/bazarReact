@@ -1,3 +1,6 @@
+.conten {
+  height: 65vh;
+}
 .formHeading i {
   color: var(--color1);
   border-radius: 50%;
@@ -32,7 +35,6 @@
   line-height: 1.5 !important;
   color: var(--color3) !important;
   background-clip: padding-box !important;
-  border-bottom: 1px solid #ced4da !important;
   border-top: transparent !important;
   border-left: transparent !important;
   border-right: transparent !important;
@@ -55,17 +57,6 @@
   box-shadow: none !important;
 }
 
-/* .formControl:focus {
-    padding-top: 0px !important;
-    padding-bottom: 13px !important;
-    box-shadow: none !important;
-  }
-  .formControl:focus-within {
-    padding-top: 0px !important;
-    padding-bottom: 13px !important;
-    box-shadow: none !important;
-    top: 40px;
-  } */
 .formControl::placeholder {
   color: var(--color4) !important;
 }
@@ -84,9 +75,10 @@
   color: var(--color6) !important;
   background-color: var(--color1) !important;
   border: 2px solid var(--color1) !important;
-  height: 35px !important;
+  height: 50px !important;
   border-radius: 5px !important;
-  width: 200px;
+  margin-top: 20px;
+  width: 30%;
   -webkit-border-radius: 5px !important;
   -moz-border-radius: 5px !important;
   -ms-border-radius: 5px !important;
@@ -106,9 +98,7 @@
   background-color: transparent !important;
   border: 2px solid var(--color7) !important;
   box-shadow: none !important;
-  height: 35px !important;
   border-radius: 5px !important;
-  width: 210px;
   -webkit-border-radius: 5px !important;
   -moz-border-radius: 5px !important;
   -ms-border-radius: 5px !important;

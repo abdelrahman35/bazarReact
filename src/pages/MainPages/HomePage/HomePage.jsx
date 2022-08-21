@@ -13,7 +13,6 @@ import { NotificationContainer } from "react-notifications";
 import Slider from "react-slick";
 import AaibImg from "../../../assets/images/aaib.png";
 import ItiImg from "../../../assets/images/iti.png";
-import MotImg from "../../../assets/images/mot.png";
 
 function Home() {
   const dispatch = useDispatch();
@@ -48,11 +47,6 @@ function Home() {
       id: 2,
       name: "Information Technology Institute",
       img: ItiImg,
-    },
-    {
-      id: 3,
-      name: "Ministry of Tourism and Antiquities",
-      img: MotImg,
     },
   ];
 
@@ -202,12 +196,12 @@ function Home() {
         </div>
 
         <div className={` text-center  ${styles.Recently} mt-5 mb-5`}>
-          <div
-            className={`  d-flex flex-column justify-content-center align-items-center   ${styles.title}`}
-          >
-            <h3 className="text-capitalize">sponsored by</h3>
-          </div>
-          <div className={`container `}>
+          <div className={`container ${styles.sponserr}`}>
+            <div
+              className={`  d-flex flex-column justify-content-center align-items-center   ${styles.title}`}
+            >
+              <h3 className="text-capitalize">sponsored by</h3>
+            </div>
             <div className="row mb-0 mb-lg-3  g-4  ">
               <Slider {...settings2}>
                 {sponsers.map((sponser, index) => (

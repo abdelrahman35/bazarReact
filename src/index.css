@@ -28,6 +28,7 @@ h6,
 p,
 sup,
 strong,
+table,
 div,
 select,
 option {
@@ -339,4 +340,16 @@ option {
 .slick-dots li button:before,
 .slick-dots li.slick-active button:before {
   color: var(--color3) !important;
+}
+.swal2-actions {
+  display: flex;
+  z-index: 1;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin: 1.25em auto 0;
+  padding: 0;
+  width: 51% !important;
+  justify-content: space-between !important;
 }

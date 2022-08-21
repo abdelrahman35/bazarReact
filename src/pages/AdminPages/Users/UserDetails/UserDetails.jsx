@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import Loading from "../../../../components/Loading/Loading";
 import MyPagination from "../../../../components/Pagination";
 import { getUserDetails } from "../../../../store/actions/userActions";
+import styles from "./UserDetails.module.css";
 function UserDetails() {
   const dispatch = useDispatch();
   const { userId } = useParams();
@@ -25,10 +26,14 @@ function UserDetails() {
   return (
     <>
       {loading ? (
-        <Loading />
+        <div
+          className={`container d-flex justify-content-center align-items-center ${styles.conten}`}
+        >
+          <Loading />
+        </div>
       ) : user ? (
         <div className="container-fluid">
-          <div className="row">
+          <div className="row  w-90 m-auto">
             <div className="card">
               <div className="card-header">
                 <h3 className="row m-2">user info</h3>
@@ -50,7 +55,7 @@ function UserDetails() {
               </div>
             </div>
           </div>
-          <div className="row">
+          <div className="row w-95 m-auto text-center">
             <table className="table table-striped">
               <thead>
                 <tr>

@@ -21,9 +21,13 @@ function OrderDetailsForAdmin() {
   return (
     <>
       {orderIsLoading ? (
-        <Loading />
+        <div
+          className={`container d-flex justify-content-center align-items-center ${styles.conten}`}
+        >
+          <Loading />
+        </div>
       ) : order ? (
-        <div className="container mt-2">
+        <div className="container mt-2 text-capitalize">
           <div className="row">
             <h4>Order Details</h4>
             <p>ordered at : {orderObj?.createdAt.substring(0, 10)} </p>
