@@ -4,6 +4,9 @@
   background-position: center center;
   background-size: 100% 100%;
   height: 90vh;
+  background-color: var(--color12);
+}
+.container {
 }
 .banner img {
   width: 110%;
@@ -30,6 +33,7 @@
 .deals h3 {
   font-weight: 600;
   font-size: 35px;
+  color: var(--color13);
 }
 .deals h4 {
   font-weight: 600;
@@ -70,6 +74,7 @@
 .Recently h3 {
   font-weight: 600;
   font-size: 35px;
+  color: var(--color13);
 }
 .Recently .HR {
   border-radius: 15px;
@@ -198,10 +203,14 @@
   height: 220px !important;
   text-align: center;
 }
+div h1 {
+  color: var(--color13);
+}
 .sponser {
   width: 100% !important;
   height: 200px !important;
   object-fit: scale-down;
+  color: var(--color13);
 }
 
 @media (min-width: 200px) and (max-width: 1251px) {
@@ -230,4 +239,9 @@
     display: flex;
     text-align: center;
   }
+}
+section {
+  background-color: var(--color12);
+}
+h1 {
 }
