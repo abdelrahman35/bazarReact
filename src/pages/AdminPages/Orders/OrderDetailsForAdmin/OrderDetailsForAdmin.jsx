@@ -16,8 +16,7 @@ function OrderDetailsForAdmin() {
   const orderObj = order?.order;
   useEffect(() => {
     dispatch(orderDetailsForAdmin(id));
-  }, []);
-  console.log(order);
+  }, [id]);
   return (
     <>
       {orderIsLoading ? (

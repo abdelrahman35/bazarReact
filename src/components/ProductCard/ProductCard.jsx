@@ -10,11 +10,17 @@ import {
 } from "../../store/actions/cartAction";
 import Rateing from "../Rateing/Rateing";
 export const ProductCard = ({ product }) => {
-  const { favourites } = useSelector((state) => state.favouritesProducts);
+  const { cartItems } = useSelector((state) => state.cart);
+
   const dispatch = useDispatch();
   const addToCartHandler = () => {
     dispatch(addToCart(product._id, 1));
   };
+  const isExceeded = cartItems?.map((item) =>
+    item.quantity === product.quantity ? [true, [item]] : [false, [item]]
+  );
+
+  const excedArr = isExceeded?.length > 0 ? isExceeded[0][1] : [];
   return (
     <>
       <div className="m-3">
@@ -47,18 +53,86 @@ export const ProductCard = ({ product }) => {
               </div>
             </div>
             <div className="d-flex justify-content-end">
-              <button
-                className={`d-flex align-items-end  ${styles.btnWarningg}`}
-                onClick={() => {
-                  addToCartHandler();
-                  NotificationManager.success(
-                    "Product Added Successfully",
-                    "Bazaar Shop"
-                  );
-                }}
-              >
-                <i className="fa-solid fa-cart-circle-arrow-up"></i>
-              </button>
+              {/* {cartItems?.map((item) =>
+                item.quantity === product?.quantity ? (
+                  <button
+                    className={`d-flex align-items-end  ${styles.outOfStockBtn}`}
+                    disabled={true}
+                    onClick={() => {
+                      addToCartHandler();
+                      NotificationManager.success(
+                        "Product Added Successfully",
+                        "Bazaar Shop"
+                      );
+                    }}
+                  >
+                    {console.log(item.quantity)}{" "}
+                    <i className="fa-solid fa-cart-circle-exclamation"></i>{" "}
+                  </button>
+                ) : (
+                  <button
+                    className={`d-flex align-items-end  ${styles.btnWarningg}`}
+                    disabled={product?.quantity > 0 ? false : true}
+                    onClick={() => {
+                      addToCartHandler();
+                      NotificationManager.success(
+                        "Product Added Successfully",
+                        "Bazaar Shop"
+                      );
+                    }}
+                  >
+                    <i className="fa-solid fa-cart-circle-arrow-up"></i>
+                  </button>
+                )
+              )} */}
+              {isExceeded?.length > 0 ? (
+                excedArr?.map((x) =>
+                  (x.productId === product._id && isExceeded[0][0] === true) ||
+                  product.quantity === 0 ? (
+                    <button
+                      className={`d-flex align-items-end  ${styles.outOfStockBtn}`}
+                      disabled={true}
+                      onClick={() => {
+                        addToCartHandler();
+                        NotificationManager.success(
+                          "Product Added Successfully",
+                          "Bazaar Shop"
+                        );
+                      }}
+                    >
+                      <i className="fa-solid fa-cart-circle-exclamation"></i>{" "}
+                    </button>
+                  ) : (
+                    <button
+                      className={`d-flex align-items-end  ${styles.btnWarningg}`}
+                      disabled={product?.quantity > 0 ? false : true}
+                      onClick={() => {
+                        addToCartHandler();
+                        NotificationManager.success(
+                          "Product Added Successfully",
+                          "Bazaar Shop"
+                        );
+                      }}
+                    >
+                      <i className="fa-solid fa-cart-circle-arrow-up"></i>
+                    </button>
+                  )
+                )
+              ) : (
+                <button
+                  className={`d-flex align-items-end  ${styles.btnWarningg}`}
+                  disabled={product?.quantity > 0 ? false : true}
+                  onClick={() => {
+                    addToCartHandler();
+                    NotificationManager.success(
+                      "Product Added Successfully",
+                      "Bazaar Shop"
+                    );
+                  }}
+                >
+                  <i className="fa-solid fa-cart-circle-arrow-up"></i>
+                </button>
+              )}
             </div>
           </div>
         </div>

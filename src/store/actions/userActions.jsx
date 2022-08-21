@@ -24,7 +24,6 @@ export const login = (email, password) => async (dispatch) => {
     localStorage.setItem("address", JSON.stringify(data?.address));
     localStorage.setItem("wishlist", JSON.stringify(data?.wishlist));
   } catch (error) {
-    console.log(error);
     dispatch({
       type: "USER_LOGIN_FAIL",
       payload: error.response ? error.response.status : error,
@@ -67,7 +66,6 @@ export const register =
       });
       localStorage.setItem("userInfo", JSON.stringify(data));
     } catch (error) {
-      console.log(error);
       dispatch({
         type: "USER_REGISTER_FAIL",
         payload: error.response ? error.response.status : error,
@@ -191,14 +189,11 @@ export const getAllUsers = (pageNum) => async (dispatch, getState) => {
     const { data } = await axiosInstance.get(`/user?page=${pageNum}`, {
       headers,
     });
-    console.log(data);
     dispatch({
       type: "GET_ALL_USERS_SUCCESS",
       payload: data,
     });
   } catch (error) {
-    console.log(error);
-
     dispatch({
       type: "GET_ALL_USERS_FAIL",
       payload: error.response ? error.response.status : error,
@@ -334,8 +329,6 @@ export const deleteAddress = (addressId) => async (dispatch, getState) => {
 
 export const updateAddress =
   (addressId, newAddress) => async (dispatch, getState) => {
-    console.log(addressId);
-    console.log(newAddress);
     try {
       dispatch({ type: "UPDATE_ADDRESS_REQUEST" });
       const token = getState().userLogin.userInfo.token;

@@ -6,8 +6,6 @@ import Loading from "../../../../components/Loading/Loading";
 import ErrorMessage from "../../../../components/ErrorMessage/ErrorMessage";
 import styles from "./ListCategories.module.css";
 import { useNavigate } from "react-router-dom";
-// import Swal from "sweetalert2/dist/sweetalert2.js";
-// import "sweetalert2/src/sweetalert2.scss";
 import Swal from "sweetalert2";
 
 import {
@@ -19,7 +17,7 @@ function ListCateogries() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { error: userError, userInfo } = useSelector(
-    (state) => state.userLogin,
+    (state) => state.userLogin
   );
 
   const {
@@ -73,7 +71,7 @@ function ListCateogries() {
             "Deleted!",
             "Your file has been deleted.",
             "success",
-            dispatch(deleteCategory(categoryId)),
+            dispatch(deleteCategory(categoryId))
           );
         } else if (
           /* Read more about handling dismissals below */
@@ -82,7 +80,7 @@ function ListCateogries() {
           swalWithBootstrapButtons.fire(
             "Cancelled",
             "Your imaginary file is safe :)",
-            "error",
+            "error"
           );
         }
       });
@@ -151,7 +149,7 @@ function ListCateogries() {
                         onClick={() => {
                           handleDeleteCategory(
                             category._id,
-                            category.categoryName,
+                            category.categoryName
                           );
                         }}
                       >
@@ -164,7 +162,7 @@ function ListCateogries() {
                         onClick={() => {
                           handleUpdateCategory(
                             category._id,
-                            category.categoryName,
+                            category.categoryName
                           );
                         }}
                       >

@@ -23,8 +23,6 @@ function UpdateAddress() {
   const oldAddress = addressArray?.filter(
     (address) => address._id === Number(addressId)
   );
-  console.log(oldAddress[0]);
-  const [city, setCity] = useState();
   const [newAddress, setNewAddress] = useState({});
   const handleSubmit = (e) => {
     e.preventDefault();

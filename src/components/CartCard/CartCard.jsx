@@ -9,12 +9,12 @@ const CartCard = ({ productFromCart }) => {
   };
   const { stock } = useSelector((state) => state.cart);
   const productInStock = stock.filter(
-    (product) => product.productId === productFromCart.productId,
+    (product) => product.productId === productFromCart.productId
   );
 
   const quantityArray = Array.from(
     { length: productInStock[0].stock },
-    (_, index) => index + 1,
+    (_, index) => index + 1
   );
 
   return (
@@ -68,32 +68,23 @@ const CartCard = ({ productFromCart }) => {
             aria-label="Default select example"
             value={Number(productFromCart?.quantity)}
             onChange={(e) => {
-              console.log(e.target.value);
-              console.log(productFromCart?.quantity);
               if (Number(e.target.value < Number(productFromCart?.quantity))) {
-                console.log(
-                  -(Number(productFromCart?.quantity) - Number(e.target.value)),
-                );
                 dispatch(
                   addToCart(
                     productFromCart?.productId,
                     -(
                       Number(productFromCart?.quantity) - Number(e.target.value)
-                    ),
-                  ),
+                    )
+                  )
                 );
               } else if (
                 Number(e.target.value > Number(productFromCart?.quantity))
               ) {
-                console.log(
-                  Number(e.target.value) - Number(productFromCart?.quantity),
-                );
-
                 dispatch(
                   addToCart(
                     productFromCart?.productId,
-                    Number(e.target.value) - Number(productFromCart?.quantity),
-                  ),
+                    Number(e.target.value) - Number(productFromCart?.quantity)
+                  )
                 );
               }
             }}

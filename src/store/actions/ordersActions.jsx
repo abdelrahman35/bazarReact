@@ -127,7 +127,10 @@ export const createOrder =
         payload: data,
         statusCode: status,
       });
+      localStorage.setItem("ORS", JSON.stringify([data, status]));
     } catch (error) {
+      localStorage.setItem("EROFORP", JSON.stringify(error));
+      // EROFORP => error of order place
       dispatch({
         type: "CREATE_ORDER_FAIL",
         payload: error.response ? error.response.status : error,

@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { deleteAddress } from "../../store/actions/userActions";
 import styles from "./AddressItem.module.css";
 function AddressItem({ addressToRender, index }) {
-  console.log(addressToRender._id);
   const dispatch = useDispatch();
   return (
     <>

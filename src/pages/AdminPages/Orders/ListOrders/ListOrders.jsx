@@ -24,8 +24,6 @@ function ListOrders() {
   } = useSelector((state) => state.allOrders);
   const ordersArray = orders?.orders;
   useEffect(() => {
-    console.log(orders);
-
     dispatch(listAllOrders(currPage));
   }, [currPage]);
 

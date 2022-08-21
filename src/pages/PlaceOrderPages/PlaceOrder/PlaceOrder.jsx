@@ -4,19 +4,29 @@ import CheckoutBar from "../../../components/CheckoutBar/CheckoutBar";
 import { createOrder } from "../../../store/actions/ordersActions";
 import styles from "./PlaceOrder.module.css";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+
 function PlaceOrder() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { error: userError, userInfo } = useSelector(
-    (state) => state.userLogin,
+    (state) => state.userLogin
   );
   const { cartItems, shippingAddress, paymentMethod } = useSelector(
-    (state) => state.cart,
+    (state) => state.cart
   );
-  const { isPlaced, statusCode } = useSelector((state) => state.orderIsPlaced);
+  const {
+    isPlaced,
+    statusCode,
+    error: placeError,
+  } = useSelector((state) => state.orderIsPlaced);
   const submitHandeler = () => {
     dispatch(createOrder(cartItems, shippingAddress, paymentMethod));
   };
+  const redirectArrayAfterSuccessUpdate = localStorage.getItem("ORS")
+    ? JSON.parse(localStorage.getItem("ORS"))
+    : [];
+  //   US => update success
   useEffect(() => {
     if (!userInfo) {
       navigate("*", { replace: true, state: userError });
@@ -27,7 +37,37 @@ function PlaceOrder() {
         state: [isPlaced.clientSecret, isPlaced.order._id],
       });
     }
-  }, [userInfo, isPlaced, statusCode, userError, navigate]);
+    if (
+      redirectArrayAfterSuccessUpdate[0] &&
+      redirectArrayAfterSuccessUpdate[1] === 201 &&
+      !isPlaced?.clientSecret
+    ) {
+      localStorage.removeItem("ORS");
+      dispatch({ type: "CLEAR_CART" });
+      navigate("/success", { replace: true });
+    }
+    if (JSON.parse(localStorage.getItem("EROFORP"))) {
+      Swal.fire({
+        title: "order is not palced",
+        text: "one of selected product is out of stock",
+        icon: "warning",
+        confirmButtonColor: "#3085d6",
+        confirmButtonText: "back to products page ",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          localStorage.removeItem("EROFORP");
+          navigate("/products", { replace: true });
+          dispatch({ type: "CLEAR_CART" });
+        }
+      });
+    }
+  }, [userInfo, isPlaced, statusCode, userError, navigate, placeError]);
+  // useEffect(() => {
+  //   if (!placeError) {
+  //     dispatch({ type: "CLEAR_CART" });
+  //     navigate("/success", { replace: true });
+  //   }
+  // }, [placeError]);
 
   return (
     <section className={styles.section}>
@@ -107,7 +147,7 @@ function PlaceOrder() {
                         {cartItems?.reduce(
                           (contedPrice, product) =>
                             contedPrice + product.price * product.quantity,
-                          0,
+                          0
                         )}
                       </p>
                     </div>
@@ -128,8 +168,6 @@ function PlaceOrder() {
                         className={`${styles.btnWarningg}`}
                         onClick={() => {
                           submitHandeler();
-                          dispatch({ type: "CLEAR_CART" });
-                          navigate("/success", { replace: true });
                         }}
                       >
                         place order
