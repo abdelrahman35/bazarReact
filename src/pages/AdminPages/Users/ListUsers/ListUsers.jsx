@@ -3,7 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import Loading from "../../../../components/Loading/Loading";
 import { useNavigate } from "react-router";
 import styles from "./ListUsers.module.css";
-import { getAllUsers } from "../../../../store/actions/userActions";
+import {
+  getAllUsers,
+  makeUserAdmin,
+} from "../../../../store/actions/userActions";
 import MyPagination from "../../../../components/Pagination";
 import { Link } from "react-router-dom";
 function ListUsers() {
@@ -21,17 +24,28 @@ function ListUsers() {
   const afterPageClicked = (page_number) => {
     setCurrPage(page_number);
   };
+  const { admined, statusCode } = useSelector((state) => state.userAdmin);
   // useEffect
   useEffect(() => {
     dispatch(getAllUsers(currPage));
   }, [currPage]);
+  const redirectArrayAfterSuccessUpdate = localStorage.getItem("UA")
+    ? JSON.parse(localStorage.getItem("UA"))
+    : [];
+  //   UA => update admin
   useEffect(() => {
     if (!userInfo && userInfoError) {
       navigate("*", { replace: true, state: userInfoError });
     } else if (error) {
       navigate("*", { replace: true, state: error });
+    } else if (
+      redirectArrayAfterSuccessUpdate[0] &&
+      redirectArrayAfterSuccessUpdate[1] === 200
+    ) {
+      navigate(-1, { replace: true });
+      localStorage.removeItem("UA");
     }
-  }, [userInfo, userInfoError, error]);
+  }, [userInfo, userInfoError, error, admined, statusCode]);
 
   return (
     <div className="mt-5 text-capitalize">
@@ -52,6 +66,7 @@ function ListUsers() {
                 <th>admin</th>
                 <th>created at</th>
                 <th>details</th>
+                <th>make admin</th>
               </tr>
             </thead>
             <tbody>
@@ -69,6 +84,18 @@ function ListUsers() {
                     >
                       details
                     </Link>
+                  </td>
+                  <td>
+                    {user.isAdmin ? (
+                      "admin"
+                    ) : (
+                      <input
+                        type={"checkbox"}
+                        onClick={() => {
+                          dispatch(makeUserAdmin(user._id));
+                        }}
+                      />
+                    )}
                   </td>
                 </tr>
               ))}

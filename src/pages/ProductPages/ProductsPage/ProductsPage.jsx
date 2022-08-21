@@ -74,7 +74,7 @@ function ProudctPage() {
                 className="row d-flex justify-content-center
             align-items-center"
               >
-                <SortComponent />
+                <SortComponent pageNum={currPage} />
               </div>
 
               <div className="row mb-0 mb-lg-3  g-4">

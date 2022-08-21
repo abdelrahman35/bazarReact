@@ -64,3 +64,19 @@ export const createOrderReducer = (state = {}, action) => {
       return state;
   }
 };
+export const changeOrderStatusReducer = (state = {}, action) => {
+  switch (action.type) {
+    case "CHANGE_ORDER_STATUS_REQUEST":
+      return { loading: true };
+    case "CHANGE_ORDER_STATUS_SUCCESS":
+      return {
+        loading: false,
+        isChanged: action.payload,
+        statusCode: action.statusCode,
+      };
+    case "CHANGE_ORDER_STATUS_FAIL":
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};

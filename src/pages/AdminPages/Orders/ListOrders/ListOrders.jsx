@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { listAllOrders } from "../../../../store/actions/ordersActions";
+import {
+  changeOrderStatus,
+  listAllOrders,
+} from "../../../../store/actions/ordersActions";
 import Loading from "../../../../components/Loading/Loading";
 import ErrorMessage from "../../../../components/ErrorMessage/ErrorMessage";
 import { Link } from "react-router-dom";
@@ -23,9 +26,23 @@ function ListOrders() {
     orders,
   } = useSelector((state) => state.allOrders);
   const ordersArray = orders?.orders;
+  const { isChanged, statusCode } = useSelector(
+    (state) => state.orderIsChanged
+  );
+  const redirectArrayAfterSuccessUpdate = localStorage.getItem("CO")
+    ? JSON.parse(localStorage.getItem("CO"))
+    : [];
+  //   CO => change order
   useEffect(() => {
     dispatch(listAllOrders(currPage));
-  }, [currPage]);
+    if (
+      redirectArrayAfterSuccessUpdate[0] &&
+      redirectArrayAfterSuccessUpdate[1] === 200
+    ) {
+      dispatch(listAllOrders(currPage));
+      localStorage.removeItem("CO");
+    }
+  }, [currPage, isChanged, statusCode]);
 
   return (
     <div className="container mt-5 text-capitalize">
@@ -48,6 +65,7 @@ function ListOrders() {
                   <th scope="col">payment method</th>
                   <th scope="col">order status</th>
                   <th scope="col">details</th>
+                  <th scope="col">update status</th>
                 </tr>
               </thead>
               <tbody>
@@ -67,6 +85,29 @@ function ListOrders() {
                           details
                         </button>
                       </Link>
+                    </td>
+                    <td>
+                      {order.status === "delivered" ||
+                      order.status === "cancelled" ||
+                      order.status === "rejected" ? (
+                        order.status
+                      ) : (
+                        <select
+                          onChange={(e) => {
+                            dispatch(
+                              changeOrderStatus(order._id, e.target.value)
+                            );
+                          }}
+                        >
+                          <optgroup label="select status">
+                            <option value="accepted">accepted</option>
+                            <option value="rejected">rejected</option>
+                            <option value="shipped">shipped</option>
+                            <option value="delivered">delivered</option>
+                            <option value="cancelled">cancelled</option>
+                          </optgroup>
+                        </select>
+                      )}
                     </td>
                   </tr>
                 ))}

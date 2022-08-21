@@ -166,3 +166,40 @@ export const successPaymentHandler = () => async (dispatch, getState) => {
     });
   }
 };
+
+export const changeOrderStatus =
+  (orderId, statusWord) => async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: "CHANGE_ORDER_STATUS_REQUEST",
+      });
+      const token = getState().userLogin.userInfo.token;
+
+      const { data, status } = await axiosInstance({
+        url: `/order`,
+        method: "patch",
+        data: {
+          payload: {
+            orderId,
+            status: statusWord,
+          },
+        },
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          authorization: `Bearer ${token}`,
+        },
+      });
+      localStorage.setItem("CO", JSON.stringify([data, status]));
+      dispatch({
+        type: "CHANGE_ORDER_STATUS_SUCCESS",
+        payload: data,
+        statusCode: status,
+      });
+    } catch (error) {
+      dispatch({
+        type: "CHANGE_ORDER_STATUS_FAIL",
+        payload: error.response ? error.response.status : error,
+      });
+    }
+  };

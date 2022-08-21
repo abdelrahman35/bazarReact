@@ -113,6 +113,22 @@ export const updateUserInfoReducer = (state = {}, action) => {
       return state;
   }
 };
+export const makeUserAdminReducer = (state = {}, action) => {
+  switch (action.type) {
+    case "MAKE_USER_ADMIN_REQUEST":
+      return { loading: true };
+    case "MAKE_USER_ADMIN_SUCCESS":
+      return {
+        loading: false,
+        admined: action.payload,
+        statusCode: action.statusCode,
+      };
+    case "MAKE_USER_ADMIN_FAIL":
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
 
 export const addressReducer = (state = {}, action) => {
   switch (action.type) {

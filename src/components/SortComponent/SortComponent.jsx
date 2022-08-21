@@ -3,7 +3,7 @@ import { filterProducts } from "../../store/actions/productActions";
 import { useDispatch } from "react-redux";
 import styles from "./SortComponent.module.css";
 
-function SortComponent() {
+function SortComponent({ pageNum }) {
   const dispatch = useDispatch();
   const [sortObject, setSortObject] = useState({});
   const [checkStatusPrice, setCheckStatusPrice] = useState({
@@ -23,7 +23,7 @@ function SortComponent() {
       keyValueArray.push(`${sorted[i][0]}=${sorted[i][1]}&`);
     }
     const apiArray = keyValueArray.join("").slice(0, -1);
-    dispatch(filterProducts(apiArray));
+    dispatch(filterProducts(pageNum, apiArray));
   };
   const sortOfPrice = (e) => {
     setCheckStatusPrice({

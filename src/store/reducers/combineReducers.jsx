@@ -3,6 +3,7 @@ import {
   addressReducer,
   getAllUsersReducer,
   getUsersDetailsReducer,
+  makeUserAdminReducer,
   updateUserInfoReducer,
   userChangePasswordReducer,
   userLoginReducers,
@@ -26,6 +27,7 @@ import {
 } from "./productReducers";
 import {
   cancelOrderIfPendingReducer,
+  changeOrderStatusReducer,
   createOrderReducer,
   getUserOrdersReducer,
   listAllOrdersReducer,
@@ -41,6 +43,7 @@ export default combineReducers({
   allUsers: getAllUsersReducer,
   userDetails: getUsersDetailsReducer,
   userUpdated: updateUserInfoReducer,
+  userAdmin: makeUserAdminReducer,
   // categoryReducers
   allCategories: getAllCategoriesReducer,
   createCategory: createCategoryReducer,
@@ -61,6 +64,7 @@ export default combineReducers({
   userOrders: getUserOrdersReducer,
   cancelOrder: cancelOrderIfPendingReducer,
   orderIsPlaced: createOrderReducer,
+  orderIsChanged: changeOrderStatusReducer,
   // cart reducers
   cart: cartReducer,
   favouritesProducts: addToFavouritesReducer,

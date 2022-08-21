@@ -361,3 +361,31 @@ export const updateAddress =
       });
     }
   };
+
+export const makeUserAdmin = (userId) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: "MAKE_USER_ADMIN_REQUEST" });
+    const token = getState().userLogin.userInfo.token;
+    const { data, status } = await axiosInstance({
+      url: `/user/addAdmin/${userId}`,
+      method: "patch",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        authorization: `Bearer ${token}`,
+      },
+    });
+
+    dispatch({
+      type: "MAKE_USER_ADMIN_SUCCESS",
+      payload: data,
+      statusCode: status,
+    });
+    localStorage.setItem("UA", JSON.stringify([data, status]));
+  } catch (error) {
+    dispatch({
+      type: "MAKE_USER_ADMIN_FAIL",
+      payload: error.response ? error.response.status : error,
+    });
+  }
+};
