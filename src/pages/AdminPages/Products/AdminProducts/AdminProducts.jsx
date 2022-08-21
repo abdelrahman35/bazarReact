@@ -23,11 +23,11 @@ function AdminProducts() {
   };
   // user info state from store
   const { error: userError, userInfo } = useSelector(
-    (state) => state.userLogin,
+    (state) => state.userLogin
   );
   // products state from store
   const { loading: productsLoading, products } = useSelector(
-    (state) => state.allProducts,
+    (state) => state.allProducts
   );
   const prodcutsArray = products?.products;
   // state for deleted product from store
@@ -45,10 +45,10 @@ function AdminProducts() {
   // delete product function
   const handleDelete = (productId) => {
     const productToDelete = prodcutsArray?.find(
-      (product) => product._id === productId,
+      (product) => product._id === productId
     );
     const respond = window.confirm(
-      `Do you want to delete ${productToDelete?.name}`,
+      `Do you want to delete ${productToDelete?.name}`
     );
     if (respond) {
       dispatch(deleteProduct(productId));
@@ -82,6 +82,7 @@ function AdminProducts() {
                   <th scope="col">Name</th>
                   <th scope="col">Price</th>
                   <th scope="col">Edit</th>
+                  <th scope="col">Edit Image</th>
                   <th scope="col">Delete</th>
                 </tr>
               </thead>
@@ -95,6 +96,13 @@ function AdminProducts() {
                       <Link to={`/admin/updateproduct/${product._id}`}>
                         <button className="btn btn-outline-success">
                           Edit{" "}
+                        </button>
+                      </Link>
+                    </td>
+                    <td>
+                      <Link to={`/admin/updateproductimage/${product._id}`}>
+                        <button className="btn btn-outline-success">
+                          Edit Image{" "}
                         </button>
                       </Link>
                     </td>

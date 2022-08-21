@@ -21,7 +21,6 @@ function ViewOrderDetails() {
       : localStorage.getItem("orderDetails")
       ? JSON.parse(localStorage.getItem("orderDetails"))
       : null;
-  console.log(order);
   return userOrdersLoading ? (
     <Loading />
   ) : userOrders ? (

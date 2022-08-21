@@ -31,7 +31,6 @@ const ResetPassword = () => {
   const { token } = useParams();
 
   const onSubmit = (values) => {
-    console.log(values.password);
     dispatch(resetPassword(values.email, values.password, token));
   };
 

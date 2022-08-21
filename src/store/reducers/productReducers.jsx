@@ -84,6 +84,22 @@ export const updateProductReducer = (state = {}, action) => {
       return state;
   }
 };
+export const updateProductImageReducer = (state = {}, action) => {
+  switch (action.type) {
+    case "UPDATE_PRODUCT_IMAGE_REQUEST":
+      return { loading: true };
+    case "UPDATE_PRODUCT_IMAGE_SUCCESS":
+      return {
+        loading: false,
+        productIsUpdated: action.payload,
+        statusCode: action.statusCode,
+      };
+    case "UPDATE_PRODUCT_IMAGE_FAIL":
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
 
 export const createReviewReducer = (state = {}, action) => {
   switch (action.type) {

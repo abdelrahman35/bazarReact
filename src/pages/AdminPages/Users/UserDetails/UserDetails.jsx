@@ -11,7 +11,6 @@ function UserDetails() {
   const { loading, error, user } = useSelector((state) => state.userDetails);
   const userData = user?.user;
   const userOrders = user?.userOrders;
-  console.log(user);
   // pagination
   const [currPage, setCurrPage] = useState(1);
   const [tagList, setTagList] = useState([]);

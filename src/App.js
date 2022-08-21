@@ -55,6 +55,7 @@ import SelectPaymentMethod from "./pages/PlaceOrderPages/SelectPaymantMethod/Sel
 import ListUsers from "./pages/AdminPages/Users/ListUsers/ListUsers";
 import UserDetails from "./pages/AdminPages/Users/UserDetails/UserDetails";
 import UpdateAddress from "./pages/UserPages/UpdateExistingAddress/UpdateAddress";
+import UpdateProductImage from "./pages/AdminPages/Products/UpdateProductImage/UpdateProductImage";
 
 function App() {
   return (
@@ -105,6 +106,11 @@ function App() {
             path="/admin/updateproduct/:productId"
             index
             element={<UpdateProduct />}
+          />
+          <Route
+            path="/admin/updateproductimage/:productId"
+            index
+            element={<UpdateProductImage />}
           />
           {/* categories routes */}
           <Route

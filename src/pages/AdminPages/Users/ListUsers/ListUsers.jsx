@@ -10,10 +10,9 @@ function ListUsers() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { error: userInfoError, userInfo } = useSelector(
-    (state) => state.userLogin,
+    (state) => state.userLogin
   );
   const { loading, error, users } = useSelector((state) => state.allUsers);
-  console.log(users);
   const usersArray = users?.users;
   // pagination
   const [currPage, setCurrPage] = useState(1);

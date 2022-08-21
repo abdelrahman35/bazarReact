@@ -56,7 +56,6 @@ export const setShippingAddress = (shippingAddress) => (dispatch) => {
   localStorage.setItem("shippingAddress", JSON.stringify(addressToStore));
 };
 export const setPaymentMethod = (paymentMethod) => (dispatch) => {
-  console.log(paymentMethod);
   dispatch({
     type: "SET_PAYMENT_METHOD",
     payload: paymentMethod,

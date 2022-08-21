@@ -66,7 +66,7 @@ export const ProductCard = ({ product }) => {
                       );
                     }}
                   >
-                    {console.log(item.quantity)}{" "}
+                
                     <i className="fa-solid fa-cart-circle-exclamation"></i>{" "}
                   </button>
                 ) : (

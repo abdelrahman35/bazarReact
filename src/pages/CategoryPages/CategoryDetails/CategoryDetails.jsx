@@ -15,7 +15,6 @@ function CategoryDetails() {
   const { loading, error, filteredProducts } = useSelector(
     (state) => state.filteredProducts
   );
-  console.log(filteredProducts?.data?.numberOfPages);
   const productsArray = filteredProducts?.data?.products;
   const dispatch = useDispatch();
   const { categoryId } = useParams();

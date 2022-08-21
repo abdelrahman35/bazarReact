@@ -66,7 +66,6 @@ export const createProduct =
             });
           }
         });
-      console.log(data);
       dispatch({
         type: "CREATE_PRODUCT_SUCCESS",
         payload: data,
@@ -99,7 +98,6 @@ export const deleteProduct = (productId) => async (dispatch, getState) => {
       payload: data,
     });
   } catch (error) {
-    console.log(error);
     dispatch({
       type: "DELETE_PRODUCT_FAIL",
       payload: error.response ? error.response.status : error,
@@ -132,12 +130,10 @@ export const filterProducts = (pageNum, filterQuery) => async (dispatch) => {
     dispatch({ type: "FILTER_PRODUCTS_REQUEST" });
     let data;
     if (filterQuery) {
-      console.log("test");
       data = await axiosInstance.get(
         `/product/filter?page=${pageNum}&${filterQuery}`
       );
     } else {
-      console.log("ss");
       data = await axiosInstance.get(`/product/?page=${pageNum}`);
     }
 
@@ -188,6 +184,39 @@ export const updateProduct =
     } catch (error) {
       dispatch({
         type: "UPDATE_PRODUCT_FAIL",
+        payload: error.response ? error.response.status : error,
+      });
+    }
+  };
+
+export const updateProductImage =
+  (productId, image) => async (dispatch, getState) => {
+    try {
+      dispatch({ type: "UPDATE_PRODUCT_IMAGE_REQUEST" });
+      const token = getState().userLogin.userInfo.token;
+      const productFormData = new FormData();
+      productFormData.append("productId", productId);
+      productFormData.append("image", image);
+      const { data, status } = await axiosInstance({
+        url: "/product/image",
+        method: "patch",
+        data: productFormData,
+
+        headers: {
+          "Content-Type": "multipart/form-data",
+          "Access-Control-Allow-Origin": "*",
+          authorization: `Bearer ${token}`,
+        },
+      });
+      dispatch({
+        type: "UPDATE_PRODUCT_IMAGE_SUCCESS",
+        payload: data,
+        statusCode: status,
+      });
+      localStorage.setItem("PRI", JSON.stringify([data, status]));
+    } catch (error) {
+      dispatch({
+        type: "UPDATE_PRODUCT_IMAGE_FAIL",
         payload: error.response ? error.response.status : error,
       });
     }

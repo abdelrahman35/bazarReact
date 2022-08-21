@@ -177,8 +177,8 @@ function Home() {
             <div className="row mb-0 mb-lg-3  g-4   ">
               <Slider {...settings}>
                 {prodcutsArray?.slice(-6).map((product, index) => (
-                  <div className="col-lg-4 col-md-6 col-12" key={index}>
-                    <ProductCard product={product} />
+                  <div className="col-lg-4 col-md-6 col-12" key={product?._id}>
+                    <ProductCard key={product?._id} product={product} />
                   </div>
                 ))}
               </Slider>
@@ -187,8 +187,11 @@ function Home() {
           <div className={`container d-block d-lg-none `}>
             <div className="row mb-0 mb-lg-3  g-4  ">
               {prodcutsArray?.slice(-6).map((product, index) => (
-                <div className="d-flex col-lg-4 col-md-6 col-12 " key={index}>
-                  <ProductCard product={product} />
+                <div
+                  className="d-flex col-lg-4 col-md-6 col-12 "
+                  key={product?._id}
+                >
+                  <ProductCard key={product?._id} product={product} />
                 </div>
               ))}
             </div>

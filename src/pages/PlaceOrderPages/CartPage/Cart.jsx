@@ -7,7 +7,6 @@ const CartPage = () => {
   const navigate = useNavigate();
   const { userInfo } = useSelector((state) => state.userLogin);
   const { cartItems } = useSelector((state) => state.cart);
-  console.log(cartItems);
   const checkoutHandler = () => {
     navigate("/shippingDetails", { replace: true });
   };
@@ -39,7 +38,7 @@ const CartPage = () => {
                     {cartItems?.reduce(
                       (contedPrice, product) =>
                         contedPrice + product.price * product.quantity,
-                      0,
+                      0
                     )}
                   </p>
                 </div>

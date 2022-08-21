@@ -32,7 +32,6 @@ function ProudctPage() {
     dispatch(filterProducts(currPage));
   }, [currPage]);
 
-  console.log(filteredProductsArray);
   return (
     <>
       {filteredProductsLoading ? (

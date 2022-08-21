@@ -154,7 +154,6 @@ export const successPaymentHandler = () => async (dispatch, getState) => {
     const { data } = await axiosInstance.get(`/order/success/${orderId[1]}`, {
       headers,
     });
-    console.log(data);
     dispatch({
       type: "SUCCESS_PAYMENT_HANDLE_SUCCESS",
       payload: data,

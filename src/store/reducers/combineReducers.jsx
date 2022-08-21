@@ -22,6 +22,7 @@ import {
   deleteProductReducer,
   updateProductReducer,
   createReviewReducer,
+  updateProductImageReducer,
 } from "./productReducers";
 import {
   cancelOrderIfPendingReducer,
@@ -52,6 +53,7 @@ export default combineReducers({
   filteredProducts: filterProductsReducer,
   deletedProduct: deleteProductReducer,
   updateProduct: updateProductReducer,
+  updateProductImage: updateProductImageReducer,
   productReview: createReviewReducer,
   // orderReducers
   allOrders: listAllOrdersReducer,
