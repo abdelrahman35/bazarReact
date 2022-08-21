@@ -66,7 +66,7 @@ export const ProductCard = ({ product }) => {
               <div className="card-text">
                 <h6>price: {product.price} L.E</h6>
 
-                <Rateing rate={product.rating} size={"xs"} />
+                <Rateing rate={product.rating} read={true} size={"xs"} />
                 <span>{product.rating}</span>
               </div>
             </div>

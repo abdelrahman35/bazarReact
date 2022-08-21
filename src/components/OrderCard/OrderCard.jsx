@@ -46,7 +46,7 @@ const OrderCard = ({ order }) => {
                 </Link>
               </div>
 
-              {order?.status === "success" ? (
+              {order?.status === "delivered" ? (
                 <p
                   className={`card-text ${styles.OrderStatus} ${styles.OrderStatusSuc} w-25`}
                 >

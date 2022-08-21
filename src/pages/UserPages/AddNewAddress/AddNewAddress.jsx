@@ -58,7 +58,7 @@ function AddNewAddress() {
     <div>
       {userLoading ? (
         <Loading />
-      ) : userInfo && userInfo?.isAdmin ? (
+      ) : userInfo ? (
         <section className="container w-100 m-auto">
           <Form className=" m-auto mt-5" onSubmit={formik.handleSubmit}>
             <div

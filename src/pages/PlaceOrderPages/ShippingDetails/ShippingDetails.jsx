@@ -184,7 +184,7 @@ function ShippingDetails() {
                     </div>
                   </div>
                 )}
-                <div className="d-flex justify-content-end m-3">
+                <div className="d-flex justify-content-center m-3">
                   {addressIsSelected ? (
                     <button
                       className={`${styles.btnWarningg}`}

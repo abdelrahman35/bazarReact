@@ -16,7 +16,7 @@ const ReviewCard = ({ review }) => {
           {review.user.firstName + " " + review.user.lastName}
         </h3>
         <div className="d-flex justify-content-start align-items-center gap-2">
-          <Rateing rate={review.rating} size={"xs"} />
+          <Rateing rate={review.rating} read={true} size={"xs"} />
           <h3 className={`mt-2   ${styles.reviewerRate}`}>{review.rating}</h3>
         </div>
         <h3 className={styles.reviewerDate}>{newDate}</h3>

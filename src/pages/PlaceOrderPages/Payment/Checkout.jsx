@@ -85,7 +85,7 @@ export default function CheckoutForm() {
   return (
     <form
       id="payment-form"
-      className={`w-75 ${styles.formCheck} `}
+      className={`w-50 ${styles.formCheck} `}
       onSubmit={handleSubmit}
     >
       <h2 className="text-center mb-5">Card Details</h2>

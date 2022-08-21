@@ -24,11 +24,13 @@ const ProductDetails = () => {
   }, [id, dispatch]);
 
   const prodcutReviewsArray = product?.product?.reviews;
+
   const productQuantity = product?.product?.quantity;
   const quantityArray = Array.from(
     { length: productQuantity },
     (_, index) => index + 1,
   );
+
   const addToCartHandler = () => {
     dispatch(addToCart(id, qty));
   };
@@ -57,7 +59,7 @@ const ProductDetails = () => {
                 <h1 className={styles.title}>{product?.product?.name}</h1>
                 <h3 className={styles.price}> EGP {product?.product?.price}</h3>
                 <h3 className={styles.review}>
-                  <Rateing rate={product?.product?.rating} />
+                  <Rateing rate={product?.product?.rating} read={true} />
                   {product?.product?.rating} review
                 </h3>
                 <hr></hr>
@@ -118,7 +120,7 @@ const ProductDetails = () => {
                 </div>
               </div>
             </div>
-            <div className="row justify-content-center">
+            <div className="row justify-content-center mt-5">
               <h2 className={styles.reviewTitle}>Reviews</h2>
               <hr className={styles.reviewHr}></hr>
               <div className="row mb-5">
@@ -131,7 +133,11 @@ const ProductDetails = () => {
                       {product?.product?.rating}
                     </h3>
                     <div className="mb-5">
-                      <Rateing rate={product?.product?.rating} size={"sm"} />
+                      <Rateing
+                        rate={product?.product?.rating}
+                        read={true}
+                        size={"sm"}
+                      />
                     </div>
                   </div>
                 </div>
@@ -169,14 +175,22 @@ const ProductDetails = () => {
               </div>
             </div>
 
-            <div className="row w-95 m-auto">
-              <h2 className={styles.customerReviewTitle}>Customer Reviews</h2>
-              {prodcutReviewsArray?.map((review, index) => (
-                <div className="d-flex " key={index}>
-                  <ReviewCard review={review} />
-                </div>
-              ))}
-            </div>
+            {prodcutReviewsArray?.length === 0 ? (
+              <div className="row w-95 m-auto">
+                <h2 className={styles.customerReviewTitle}>
+                  No Reviews Added Yet
+                </h2>
+              </div>
+            ) : (
+              <div className="row w-95 m-auto">
+                <h2 className={styles.customerReviewTitle}>Customer Reviews</h2>
+                {prodcutReviewsArray?.map((review, index) => (
+                  <div className="d-flex " key={index}>
+                    <ReviewCard review={review} />
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </section>
       ) : productError ? (

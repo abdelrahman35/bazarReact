@@ -26,7 +26,7 @@ const FavouriteItem = ({ product }) => {
             <span
               className={`${styles.title} ${styles.review} d-flex justify-content-start gap-2 align-items-center`}
             >
-              <Rateing rate={product.rating} size={"xs"} />
+              <Rateing rate={product.rating} read={true} size={"xs"} />
               <span className="mt-1">{product.rating}</span>
             </span>
           </div>

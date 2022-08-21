@@ -5,6 +5,9 @@ import { useNavigate } from "react-router-dom";
 import styles from "./CreateReview.module.css";
 import Loading from "../Loading/Loading";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import { Rate } from "rsuite";
+import { CLOSING } from "ws";
+
 function CreateReview({ productId }) {
   const navigate = useNavigate();
   const [rate, setRate] = useState(0);
@@ -26,6 +29,7 @@ function CreateReview({ productId }) {
   const submitHandler = () => {
     dispatch(createReview(productId, comment, rate));
   };
+
   return (
     <>
       {reviewLoading ? (
@@ -35,47 +39,13 @@ function CreateReview({ productId }) {
           <form>
             <div className="mb-3">
               <label className="form-label d-block">Rate</label>
-              <i
-                className={`fa-solid fa-star ${styles.star1} ${
-                  rate >= 1 ? styles.colored : null
-                }`}
-                onClick={() => {
-                  setRate(1);
-                }}
-              ></i>
-              <i
-                className={`fa-solid fa-star ${styles.star2} ${
-                  rate >= 2 ? styles.colored : null
-                }`}
-                onClick={(e) => {
-                  setRate(2);
-                }}
-              ></i>
-              <i
-                className={`fa-solid fa-star ${styles.star3} ${
-                  rate >= 3 ? styles.colored : null
-                }`}
-                onClick={() => {
-                  setRate(3);
-                }}
-              ></i>
-              <i
-                className={`fa-solid fa-star ${styles.star4} ${
-                  rate >= 4 ? styles.colored : null
-                }`}
-                onClick={() => {
-                  setRate(4);
-                }}
-              ></i>
-              <i
-                className={`fa-solid fa-star ${styles.star5} ${
-                  rate >= 5 ? styles.colored : null
-                }`}
-                onClick={() => {
-                  setRate(5);
-                }}
-              ></i>
 
+              <Rate
+                allowHalf
+                onChange={(e) => {
+                  setRate(e);
+                }}
+              />
               <label htmlFor="comment" className="form-label d-block">
                 Comment
               </label>
@@ -92,7 +62,9 @@ function CreateReview({ productId }) {
 
             <button
               className={`btn btn-primary ${styles.btnWarningg}`}
-              data-bs-dismiss="reviewModal"
+              type="button"
+              data-bs-dismiss="modal"
+              aria-label="Close"
               onClick={() => {
                 submitHandler();
               }}

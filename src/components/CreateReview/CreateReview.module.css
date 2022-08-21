@@ -109,23 +109,3 @@
   font-size: 15px;
   font-weight: 600;
 }
-
-.star1,
-.star2,
-.star3,
-.star4,
-.star5 {
-  color: var(--color2);
-}
-
-.star1:hover,
-.star2:hover,
-.star3:hover,
-.star4:hover,
-.star5:hover {
-  color: var(--color1);
-}
-
-.colored {
-  color: var(--color1);
-}
