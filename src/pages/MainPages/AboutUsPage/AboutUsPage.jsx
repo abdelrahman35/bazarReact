@@ -5,7 +5,7 @@ import image1 from "../../../assets/images/imageA.png";
 function AboutUsPage() {
   return (
     <>
-      <section>
+      <section className={styles.sec}>
         <div className={styles.Banner}>
           <h1 className="ms-5 ms-lg-0">ABOUT BAZAAR !</h1>
         </div>

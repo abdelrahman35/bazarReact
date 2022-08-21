@@ -110,3 +110,6 @@
   font-size: 15px;
   font-weight: 600;
 }
+.middle label {
+  color: var(--color3);
+}

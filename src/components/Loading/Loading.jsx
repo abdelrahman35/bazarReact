@@ -1,4 +1,5 @@
 import React from "react";
+
 var Spinner = require("react-spinkit");
 
 const Loading = () => {

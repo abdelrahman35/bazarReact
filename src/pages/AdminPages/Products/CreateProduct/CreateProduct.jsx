@@ -82,7 +82,10 @@ function CreateProduct() {
         <Loading />
       ) : userInfo && userInfo?.isAdmin ? (
         <section className="container w-100 m-auto">
-          <Form className=" m-auto mt-5" onSubmit={formik.handleSubmit}>
+          <Form
+            className={` m-auto mt-5 ${styles.cont}`}
+            onSubmit={formik.handleSubmit}
+          >
             <div
               className={`d-flex flex-column justify-content-center align-items-center mb-5 ${styles.formHeading}`}
             >
@@ -91,7 +94,7 @@ function CreateProduct() {
                 Create New Product
               </h2>
             </div>
-            <Form.Group className="mb-3" controlId="formBasicName">
+            <Form.Group className={` mb-3`} controlId="formBasicName">
               <Form.Label>Enter Product Name</Form.Label>
 
               <Form.Control

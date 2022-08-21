@@ -43,23 +43,29 @@ const DarkMode = () => {
     document.documentElement.style.setProperty("--color1", "#74321F");
     document.documentElement.style.setProperty("--color12", "#201C1C");
     document.documentElement.style.setProperty("--color13", "white");
-    document.documentElement.style.setProperty("--color3", "white");
+    document.documentElement.style.setProperty("--color7", "#74321F");
+    document.documentElement.style.setProperty("--color6", "#fff;");
+    document.documentElement.style.setProperty("--color3", "#2d2723;");
   };
   const light = () => {
     document.documentElement.style.setProperty("--color1", "#af492c");
     document.documentElement.style.setProperty("--color2", "#7a726a");
     document.documentElement.style.setProperty("--color12", "white");
+    document.documentElement.style.setProperty("--color13", "#2d2723");
+    document.documentElement.style.setProperty("--color7", "#e74518");
+    document.documentElement.style.setProperty("--color6", "#fff;");
   };
   return (
     <div className={`${styles.togglethemewrapper}`}>
-      <span>☀️</span>
-      <button onClick={light}></button>
-      <label className={`${styles.toggletheme}`} htmlFor="checkbox">
-        <input type="checkbox" id="checkbox" />
-        <div className={`${styles.slider}`}></div>
-      </label>
-      <span>🌒</span>
-      <button onClick={dark}></button>
+      <button className={`${styles.btnWarningg}`} onClick={light}>
+        <span>☀️</span>
+        {" Light "}
+      </button>
+
+      <button className={`${styles.btnWarningg1}`} onClick={dark}>
+        <span>🌒</span>
+        {" Dark"}
+      </button>
     </div>
   );
 };

@@ -42,7 +42,7 @@ const ProductDetails = () => {
           <Loading />
         </div>
       ) : product ? (
-        <section>
+        <section className={`${styles.con}`}>
           <div className="container p-5 ">
             <div className="row mt-5 justify-content-center align-items-center">
               <div className="col-12 col-md-6">

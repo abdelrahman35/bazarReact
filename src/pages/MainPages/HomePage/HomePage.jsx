@@ -69,7 +69,7 @@ function Home() {
 
   return (
     <>
-      <section>
+      <section className={styles.sec}>
         <div className="container-fluid p-0 m-0 mb-5">
           <header className={styles.banner}>
             <div className={`container ${styles.rsw}`}>

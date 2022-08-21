@@ -7,6 +7,7 @@ import SignUpPage from "../../pages/UserPages/SignUpPage/SignUpPage";
 import Loading from "../Loading/Loading";
 import Thanks from "../../pages/MainPages/ThanksForm/Thanks";
 import SearchBar from "../SearchBar/SearchBar";
+import DarkMode from "../DarkMode/DarkMode";
 function Navbar() {
   const [modal, setModal] = useState("login");
   const [genButton, setGenButtonStyle] = useState(styles.genButton);
@@ -133,6 +134,7 @@ function Navbar() {
                   </div>
                 )}
               </div>
+              <DarkMode />
             </div>
           </div>
         </div>
@@ -158,6 +160,7 @@ function Navbar() {
                   >
                     Login
                   </button>
+
                   <button
                     onClick={() => {
                       setModal("signup");
@@ -169,6 +172,7 @@ function Navbar() {
                     Create Account
                   </button>
                 </div>
+
                 <button
                   type="button"
                   className={`btn-close position-absolute  ${styles.btnClose}`}

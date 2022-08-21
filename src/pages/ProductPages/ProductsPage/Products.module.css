@@ -1,5 +1,7 @@
 .conten {
   height: 65vh;
+}
+.cont {
   background-color: var(--color12) !important;
 }
 .btnWarningg {

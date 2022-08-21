@@ -1,61 +1,61 @@
 /* Custom Dark Mode Toggle Element */
 .togglethemewrapper {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 4px;
-  background-color: var(--color12);
+  width: auto;
+  background-color: var(--color2);
 }
+.btnWarningg {
+  background-color: var(--color2);
+  font-size: 18px !important;
+  font-weight: 400;
+  height: 40px;
+  width: 200px;
 
-.togglethemewrapper span {
-  font-size: 28px;
-}
-
-.toggletheme {
-  position: relative;
-  display: inline-block;
-  height: 34px;
-  width: 60px;
-}
-
-.toggletheme input {
-  display: none;
-}
-
-.slider {
-  background-color: #ccc;
-  position: absolute;
+  border-radius: 7px;
+  border: none;
   cursor: pointer;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  top: 0;
-  transition: 0.2s;
+  color: var(--color6) !important;
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -o-border-radius: 7px;
+}
+.btnWarningg1 {
+  background-color: var(--color2);
+  font-size: 18px !important;
+  font-weight: 400;
+  height: 40px;
+  width: 200px;
+  border-radius: 7px;
+  border: none;
+  cursor: pointer;
+  color: var(--color6) !important;
+  transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -o-border-radius: 7px;
+}
+.btnWarningg:hover,
+.btnWarningg:active {
+  color: var(--color7) !important;
+  background-color: transparent !important;
+
+  box-shadow: none !important;
 }
 
-.slider:before {
-  background-color: #fff;
-  bottom: 4px;
-  content: "";
-  height: 26px;
-  left: 4px;
-  position: absolute;
-  transition: 0.4s;
-  width: 26px;
-}
+.btnWarningg1:hover,
+.btnWarningg1:active {
+  color: var(--color7) !important;
+  background-color: transparent !important;
 
-input:checked + .slider:before {
-  transform: translateX(26px);
-}
-
-input:checked + .slider {
-  background-color: cornflowerblue;
-}
-
-.slider {
-  border-radius: 34px;
-}
-
-.slider:before {
-  border-radius: 50%;
+  box-shadow: none !important;
 }

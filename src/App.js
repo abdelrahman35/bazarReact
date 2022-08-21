@@ -56,12 +56,14 @@ import ListUsers from "./pages/AdminPages/Users/ListUsers/ListUsers";
 import UserDetails from "./pages/AdminPages/Users/UserDetails/UserDetails";
 import UpdateAddress from "./pages/UserPages/UpdateExistingAddress/UpdateAddress";
 import DarkMode from "./components/DarkMode/DarkMode";
+import Loading from "./components/Loading/Loading";
 
 function App() {
   return (
     <>
       <Router>
         <Navbar />
+        {/* <DarkMode /> */}
         <Routes>
           <Route path="/" index element={<Home />} />
           <Route path="/login" index element={<LoginPage />} />
@@ -147,7 +149,7 @@ function App() {
           <Route path="/payment" index element={<Payment />} />
           <Route path="/DarkMode" index element={<DarkMode />} />
         </Routes>
-        <DarkMode />
+
         <Footer />
         <NotificationContainer />
       </Router>

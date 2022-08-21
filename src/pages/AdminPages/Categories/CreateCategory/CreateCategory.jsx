@@ -46,7 +46,7 @@ function CreateCategory() {
                 Create New Category
               </h2>
             </div>
-            <Form.Group className="mb-3">
+            <Form.Group className={`${styles.middle} mb-3`}>
               <Form.Label htmlFor="category">Enter Category Name</Form.Label>
 
               <Form.Control

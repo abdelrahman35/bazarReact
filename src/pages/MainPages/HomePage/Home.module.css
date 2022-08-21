@@ -17,7 +17,7 @@
 }
 .content h1 {
   font-size: 80px;
-
+  color: var(--color6);
   font-weight: 600;
 }
 .content p {
@@ -240,8 +240,6 @@ div h1 {
     text-align: center;
   }
 }
-section {
+.sec {
   background-color: var(--color12);
-}
-h1 {
 }

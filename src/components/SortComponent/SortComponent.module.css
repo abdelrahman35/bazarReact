@@ -30,3 +30,6 @@
   -ms-border-radius: 5px !important;
   -o-border-radius: 5px !important;
 }
+label {
+  color: var(--color13);
+}

@@ -30,3 +30,6 @@
   -ms-border-radius: 5px !important;
   -o-border-radius: 5px !important;
 }
+.con label {
+  color: var(--color3);
+}

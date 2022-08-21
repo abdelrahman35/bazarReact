@@ -50,6 +50,9 @@
   -ms-border-radius: 0 !important;
   -o-border-radius: 0 !important;
 }
+.cont label {
+  color: var(--color3);
+}
 
 .formControl:focus {
   box-shadow: none !important;

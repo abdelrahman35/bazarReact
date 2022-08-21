@@ -37,12 +37,12 @@ function ProudctPage() {
     <>
       {filteredProductsLoading ? (
         <div
-          className={`container d-flex justify-content-center align-items-center ${styles.conten}`}
+          className={`container d-flex justify-content-center align-items-center ${styles.conten} `}
         >
           <Loading />
         </div>
       ) : filteredProductsArray?.length > 0 ? (
-        <div className={`container-fluid`}>
+        <div className={`container-fluid ${styles.cont}`}>
           <div className="row justify-content-center align-items-start">
             <div className="col-12  d-block ">
               <aside>

@@ -23,7 +23,9 @@ function Filter() {
         onSubmit={handleSubmit}
         className="row d-flex justify-content-start align-items-center m-auto"
       >
-        <div className="row d-flex justify-content-start g-1 align-items-center">
+        <div
+          className={`row d-flex justify-content-start g-1 align-items-center ${styles.con}`}
+        >
           <label className="col-6" htmlFor="priceMinFilter">
             Min Price
           </label>

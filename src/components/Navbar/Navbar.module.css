@@ -10,6 +10,7 @@
   color: var(--color7) !important;
 }
 .btnWarningg {
+  display: inline;
   font-size: 18px;
   color: var(--color6);
   background-color: var(--color1);
@@ -116,6 +117,7 @@
 }
 .profile {
   font-size: 15px;
+  margin-left: 30px;
 }
 @media (min-width: 768px) and (max-width: 992px) {
   .aa {
