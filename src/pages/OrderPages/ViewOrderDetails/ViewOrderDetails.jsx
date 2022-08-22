@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Loading from "../../../components/Loading/Loading";
 import CreateReview from "../../../components/CreateReview/CreateReview";
 import styles from "./ViewOrderDetails.module.css";
+import { getProductById } from "../../../store/actions/productActions";
 function ViewOrderDetails() {
+  const dispatch = useDispatch();
   // get order id from params
   const { orderId } = useParams();
   //   order state from redux store
@@ -21,6 +23,10 @@ function ViewOrderDetails() {
       : localStorage.getItem("orderDetails")
       ? JSON.parse(localStorage.getItem("orderDetails"))
       : null;
+  useEffect(() => {
+    dispatch(getProductById());
+  }, []);
+
   return userOrdersLoading ? (
     <Loading />
   ) : userOrders ? (

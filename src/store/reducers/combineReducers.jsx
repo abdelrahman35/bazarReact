@@ -6,8 +6,10 @@ import {
   makeUserAdminReducer,
   updateUserInfoReducer,
   userChangePasswordReducer,
+  userForgetPasswordReducer,
   userLoginReducers,
   userRegisterReducer,
+  userResetPasswordReducer,
 } from "./userReducers";
 import {
   getAllCategoriesReducer,
@@ -44,6 +46,8 @@ export default combineReducers({
   userDetails: getUsersDetailsReducer,
   userUpdated: updateUserInfoReducer,
   userAdmin: makeUserAdminReducer,
+  resetPasswordForUser: userResetPasswordReducer,
+  forgetPasswordState: userForgetPasswordReducer,
   // categoryReducers
   allCategories: getAllCategoriesReducer,
   createCategory: createCategoryReducer,

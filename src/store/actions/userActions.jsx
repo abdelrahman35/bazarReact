@@ -91,7 +91,7 @@ export const forgetPassword = (email) => async (dispatch) => {
       "Access-Control-Allow-Origin": "*",
     };
 
-    const { data } = await axiosInstance.post(
+    const { data, status } = await axiosInstance.post(
       "/forgetPassword",
       {
         payload: {
@@ -103,7 +103,9 @@ export const forgetPassword = (email) => async (dispatch) => {
     dispatch({
       type: "USER_FORGET_PASSWORD_SUCCESS",
       payload: data,
+      statusCode: status,
     });
+    localStorage.setItem("FP", JSON.stringify([data, status]));
   } catch (error) {
     dispatch({
       type: "USER_FORGET_PASSWORD_FAIL",
@@ -123,7 +125,7 @@ export const resetPassword = (email, password, token) => async (dispatch) => {
       "Access-Control-Allow-Origin": "*",
       authorization: `Bearer ${token}`,
     };
-    const { data } = await axiosInstance.post(
+    const { data, status } = await axiosInstance.post(
       "/resetPassword",
       {
         payload: {
@@ -133,9 +135,11 @@ export const resetPassword = (email, password, token) => async (dispatch) => {
       },
       { headers }
     );
+    localStorage.setItem("RP", JSON.stringify([data, status]));
     dispatch({
       type: "USER_RESET_PASSWORD_SUCCESS",
       payload: data,
+      statusCode: status,
     });
   } catch (error) {
     dispatch({

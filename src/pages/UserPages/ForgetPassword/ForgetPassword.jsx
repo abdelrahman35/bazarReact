@@ -1,9 +1,12 @@
 import Form from "react-bootstrap/Form";
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "./ForgetPassword.module.css";
 import { forgetPassword } from "../../../store/actions/userActions";
+import Loading from "../../../components/Loading/Loading";
+import { useNavigate } from "react-router-dom";
 const ForgetPassword = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [email, setEmail] = useState();
 
@@ -11,7 +14,43 @@ const ForgetPassword = () => {
     e.preventDefault();
     dispatch(forgetPassword(email));
   };
-  return (
+  const { loading, statusCode } = useSelector(
+    (state) => state.resetPasswordForUser
+  );
+  const redirectArrayAfterSuccessUpdate = localStorage.getItem("FP")
+    ? JSON.parse(localStorage.getItem("FP"))
+    : [];
+  useEffect(() => {
+    if (
+      redirectArrayAfterSuccessUpdate[0] &&
+      redirectArrayAfterSuccessUpdate[1] == 200
+    ) {
+      setTimeout(() => {
+        navigate("/", { replace: true });
+        localStorage.removeItem("FP");
+      }, 2000);
+    }
+  }, [statusCode]);
+  return redirectArrayAfterSuccessUpdate[0] &&
+    redirectArrayAfterSuccessUpdate[1] == 200 ? (
+    <div
+      className={`container d-flex justify-content-center align-items-center ${styles.conten}`}
+    >
+      <section className="container w-100 m-auto">
+        <p className="text-capitalize text-center">
+          password had been reseted successfully
+        </p>{" "}
+      </section>
+    </div>
+  ) : loading ? (
+    <div
+      className={`container d-flex justify-content-center align-items-center ${styles.conten}`}
+    >
+      <section className="container w-100 m-auto">
+        <Loading />
+      </section>
+    </div>
+  ) : (
     <div
       className={`container d-flex justify-content-center align-items-center ${styles.conten}`}
     >

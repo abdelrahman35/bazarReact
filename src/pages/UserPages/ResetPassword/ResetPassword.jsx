@@ -1,12 +1,13 @@
 import Form from "react-bootstrap/Form";
-import React from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "./ResetPassword.module.css";
 import { resetPassword } from "../../../store/actions/userActions";
 import { useParams } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-
+import Loading from "../../../components/Loading/Loading";
+import { useNavigate } from "react-router-dom";
 const initialValues = {
   email: "",
   password: "",
@@ -27,19 +28,57 @@ const validationSchema = Yup.object({
 });
 
 const ResetPassword = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { token } = useParams();
 
   const onSubmit = (values) => {
     dispatch(resetPassword(values.email, values.password, token));
   };
-
+  const { loading, statusCode } = useSelector(
+    (state) => state.resetPasswordForUser
+  );
+  const redirectArrayAfterSuccessUpdate = localStorage.getItem("RP")
+    ? JSON.parse(localStorage.getItem("RP"))
+    : [];
+  //   RP => reset password
   const formik = useFormik({
     initialValues,
     onSubmit,
     validationSchema,
   });
-  return (
+  useEffect(() => {
+    if (
+      redirectArrayAfterSuccessUpdate[0] &&
+      redirectArrayAfterSuccessUpdate[1] == 200
+    ) {
+      setTimeout(() => {
+        navigate("/", { replace: true });
+        localStorage.removeItem("RP");
+      }, 2000);
+    }
+  }, [statusCode]);
+
+  return redirectArrayAfterSuccessUpdate[0] &&
+    redirectArrayAfterSuccessUpdate[1] == 200 ? (
+    <div
+      className={`container d-flex justify-content-center align-items-center ${styles.conten}`}
+    >
+      <section className="container w-100 m-auto">
+        <p className="text-capitalize text-center">
+          password had been reseted successfully
+        </p>{" "}
+      </section>
+    </div>
+  ) : loading ? (
+    <div
+      className={`container d-flex justify-content-center align-items-center ${styles.conten}`}
+    >
+      <section className="container w-100 m-auto">
+        <Loading />
+      </section>
+    </div>
+  ) : (
     <div
       className={`container d-flex justify-content-center align-items-center ${styles.conten}`}
     >

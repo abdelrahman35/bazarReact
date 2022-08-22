@@ -37,7 +37,7 @@ const OrderCard = ({ order }) => {
                     onClick={() => {
                       localStorage.setItem(
                         "orderDetails",
-                        JSON.stringify(order),
+                        JSON.stringify(order)
                       );
                     }}
                   >
@@ -46,7 +46,7 @@ const OrderCard = ({ order }) => {
                 </Link>
               </div>
 
-              {order?.status === "delivered" ? (
+              {order?.status == "delivered" ? (
                 <p
                   className={`card-text ${styles.OrderStatus} ${styles.OrderStatusSuc} w-25`}
                 >
@@ -92,14 +92,7 @@ const OrderCard = ({ order }) => {
                       aria-label="Disabled input example"
                       disabled
                     />
-                  ) : (
-                    <>
-                      <button className={styles.btnWarningg}>
-                        {" "}
-                        view details
-                      </button>
-                    </>
-                  )}
+                  ) : null}
                 </p>
               </div>
             </div>
