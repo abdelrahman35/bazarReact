@@ -34,6 +34,10 @@ const ResetPassword = () => {
 
   const onSubmit = (values) => {
     dispatch(resetPassword(values.email, values.password, token));
+    setTimeout(() => {
+      navigate("/", { replace: true });
+      localStorage.removeItem("FP");
+    }, 1000);
   };
   const { loading, statusCode } = useSelector(
     (state) => state.resetPasswordForUser

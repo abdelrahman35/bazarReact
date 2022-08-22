@@ -40,7 +40,7 @@ export const userForgetPasswordReducer = (state = {}, action) => {
     case "USER_FORGET_PASSWORD_SUCCESS":
       return {
         loading: false,
-        forgetPassword: action.payload,
+        forgetPasswordR: action.payload,
         statusCode: action.statusCode,
       };
     case "USER_FORGET_PASSWORD_FAIL":

@@ -13,44 +13,33 @@ const ForgetPassword = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(forgetPassword(email));
+    setTimeout(() => {
+      navigate("/", { replace: true });
+      localStorage.removeItem("FP");
+    }, 1000);
   };
-  const { loading, statusCode } = useSelector(
+  const { statusCode, forgetPasswordR, error } = useSelector(
     (state) => state.resetPasswordForUser
   );
   const redirectArrayAfterSuccessUpdate = localStorage.getItem("FP")
     ? JSON.parse(localStorage.getItem("FP"))
     : [];
+
   useEffect(() => {
     if (
       redirectArrayAfterSuccessUpdate[0] &&
-      redirectArrayAfterSuccessUpdate[1] == 200
+      redirectArrayAfterSuccessUpdate[1] === 200
     ) {
       setTimeout(() => {
         navigate("/", { replace: true });
         localStorage.removeItem("FP");
       }, 2000);
+    } else if (error) {
+      navigate("*", { replace: true, state: error });
     }
-  }, [statusCode]);
-  return redirectArrayAfterSuccessUpdate[0] &&
-    redirectArrayAfterSuccessUpdate[1] == 200 ? (
-    <div
-      className={`container d-flex justify-content-center align-items-center ${styles.conten}`}
-    >
-      <section className="container w-100 m-auto">
-        <p className="text-capitalize text-center">
-          password had been reseted successfully
-        </p>{" "}
-      </section>
-    </div>
-  ) : loading ? (
-    <div
-      className={`container d-flex justify-content-center align-items-center ${styles.conten}`}
-    >
-      <section className="container w-100 m-auto">
-        <Loading />
-      </section>
-    </div>
-  ) : (
+  }, [statusCode, forgetPasswordR, error]);
+  return !redirectArrayAfterSuccessUpdate[0] &&
+    redirectArrayAfterSuccessUpdate[1] !== 200 ? (
     <div
       className={`container d-flex justify-content-center align-items-center ${styles.conten}`}
     >
@@ -93,6 +82,16 @@ const ForgetPassword = () => {
           </div>
         </Form>
       </section>{" "}
+    </div>
+  ) : (
+    <div
+      className={`container d-flex justify-content-center align-items-center ${styles.conten}`}
+    >
+      <section className="container w-100 m-auto">
+        <p className="text-capitalize text-center">
+          password had been reseted successfully
+        </p>{" "}
+      </section>
     </div>
   );
 };
