@@ -23,7 +23,7 @@ export const ProductCard = ({ product }) => {
   const excedArr = isExceeded?.length > 0 ? isExceeded[0][1] : [];
   return (
     <>
-      <div className="m-3">
+      <div className="">
         <div className={`card ${styles.cardBody} p-4 mx-0`}>
           <Link
             to={`/product-details/${product._id}`}
