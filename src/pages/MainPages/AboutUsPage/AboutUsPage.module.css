@@ -18,14 +18,18 @@
 }
 .Middle {
   margin: auto;
-  margin-top: 10vw;
+  margin-top: 5vw;
   width: 75vw;
   text-align: center;
+  font-size: 20px;
 
   line-height: 2;
 }
+.Middle h3 {
+  font-size: 40px;
+}
 .LastTitle {
-  margin-top: 70px;
+  margin-top: 55px;
 }
 
 .LastTitle h3 {
@@ -53,4 +57,5 @@
 }
 .Last {
   text-align: center;
+  font-size: 20px;
 }

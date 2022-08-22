@@ -17,14 +17,14 @@ export const ProductCard = ({ product }) => {
     dispatch(addToCart(product._id, 1));
   };
   const isExceeded = cartItems?.map((item) =>
-    item.quantity === product.quantity ? [true, [item]] : [false, [item]]
+    item.quantity === product.quantity ? [true, [item]] : [false, [item]],
   );
 
   const excedArr = isExceeded?.length > 0 ? isExceeded[0][1] : [];
   return (
     <>
       <div className="m-3">
-        <div className={`card ${styles.cardBody} p-4 mx-3`}>
+        <div className={`card ${styles.cardBody} p-4 mx-0`}>
           <Link
             to={`/product-details/${product._id}`}
             className={`text-decoration-none ${styles.cardLinkReset}`}
@@ -96,7 +96,7 @@ export const ProductCard = ({ product }) => {
                         addToCartHandler();
                         NotificationManager.success(
                           "Product Added Successfully",
-                          "Bazaar Shop"
+                          "Bazaar Shop",
                         );
                       }}
                     >
@@ -110,13 +110,13 @@ export const ProductCard = ({ product }) => {
                         addToCartHandler();
                         NotificationManager.success(
                           "Product Added Successfully",
-                          "Bazaar Shop"
+                          "Bazaar Shop",
                         );
                       }}
                     >
                       <i className="fa-solid fa-cart-circle-arrow-up"></i>
                     </button>
-                  )
+                  ),
                 )
               ) : (
                 <button
@@ -126,7 +126,7 @@ export const ProductCard = ({ product }) => {
                     addToCartHandler();
                     NotificationManager.success(
                       "Product Added Successfully",
-                      "Bazaar Shop"
+                      "Bazaar Shop",
                     );
                   }}
                 >

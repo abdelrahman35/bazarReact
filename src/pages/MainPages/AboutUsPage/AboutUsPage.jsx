@@ -11,7 +11,7 @@ function AboutUsPage() {
         </div>
         <div className={styles.Middle}>
           <div
-            className={`  d-flex flex-column justify-content-center align-items-center  ${styles.title}`}
+            className={`  d-flex flex-column justify-content-center align-items-center  ${styles.title} mt-0`}
           >
             <h3>About Us </h3>
             <div className={styles.HR}></div>

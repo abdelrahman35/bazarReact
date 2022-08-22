@@ -105,8 +105,8 @@ function Home() {
                   className={`row ${styles.cardHome} w-100 h-100 p-5 align-items-end`}
                 >
                   <div className="col-6 ">
-                    <h4 className="text-start mb-3">
-                      SPICIAL OFFER ON FIRST ORDER <br />
+                    <h4 className="text-start mb-3 text-uppercase">
+                      Special offers on your first order <br />
                       UP To <small> 30%</small> OFF
                     </h4>
                   </div>
@@ -120,8 +120,8 @@ function Home() {
                   className={`row ${styles.cardHome} w-100 h-100 p-5 align-items-end`}
                 >
                   <div className="col-6 ">
-                    <h4 className="text-start mb-3">
-                      SPICIAL OFFER ON FIRST ORDER <br />
+                    <h4 className="text-start mb-3 text-uppercase ">
+                      Special offers on your first order <br />
                       UP To <small> 30%</small> OFF
                     </h4>
                   </div>
@@ -137,8 +137,8 @@ function Home() {
                   className={`row ${styles.cardHome} w-100 h-100 p-5 align-items-end`}
                 >
                   <div className="col-6 ">
-                    <h4 className="text-start mb-3">
-                      SPICIAL OFFER ON FIRST ORDER <br />
+                    <h4 className="text-start mb-3 text-uppercase">
+                      Special offers on your first order <br />
                       UP To <small> 30%</small> OFF
                     </h4>
                   </div>
@@ -152,8 +152,8 @@ function Home() {
                   className={`row ${styles.cardHome} w-100 h-100 p-5 align-items-end`}
                 >
                   <div className="col-6 ">
-                    <h4 className="text-start mb-3">
-                      SPICIAL OFFER ON FIRST ORDER <br />
+                    <h4 className="text-start mb-3 text-uppercase">
+                      Special offers on your first order <br />
                       UP To <small> 30%</small> OFF
                     </h4>
                   </div>

@@ -104,7 +104,7 @@ function Navbar() {
                         to="/profile"
                       >
                         <div className={styles.profile}>
-                          Hi {userInfo.firstName}!
+                          Hi {userInfo.firstName}
                         </div>
                       </Link>
                     ) : (

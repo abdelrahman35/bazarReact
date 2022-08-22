@@ -122,7 +122,7 @@ const Footer = () => {
           </div>
         </footer>
         <div
-          className={`text-center text-lg-start w-100  ${styles.Footerstyle} d-flex flex-column justify-content-center align-items-center pb-3`}
+          className={`text-center text-lg-start w-100  ${styles.Footerstyle} d-flex  justify-content-center align-items-center pb-3`}
         >
           © 2022 Copyright : BAZAAR
         </div>

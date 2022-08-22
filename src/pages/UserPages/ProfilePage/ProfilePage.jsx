@@ -9,6 +9,7 @@ import Loading from "../../../components/Loading/Loading";
 import { getUserOrders } from "../../../store/actions/ordersActions";
 import OrderCard from "../../../components/OrderCard/OrderCard";
 import AddressItem from "../../../components/AddressItem/AddressItem";
+import MyPagination from "../../../components/Pagination";
 function ProfilePage() {
   const { loading: addressLoading, address } = useSelector(
     (state) => state.addAddress,
@@ -17,8 +18,15 @@ function ProfilePage() {
   // declarations
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [currPage, setCurrPage] = useState(1);
+  const [tagList, setTagList] = useState([]);
+
+  const afterPageClicked = (page_number) => {
+    setCurrPage(page_number);
+  };
+
   // states
-  const [pageNum, setPageNum] = useState(1);
+  // const [pageNum, setPageNum] = useState(1);
   const [renderedData, setRenderedData] = useState("accountDetails");
   // store states
   const userLogin = useSelector((state) => state.userLogin);
@@ -36,29 +44,29 @@ function ProfilePage() {
   const userOrdersArray = userOrders?.orders;
   const { orderIsCancelled } = useSelector((state) => state.cancelOrder);
   // pagination functions
-  const nextPage = () => {
-    let pageNumber;
-    pageNumber = pageNum;
-    if (pageNum < userOrders?.numberOfPages) {
-      pageNumber++;
-    }
-    setPageNum(pageNumber);
-  };
-  const prevPage = () => {
-    let pageNumber;
-    pageNumber = pageNum;
-    if (pageNum > 1) {
-      pageNumber--;
-    }
-    setPageNum(pageNumber);
-  };
+  // const nextPage = () => {
+  //   let pageNumber;
+  //   pageNumber = pageNum;
+  //   if (pageNum < userOrders?.numberOfPages) {
+  //     pageNumber++;
+  //   }
+  //   setPageNum(pageNumber);
+  // };
+  // const prevPage = () => {
+  //   let pageNumber;
+  //   pageNumber = pageNum;
+  //   if (pageNum > 1) {
+  //     pageNumber--;
+  //   }
+  //   setPageNum(pageNumber);
+  // };
   useEffect(() => {
     if (!userInfo) {
       navigate("*", { replace: true });
     } else if (userInfo) {
-      dispatch(getUserOrders(pageNum));
+      dispatch(getUserOrders(currPage));
     }
-  }, [userInfo, navigate, pageNum, orderIsCancelled, addressArray]);
+  }, [userInfo, navigate, currPage, orderIsCancelled, addressArray]);
 
   return userLoading ? (
     <Loading />
@@ -172,7 +180,7 @@ function ProfilePage() {
                     ) : null}
                   </div>
                   <div>
-                    <nav aria-label="Page navigation example">
+                    {/* <nav aria-label="Page navigation example">
                       <ul className="pagination ">
                         <li className="page-item  ">
                           <Link
@@ -213,7 +221,21 @@ function ProfilePage() {
                           </Link>
                         </li>
                       </ul>
-                    </nav>
+                    </nav> */}
+
+                    <MyPagination
+                      totPages={userOrders?.numberOfPages}
+                      currentPage={currPage}
+                      pageClicked={(ele) => {
+                        afterPageClicked(ele);
+                      }}
+                    >
+                      <ul>
+                        {tagList.map((ele, ind) => (
+                          <li key={ele + ind}>{ele}</li>
+                        ))}
+                      </ul>
+                    </MyPagination>
                   </div>
                 </div>
               </div>

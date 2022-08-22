@@ -29,7 +29,7 @@ function Filter() {
           </label>
           <input
             min={0}
-            className="col-5 m-1"
+            className="col-5 m-1 form-control w-40 form-control w-40"
             name="priceMinFilter"
             id="priceMinFilter"
             type="number"
@@ -46,7 +46,7 @@ function Filter() {
           </label>
           <input
             min={0}
-            className="col-5 m-1"
+            className="col-5 m-1 form-control w-40"
             name="priceMaxFilter"
             id="priceMaxFilter"
             type="number"
@@ -63,7 +63,7 @@ function Filter() {
           </label>
           <input
             min={0}
-            className="col-5 m-1"
+            className="col-5 m-1 form-control w-40"
             name="modelYearMin"
             id="modelYearMin"
             type="number"
@@ -80,7 +80,7 @@ function Filter() {
           </label>
           <input
             min={0}
-            className="col-5 m-1"
+            className="col-5 m-1 form-control w-40"
             name="modelYearMax"
             id="modelYearMax"
             type="number"
