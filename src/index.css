@@ -1,3 +1,4 @@
+/* general */
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 body {
   margin: 0 !important;
@@ -35,7 +36,8 @@ option {
   font-family: var(--myFont) !important;
 }
 
-.h-10 {
+/* overriding on bootstrap */
+.w-10 {
   width: 10% !important;
 }
 .w-15 {
@@ -125,7 +127,7 @@ option {
 .h-95 {
   height: 95% !important;
 }
-
+/* rate classes using rsuite  */
 .rs-rate {
   position: relative;
   display: -webkit-inline-box;
@@ -275,6 +277,8 @@ option {
   background-color: var(--color7) !important;
 }
 
+/* accordion classes */
+
 .accordion {
   width: 95%;
   margin: auto;
@@ -323,9 +327,13 @@ option {
   -ms-transform: rotate(360deg) !important;
   -o-transform: rotate(360deg) !important;
 }
+
+/* notification message class */
 .notification-success {
   background-color: var(--color1) !important;
 }
+
+/* slider classes  */
 .slick-prev {
   left: -40px !important;
 }
@@ -341,6 +349,8 @@ option {
 .slick-dots li.slick-active button:before {
   color: var(--color3) !important;
 }
+
+/* alert classes  */
 .swal2-actions {
   display: flex;
   z-index: 1;
